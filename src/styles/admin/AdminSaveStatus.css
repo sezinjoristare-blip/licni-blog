@@ -1,0 +1,291 @@
+.admin-save-status {
+  min-height:
+    30px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    7px;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    999px;
+
+  padding:
+    0
+    10px;
+
+  color:
+    #6f7480;
+
+  background:
+    #f8f9fa;
+
+  white-space:
+    nowrap;
+
+  transition:
+    border-color
+      140ms ease,
+    background-color
+      140ms ease,
+    color
+      140ms ease;
+}
+
+
+.admin-save-status__dot {
+  width:
+    7px;
+
+  height:
+    7px;
+
+  flex:
+    0 0 auto;
+
+  border-radius:
+    50%;
+
+  background:
+    #a6abb4;
+}
+
+
+.admin-save-status__label {
+  font-size:
+    0.57rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.admin-save-status__time {
+  padding-left:
+    2px;
+
+  color:
+    #9b9fa8;
+
+  font-size:
+    0.58rem;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.admin-save-status--dirty {
+  color:
+    #755c1e;
+
+  border-color:
+    rgba(
+      215,
+      165,
+      43,
+      0.3
+    );
+
+  background:
+    #fff9e7;
+}
+
+
+.admin-save-status--dirty
+.admin-save-status__dot {
+  background:
+    #d7a52b;
+}
+
+
+.admin-save-status--saving {
+  color:
+    #5d6470;
+
+  background:
+    #f4f5f7;
+}
+
+
+.admin-save-status--saving
+.admin-save-status__dot {
+  background:
+    #7e8796;
+
+  animation:
+    admin-save-pulse
+    700ms ease-in-out
+    infinite alternate;
+}
+
+
+.admin-save-status--local {
+  color:
+    #72591b;
+
+  border-color:
+    rgba(
+      215,
+      165,
+      43,
+      0.28
+    );
+
+  background:
+    #fff8e4;
+}
+
+
+.admin-save-status--local
+.admin-save-status__dot {
+  background:
+    #d7a52b;
+}
+
+
+.admin-save-status--saved {
+  color:
+    #266d50;
+
+  border-color:
+    rgba(
+      39,
+      134,
+      93,
+      0.25
+    );
+
+  background:
+    #f0faf5;
+}
+
+
+.admin-save-status--saved
+.admin-save-status__dot {
+  background:
+    #27865d;
+}
+
+
+.admin-save-status--error {
+  color:
+    #973d3d;
+
+  border-color:
+    rgba(
+      181,
+      64,
+      64,
+      0.26
+    );
+
+  background:
+    #fff1f1;
+}
+
+
+.admin-save-status--error
+.admin-save-status__dot {
+  background:
+    #b54040;
+}
+
+
+.admin-save-status--attention {
+  color:
+    #8a571d;
+
+  border-color:
+    rgba(
+      190,
+      119,
+      37,
+      0.28
+    );
+
+  background:
+    #fff5e9;
+}
+
+
+.admin-save-status--attention
+.admin-save-status__dot {
+  background:
+    #be7725;
+}
+
+
+@keyframes admin-save-pulse {
+  from {
+    opacity:
+      0.35;
+
+    transform:
+      scale(
+        0.8
+      );
+  }
+
+  to {
+    opacity:
+      1;
+
+    transform:
+      scale(
+        1
+      );
+  }
+}
+
+
+@media (
+  max-width:
+    680px
+) {
+  .admin-save-status__time {
+    display:
+      none;
+  }
+
+  .admin-save-status {
+    padding:
+      0
+      8px;
+  }
+}
+
+
+@media (
+  max-width:
+    520px
+) {
+  .admin-save-status__label {
+    display:
+      none;
+  }
+
+  .admin-save-status {
+    width:
+      30px;
+
+    justify-content:
+      center;
+
+    padding:
+      0;
+  }
+}

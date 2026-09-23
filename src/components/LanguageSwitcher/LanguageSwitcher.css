@@ -1,0 +1,536 @@
+/* =========================================================
+   GLOBAL LANGUAGE SWITCHER
+   ========================================================= */
+
+.language-switcher {
+  position:
+    fixed;
+
+  z-index:
+    940;
+
+  top:
+    16px;
+
+  right:
+    18px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.24
+    );
+
+  background:
+    rgba(
+      11,
+      11,
+      11,
+      0.78
+    );
+
+  box-shadow:
+    0
+    8px
+    24px
+    rgba(
+      0,
+      0,
+      0,
+      0.3
+    );
+
+  backdrop-filter:
+    blur(
+      7px
+    );
+
+  -webkit-backdrop-filter:
+    blur(
+      7px
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  transition:
+    opacity
+      150ms
+      ease,
+    background-color
+      150ms
+      ease;
+}
+
+
+.language-switcher:hover {
+  background:
+    rgba(
+      9,
+      9,
+      9,
+      0.92
+    );
+}
+
+
+/* =========================================================
+   CHARACTER SELECT — DESKTOP
+   ========================================================= */
+
+.language-switcher--entry {
+  min-height:
+    38px;
+
+  gap:
+    7px;
+
+  padding:
+    5px
+    8px;
+
+  border-width:
+    2px;
+
+  border-color:
+    rgba(
+      238,
+      234,
+      224,
+      0.38
+    );
+
+  border-radius:
+    3px;
+
+  box-shadow:
+    4px
+    4px
+    0
+    rgba(
+      0,
+      0,
+      0,
+      0.42
+    );
+}
+
+
+.language-switcher--entry::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    3px;
+
+  border:
+    1px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.06
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   CHARACTER SELECT — MOBILE INLINE
+   ========================================================= */
+
+.character-select__mobile-language {
+  display:
+    none;
+}
+
+
+.language-switcher--entry-inline {
+  position:
+    relative;
+
+  top:
+    auto;
+
+  right:
+    auto;
+
+  left:
+    auto;
+
+  z-index:
+    auto;
+
+  min-height:
+    35px;
+
+  width:
+    fit-content;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    5px;
+
+  margin:
+    0;
+
+  padding:
+    4px
+    6px;
+
+  border:
+    2px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.38
+    );
+
+  border-radius:
+    3px;
+
+  background:
+    rgba(
+      8,
+      8,
+      8,
+      0.9
+    );
+
+  box-shadow:
+    4px
+    4px
+    0
+    rgba(
+      0,
+      0,
+      0,
+      0.42
+    );
+}
+
+
+.language-switcher--entry-inline::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    3px;
+
+  border:
+    1px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.07
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   COMPACT — DESKTOP JAVNI DEO
+   ========================================================= */
+
+.language-switcher--compact {
+  min-height:
+    31px;
+
+  gap:
+    4px;
+
+  padding:
+    3px
+    5px;
+
+  border-radius:
+    4px;
+
+  opacity:
+    0.72;
+}
+
+
+.language-switcher--compact:hover,
+.language-switcher--compact:focus-within {
+  opacity:
+    1;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.language-switcher__button {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  border:
+    0;
+
+  outline:
+    none;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      238,
+      234,
+      224,
+      0.46
+    );
+
+  padding:
+    0;
+
+  font-family:
+    inherit;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.075em;
+
+  cursor:
+    pointer;
+
+  transition:
+    color
+      130ms
+      ease,
+    background-color
+      130ms
+      ease,
+    text-shadow
+      130ms
+      ease;
+}
+
+
+.language-switcher--entry
+.language-switcher__button,
+.language-switcher--entry-inline
+.language-switcher__button {
+  min-width:
+    30px;
+
+  height:
+    25px;
+
+  font-size:
+    0.66rem;
+}
+
+
+.language-switcher--compact
+.language-switcher__button {
+  min-width:
+    27px;
+
+  height:
+    23px;
+
+  font-size:
+    0.58rem;
+}
+
+
+.language-switcher__button:hover {
+  color:
+    #f0ece2;
+}
+
+
+.language-switcher__button--active {
+  color:
+    #e0c56e;
+
+  text-shadow:
+    0
+    0
+    12px
+    rgba(
+      224,
+      197,
+      110,
+      0.28
+    );
+}
+
+
+.language-switcher--entry
+.language-switcher__button--active,
+.language-switcher--entry-inline
+.language-switcher__button--active {
+  background:
+    rgba(
+      224,
+      197,
+      110,
+      0.08
+    );
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.language-switcher__divider {
+  color:
+    rgba(
+      238,
+      234,
+      224,
+      0.2
+    );
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    400;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+    700px
+) {
+  /*
+   * Globalni Character Select
+   * switcher gore desno nestaje.
+   */
+  .language-switcher--entry {
+    display:
+      none;
+  }
+
+
+  /*
+   * Poseban Character Select switcher
+   * sedi TAČNO NA GRANICI dva lika.
+   *
+   * z-index 40 je namerno iznad:
+   * - fighters z-index: 5
+   * - header z-index: 30
+   */
+  .character-select__mobile-language {
+    position:
+      absolute;
+
+    z-index:
+      40;
+
+    left:
+      50%;
+
+    top:
+      50%;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    width:
+      auto;
+
+    margin:
+      0;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    pointer-events:
+      auto;
+  }
+
+
+  .language-switcher--entry-inline {
+    min-height:
+      34px;
+
+    padding:
+      4px
+      6px;
+  }
+
+
+  /*
+   * Kasnije ovo potpuno sklanjamo
+   * na telefonu i ubacujemo jezik
+   * u hamburger menije.
+   */
+  .language-switcher--compact {
+    display:
+      none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .language-switcher,
+  .language-switcher__button {
+    transition:
+      none;
+  }
+}

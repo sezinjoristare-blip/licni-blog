@@ -1,0 +1,1975 @@
+/* =====================================================
+   HUMAN ONE MUSIC
+   ILUSTROVANA PRODAVNICA / DESKTOP SCENA
+
+   ZAKLJUČANO:
+   - fullscreen 16:9 scena
+   - bez scrollovanja
+   - ručno nameštene pozicije postojećih elemenata
+   ===================================================== */
+
+
+/* =====================================================
+   FULLSCREEN STRANICA
+   ===================================================== */
+
+.human-one-music--hub {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100vw;
+
+  height: 100dvh;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  overscroll-behavior: none;
+
+  background:
+    #070807;
+}
+
+
+/* =====================================================
+   GLAVNA SCENA
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__scene {
+  position: relative;
+
+  width:
+    min(
+      100vw,
+      calc(
+        100dvh * 16 / 9
+      )
+    );
+
+  height:
+    min(
+      100dvh,
+      calc(
+        100vw * 9 / 16
+      )
+    );
+
+  aspect-ratio:
+    16 / 9;
+
+  overflow: hidden;
+
+  flex: none;
+
+  background-image:
+    url(
+      "/images/human-one/music/music-shop-bg.png"
+    );
+
+  background-repeat:
+    no-repeat;
+
+  background-position:
+    center;
+
+  background-size:
+    100% 100%;
+}
+
+
+/* =====================================================
+   YOUTUBE PLAYER
+   ===================================================== */
+
+.human-one-music__youtube-shell {
+  position: fixed;
+
+  left:
+    -10000px;
+
+  top:
+    -10000px;
+
+  width:
+    200px;
+
+  height:
+    200px;
+
+  overflow:
+    hidden;
+
+  pointer-events:
+    none;
+}
+
+
+/* =====================================================
+   ZAJEDNIČKO — DUGMAD
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__scene-control {
+  position: absolute;
+
+  z-index: 30;
+
+  display: block;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  outline: 0;
+
+  background:
+    transparent;
+
+  color:
+    inherit;
+
+  line-height: 0;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  box-sizing:
+    border-box;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control
+img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit:
+    fill;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+
+  transition:
+    transform 90ms ease,
+    filter 120ms ease;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control:hover
+img {
+  filter:
+    brightness(1.06);
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control:active
+img {
+  transform:
+    translateY(1.5%)
+    scale(0.97);
+}
+
+
+/* =====================================================
+   ZAKLJUČANE POZICIJE
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__scene-control--exit {
+  left:
+    5%;
+
+  top:
+    7.4%;
+
+  width:
+    4.6%;
+
+  height:
+    9%;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--previous {
+  left:
+    12.3%;
+
+  top:
+    7.65%;
+
+  width:
+    7.1%;
+
+  height:
+    9.4%;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--next {
+  left:
+    20.1%;
+
+  top:
+    7.65%;
+
+  width:
+    7.1%;
+
+  height:
+    9.4%;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--radio {
+  left:
+    64.3%;
+
+  top:
+    7.9%;
+
+  width:
+    5.8%;
+
+  height:
+    9%;
+
+  overflow:
+    visible;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--volume {
+  left:
+    71.75%;
+
+  top:
+    5.5%;
+
+  width:
+    6.7%;
+
+  height:
+    12.7%;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--station {
+  left:
+    80%;
+
+  top:
+    5.8%;
+
+  width:
+    6.7%;
+
+  height:
+    12%;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--play {
+  left:
+    88.8%;
+
+  top:
+    7.1%;
+
+  width:
+    6.7%;
+
+  height:
+    10.50%;
+}
+
+
+/* =====================================================
+   PLAY / PAUSE
+
+   PAUSE se smanjuje UNUTAR istog hitbox-a.
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__play-image {
+  transform-origin:
+    50% 50%;
+}
+
+
+.human-one-music--hub
+.human-one-music__play-image--pause {
+  scale:
+    0.82;
+}
+
+
+/* =====================================================
+   RADIO LAMPICA
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__radio-light {
+  position:
+    absolute;
+
+  left:
+    49%;
+
+  top:
+    29%;
+
+  z-index:
+    4;
+
+  width:
+    37%;
+
+  height:
+    11%;
+
+  border-radius:
+    999px;
+
+  background:
+    #ff9c28;
+
+  opacity:
+    0;
+
+  pointer-events:
+    none;
+
+  transform:
+    translateX(-50%);
+
+  box-shadow:
+    0 0 0
+    rgba(
+      255,
+      156,
+      40,
+      0
+    );
+
+  transition:
+    opacity 120ms ease,
+    box-shadow 120ms ease;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-control--radio.is-active
+.human-one-music__radio-light {
+  opacity:
+    0.96;
+
+  box-shadow:
+    0 0 5px
+    rgba(
+      255,
+      156,
+      40,
+      0.95
+    ),
+    0 0 12px
+    rgba(
+      255,
+      133,
+      20,
+      0.72
+    );
+}
+
+
+/* =====================================================
+   POTENCIOMETRI
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__scene-knob {
+  cursor:
+    ns-resize;
+
+  touch-action:
+    none;
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-knob
+img {
+  transform-origin:
+    50% 50%;
+
+  transform:
+    rotate(
+      var(
+        --knob-angle,
+        0deg
+      )
+    );
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-knob:hover
+img {
+  filter:
+    brightness(1.06);
+}
+
+
+.human-one-music--hub
+.human-one-music__scene-knob:active
+img {
+  transform:
+    rotate(
+      var(
+        --knob-angle,
+        0deg
+      )
+    )
+    scale(0.98);
+}
+
+
+/* =====================================================
+   LCD
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd {
+  position:
+    absolute;
+
+  left:
+    30.35%;
+
+  top:
+    4.55%;
+
+  z-index:
+    24;
+
+  width:
+    32.55%;
+
+  height:
+    14.35%;
+
+  min-width:
+    0;
+
+  min-height:
+    0;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  box-sizing:
+    border-box;
+
+  padding:
+    1.05%
+    1.8%;
+
+  overflow:
+    hidden;
+
+  border:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  color:
+    #79ef6e;
+
+  pointer-events: none;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 3px,
+      rgba(
+        128,
+        255,
+        110,
+        0.025
+      ) 3px 4px
+    );
+}
+
+
+/* =====================================================
+   LCD STATUS
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd-status {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  margin:
+    0
+    0
+    0.45em;
+
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.62
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      5px,
+      0.52vw,
+      9px
+    );
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.15em;
+}
+
+
+/* =====================================================
+   LCD BODY
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd-body {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    20%;
+
+  align-items:
+    end;
+
+  gap:
+    4%;
+
+  min-width:
+    0;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-track {
+  min-width:
+    0;
+}
+
+
+/* =====================================================
+   LCD PESMA / RADIO STANICA
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd-song {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  gap:
+    0.28em;
+
+  min-width:
+    0;
+
+  animation:
+    human-one-music-lcd-in
+    340ms
+    ease-out;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-song
+strong,
+
+.human-one-music--hub
+.human-one-music__lcd-song
+span {
+  display: block;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow:
+    ellipsis;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-song
+strong {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      10px,
+      1.32vw,
+      22px
+    );
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.055em;
+
+  text-shadow:
+    0 0 7px
+    rgba(
+      121,
+      239,
+      110,
+      0.25
+    );
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-song
+span {
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.74
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      6px,
+      0.66vw,
+      11px
+    );
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+/* =====================================================
+   LCD VREME / LIVE
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd-time {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    0.42em;
+
+  margin-top:
+    0.72em;
+
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.86
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      6px,
+      0.68vw,
+      12px
+    );
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.08em;
+
+  text-shadow:
+    0 0 5px
+    rgba(
+      121,
+      239,
+      110,
+      0.22
+    );
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-live {
+  margin-top:
+    0.72em;
+
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.88
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      6px,
+      0.68vw,
+      12px
+    );
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.12em;
+
+  text-shadow:
+    0 0 5px
+    rgba(
+      121,
+      239,
+      110,
+      0.22
+    );
+}
+
+
+/* =====================================================
+   LCD EQUALIZER
+
+   - Radio koristi pravi Web Audio spektar kada je dostupan.
+   - YouTube koristi koherentnu pseudo-spectrum animaciju.
+   - Visinu svakog stuba sada kontroliše --eq-level.
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__lcd-equalizer {
+  height:
+    clamp(
+      25px,
+      4.7vw,
+      70px
+    );
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    center;
+
+  gap:
+    7%;
+
+  opacity:
+    0;
+
+  transition:
+    opacity 160ms ease;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-equalizer.is-visible {
+  opacity:
+    1;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-equalizer
+span {
+  flex:
+    1 1 0;
+
+  min-width:
+    2px;
+
+  max-width:
+    9px;
+
+  height:
+    100%;
+
+  transform-origin:
+    50% 100%;
+
+  transform:
+    scaleY(
+      var(
+        --eq-level,
+        0.1
+      )
+    );
+
+  background:
+    #68f36b;
+
+  box-shadow:
+    0 0 5px
+    rgba(
+      104,
+      243,
+      107,
+      0.38
+    );
+
+  transition:
+    transform 70ms linear;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-equalizer.is-paused
+span {
+  transform:
+    scaleY(0.09);
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-radio-now {
+  display:
+    grid;
+
+  gap:
+    0.14em;
+
+  min-width:
+    0;
+
+  margin-top:
+    0.08em;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-radio-now
+span {
+  display:
+    block;
+
+  overflow:
+    hidden;
+
+  white-space:
+    nowrap;
+
+  text-overflow:
+    ellipsis;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-radio-artist {
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.92
+    ) !important;
+
+  font-size:
+    clamp(
+      5px,
+      0.59vw,
+      10px
+    ) !important;
+
+  letter-spacing:
+    0.055em !important;
+}
+
+
+.human-one-music--hub
+.human-one-music__lcd-radio-title {
+  color:
+    rgba(
+      121,
+      239,
+      110,
+      0.72
+    ) !important;
+
+  font-size:
+    clamp(
+      5px,
+      0.54vw,
+      9px
+    ) !important;
+
+  letter-spacing:
+    0.045em !important;
+}
+
+
+@keyframes human-one-music-lcd-in {
+  from {
+    opacity:
+      0;
+
+    transform:
+      translateY(5px);
+  }
+
+  to {
+    opacity:
+      1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =====================================================
+   MALI OKVIRI + DUGMAD
+
+   SVAKI ELEMENT SE NAMEŠTA POSEBNO.
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-control {
+  position:
+    static;
+}
+
+
+/* =====================================================
+   ČITAJ — OKVIR
+
+   RUČNO MENJAŠ:
+   left
+   top
+   width
+   height
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-control--read
+.human-one-music__mini-frame {
+  position:
+    absolute;
+
+  left:
+    64.5%;
+
+  top:
+    1%;
+
+  z-index:
+    31;
+
+  width:
+    5.45%;
+
+  height:
+    7.4%;
+
+  display:
+    block;
+
+  object-fit:
+    fill;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+}
+
+
+/* =====================================================
+   ČITAJ — DUGME
+
+   RUČNO MENJAŠ:
+   left
+   top
+   width
+   height
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-control--read
+.human-one-music__mini-button {
+  position:
+    absolute;
+
+  left:
+    64.2%;
+
+  top:
+    0.7%;
+
+  z-index:
+    32;
+
+  width:
+    6%;
+
+  height:
+    8%;
+}
+
+
+/* =====================================================
+   AUTOPLAY — OKVIR
+
+   RUČNO MENJAŠ:
+   left
+   top
+   width
+   height
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-control--autoplay
+.human-one-music__mini-frame {
+  position:
+    absolute;
+
+  left:
+    89.5%;
+
+  top:
+    1.5%;
+
+  z-index:
+    31;
+
+  width:
+    5.45%;
+
+  height:
+    6.15%;
+
+  display:
+    block;
+
+  object-fit:
+    fill;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+}
+
+
+/* =====================================================
+   AUTOPLAY — DUGME
+
+   RUČNO MENJAŠ:
+   left
+   top
+   width
+   height
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-control--autoplay
+.human-one-music__mini-button {
+  position:
+    absolute;
+
+  left:
+    89.2%;
+
+  top:
+    2.2%;
+
+  z-index:
+    32;
+
+  width:
+    6%;
+
+  height:
+    4.92%;
+}
+
+
+/* =====================================================
+   ZAJEDNIČKO ZA OBA MALA DUGMETA
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__mini-button {
+  display:
+    block;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  outline:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    inherit;
+
+  line-height:
+    0;
+
+  cursor:
+    pointer;
+
+  text-decoration:
+    none;
+
+  box-sizing:
+    border-box;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.human-one-music--hub
+.human-one-music__mini-button
+img {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    fill;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+
+  transition:
+    transform 90ms ease,
+    filter 120ms ease;
+}
+
+
+.human-one-music--hub
+.human-one-music__mini-button:hover
+img {
+  filter:
+    brightness(1.06);
+}
+
+
+.human-one-music--hub
+.human-one-music__mini-button:active
+img {
+  transform:
+    translateY(1.5%)
+    scale(0.97);
+}
+
+
+/* =====================================================
+   PRODAVNICA
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__shop-object {
+  position:
+    absolute;
+
+  z-index:
+    15;
+
+  display:
+    block;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  color:
+    inherit;
+
+  line-height:
+    0;
+
+  text-decoration:
+    none;
+
+  transform-origin:
+    50% 100%;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.human-one-music--hub
+.human-one-music__shop-object
+picture {
+  display:
+    block;
+
+  width:
+    100%;
+}
+
+
+.human-one-music--hub
+.human-one-music__shop-object
+img {
+  display:
+    block;
+
+  width: 100%;
+
+  height:
+    auto;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+}
+
+
+.human-one-music--hub
+.human-one-music__shop-object:hover {
+  transform:
+    translateY(-5px)
+    scale(1.015);
+
+  filter:
+    brightness(1.05)
+    drop-shadow(
+      0 10px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      )
+    );
+}
+
+
+/* =====================================================
+   PREPORUKE — ZAKLJUČANO
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__shop-object--recommendations {
+  left:
+    7%;
+
+  bottom:
+    5%;
+
+  width:
+    31%;
+}
+
+
+/* =====================================================
+   PREVODI I ANALIZE — ZAKLJUČANO
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__shop-object--analyses {
+  right:
+    6%;
+
+  bottom:
+    6%;
+
+  width:
+    37%;
+}
+
+
+/* =====================================================
+   FOCUS
+   ===================================================== */
+
+.human-one-music--hub
+.human-one-music__scene-control:focus-visible,
+
+.human-one-music--hub
+.human-one-music__shop-object:focus-visible,
+
+.human-one-music--hub
+.human-one-music__mini-button:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      121,
+      239,
+      110,
+      0.88
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* =====================================================
+   MOBILE / PORTRAIT
+
+   BAZA: 390 x 844
+
+   VAŽNO:
+   - desktop pravila iznad ostaju netaknuta
+   - ovde ručno peglaš samo mobile procente
+   - background je poseban mobile asset
+   ===================================================== */
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .human-one-music--hub {
+    place-items: center;
+
+    background:
+      #070807;
+  }
+
+
+  /* ===================================================
+     MOBILE SCENA
+     =================================================== */
+
+  .human-one-music--hub
+  .human-one-music__scene {
+    width:
+      min(
+        100vw,
+        calc(
+          100dvh * 390 / 844
+        )
+      );
+
+    height:
+      min(
+        100dvh,
+        calc(
+          100vw * 844 / 390
+        )
+      );
+
+    aspect-ratio:
+      390 / 844;
+
+    background-image:
+      url(
+        "/images/human-one/music/mobile/music-shop-mobile-bg.png"
+      );
+
+    background-repeat:
+      no-repeat;
+
+    background-position:
+      center;
+
+    background-size:
+      100% 100%;
+  }
+
+
+  /* ===================================================
+     MOBILE — GLAVNA DUGMAD
+
+     Ovo su početne pozicije.
+     Slobodno ih ručno pomeraj po backgroundu.
+     =================================================== */
+
+  .human-one-music--hub
+  .human-one-music__scene-control--exit {
+    left:
+      6%;
+
+    top:
+      25%;
+
+    width:
+      17%;
+
+    height:
+      4%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--previous {
+    left:
+      24.9%;
+
+    top:
+      12.4%;
+
+    width:
+      22.5%;
+
+    height:
+      5.3%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--next {
+    left:
+      52%;
+
+    top:
+      12.4%;
+
+    width:
+      22%;
+
+    height:
+      5.3%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--play {
+    left:
+      78.7%;
+
+    top:
+      12.5%;
+
+    width:
+      13.8%;
+
+    height:
+      5.1%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--radio {
+    left:
+      76%;
+
+    top:
+      20.2%;
+
+    width:
+      18.5%;
+
+    height:
+      7%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--volume {
+    left:
+      28.4%;
+
+    top:
+      20.2%;
+
+    width:
+      17.1%;
+
+    height:
+      8%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__scene-control--station {
+    left:
+      54%;
+
+    top:
+      20.3%;
+
+    width:
+      17%;
+
+    height:
+      8%;
+  }
+
+
+  /* ===================================================
+     MOBILE — LCD
+     =================================================== */
+
+  .human-one-music--hub
+  .human-one-music__lcd {
+    left:
+      14.3%;
+
+    top:
+      3.25%;
+
+    width:
+      69.6%;
+
+    height:
+      8.7%;
+
+    padding:
+      2.2%
+      3.1%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-status {
+    margin-bottom:
+      0.35em;
+
+    font-size:
+      clamp(
+        5px,
+        1.55vw,
+        7px
+      );
+
+    letter-spacing:
+      0.11em;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-body {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      22%;
+
+    gap:
+      4%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-song
+  strong {
+    font-size:
+      clamp(
+        8px,
+        2.65vw,
+        12px
+      );
+
+    letter-spacing:
+      0.04em;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-song
+  span {
+    font-size:
+      clamp(
+        5px,
+        1.7vw,
+        8px
+      );
+
+    letter-spacing:
+      0.055em;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-time,
+
+  .human-one-music--hub
+  .human-one-music__lcd-live {
+    margin-top:
+      0.48em;
+
+    font-size:
+      clamp(
+        5px,
+        1.55vw,
+        7px
+      );
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-equalizer {
+    height:
+      clamp(
+        18px,
+        6.6vw,
+        29px
+      );
+
+    gap:
+      6%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-radio-artist {
+    font-size:
+      clamp(
+        5px,
+        1.45vw,
+        7px
+      ) !important;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-radio-title {
+    font-size:
+      clamp(
+        5px,
+        1.35vw,
+        6px
+      ) !important;
+  }
+
+
+  /* ===================================================
+     MOBILE — ČITAJ / AUTOPLAY
+
+     Mobile background već ima nacrtane okvire,
+     zato skrivamo desktop mini-frame slike.
+     =================================================== */
+
+  .human-one-music--hub
+  .human-one-music__mini-control--read
+  .human-one-music__mini-frame,
+
+  .human-one-music--hub
+  .human-one-music__mini-control--autoplay
+  .human-one-music__mini-frame {
+    display:
+      none;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__mini-control--autoplay
+  .human-one-music__mini-button {
+    left:
+      5.5%;
+
+    top:
+      19.6%;
+
+    width:
+      18%;
+
+    height:
+      4%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__mini-control--read
+  .human-one-music__mini-button {
+    left:
+      7.2%;
+
+    top:
+      12.2%;
+
+    width:
+      13.5%;
+
+    height:
+      5.6%;
+  }
+
+
+  /* ===================================================
+     MOBILE — PRODAVNICA
+     =================================================== */
+
+  .human-one-music--hub
+  .human-one-music__shop-object
+  picture,
+
+  .human-one-music--hub
+  .human-one-music__shop-object
+  img {
+    display:
+      block;
+
+    width:
+      100%;
+
+    height:
+      auto;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__shop-object--analyses {
+    left:
+      2.2%;
+
+    right:
+      auto;
+
+    top:
+      37.5%;
+
+    bottom:
+      auto;
+
+    width:
+      85%;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__shop-object--recommendations {
+    left:
+      -1%;
+
+    right:
+      auto;
+
+    top:
+      auto;
+
+    bottom:
+      7%;
+
+    width:
+      80%;
+  }
+
+
+  /* Na telefonu nema klasičnog hover ponašanja. */
+
+  .human-one-music--hub
+  .human-one-music__shop-object:hover {
+    transform:
+      none;
+
+    filter:
+      none;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__shop-object:active {
+    transform:
+      scale(0.985);
+
+    filter:
+      brightness(1.05);
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-music--hub
+  .human-one-music__scene-control
+  img,
+
+  .human-one-music--hub
+  .human-one-music__shop-object,
+
+  .human-one-music--hub
+  .human-one-music__mini-button,
+
+  .human-one-music--hub
+  .human-one-music__lcd-song {
+    transition:
+      none;
+
+    animation:
+      none;
+  }
+
+
+  .human-one-music--hub
+  .human-one-music__lcd-equalizer
+  span {
+    animation:
+      none;
+
+    transform:
+      scaleY(0.72);
+  }
+}

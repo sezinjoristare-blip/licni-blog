@@ -1,0 +1,1634 @@
+/* =====================================================
+   HUMAN ONE MUSIC — ANALIZE
+
+   Posebna stranica.
+   Ne zavisi od HumanOneMusic.css
+   ni HumanOneMusicRecommendations.css.
+   ===================================================== */
+
+
+/* =====================================================
+   STRANICA
+   ===================================================== */
+
+.music-analyses {
+  position:
+    relative;
+
+  min-height:
+    100dvh;
+
+  box-sizing:
+    border-box;
+
+  padding:
+    clamp(
+      22px,
+      3vw,
+      48px
+    );
+
+  overflow-x:
+    hidden;
+
+  color:
+    #e9e3d5;
+
+  background:
+    radial-gradient(
+      circle at 16% 8%,
+      rgba(
+        122,
+        92,
+        57,
+        0.16
+      ),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 28%,
+      rgba(
+        81,
+        92,
+        79,
+        0.1
+      ),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #181915 0%,
+      #10110e 48%,
+      #090a08 100%
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+}
+
+
+/* blaga tekstura */
+
+.music-analyses::before {
+  content:
+    "";
+
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  opacity:
+    0.25;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.015
+      )
+      0 1px,
+      transparent
+      1px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.009
+      )
+      0 1px,
+      transparent
+      1px 8px
+    );
+}
+
+
+/* =====================================================
+   SHELL
+   ===================================================== */
+
+.music-analyses__shell {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  width:
+    min(
+      1240px,
+      100%
+    );
+
+  margin:
+    0 auto;
+}
+
+
+/* =====================================================
+   BACK
+   ===================================================== */
+
+.music-analyses__back {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  min-height:
+    38px;
+
+  padding:
+    0.62rem
+    0.85rem;
+
+  border:
+    1px solid
+    rgba(
+      231,
+      219,
+      194,
+      0.25
+    );
+
+  color:
+    #e8dfca;
+
+  background:
+    linear-gradient(
+      180deg,
+      #3a3d37,
+      #1c1e1a
+    );
+
+  box-shadow:
+    0 4px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.27
+    ),
+    inset
+    0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  text-decoration:
+    none;
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.09em;
+
+  transition:
+    transform
+    120ms ease,
+    filter
+    120ms ease;
+}
+
+
+.music-analyses__back:hover {
+  filter:
+    brightness(1.08);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.music-analyses__back:active {
+  transform:
+    translateY(2px);
+}
+
+
+/* =====================================================
+   HEADING
+   ===================================================== */
+
+.music-analyses__heading {
+  display:
+    grid;
+
+  gap:
+    0.45rem;
+
+  max-width:
+    780px;
+
+  margin:
+    clamp(
+      34px,
+      5vw,
+      70px
+    )
+    0
+    clamp(
+      24px,
+      3vw,
+      42px
+    );
+}
+
+
+.music-analyses__heading
+p,
+
+.music-analyses__heading
+h1,
+
+.music-analyses__heading
+span {
+  margin:
+    0;
+}
+
+
+.music-analyses__heading
+p {
+  color:
+    #b99460;
+
+  font-size:
+    clamp(
+      0.68rem,
+      1vw,
+      0.9rem
+    );
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.18em;
+}
+
+
+.music-analyses__heading
+h1 {
+  color:
+    #eee7d8;
+
+  font-size:
+    clamp(
+      2.8rem,
+      7vw,
+      6.3rem
+    );
+
+  line-height:
+    0.85;
+
+  letter-spacing:
+    -0.065em;
+
+  text-shadow:
+    3px 3px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.38
+    );
+}
+
+
+.music-analyses__heading
+span {
+  max-width:
+    620px;
+
+  color:
+    rgba(
+      232,
+      225,
+      211,
+      0.61
+    );
+
+  font-size:
+    clamp(
+      0.8rem,
+      1.25vw,
+      1rem
+    );
+
+  line-height:
+    1.6;
+}
+
+
+/* =====================================================
+   COUNTER
+   ===================================================== */
+
+.music-analyses__counter {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    28px;
+
+  color:
+    rgba(
+      229,
+      219,
+      200,
+      0.54
+    );
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.music-analyses__counter
+strong {
+  color:
+    #cba66c;
+
+  font-size:
+    1rem;
+}
+
+
+/* =====================================================
+   GRID
+   ===================================================== */
+
+.music-analyses__notebooks {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(
+        245px,
+        1fr
+      )
+    );
+
+  gap:
+    clamp(
+      34px,
+      4vw,
+      58px
+    )
+    clamp(
+      28px,
+      4vw,
+      48px
+    );
+
+  align-items:
+    start;
+
+  padding:
+    18px
+    8px
+    80px;
+}
+
+
+/* =====================================================
+   NOTEBOOK LINK
+   ===================================================== */
+
+.music-analyses__notebook {
+  position:
+    relative;
+
+  display:
+    block;
+
+  width:
+    min(
+      100%,
+      290px
+    );
+
+  margin:
+    0 auto;
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  transform:
+    rotate(
+      var(
+        --notebook-rotation,
+        0deg
+      )
+    );
+
+  transform-origin:
+    50%
+    90%;
+
+  transition:
+    transform
+    190ms ease,
+    filter
+    190ms ease;
+}
+
+
+.music-analyses__notebook:hover {
+  z-index:
+    5;
+
+  transform:
+    translateY(-10px)
+    rotate(0deg)
+    scale(1.025);
+
+  filter:
+    drop-shadow(
+      0 18px 15px
+      rgba(
+        0,
+        0,
+        0,
+        0.25
+      )
+    );
+}
+
+
+.music-analyses__notebook:active {
+  transform:
+    translateY(-3px)
+    rotate(0deg)
+    scale(0.985);
+}
+
+
+/* =====================================================
+   KORICE
+   ===================================================== */
+
+.music-analyses__cover {
+  position:
+    relative;
+
+  min-height:
+    405px;
+
+  box-sizing:
+    border-box;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  padding:
+    20px
+    20px
+    18px
+    35px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    rgba(
+      58,
+      48,
+      35,
+      0.66
+    );
+
+  border-radius:
+    3px
+    8px
+    8px
+    3px;
+
+  color:
+    #2d2921;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        70,
+        56,
+        37,
+        0.13
+      )
+      0 8%,
+      transparent
+      8% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        91,
+        75,
+        51,
+        0.025
+      )
+      0 2px,
+      transparent
+      2px 5px
+    ),
+    #c9b889;
+
+  box-shadow:
+    8px 10px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    ),
+    13px 17px 25px
+    rgba(
+      0,
+      0,
+      0,
+      0.27
+    ),
+    inset
+    -5px 0 0
+    rgba(
+      80,
+      62,
+      40,
+      0.09
+    );
+}
+
+
+/* malo različite sveske */
+
+.music-analyses__notebook:nth-child(4n + 2)
+.music-analyses__cover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        63,
+        48,
+        35,
+        0.13
+      )
+      0 8%,
+      transparent
+      8% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        70,
+        57,
+        41,
+        0.025
+      )
+      0 2px,
+      transparent
+      2px 5px
+    ),
+    #b7ad8c;
+}
+
+
+.music-analyses__notebook:nth-child(4n + 3)
+.music-analyses__cover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        45,
+        52,
+        42,
+        0.15
+      )
+      0 8%,
+      transparent
+      8% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        58,
+        70,
+        57,
+        0.026
+      )
+      0 2px,
+      transparent
+      2px 5px
+    ),
+    #a8ae91;
+}
+
+
+.music-analyses__notebook:nth-child(4n + 4)
+.music-analyses__cover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        55,
+        43,
+        40,
+        0.14
+      )
+      0 8%,
+      transparent
+      8% 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        70,
+        55,
+        49,
+        0.026
+      )
+      0 2px,
+      transparent
+      2px 5px
+    ),
+    #bca093;
+}
+
+
+/* =====================================================
+   POHABANI UGAO
+   ===================================================== */
+
+.music-analyses__corner {
+  position:
+    absolute;
+
+  right:
+    -14px;
+
+  bottom:
+    -14px;
+
+  width:
+    48px;
+
+  height:
+    48px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      72,
+      55,
+      37,
+      0.12
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =====================================================
+   SPIRALA
+   ===================================================== */
+
+.music-analyses__spiral {
+  position:
+    absolute;
+
+  left:
+    -11px;
+
+  top:
+    22px;
+
+  bottom:
+    22px;
+
+  z-index:
+    4;
+
+  width:
+    30px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  pointer-events:
+    none;
+}
+
+
+.music-analyses__spiral
+i {
+  position:
+    relative;
+
+  display:
+    block;
+
+  width:
+    27px;
+
+  height:
+    13px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    3px solid
+    #4c4b45;
+
+  border-right-color:
+    #99988e;
+
+  border-radius:
+    50%;
+
+  background:
+    transparent;
+
+  box-shadow:
+    1px 2px 2px
+    rgba(
+      0,
+      0,
+      0,
+      0.32
+    );
+
+  transform:
+    rotate(-5deg);
+}
+
+
+/* rupice sveske */
+
+.music-analyses__spiral
+i::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  right:
+    -3px;
+
+  top:
+    50%;
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  border-radius:
+    50%;
+
+  background:
+    #5c513d;
+
+  transform:
+    translateY(-50%);
+}
+
+
+/* =====================================================
+   TOP LINE
+   ===================================================== */
+
+.music-analyses__top-line {
+  min-height:
+    24px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    15px;
+
+  padding-bottom:
+    8px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      46,
+      38,
+      28,
+      0.2
+    );
+
+  font-size:
+    0.55rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.music-analyses__top-line
+strong {
+  font-size:
+    0.72rem;
+}
+
+
+/* =====================================================
+   FOTOGRAFIJA / STIKER
+   ===================================================== */
+
+.music-analyses__photo {
+  position:
+    relative;
+
+  width:
+    86%;
+
+  aspect-ratio:
+    1.42 / 1;
+
+  align-self:
+    center;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  margin:
+    3px
+    0
+    16px;
+
+  overflow:
+    hidden;
+
+  border:
+    7px solid
+    #d9d1b8;
+
+  background:
+    #55534c;
+
+  box-shadow:
+    3px 4px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+
+  transform:
+    rotate(-1.2deg);
+}
+
+
+/* selotejp */
+
+.music-analyses__photo::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    50%;
+
+  top:
+    -9px;
+
+  z-index:
+    3;
+
+  width:
+    62px;
+
+  height:
+    17px;
+
+  background:
+    rgba(
+      221,
+      211,
+      177,
+      0.72
+    );
+
+  transform:
+    translateX(-50%)
+    rotate(2deg);
+
+  box-shadow:
+    inset
+    0 0 7px
+    rgba(
+      119,
+      96,
+      63,
+      0.13
+    );
+}
+
+
+.music-analyses__photo
+img {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  filter:
+    saturate(0.78)
+    contrast(1.06);
+}
+
+
+.music-analyses__photo.is-empty
+span {
+  color:
+    rgba(
+      235,
+      226,
+      201,
+      0.65
+    );
+
+  font-size:
+    3rem;
+
+  font-weight:
+    900;
+}
+
+
+/* =====================================================
+   TYPE LABEL
+   ===================================================== */
+
+.music-analyses__type {
+  align-self:
+    flex-start;
+
+  margin:
+    0 0 12px;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    rgba(
+      62,
+      48,
+      31,
+      0.35
+    );
+
+  color:
+    #463522;
+
+  background:
+    rgba(
+      234,
+      220,
+      183,
+      0.66
+    );
+
+  font-size:
+    0.57rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.08em;
+
+  transform:
+    rotate(0.8deg);
+}
+
+
+/* =====================================================
+   NASLOV
+   ===================================================== */
+
+.music-analyses__copy {
+  flex:
+    1;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-start;
+}
+
+
+.music-analyses__copy
+h2 {
+  margin:
+    0;
+
+  color:
+    #27231c;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      1.75rem
+    );
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.045em;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+.music-analyses__copy
+p {
+  margin:
+    8px
+    0 0;
+
+  color:
+    rgba(
+      46,
+      39,
+      29,
+      0.72
+    );
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    900;
+
+  line-height:
+    1.35;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.music-analyses__footer {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  margin-top:
+    17px;
+
+  padding-top:
+    10px;
+
+  border-top:
+    1px dashed
+    rgba(
+      47,
+      38,
+      28,
+      0.27
+    );
+
+  color:
+    rgba(
+      47,
+      38,
+      28,
+      0.72
+    );
+
+  font-size:
+    0.57rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.music-analyses__footer
+strong {
+  font-size:
+    1.1rem;
+
+  line-height:
+    1;
+}
+
+
+/* =====================================================
+   STATE
+   ===================================================== */
+
+.music-analyses__state {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  min-height:
+    200px;
+
+  padding:
+    30px;
+
+  border:
+    1px dashed
+    rgba(
+      224,
+      213,
+      188,
+      0.18
+    );
+
+  color:
+    rgba(
+      231,
+      226,
+      214,
+      0.62
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.018
+    );
+
+  text-align:
+    center;
+
+  line-height:
+    1.6;
+}
+
+
+/* =====================================================
+   FOCUS
+   ===================================================== */
+
+.music-analyses__back:focus-visible,
+
+.music-analyses__notebook:focus-visible {
+  outline:
+    2px solid
+    #caaa73;
+
+  outline-offset:
+    5px;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (
+  max-width:
+    900px
+) {
+  .music-analyses__notebooks {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .music-analyses__notebook {
+    width:
+      min(
+        100%,
+        280px
+      );
+  }
+}
+
+
+/* =====================================================
+   TELEFON
+   ===================================================== */
+
+@media (
+  max-width:
+    600px
+) {
+  .music-analyses {
+    padding:
+      18px
+      14px
+      48px;
+  }
+
+
+  .music-analyses__heading {
+    margin:
+      30px
+      0
+      24px;
+  }
+
+
+  .music-analyses__heading
+  h1 {
+    font-size:
+      clamp(
+        3rem,
+        17vw,
+        4.8rem
+      );
+  }
+
+
+  .music-analyses__notebooks {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      30px
+      17px;
+
+    padding:
+      12px
+      3px
+      50px;
+  }
+
+
+  .music-analyses__notebook {
+    width:
+      100%;
+
+    transform:
+      rotate(
+        calc(
+          var(
+            --notebook-rotation,
+            0deg
+          ) *
+          0.6
+        )
+      );
+  }
+
+
+  .music-analyses__notebook:hover {
+    transform:
+      rotate(
+        var(
+          --notebook-rotation,
+          0deg
+        )
+      );
+  }
+
+
+  .music-analyses__cover {
+    min-height:
+      310px;
+
+    padding:
+      13px
+      11px
+      12px
+      24px;
+
+    border-radius:
+      2px
+      5px
+      5px
+      2px;
+
+    box-shadow:
+      5px 7px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.16
+      ),
+      8px 11px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.23
+      );
+  }
+
+
+  .music-analyses__spiral {
+    left:
+      -8px;
+
+    top:
+      16px;
+
+    bottom:
+      16px;
+
+    width:
+      23px;
+  }
+
+
+  .music-analyses__spiral
+  i {
+    width:
+      21px;
+
+    height:
+      10px;
+
+    border-width:
+      2px;
+  }
+
+
+  .music-analyses__spiral
+  i:nth-child(even) {
+    display:
+      none;
+  }
+
+
+  .music-analyses__top-line {
+    margin-bottom:
+      10px;
+
+    padding-bottom:
+      6px;
+
+    font-size:
+      0.42rem;
+  }
+
+
+  .music-analyses__top-line
+  strong {
+    font-size:
+      0.56rem;
+  }
+
+
+  .music-analyses__photo {
+    width:
+      88%;
+
+    margin-bottom:
+      11px;
+
+    border-width:
+      4px;
+  }
+
+
+  .music-analyses__photo::before {
+    top:
+      -6px;
+
+    width:
+      44px;
+
+    height:
+      12px;
+  }
+
+
+  .music-analyses__type {
+    margin-bottom:
+      9px;
+
+    padding:
+      4px
+      5px;
+
+    font-size:
+      0.42rem;
+  }
+
+
+  .music-analyses__copy
+  h2 {
+    font-size:
+      clamp(
+        0.9rem,
+        4.2vw,
+        1.15rem
+      );
+  }
+
+
+  .music-analyses__copy
+  p {
+    margin-top:
+      5px;
+
+    font-size:
+      0.52rem;
+  }
+
+
+  .music-analyses__footer {
+    margin-top:
+      10px;
+
+    padding-top:
+      7px;
+
+    font-size:
+      0.4rem;
+  }
+
+
+  .music-analyses__footer
+  strong {
+    font-size:
+      0.85rem;
+  }
+}
+
+
+/* =====================================================
+   BAŠ MALI TELEFON
+   ===================================================== */
+
+@media (
+  max-width:
+    380px
+) {
+  .music-analyses__notebooks {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      36px;
+  }
+
+
+  .music-analyses__notebook {
+    width:
+      min(
+        265px,
+        88vw
+      );
+  }
+
+
+  .music-analyses__cover {
+    min-height:
+      380px;
+  }
+
+
+  .music-analyses__copy
+  h2 {
+    font-size:
+      1.3rem;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .music-analyses__notebook,
+
+  .music-analyses__back {
+    transition:
+      none;
+  }
+}

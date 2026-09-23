@@ -1,0 +1,174 @@
+.court-entrance {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background:
+    #120f0c;
+}
+
+
+/* =========================================
+   POZADINA
+   ========================================= */
+
+.court-entrance__background {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position:
+    center center;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ČEKIĆ
+   ========================================= */
+
+.court-entrance__gavel {
+  position: absolute;
+
+  left: 50%;
+  top: 51%;
+
+  width:
+    min(
+      25vw,
+      400px
+    );
+
+  height: auto;
+
+  display: block;
+
+  z-index: 3;
+
+  /*
+   * Ovaj položaj smo već podesili
+   * tako da glava lepo stoji
+   * iznad postolja.
+   */
+
+  transform:
+    translate(
+      -18%,
+      -50%
+    );
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   PAPIR — KLIKABILNA ILUSTRACIJA
+   ========================================= */
+
+.court-entrance__paper-button {
+  position: absolute;
+
+  left: 50%;
+  bottom: 4.5%;
+
+  width:
+    min(
+      36vw,
+      560px
+    );
+
+  z-index: 4;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  appearance: none;
+
+  transform:
+    translateX(-50%);
+
+  cursor: pointer;
+}
+
+
+.court-entrance__paper {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  user-select: none;
+
+  pointer-events: none;
+
+  transition:
+    filter
+    180ms
+    ease;
+}
+
+
+/*
+ * Samo vrlo blag signal
+ * da je papir klikabilan.
+ *
+ * Papir se NE pomera.
+ */
+
+.court-entrance__paper-button:hover
+.court-entrance__paper {
+  filter:
+    brightness(1.06);
+}
+
+
+.court-entrance__paper-button:disabled {
+  cursor: default;
+}
+
+
+/* =========================================
+   MANJI EKRANI
+   ========================================= */
+
+@media (
+  max-width: 900px
+) {
+  .court-entrance__gavel {
+    width:
+      min(
+        40vw,
+        360px
+      );
+  }
+
+  .court-entrance__paper-button {
+    width:
+      min(
+        58vw,
+        520px
+      );
+  }
+}

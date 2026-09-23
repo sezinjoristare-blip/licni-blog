@@ -1,0 +1,253 @@
+/* =========================================================
+   LANGUAGE CONTROL INSIDE MOBILE MENUS
+   ========================================================= */
+
+.language-menu-control {
+  width:
+    min(
+      calc(100% - 28px),
+      520px
+    );
+
+  min-height:
+    40px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  flex:
+    0
+    0 auto;
+
+  box-sizing:
+    border-box;
+
+  margin:
+    2px
+    auto
+    14px;
+
+  padding:
+    7px
+    10px;
+
+  border-top:
+    1px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.18
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      238,
+      234,
+      224,
+      0.18
+    );
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+
+  color:
+    #eeeae0;
+
+  font-family:
+    "Courier New",
+    monospace;
+}
+
+
+.language-menu-control__label {
+  color:
+    rgba(
+      238,
+      234,
+      224,
+      0.62
+    );
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.language-menu-control__choices {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    6px;
+}
+
+
+.language-menu-control__button {
+  min-width:
+    31px;
+
+  height:
+    25px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  border:
+    0;
+
+  border-radius:
+    3px;
+
+  outline:
+    none;
+
+  background:
+    transparent;
+
+  color:
+    rgba(
+      238,
+      234,
+      224,
+      0.46
+    );
+
+  padding:
+    0;
+
+  font: inherit;
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.06em;
+
+  cursor:
+    pointer;
+
+  transition:
+    color
+      130ms
+      ease,
+    background-color
+      130ms
+      ease,
+    text-shadow
+      130ms
+      ease;
+}
+
+
+.language-menu-control__button:hover,
+.language-menu-control__button:focus-visible {
+  color:
+    #f4f0e7;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+}
+
+
+.language-menu-control__button--active {
+  color:
+    #e0c56e;
+
+  background:
+    rgba(
+      224,
+      197,
+      110,
+      0.09
+    );
+
+  text-shadow:
+    0
+    0
+    10px
+    rgba(
+      224,
+      197,
+      110,
+      0.3
+    );
+}
+
+
+.language-menu-control__divider {
+  color:
+    rgba(
+      238,
+      234,
+      224,
+      0.2
+    );
+
+  font-size:
+    0.7rem;
+}
+
+
+@media (
+  min-width:
+    701px
+) {
+  /*
+   * Ova komponenta je namenjena
+   * mobilnim pickerima / hamburgerima.
+   */
+  .language-menu-control {
+    display:
+      none;
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .language-menu-control__button {
+    transition:
+      none;
+  }
+}

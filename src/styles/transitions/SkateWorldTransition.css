@@ -1,0 +1,218 @@
+/* =====================================================
+   SOBA ↔ SKEJT SVET
+   GSAP ROUTE TRANSITION
+   ===================================================== */
+
+.skate-world-transition {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2147483647;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+
+  contain:
+    layout
+    paint
+    style;
+}
+
+
+/* =====================================================
+   CRNILO
+   ===================================================== */
+
+.skate-world-transition__blackout {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  background: #000;
+
+  opacity: 0;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =====================================================
+   ORIGINALNI SOBNI SKEJT
+
+   Koristi se samo tokom handoff-a.
+   ===================================================== */
+
+.skate-world-transition__source-ghost,
+.skate-world-transition__target-ghost {
+  position: fixed;
+
+  z-index: 7;
+
+  display: block;
+
+  margin: 0;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+
+  object-fit: contain;
+
+  transform-origin:
+    center center;
+
+  will-change:
+    left,
+    top,
+    width,
+    height,
+    transform,
+    opacity;
+}
+
+
+/* =====================================================
+   NOVI RIDE RIG
+   ===================================================== */
+
+.skate-world-transition__rig {
+  --wheel-size: 10%;
+
+  --left-wheel-x: 16.5%;
+  --left-wheel-y: 59%;
+
+  --right-wheel-x: 74.6%;
+  --right-wheel-y: 60%;
+
+  position: fixed;
+
+  z-index: 8;
+
+  display: block;
+
+  overflow: visible;
+
+  aspect-ratio:
+    2048 / 682;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  transform-origin:
+    center center;
+
+  will-change:
+    left,
+    top,
+    width,
+    height,
+    transform,
+    opacity;
+}
+
+
+.skate-world-transition__rig-base {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =====================================================
+   TOČKOVI
+   ===================================================== */
+
+.skate-world-transition__wheel {
+  position: absolute;
+
+  z-index: 2;
+
+  display: block;
+
+  width:
+    var(
+      --wheel-size
+    );
+
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+
+  transform-origin:
+    50%
+    50%;
+
+  will-change:
+    transform;
+}
+
+
+.skate-world-transition__wheel--left {
+  left:
+    var(
+      --left-wheel-x
+    );
+
+  top:
+    var(
+      --left-wheel-y
+    );
+}
+
+
+.skate-world-transition__wheel--right {
+  left:
+    var(
+      --right-wheel-x
+    );
+
+  top:
+    var(
+      --right-wheel-y
+    );
+}
+
+
+/* =====================================================
+   STARI TESTNI RIG GASI
+   ===================================================== */
+
+.skate-ride-rig-test {
+  display: none !important;
+}

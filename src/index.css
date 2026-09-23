@@ -1,0 +1,2197 @@
+:root {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  color: #2a2118;
+  background: #e9e0cf;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.12),
+      rgba(0, 0, 0, 0.03)
+    ),
+    #e9e0cf;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  border-bottom:
+    1px solid rgba(63, 43, 27, 0.35);
+
+  background: #f4edde;
+}
+
+.header-inner {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 42px 0 0;
+}
+
+.site-title {
+  display: block;
+
+  font-size: clamp(
+    2.8rem,
+    7vw,
+    5.8rem
+  );
+
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+
+  text-decoration: none;
+}
+
+.site-motto {
+  margin: 14px 0 28px;
+
+  color: #66584b;
+  font-style: italic;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+
+  border-top:
+    1px solid rgba(63, 43, 27, 0.25);
+
+  padding: 14px 0;
+}
+
+.main-nav a {
+  color: #49392b;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.main-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.site-main {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  flex: 1;
+}
+
+.hero {
+  max-width: 820px;
+
+  padding: 90px 0 80px;
+}
+
+.hero h1 {
+  margin: 8px 0 24px;
+
+  font-size: clamp(
+    3rem,
+    8vw,
+    7rem
+  );
+
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.hero > p:last-child {
+  max-width: 580px;
+
+  font-size: 1.25rem;
+  line-height: 1.7;
+
+  color: #5e5144;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+
+  color: #75583d;
+
+  text-transform: uppercase;
+}
+
+.content-section {
+  padding: 55px 0 100px;
+}
+
+.section-heading {
+  margin-bottom: 32px;
+
+  border-bottom:
+    2px solid #2a2118;
+
+  padding-bottom: 14px;
+}
+
+.section-heading span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin: 6px 0 0;
+
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+
+.article-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    );
+
+  gap: 22px;
+}
+
+.article-card {
+  min-height: 310px;
+
+  display: flex;
+  flex-direction: column;
+
+  border:
+    1px solid rgba(63, 43, 27, 0.28);
+
+  background: rgba(
+    255,
+    250,
+    238,
+    0.58
+  );
+
+  padding: 28px;
+}
+
+.article-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+
+  margin-bottom: 32px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  color: #796957;
+
+  text-transform: uppercase;
+}
+
+.article-card h2 {
+  margin: 0 0 10px;
+
+  font-size: 2rem;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.article-card p {
+  line-height: 1.7;
+}
+
+.article-subtitle {
+  color: #66584b;
+  font-style: italic;
+}
+
+.read-more {
+  margin-top: auto;
+  padding-top: 24px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: 700;
+  font-size: 0.78rem;
+
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.category-intro {
+  max-width: 700px;
+
+  margin-bottom: 50px;
+}
+
+.category-intro h1,
+.about-page h1 {
+  margin: 0 0 20px;
+
+  font-size: clamp(
+    3rem,
+    7vw,
+    6rem
+  );
+
+  line-height: 1;
+  font-weight: 400;
+}
+
+.category-intro p,
+.about-page p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.single-article {
+  width: min(780px, 100%);
+
+  margin: 0 auto;
+
+  padding: 60px 0 120px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 65px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.8rem;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+.single-article-header {
+  border-bottom:
+    1px solid rgba(63, 43, 27, 0.35);
+
+  padding-bottom: 35px;
+  margin-bottom: 45px;
+}
+
+.single-article-header h1 {
+  margin: 10px 0 20px;
+
+  font-size: clamp(
+    3rem,
+    8vw,
+    6rem
+  );
+
+  line-height: 0.96;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.single-subtitle {
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #625446;
+  font-style: italic;
+}
+
+.article-date {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.article-content {
+  white-space: pre-wrap;
+
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
+
+.site-footer {
+  border-top:
+    1px solid rgba(63, 43, 27, 0.3);
+
+  padding: 30px 20px;
+
+  text-align: center;
+
+  color: #695b4e;
+}
+
+
+@media (max-width: 760px) {
+  .header-inner,
+  .site-main {
+    width: min(
+      100% - 28px,
+      1120px
+    );
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+}
+/* ==========================================
+   NOVI JAVNI EKRANI
+   ========================================== */
+
+.entry-page {
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 40px;
+}
+
+.portrait-button {
+  width: min(470px, 72vw);
+  aspect-ratio: 1 / 1;
+
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  border: 3px solid #2b1d12;
+  border-radius: 50%;
+
+  background: #d8c7aa;
+
+  text-decoration: none;
+}
+
+.portrait-button img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.portrait-button span {
+  padding: 30px;
+
+  text-align: center;
+
+  font-size: 1.4rem;
+}
+
+
+/* GLAVNI IZBOR */
+
+.choice-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(
+    50px,
+    15vw,
+    220px
+  );
+
+  padding: 50px;
+}
+
+.main-choice-card {
+  width: clamp(
+    250px,
+    27vw,
+    390px
+  );
+
+  aspect-ratio: 1.4 / 1;
+
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  border: 3px solid #2b1d12;
+  border-radius: 50%;
+
+  background: #d8c7aa;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease;
+}
+
+.main-choice-card:hover {
+  transform:
+    translateY(-8px)
+    scale(1.015);
+}
+
+.main-choice-card img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.choice-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.48)
+    );
+}
+
+.main-choice-card span {
+  position: relative;
+  z-index: 2;
+
+  color: white;
+
+  font-size: clamp(
+    2rem,
+    4vw,
+    3.4rem
+  );
+
+  text-shadow:
+    0 2px 10px
+    rgba(0, 0, 0, 0.8);
+}
+
+
+/* OPŠTI EKRANI */
+
+.scene-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    80px
+    clamp(30px, 6vw, 100px)
+    100px;
+}
+
+.scene-back {
+  position: absolute;
+
+  top: 35px;
+  left: 35px;
+
+  z-index: 20;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(40, 25, 15, 0.55);
+
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 1.3rem;
+}
+
+.scene-message {
+  margin: 150px auto;
+
+  text-align: center;
+
+  font-size: 1.2rem;
+}
+
+
+/* KATEGORIJE */
+
+.category-stage {
+  width: min(1300px, 100%);
+  margin: 40px auto 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+
+  gap:
+    clamp(
+      35px,
+      6vw,
+      90px
+    );
+}
+
+.category-title-bubble {
+  width: 240px;
+  height: 145px;
+
+  display: grid;
+  place-items: center;
+
+  border: 3px solid #2b1d12;
+  border-radius: 50%;
+
+  background:
+    rgba(
+      250,
+      242,
+      226,
+      0.8
+    );
+}
+
+.category-title-bubble span {
+  font-size: 2rem;
+
+  text-decoration: underline;
+}
+
+.category-bubble {
+  position: relative;
+
+  width: clamp(
+    190px,
+    18vw,
+    280px
+  );
+
+  height: clamp(
+    145px,
+    15vw,
+    220px
+  );
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  border: 3px solid #2b1d12;
+  border-radius: 50%;
+
+  background: #cdbb9d;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease;
+}
+
+.category-bubble:nth-child(3n) {
+  width: clamp(
+    165px,
+    15vw,
+    235px
+  );
+}
+
+.category-bubble:nth-child(4n) {
+  height: clamp(
+    170px,
+    18vw,
+    250px
+  );
+}
+
+.category-bubble:hover {
+  transform:
+    translateY(-8px)
+    rotate(-1deg);
+}
+
+.category-bubble img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.58)
+    );
+}
+
+.category-name {
+  position: relative;
+  z-index: 2;
+
+  padding: 20px;
+
+  color: white;
+
+  text-align: center;
+
+  font-size: clamp(
+    1.3rem,
+    2vw,
+    2rem
+  );
+
+  font-weight: bold;
+
+  text-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.85);
+}
+
+
+/* RADOVI */
+
+.works-heading {
+  max-width: 800px;
+
+  margin: 35px auto 70px;
+
+  text-align: center;
+}
+
+.works-heading > p {
+  font-family: Arial, sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.works-heading h1 {
+  margin: 5px 0 20px;
+
+  font-size: clamp(
+    3.5rem,
+    8vw,
+    7rem
+  );
+
+  line-height: 0.95;
+
+  font-weight: 400;
+}
+
+.works-heading div {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.works-grid {
+  width: min(1250px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    );
+
+  gap: 28px;
+}
+
+.work-card {
+  position: relative;
+
+  min-height: 320px;
+
+  overflow: hidden;
+
+  border: 3px solid #2b1d12;
+
+  background: #cdbb9d;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease;
+}
+
+.work-card:hover {
+  transform: translateY(-7px);
+}
+
+.work-card > img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.work-card-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      transparent 25%,
+      rgba(0, 0, 0, 0.82)
+    );
+}
+
+.work-card-content {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 2;
+
+  padding: 24px;
+
+  color: white;
+}
+
+.work-card-content h2 {
+  margin: 0;
+
+  font-size: 1.8rem;
+  line-height: 1.05;
+}
+
+.work-card-content p {
+  margin: 9px 0 0;
+
+  font-style: italic;
+
+  line-height: 1.4;
+}
+
+
+/* ČITANJE */
+
+.reading-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    100px
+    25px
+    140px;
+}
+
+.reading-sheet {
+  width: min(780px, 100%);
+
+  margin: 0 auto;
+}
+
+.reading-cover {
+  width: 100%;
+  max-height: 500px;
+
+  display: block;
+
+  object-fit: cover;
+
+  margin-bottom: 55px;
+
+  border:
+    1px solid
+    rgba(42, 29, 18, 0.35);
+}
+
+.reading-category {
+  font-family: Arial, sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+.reading-sheet h1 {
+  margin: 10px 0 20px;
+
+  font-size: clamp(
+    3rem,
+    8vw,
+    6rem
+  );
+
+  line-height: 0.96;
+
+  font-weight: 400;
+}
+
+.reading-subtitle {
+  font-size: 1.3rem;
+
+  line-height: 1.5;
+
+  font-style: italic;
+}
+
+.reading-date {
+  font-family: Arial, sans-serif;
+
+  font-size: 0.72rem;
+}
+
+.reading-divider {
+  height: 1px;
+
+  margin: 38px 0 45px;
+
+  background:
+    rgba(42, 29, 18, 0.35);
+}
+
+.reading-content {
+  white-space: pre-wrap;
+
+  font-size: 1.18rem;
+
+  line-height: 1.95;
+}
+
+
+/* O MENI */
+
+.about-content {
+  width: min(1050px, 100%);
+
+  min-height: calc(100vh - 180px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 0.8fr)
+    minmax(300px, 1.2fr);
+
+  align-items: center;
+
+  gap: clamp(
+    40px,
+    8vw,
+    100px
+  );
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  border:
+    2px solid
+    rgba(42, 29, 18, 0.65);
+}
+
+.about-label {
+  font-family: Arial, sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+.about-text h1 {
+  margin: 8px 0 30px;
+
+  font-size: clamp(
+    3.5rem,
+    7vw,
+    7rem
+  );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+}
+
+.about-biography {
+  white-space: pre-wrap;
+
+  font-size: 1.15rem;
+
+  line-height: 1.85;
+}
+
+
+
+
+@media (max-width: 720px) {
+  .choice-page {
+    flex-direction: column;
+  }
+
+  .main-choice-card {
+    width: min(
+      330px,
+      82vw
+    );
+  }
+
+  .category-stage {
+    gap: 30px;
+  }
+
+  .category-bubble {
+    width: min(
+      270px,
+      75vw
+    );
+
+    height: 190px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    width: min(
+      400px,
+      100%
+    );
+
+    margin: 0 auto;
+  }
+
+}
+/* =====================================================
+   DAYLIGHT RENEGADE — ULAZ
+   ===================================================== */
+
+.renegade-entry {
+  --concrete-light:
+    #c3c3bb;
+
+  --concrete-mid:
+    #a9aaa4;
+
+  --concrete-shadow:
+    #767a77;
+
+  --paper:
+    #e6e1d5;
+
+  --ink:
+    #292b28;
+
+  --red-tape:
+    #b4493f;
+
+  --warning-yellow:
+    #cba534;
+
+  --acid-green:
+    #7f9849;
+
+  position: relative;
+
+  min-height: 100dvh;
+
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  padding:
+    52px
+    24px;
+
+  isolation: isolate;
+
+  color:
+    var(--ink);
+
+  background:
+    radial-gradient(
+      circle at 20% 18%,
+      rgba(
+        255,
+        255,
+        255,
+        0.14
+      ),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 82% 74%,
+      rgba(
+        74,
+        80,
+        77,
+        0.13
+      ),
+      transparent 31%
+    ),
+
+    linear-gradient(
+      104deg,
+      transparent 0 39%,
+      rgba(
+        75,
+        79,
+        77,
+        0.045
+      ) 40% 41%,
+      transparent 42% 100%
+    ),
+
+    var(--concrete-light);
+}
+
+
+/* GRUBA POVRŠINA BETONA */
+
+.renegade-entry::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  opacity: 0.42;
+
+  pointer-events: none;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 13px 17px,
+      rgba(
+        39,
+        42,
+        39,
+        0.12
+      ) 0 0.7px,
+      transparent 0.8px 4px
+    ),
+
+    repeating-linear-gradient(
+      3deg,
+      transparent 0 72px,
+      rgba(
+        76,
+        79,
+        75,
+        0.075
+      ) 73px,
+      transparent 74px 146px
+    );
+
+  background-size:
+    37px 41px,
+    100% 146px;
+}
+
+
+/* SPOJ BETONSKIH PLOČA */
+
+.renegade-entry::after {
+  content: "";
+
+  position: absolute;
+
+  left: -8%;
+  right: -8%;
+
+  top: 72%;
+
+  z-index: -2;
+
+  height: 2px;
+
+  background:
+    rgba(
+      70,
+      73,
+      70,
+      0.2
+    );
+
+  box-shadow:
+    0 2px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  transform:
+    rotate(-0.7deg);
+
+  pointer-events: none;
+}
+
+
+/* SENKA METALNE OGRADE */
+
+.renegade-entry__fence-shadow {
+  position: absolute;
+
+  top: -23%;
+  right: -16%;
+
+  z-index: -1;
+
+  width: 72vw;
+  height: 115vh;
+
+  opacity: 0.13;
+
+  background:
+    repeating-linear-gradient(
+      116deg,
+      transparent 0 58px,
+      rgba(
+        49,
+        53,
+        51,
+        0.92
+      ) 59px 63px,
+      transparent 64px 124px
+    );
+
+  transform:
+    rotate(-8deg)
+    skewY(-4deg);
+
+  filter:
+    blur(1px);
+
+  pointer-events: none;
+}
+
+
+/* BLAGI PROLAZ SVETLA */
+
+.renegade-entry__light {
+  position: absolute;
+
+  top: -35%;
+  left: -35%;
+
+  z-index: 3;
+
+  width: 34vw;
+  min-width: 280px;
+
+  height: 170vh;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        244,
+        244,
+        230,
+        0.17
+      ),
+      rgba(
+        255,
+        255,
+        248,
+        0.27
+      ),
+      transparent
+    );
+
+  transform:
+    rotate(17deg);
+
+  mix-blend-mode:
+    screen;
+
+  pointer-events: none;
+
+  animation:
+    renegade-light-pass
+    13s
+    ease-in-out
+    3s
+    infinite;
+}
+
+@keyframes renegade-light-pass {
+  0%,
+  70% {
+    left: -38%;
+    opacity: 0;
+  }
+
+  76% {
+    opacity: 0.42;
+  }
+
+  87% {
+    opacity: 0.2;
+  }
+
+  94%,
+  100% {
+    left: 118%;
+    opacity: 0;
+  }
+}
+
+
+/* CENTRALNA KOMPOZICIJA */
+
+.renegade-entry__center {
+  position: relative;
+
+  z-index: 10;
+
+  display: grid;
+
+  justify-items: center;
+
+  gap: 24px;
+}
+
+
+/* POSTER */
+
+.renegade-entry__poster {
+  position: relative;
+
+  width:
+    min(
+      450px,
+      72vw
+    );
+
+  padding:
+    11px
+    11px
+    14px;
+
+  border: 0;
+
+  color:
+    var(--ink);
+
+  background:
+    var(--paper);
+
+  box-shadow:
+    7px 9px 0
+      rgba(
+        59,
+        62,
+        59,
+        0.16
+      ),
+    0 24px 55px
+      rgba(
+        55,
+        58,
+        55,
+        0.2
+      );
+
+  transform:
+    rotate(-1.4deg);
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.renegade-entry__poster:hover {
+  transform:
+    rotate(-0.4deg)
+    translateY(-4px);
+
+  box-shadow:
+    5px 7px 0
+      rgba(
+        59,
+        62,
+        59,
+        0.14
+      ),
+    0 29px 62px
+      rgba(
+        55,
+        58,
+        55,
+        0.23
+      );
+}
+
+.renegade-entry__poster:active {
+  transform:
+    rotate(-0.2deg)
+    translateY(1px);
+}
+
+.renegade-entry__poster:disabled {
+  cursor: default;
+}
+
+
+/* SLIKA */
+
+.renegade-entry__photo {
+  position: relative;
+
+  aspect-ratio: 4 / 4.7;
+
+  overflow: hidden;
+
+  background:
+    #949892;
+}
+
+.renegade-entry__photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  filter:
+    saturate(0.78)
+    contrast(1.08)
+    brightness(0.94)
+    sepia(0.05);
+}
+
+.renegade-entry__photo-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  padding: 25px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+}
+
+
+/* OLD PHONE / JPEG GRAIN */
+
+.renegade-entry__camera-grain {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.18;
+
+  mix-blend-mode:
+    multiply;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 10px 13px,
+      rgba(
+        31,
+        35,
+        32,
+        0.65
+      ) 0 0.55px,
+      transparent 0.7px 3px
+    );
+
+  background-size:
+    7px 7px;
+}
+
+.renegade-entry__camera-flare {
+  position: absolute;
+
+  top: -18%;
+  right: -15%;
+
+  width: 60%;
+  height: 52%;
+
+  border-radius: 50%;
+
+  opacity: 0.2;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        244,
+        245,
+        230,
+        0.72
+      ),
+      rgba(
+        208,
+        215,
+        196,
+        0.2
+      ) 43%,
+      transparent 68%
+    );
+
+  filter:
+    blur(7px);
+
+  pointer-events: none;
+}
+
+
+/* DONJI NATPIS POSTERA */
+
+.renegade-entry__poster-bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content:
+    space-between;
+
+  gap: 15px;
+
+  padding:
+    12px
+    4px
+    0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.67rem;
+
+  letter-spacing: 0.07em;
+}
+
+.renegade-entry__poster-bottom strong {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1rem;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* MASKING TAPE */
+
+.renegade-tape {
+  position: absolute;
+
+  z-index: 8;
+
+  width: 94px;
+  height: 26px;
+
+  opacity: 0.9;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        231,
+        220,
+        181,
+        0.82
+      ),
+      rgba(
+        213,
+        199,
+        157,
+        0.96
+      ),
+      rgba(
+        235,
+        222,
+        183,
+        0.82
+      )
+    );
+
+  box-shadow:
+    0 2px 3px
+    rgba(
+      62,
+      59,
+      48,
+      0.13
+    );
+
+  pointer-events: none;
+}
+
+.renegade-tape--left {
+  top: -9px;
+  left: -32px;
+
+  transform:
+    rotate(-34deg);
+}
+
+.renegade-tape--right {
+  right: -29px;
+  bottom: 42px;
+
+  transform:
+    rotate(-25deg);
+}
+
+
+/* START BUTTON */
+
+.renegade-entry__start {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border:
+    2px solid
+    var(--ink);
+
+  padding:
+    9px
+    15px;
+
+  color:
+    var(--ink);
+
+  background:
+    var(--warning-yellow);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.66rem;
+
+  letter-spacing: 0.08em;
+
+  box-shadow:
+    4px 4px 0
+    var(--ink);
+
+  cursor: pointer;
+
+  transform:
+    rotate(1deg);
+
+  transition:
+    transform 80ms ease,
+    box-shadow 80ms ease;
+}
+
+.renegade-entry__start strong {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.05rem;
+}
+
+.renegade-entry__start:hover {
+  transform:
+    rotate(0deg)
+    translateY(-2px);
+}
+
+.renegade-entry__start:active {
+  transform:
+    translate(
+      3px,
+      3px
+    );
+
+  box-shadow:
+    1px 1px 0
+    var(--ink);
+}
+
+
+/* SFX SWITCH */
+
+.renegade-sound {
+  position: absolute;
+
+  left:
+    clamp(
+      16px,
+      4vw,
+      52px
+    );
+
+  bottom:
+    clamp(
+      16px,
+      4vw,
+      38px
+    );
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    8px
+    11px;
+
+  border:
+    1px solid
+    rgba(
+      42,
+      44,
+      41,
+      0.55
+    );
+
+  color:
+    var(--ink);
+
+  background:
+    #b3b4ae;
+
+  box-shadow:
+    3px 3px 0
+    rgba(
+      43,
+      45,
+      42,
+      0.28
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.72rem;
+
+  cursor: pointer;
+}
+
+.renegade-sound__lamp {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background:
+    #737771;
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(
+      40,
+      43,
+      40,
+      0.4
+    );
+}
+
+.renegade-sound--on
+.renegade-sound__lamp {
+  background:
+    var(--acid-green);
+
+  box-shadow:
+    0 0 8px
+      rgba(
+        127,
+        152,
+        73,
+        0.62
+      ),
+    inset 0 0 0 1px
+      rgba(
+        41,
+        44,
+        40,
+        0.32
+      );
+}
+
+
+/* SITNI TEHNIČKI NATPISI */
+
+.renegade-entry__tag {
+  position: absolute;
+
+  z-index: 4;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      0.62rem,
+      1vw,
+      0.78rem
+    );
+
+  letter-spacing: 0.11em;
+
+  opacity: 0.62;
+}
+
+.renegade-entry__tag--one {
+  top: 9%;
+  left: 8%;
+
+  transform:
+    rotate(-4deg);
+}
+
+.renegade-entry__tag--two {
+  right: 6%;
+  bottom: 13%;
+
+  transform:
+    rotate(2deg);
+}
+
+.renegade-entry__spray {
+  position: absolute;
+
+  top: 19%;
+  right: 13%;
+
+  z-index: 2;
+
+  color:
+    rgba(
+      41,
+      43,
+      40,
+      0.72
+    );
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+
+  font-size:
+    clamp(
+      3rem,
+      7vw,
+      7rem
+    );
+
+  transform:
+    rotate(13deg);
+
+  filter:
+    blur(0.35px);
+
+  opacity: 0.54;
+}
+
+.renegade-entry__scribble {
+  position: absolute;
+
+  left: 12%;
+  bottom: 19%;
+
+  display: flex;
+
+  gap: 3px;
+
+  color:
+    var(--red-tape);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 2.6rem;
+
+  font-weight: 900;
+
+  transform:
+    rotate(-17deg);
+
+  opacity: 0.75;
+}
+
+.renegade-entry__tiny-note {
+  position: absolute;
+
+  right: 22px;
+  top: 50%;
+
+  margin: 0;
+
+  writing-mode:
+    vertical-rl;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.16em;
+
+  opacity: 0.44;
+}
+
+
+/* PRAŠINA */
+
+.renegade-entry__dust {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 4;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.renegade-entry__dust i {
+  position: absolute;
+
+  display: block;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      239,
+      237,
+      219,
+      0.72
+    );
+
+  box-shadow:
+    0 0 6px
+    rgba(
+      242,
+      240,
+      220,
+      0.5
+    );
+
+  opacity: 0;
+
+  animation:
+    renegade-dust
+    9s
+    linear
+    infinite;
+}
+
+.renegade-entry__dust
+i:nth-child(1) {
+  left: 18%;
+  top: 74%;
+
+  animation-delay:
+    -1s;
+}
+
+.renegade-entry__dust
+i:nth-child(2) {
+  left: 37%;
+  top: 61%;
+
+  animation-delay:
+    -5s;
+}
+
+.renegade-entry__dust
+i:nth-child(3) {
+  left: 57%;
+  top: 82%;
+
+  animation-delay:
+    -3s;
+}
+
+.renegade-entry__dust
+i:nth-child(4) {
+  left: 73%;
+  top: 48%;
+
+  animation-delay:
+    -7s;
+}
+
+.renegade-entry__dust
+i:nth-child(5) {
+  left: 84%;
+  top: 70%;
+
+  animation-delay:
+    -2s;
+}
+
+.renegade-entry__dust
+i:nth-child(6) {
+  left: 28%;
+  top: 88%;
+
+  animation-delay:
+    -6s;
+}
+
+@keyframes renegade-dust {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        20px
+      );
+  }
+
+  18% {
+    opacity: 0.35;
+  }
+
+  68% {
+    opacity: 0.18;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        42px,
+        -165px
+      );
+  }
+}
+
+
+/* ULAZNA TRANZICIJA */
+
+.renegade-entry--leaving
+.renegade-entry__poster {
+  animation:
+    renegade-enter-hit
+    260ms
+    ease-in
+    forwards;
+}
+
+@keyframes renegade-enter-hit {
+  0% {
+    transform:
+      rotate(-1.4deg)
+      scale(1);
+  }
+
+  35% {
+    transform:
+      rotate(0.7deg)
+      scale(0.985);
+  }
+
+  100% {
+    transform:
+      rotate(-0.2deg)
+      scale(1.045);
+
+    filter:
+      brightness(1.08);
+  }
+}
+
+
+/* MOBILNI */
+
+@media (max-width: 650px) {
+  .renegade-entry {
+    padding:
+      72px
+      20px
+      90px;
+  }
+
+  .renegade-entry__poster {
+    width:
+      min(
+        390px,
+        82vw
+      );
+  }
+
+  .renegade-entry__tag--two {
+    display: none;
+  }
+
+  .renegade-entry__spray {
+    top: 13%;
+    right: 6%;
+  }
+
+  .renegade-entry__scribble {
+    left: 5%;
+    bottom: 14%;
+  }
+
+  .renegade-entry__tiny-note {
+    display: none;
+  }
+}
+
+
+/* SMANJENO KRETANJE */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .renegade-entry__light,
+  .renegade-entry__dust i {
+    animation: none;
+  }
+
+  .renegade-entry__poster,
+  .renegade-entry__start {
+    transition: none;
+  }
+
+  .renegade-entry--leaving
+  .renegade-entry__poster {
+    animation: none;
+  }
+}

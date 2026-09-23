@@ -1,0 +1,593 @@
+/* =====================================================
+   FLIP CAT — MOBILE LANDSCAPE
+
+   Ovaj fajl je NAMERNO odvojen od glavnog Arena CSS-a.
+
+   Cilj:
+   - telefon mora da bude položen horizontalno;
+   - portrait samo prikazuje "okreni telefon";
+   - landscape koristi isti 3:2 gameplay kao desktop;
+   - action dugme je malo, dole levo;
+   - POJEDI = crveno + mačje čeljusti;
+   - VRATI SIR = žuto + sir;
+   - drugi prst aktivira akciju bez puštanja movement prsta.
+   ===================================================== */
+
+
+/* =====================================================
+   ORIENTATION GATE
+
+   Važi i za početni FLIP CAT meni (.human-one-game)
+   i za samu arenu (.flip-cat-arena).
+   ===================================================== */
+
+@media (
+  hover: none
+) and (
+  pointer: coarse
+) and (
+  orientation: portrait
+) {
+  .human-one-game::before,
+  .flip-cat-arena::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2147483645;
+
+    display: block;
+
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(
+          49,
+          58,
+          36,
+          0.96
+        ) 0%,
+        rgba(
+          13,
+          17,
+          10,
+          0.985
+        ) 58%,
+        #050505 100%
+      );
+
+    pointer-events: auto;
+  }
+
+
+  .human-one-game::after,
+  .flip-cat-arena::after {
+    content:
+      "↻\A ОКРЕНИ ТЕЛЕФОН\A FLIP CAT СЕ ИГРА ХОРИЗОНТАЛНО";
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    z-index: 2147483646;
+
+    width:
+      min(
+        82vw,
+        360px
+      );
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    color:
+      #cbdc94;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      clamp(
+        13px,
+        4.2vw,
+        18px
+      );
+
+    font-weight: 900;
+
+    line-height: 1.65;
+
+    letter-spacing:
+      0.08em;
+
+    text-align: center;
+
+    white-space: pre-line;
+
+    text-shadow:
+      0 0 14px
+      rgba(
+        187,
+        214,
+        119,
+        0.34
+      );
+
+    pointer-events: none;
+
+    animation:
+      flip-cat-mobile-rotate-hint
+      1.4s
+      ease-in-out
+      infinite;
+  }
+}
+
+
+@keyframes flip-cat-mobile-rotate-hint {
+  0%,
+  100% {
+    opacity: 0.72;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0.985
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1
+      );
+  }
+}
+
+
+/* =====================================================
+   DECORATION ASSET
+
+   Na desktopu ga ne prikazujemo.
+   ===================================================== */
+
+.flip-cat-arena__action-cheese {
+  display: none;
+}
+
+
+/* =====================================================
+   TOUCH LANDSCAPE — ACTION DUGME
+
+   Namerno je kompaktno:
+   oko 80–96 px široko i 46–56 px visoko.
+
+   Na većini telefona sedi u levoj crnoj margini
+   pored 3:2 arene, pa minimalno ulazi u gameplay.
+   ===================================================== */
+
+@media (
+  hover: none
+) and (
+  pointer: coarse
+) and (
+  orientation: landscape
+) {
+  .flip-cat-arena__action {
+    left:
+      max(
+        10px,
+        env(
+          safe-area-inset-left
+        )
+      );
+
+    right: auto;
+
+    bottom:
+      max(
+        9px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    width:
+      clamp(
+        78px,
+        11vw,
+        96px
+      );
+
+    min-height:
+      clamp(
+        46px,
+        6.5vw,
+        56px
+      );
+
+    box-sizing:
+      border-box;
+
+    justify-content:
+      center;
+
+    gap: 4px;
+
+    padding:
+      8px
+      9px;
+
+    transform: none;
+
+    border-radius:
+      13px;
+
+    overflow: hidden;
+
+    animation: none;
+
+    touch-action: none;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+    user-select: none;
+
+    -webkit-user-select:
+      none;
+  }
+
+
+  .flip-cat-arena__action strong {
+    position: relative;
+
+    z-index: 3;
+
+    font-size:
+      clamp(
+        11px,
+        1.85vw,
+        15px
+      );
+
+    line-height: 1;
+
+    letter-spacing:
+      0.03em;
+
+    text-align: center;
+
+    pointer-events: none;
+  }
+
+
+  .flip-cat-arena__action small {
+    display: none;
+  }
+
+
+  .flip-cat-arena__action:active {
+    transform:
+      scale(
+        0.96
+      );
+  }
+
+
+  /* ===================================================
+     POJEDI — CRVENO + ČELJUSTI
+     =================================================== */
+
+  .flip-cat-arena__action--eat {
+    border:
+      2px solid
+      rgba(
+        255,
+        181,
+        157,
+        0.88
+      );
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          151,
+          34,
+          27,
+          0.97
+        ),
+        rgba(
+          74,
+          11,
+          10,
+          0.98
+        )
+      );
+
+    color:
+      #fff3e8;
+
+    box-shadow:
+      0 5px 16px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      ),
+      inset 0 0 12px
+      rgba(
+        255,
+        120,
+        93,
+        0.16
+      );
+  }
+
+
+  /*
+   * Gornja i donja vilica.
+   * Dve bele trake su isečene u zube,
+   * bez dodatnog asseta.
+   */
+
+  .flip-cat-arena__action--eat::before,
+  .flip-cat-arena__action--eat::after {
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    right: 10px;
+
+    z-index: 2;
+
+    height: 9px;
+
+    background:
+      #f8eee2;
+
+    opacity: 0.95;
+
+    pointer-events: none;
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        94% 100%,
+        86% 15%,
+        76% 100%,
+        66% 15%,
+        56% 100%,
+        46% 15%,
+        36% 100%,
+        26% 15%,
+        16% 100%,
+        6% 15%
+      );
+  }
+
+
+  .flip-cat-arena__action--eat::before {
+    top: 3px;
+  }
+
+
+  .flip-cat-arena__action--eat::after {
+    bottom: 3px;
+
+    transform:
+      rotate(
+        180deg
+      );
+  }
+
+
+  .flip-cat-arena__action--eat:hover,
+  .flip-cat-arena__action--eat:focus-visible {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          168,
+          39,
+          30,
+          0.99
+        ),
+        rgba(
+          82,
+          12,
+          10,
+          0.99
+        )
+      );
+  }
+
+
+  /* ===================================================
+     VRATI SIR — ŽUTO + SIR
+     =================================================== */
+
+  .flip-cat-arena__action--return {
+    border:
+      2px solid
+      rgba(
+        255,
+        232,
+        111,
+        0.94
+      );
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          220,
+          171,
+          39,
+          0.98
+        ),
+        rgba(
+          132,
+          89,
+          15,
+          0.98
+        )
+      );
+
+    color:
+      #211708;
+
+    box-shadow:
+      0 5px 16px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      ),
+      inset 0 0 12px
+      rgba(
+        255,
+        241,
+        132,
+        0.2
+      );
+  }
+
+
+  .flip-cat-arena__action--return:hover,
+  .flip-cat-arena__action--return:focus-visible {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          232,
+          184,
+          48,
+          0.99
+        ),
+        rgba(
+          143,
+          96,
+          16,
+          0.99
+        )
+      );
+  }
+
+
+  .flip-cat-arena__action--return
+  .flip-cat-arena__action-cheese {
+    position: absolute;
+
+    left: 5px;
+    top: 50%;
+
+    z-index: 2;
+
+    display: block;
+
+    width:
+      clamp(
+        20px,
+        3vw,
+        25px
+      );
+
+    height: auto;
+
+    transform:
+      translateY(
+        -50%
+      )
+      rotate(
+        -10deg
+      );
+
+    opacity: 0.9;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+      drop-shadow(
+        0 2px 2px
+        rgba(
+          0,
+          0,
+          0,
+          0.32
+        )
+      );
+  }
+
+
+  .flip-cat-arena__action--return strong {
+    padding-left: 11px;
+
+    font-size:
+      clamp(
+        10px,
+        1.55vw,
+        12px
+      );
+  }
+
+
+  /*
+   * Landscape na telefonu koristi ISTU desktop 3:2 arenu.
+   * Za sada je ne sužavamo dodatno.
+   * Ako test pokaže da treba, menjaćemo samo ovu vrednost.
+   */
+
+  .flip-cat-arena__picture,
+  .flip-cat-arena__playfield,
+  .flip-cat-arena__hud {
+    width:
+      min(
+        100vw,
+        150dvh
+      );
+
+    aspect-ratio:
+      3 / 2;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-game::after,
+  .flip-cat-arena::after {
+    animation: none;
+  }
+}

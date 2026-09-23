@@ -1,0 +1,449 @@
+/* =====================================================
+   FLIP CAT — GAME CONSOLE TRANSITION
+   ===================================================== */
+
+.game-console-transition {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    2147483000;
+
+  overflow:
+    hidden;
+
+  pointer-events:
+    none;
+
+  isolation:
+    isolate;
+
+  contain:
+    layout
+    paint
+    style;
+}
+
+
+.game-console-transition__blackout {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    1;
+
+  opacity:
+    0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(
+        24,
+        25,
+        21,
+        0.93
+      )
+      0%,
+      rgba(
+        6,
+        7,
+        6,
+        0.98
+      )
+      60%,
+      #000
+      100%
+    );
+
+  will-change:
+    opacity;
+}
+
+
+/* =====================================================
+   GHOST ELEMENTI
+
+   left / top / width / height postavljamo samo JEDNOM.
+
+   Tokom samog leta menjaju se samo:
+   transform + opacity + rotate.
+   ===================================================== */
+
+.game-console-transition__room-ghost,
+.game-console-transition__front-ghost {
+  position:
+    fixed !important;
+
+  z-index:
+    3 !important;
+
+  display:
+    block;
+
+  margin:
+    0 !important;
+
+  pointer-events:
+    none !important;
+
+  transform-origin:
+    center center;
+
+  backface-visibility:
+    hidden;
+
+  -webkit-backface-visibility:
+    hidden;
+
+  will-change:
+    transform,
+    opacity,
+    rotate;
+}
+
+
+.game-console-transition__room-ghost {
+  padding:
+    0;
+
+  border:
+    0;
+
+  background:
+    transparent;
+
+  overflow:
+    visible;
+}
+
+
+.game-console-transition__room-ghost
+.human-one-room__game-console-shell {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+
+  pointer-events:
+    none;
+
+  backface-visibility:
+    hidden;
+}
+
+
+.game-console-transition__room-ghost
+.human-one-room__game-console-screen {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    2;
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+
+  pointer-events:
+    none;
+
+  backface-visibility:
+    hidden;
+
+  transform-origin:
+    50% 44%;
+}
+
+
+.game-console-transition__front-ghost {
+  object-fit:
+    fill;
+
+  object-position:
+    center;
+
+  user-select:
+    none;
+
+  -webkit-user-drag:
+    none;
+
+  image-rendering:
+    auto;
+}
+
+
+/* =====================================================
+   ROUTE GUARDS
+
+   Nova stranica postoji i može da uradi layout,
+   ali korisnik je ne vidi dok transition asset
+   stoji preko nje.
+   ===================================================== */
+
+html.game-console-route-entering
+[data-game-console-transition-target="game-console"] {
+  visibility:
+    hidden !important;
+
+  animation:
+    none !important;
+
+  transition:
+    none !important;
+}
+
+
+html.game-console-route-leaving
+[data-game-console-transition-target="room-console"] {
+  visibility:
+    hidden !important;
+
+  animation:
+    none !important;
+
+  transition:
+    none !important;
+}
+
+
+/* =====================================================
+   PRAVI FLIP CAT GAMEBOY
+
+   JS upisuje ove četiri CSS promenljive.
+
+   One ostaju aktivne čak i kada:
+   MENU → gameplay → MENU
+
+   pa Gameboy ne promeni veličinu kada se
+   vratiš iz same igre.
+   ===================================================== */
+
+html
+body
+.human-one-game
+.human-one-game__machine[data-game-console-transition-target="game-console"] {
+  position:
+    fixed !important;
+
+  left:
+    var(
+      --flip-cat-console-left,
+      -20vw
+    ) !important;
+
+  top:
+    var(
+      --flip-cat-console-top,
+      -20vh
+    ) !important;
+
+  width:
+    var(
+      --flip-cat-console-width,
+      140vw
+    ) !important;
+
+  height:
+    var(
+      --flip-cat-console-height,
+      100vh
+    ) !important;
+
+  max-width:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  box-sizing:
+    border-box !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    url(
+      "/images/human-one/game-console-transition.png"
+    )
+    center
+    center /
+    100%
+    100%
+    no-repeat !important;
+
+  box-shadow:
+    none !important;
+
+  animation:
+    none !important;
+
+  transition:
+    none !important;
+
+  transform:
+    none !important;
+
+  transform-origin:
+    center
+    center !important;
+}
+
+
+/* =====================================================
+   LCD RUPA NA KONZOLI
+   ===================================================== */
+
+html
+body
+.human-one-game
+.human-one-game__machine[data-game-console-transition-target="game-console"]
+.human-one-game__bezel {
+  position:
+    absolute !important;
+
+  left:
+    31% !important;
+
+  top:
+    19.5% !important;
+
+  width:
+    41% !important;
+
+  height:
+    44.5% !important;
+
+  padding:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  box-sizing:
+    border-box !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  overflow:
+    hidden !important;
+}
+
+
+html
+body
+.human-one-game
+.human-one-game__machine[data-game-console-transition-target="game-console"]
+.human-one-game__lcd {
+  display:
+    block;
+
+  width:
+    100% !important;
+
+  height:
+    100% !important;
+
+  aspect-ratio:
+    auto !important;
+
+  box-sizing:
+    border-box !important;
+
+  margin:
+    0 !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    1.5% !important;
+
+  background-size:
+    cover !important;
+
+  background-position:
+    center
+    center !important;
+
+  transform-origin:
+    50%
+    50%;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =====================================================
+   STARI SHUTDOWN VIŠE NE SME
+   DA POMERA CELO KUĆIŠTE
+   ===================================================== */
+
+html
+body
+.human-one-game
+.human-one-game__machine[data-game-console-transition-target="game-console"].human-one-game__machine--closing {
+  animation:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .game-console-transition {
+    display:
+      none;
+  }
+}

@@ -1,0 +1,2429 @@
+/* =====================================================
+   FLIP CAT — ARENA
+   ===================================================== */
+
+.flip-cat-arena {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #050505;
+}
+
+
+.flip-cat-arena__screen {
+  position: fixed;
+
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #050505;
+
+  touch-action: none;
+}
+
+
+/*
+ * Pozadina i playfield imaju potpuno iste dimenzije,
+ * pa se svi gameplay elementi poklapaju sa arenom.
+ */
+.flip-cat-arena__picture,
+.flip-cat-arena__playfield {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    min(
+      100vw,
+      150dvh
+    );
+
+  aspect-ratio:
+    3 / 2;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+.flip-cat-arena__picture {
+  z-index: 1;
+
+  display: block;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.flip-cat-arena__background {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.flip-cat-arena__playfield {
+  z-index: 2;
+
+  overflow: hidden;
+
+  cursor: grab;
+
+  touch-action: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.flip-cat-arena__playfield--dragging {
+  cursor: grabbing;
+}
+
+
+/* =====================================================
+   RUPA
+   ===================================================== */
+
+.flip-cat-arena__hole {
+  position: absolute;
+
+  left:
+    var(
+      --hole-x
+    );
+
+  top:
+    var(
+      --hole-y
+    );
+
+  z-index: 18;
+
+  width:
+    var(
+      --hole-width
+    );
+
+  height: auto;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  filter:
+    drop-shadow(
+      0 3px 3px
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      )
+    );
+}
+
+
+.flip-cat-arena__hole--bottom {
+  z-index: 24;
+}
+
+
+/* =====================================================
+   SIREVI
+   ===================================================== */
+
+.flip-cat-arena__cheese {
+  position: absolute;
+
+  left:
+    var(
+      --cheese-x
+    );
+
+  top:
+    var(
+      --cheese-y
+    );
+
+  z-index: 10;
+
+  width: 4.5%;
+  height: auto;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(
+      var(
+        --cheese-rotation
+      )
+    );
+
+  transform-origin: center;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  filter:
+    drop-shadow(
+      0 3px 3px
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      )
+    );
+}
+
+
+/* =====================================================
+   OBIČAN MIŠ
+   ===================================================== */
+
+.flip-cat-arena__mouse {
+  position: absolute;
+
+  z-index: 15;
+
+  width: 6.4%;
+  height: auto;
+
+  transform-origin: center;
+
+  pointer-events: none;
+  user-select: none;
+
+  filter:
+    drop-shadow(
+      0 4px 4px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      )
+    );
+
+  will-change:
+    left,
+    top,
+    transform;
+}
+
+
+.flip-cat-arena__mouse-frame {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+.flip-cat-arena__mouse-cheese {
+  position: absolute;
+
+  left: 50%;
+  top: 69%;
+
+  width: 42%;
+  height: auto;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(
+      10deg
+    );
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  filter:
+    drop-shadow(
+      0 2px 2px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      )
+    );
+}
+
+
+/* =====================================================
+   MAČKA
+   ===================================================== */
+
+.flip-cat-arena__cat {
+  position: absolute;
+
+  z-index: 20;
+
+  width: 10.5%;
+  height: auto;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  filter:
+    drop-shadow(
+      0 5px 5px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      )
+    );
+}
+
+
+/* =====================================================
+   NAZAD
+   ===================================================== */
+
+.flip-cat-arena__back {
+  position: fixed;
+
+  left:
+    clamp(
+      10px,
+      1.3vw,
+      20px
+    );
+
+  top:
+    clamp(
+      10px,
+      1.3vw,
+      20px
+    );
+
+  z-index: 130;
+
+  padding:
+    7px
+    10px;
+
+  border:
+    1px solid
+    rgba(
+      185,
+      202,
+      137,
+      0.4
+    );
+
+  background:
+    rgba(
+      9,
+      12,
+      8,
+      0.72
+    );
+
+  color:
+    #b9ca89;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.06em;
+
+  cursor: pointer;
+
+  transition:
+    transform 120ms ease,
+    background 120ms ease;
+}
+
+
+.flip-cat-arena__back:hover,
+.flip-cat-arena__back:focus-visible {
+  outline: none;
+
+  background:
+    rgba(
+      18,
+      24,
+      14,
+      0.9
+    );
+
+  transform:
+    translateX(
+      -2px
+    );
+}
+
+
+.flip-cat-arena__back:active {
+  transform:
+    translateX(
+      -5px
+    )
+    scale(
+      0.97
+    );
+}
+
+
+/* =====================================================
+   MOBILNI
+   ===================================================== */
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__picture,
+  .flip-cat-arena__playfield {
+    width:
+      min(
+        100vw,
+        66.6667dvh
+      );
+
+    aspect-ratio:
+      2 / 3;
+  }
+
+
+  .flip-cat-arena__hole {
+    left:
+      var(
+        --hole-mobile-x
+      );
+
+    top:
+      var(
+        --hole-mobile-y
+      );
+
+    width:
+      var(
+        --hole-mobile-width
+      );
+  }
+
+
+  .flip-cat-arena__mouse {
+    width: 10.5%;
+  }
+
+
+  .flip-cat-arena__cat {
+    width: 16%;
+  }
+
+
+  .flip-cat-arena__cheese {
+    left:
+      var(
+        --cheese-mobile-x
+      );
+
+    top:
+      var(
+        --cheese-mobile-y
+      );
+
+    width: 7%;
+  }
+
+
+  .flip-cat-arena__back {
+    font-size: 11px;
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .flip-cat-arena__back {
+    transition: none;
+  }
+}
+
+
+/* =====================================================
+   ISPUŠTEN SIR
+   ===================================================== */
+
+.flip-cat-arena__dropped-cheese {
+  position: absolute;
+
+  z-index: 14;
+
+  width: 4.5%;
+  height: auto;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  filter:
+    drop-shadow(
+      0 3px 4px
+      rgba(
+        0,
+        0,
+        0,
+        0.4
+      )
+    );
+}
+
+
+/* =====================================================
+   AKCIJA — POJEDI / VRATI SIR
+   ===================================================== */
+
+.flip-cat-arena__action {
+  position: fixed;
+
+  left: 50%;
+  bottom:
+    clamp(
+      14px,
+      2.2vh,
+      28px
+    );
+
+  z-index: 150;
+
+  display: flex;
+  align-items: center;
+
+  gap:
+    clamp(
+      8px,
+      1vw,
+      14px
+    );
+
+  padding:
+    clamp(
+      9px,
+      1vw,
+      13px
+    )
+    clamp(
+      14px,
+      1.6vw,
+      22px
+    );
+
+  transform:
+    translateX(-50%);
+
+  border:
+    2px solid
+    rgba(
+      199,
+      216,
+      148,
+      0.72
+    );
+
+  background:
+    rgba(
+      15,
+      20,
+      11,
+      0.88
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.45
+      ),
+    inset 0 0 12px
+      rgba(
+        172,
+        194,
+        111,
+        0.08
+      );
+
+  animation:
+    flip-cat-action-pulse
+    700ms
+    steps(2, end)
+    infinite;
+}
+
+
+.flip-cat-arena__action strong {
+  font-size:
+    clamp(
+      13px,
+      1.3vw,
+      19px
+    );
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.flip-cat-arena__action small {
+  padding:
+    2px
+    5px;
+
+  border:
+    1px solid
+    rgba(
+      199,
+      216,
+      148,
+      0.45
+    );
+
+  font-size:
+    clamp(
+      8px,
+      0.7vw,
+      10px
+    );
+
+  opacity: 0.72;
+}
+
+
+.flip-cat-arena__action:hover,
+.flip-cat-arena__action:focus-visible {
+  outline: none;
+
+  background:
+    rgba(
+      27,
+      35,
+      18,
+      0.96
+    );
+}
+
+
+.flip-cat-arena__action:active {
+  transform:
+    translateX(-50%)
+    scale(0.97);
+}
+
+
+@keyframes flip-cat-action-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.76;
+  }
+}
+
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__dropped-cheese {
+    width: 7%;
+  }
+
+
+  .flip-cat-arena__action {
+    bottom: 16px;
+
+    padding:
+      10px
+      14px;
+  }
+
+
+  .flip-cat-arena__action strong {
+    font-size:
+      clamp(
+        13px,
+        4vw,
+        18px
+      );
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .flip-cat-arena__action {
+    animation: none;
+  }
+}
+
+
+/* =====================================================
+   READY / COUNTDOWN
+   ===================================================== */
+
+.flip-cat-arena__ready {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 210;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      6px,
+      1vh,
+      12px
+    );
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    rgba(
+      4,
+      7,
+      3,
+      0.42
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  text-shadow:
+    0 3px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.45
+      ),
+    0 0 18px
+      rgba(
+        190,
+        213,
+        126,
+        0.28
+      );
+
+  backdrop-filter:
+    brightness(
+      0.82
+    );
+}
+
+
+.flip-cat-arena__ready-title {
+  font-size:
+    clamp(
+      46px,
+      8vw,
+      108px
+    );
+
+  line-height: 0.95;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.045em;
+}
+
+
+.flip-cat-arena__ready-hint {
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      15px
+    );
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    lowercase;
+
+  opacity: 0.7;
+}
+
+
+.flip-cat-arena__ready:hover
+.flip-cat-arena__ready-hint,
+.flip-cat-arena__ready:focus-visible
+.flip-cat-arena__ready-hint {
+  opacity: 1;
+}
+
+
+.flip-cat-arena__ready:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      203,
+      220,
+      148,
+      0.65
+    );
+
+  outline-offset:
+    -8px;
+}
+
+
+.flip-cat-arena__countdown {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 205;
+
+  display: grid;
+  place-items: center;
+
+  pointer-events: none;
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      82px,
+      16vw,
+      220px
+    );
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 7px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.45
+      ),
+    0 0 28px
+      rgba(
+        190,
+        213,
+        126,
+        0.26
+      );
+
+  animation:
+    flip-cat-countdown-pop
+    800ms
+    steps(
+      3,
+      end
+    )
+    infinite;
+}
+
+
+@keyframes flip-cat-countdown-pop {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(
+        1.18
+      );
+  }
+
+  18% {
+    opacity: 1;
+
+    transform:
+      scale(
+        1
+      );
+  }
+
+  80% {
+    opacity: 1;
+
+    transform:
+      scale(
+        1
+      );
+  }
+
+  100% {
+    opacity: 0.35;
+
+    transform:
+      scale(
+        0.94
+      );
+  }
+}
+
+
+/*
+ * READY overlay ne sme da blokira MENU dugme.
+ */
+.flip-cat-arena__back {
+  z-index: 260;
+}
+
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__ready-title {
+    font-size:
+      clamp(
+        52px,
+        18vw,
+        100px
+      );
+  }
+
+
+  .flip-cat-arena__ready-hint {
+    font-size:
+      clamp(
+        10px,
+        3.4vw,
+        15px
+      );
+  }
+
+
+  .flip-cat-arena__countdown {
+    font-size:
+      clamp(
+        96px,
+        34vw,
+        190px
+      );
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .flip-cat-arena__countdown {
+    animation: none;
+  }
+}
+
+
+/* =====================================================
+   PAUZA
+   ===================================================== */
+
+.flip-cat-arena__paused {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 240;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      8px,
+      1vh,
+      14px
+    );
+
+  pointer-events: none;
+
+  background:
+    rgba(
+      4,
+      7,
+      3,
+      0.46
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+
+  text-shadow:
+    0 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.45
+      ),
+    0 0 20px
+      rgba(
+        190,
+        213,
+        126,
+        0.25
+      );
+}
+
+
+.flip-cat-arena__paused strong {
+  font-size:
+    clamp(
+      44px,
+      8vw,
+      104px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.flip-cat-arena__paused small {
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      15px
+    );
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.08em;
+
+  opacity: 0.75;
+}
+
+
+/*
+ * Na desktopu pauza je SPACE.
+ * Dugme prikazujemo samo touch uređajima.
+ */
+.flip-cat-arena__pause {
+  display: none;
+}
+
+
+@media (
+  hover:
+    none
+),
+(
+  pointer:
+    coarse
+) {
+  .flip-cat-arena__pause {
+    position: fixed;
+
+    left: 12px;
+    top: 54px;
+
+    z-index: 280;
+
+    display: grid;
+    place-items: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border:
+      1px solid
+      rgba(
+        203,
+        220,
+        148,
+        0.55
+      );
+
+    background:
+      rgba(
+        9,
+        12,
+        8,
+        0.82
+      );
+
+    color:
+      #cbdc94;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+  }
+
+
+  .flip-cat-arena__pause:active {
+    transform:
+      scale(
+        0.94
+      );
+  }
+
+
+  .flip-cat-arena__paused small {
+    display: none;
+  }
+}
+
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__paused strong {
+    font-size:
+      clamp(
+        54px,
+        19vw,
+        108px
+      );
+  }
+}
+
+
+/* =====================================================
+   HUD — MARTINELA
+   ===================================================== */
+
+.flip-cat-arena__hud {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  z-index: 225;
+
+  width:
+    min(
+      100vw,
+      150dvh
+    );
+
+  aspect-ratio:
+    3 / 2;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  pointer-events: none;
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 2px 2px
+      rgba(
+        0,
+        0,
+        0,
+        0.8
+      );
+}
+
+
+.flip-cat-arena__lives {
+  position: absolute;
+
+  left: 6.7%;
+  top: 1.25%;
+
+  display: flex;
+  align-items: center;
+
+  gap:
+    clamp(
+      1px,
+      0.15vw,
+      3px
+    );
+
+  height: 5%;
+
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      10px,
+      1.15vw,
+      18px
+    );
+
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+
+.flip-cat-arena__heart {
+  display: inline-block;
+}
+
+
+.flip-cat-arena__heart--full {
+  color:
+    #cbdc94;
+}
+
+
+.flip-cat-arena__heart--empty {
+  opacity: 0.28;
+}
+
+
+.flip-cat-arena__score {
+  position: absolute;
+
+  right: 6.8%;
+  top: 1.28%;
+
+  display: flex;
+  align-items: center;
+
+  height: 5%;
+
+  font-size:
+    clamp(
+      9px,
+      1vw,
+      15px
+    );
+
+  line-height: 1;
+
+  letter-spacing:
+    0.055em;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+.flip-cat-arena__score strong {
+  margin-left:
+    0.45em;
+
+  font-size:
+    1.05em;
+}
+
+
+/* =====================================================
+   PAUSE DUGME NA MARTINELI — TOUCH
+   ===================================================== */
+
+.flip-cat-arena__hud
+.flip-cat-arena__pause {
+  display: none;
+}
+
+
+@media (
+  hover:
+    none
+),
+(
+  pointer:
+    coarse
+) {
+  .flip-cat-arena__hud
+  .flip-cat-arena__pause {
+    position: absolute;
+
+    right: 2.3%;
+    top: 0.7%;
+
+    z-index: 5;
+
+    display: grid;
+    place-items: center;
+
+    width:
+      clamp(
+        34px,
+        7vw,
+        44px
+      );
+
+    height:
+      clamp(
+        34px,
+        7vw,
+        44px
+      );
+
+    padding: 0;
+
+    border:
+      1px solid
+      rgba(
+        203,
+        220,
+        148,
+        0.48
+      );
+
+    background:
+      rgba(
+        9,
+        12,
+        8,
+        0.68
+      );
+
+    color:
+      #cbdc94;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      clamp(
+        15px,
+        4vw,
+        19px
+      );
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    pointer-events: auto;
+
+    touch-action:
+      manipulation;
+
+    cursor:
+      pointer;
+  }
+
+
+  .flip-cat-arena__hud
+  .flip-cat-arena__pause:active {
+    transform:
+      scale(
+        0.94
+      );
+  }
+}
+
+
+/* =====================================================
+   NOVI PAUSE / GAME OVER MENI
+   ===================================================== */
+
+.flip-cat-arena__pause-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 300;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    rgba(
+      4,
+      7,
+      3,
+      0.56
+    );
+
+  backdrop-filter:
+    brightness(
+      0.72
+    );
+
+  pointer-events: auto;
+}
+
+
+.flip-cat-arena__pause-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap:
+    clamp(
+      14px,
+      2vh,
+      24px
+    );
+
+  min-width:
+    min(
+      76vw,
+      440px
+    );
+
+  padding:
+    clamp(
+      24px,
+      4vw,
+      44px
+    );
+
+  border:
+    1px solid
+    rgba(
+      203,
+      220,
+      148,
+      0.4
+    );
+
+  background:
+    rgba(
+      9,
+      12,
+      8,
+      0.86
+    );
+
+  box-shadow:
+    0 16px 50px
+      rgba(
+        0,
+        0,
+        0,
+        0.58
+      ),
+    inset 0 0 28px
+      rgba(
+        184,
+        205,
+        123,
+        0.05
+      );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+}
+
+
+.flip-cat-arena__pause-title {
+  font-size:
+    clamp(
+      42px,
+      7vw,
+      88px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing:
+    0.05em;
+
+  text-shadow:
+    0 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      ),
+    0 0 22px
+      rgba(
+        190,
+        213,
+        126,
+        0.2
+      );
+}
+
+
+.flip-cat-arena__pause-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    10px;
+
+  width:
+    min(
+      100%,
+      300px
+    );
+}
+
+
+.flip-cat-arena__pause-actions button {
+  width: 100%;
+
+  padding:
+    11px
+    16px;
+
+  border:
+    1px solid
+    rgba(
+      203,
+      220,
+      148,
+      0.42
+    );
+
+  background:
+    rgba(
+      20,
+      27,
+      15,
+      0.8
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      12px,
+      1.2vw,
+      17px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.06em;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform
+      100ms
+      ease,
+    background
+      100ms
+      ease;
+}
+
+
+.flip-cat-arena__pause-actions button:hover,
+.flip-cat-arena__pause-actions button:focus-visible {
+  outline: none;
+
+  background:
+    rgba(
+      39,
+      51,
+      27,
+      0.96
+    );
+
+  transform:
+    translateX(
+      2px
+    );
+}
+
+
+.flip-cat-arena__pause-actions button:active {
+  transform:
+    scale(
+      0.98
+    );
+}
+
+
+.flip-cat-arena__pause-hint,
+.flip-cat-arena__game-over-score {
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.08em;
+
+  opacity: 0.72;
+}
+
+
+/*
+ * Stari PAUSED sloj više ne koristimo.
+ */
+.flip-cat-arena__paused {
+  display: none;
+}
+
+
+/* =====================================================
+   MOBILE HUD
+   ===================================================== */
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__hud {
+    width:
+      min(
+        100vw,
+        66.6667dvh
+      );
+
+    aspect-ratio:
+      2 / 3;
+  }
+
+
+  .flip-cat-arena__lives {
+    left: 7.2%;
+    top: 0.85%;
+
+    max-width: 55%;
+
+    font-size:
+      clamp(
+        9px,
+        2.8vw,
+        14px
+      );
+  }
+
+
+  .flip-cat-arena__score {
+    right: 15.5%;
+    top: 0.92%;
+
+    font-size:
+      clamp(
+        8px,
+        2.4vw,
+        12px
+      );
+  }
+
+
+  .flip-cat-arena__pause-menu {
+    min-width:
+      min(
+        84vw,
+        360px
+      );
+
+    padding:
+      26px
+      20px;
+  }
+
+
+  .flip-cat-arena__pause-title {
+    font-size:
+      clamp(
+        48px,
+        16vw,
+        88px
+      );
+  }
+}
+
+
+/* =====================================================
+   FINAL — PROGRESIVNE RUPE
+   ===================================================== */
+
+.flip-cat-arena__hole--active {
+  opacity: 1;
+
+  animation:
+    flip-cat-hole-unlock
+    220ms
+    ease-out
+    both;
+}
+
+
+@keyframes flip-cat-hole-unlock {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0.72
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1
+      );
+  }
+}
+
+
+/*
+ * Dodatne rupe koriste iste assete,
+ * pa nema posebnog CSS-a po ID-ju.
+ */
+.flip-cat-arena__hole--bottom {
+  z-index: 19;
+}
+
+
+/* =====================================================
+   FINAL — TIPOVI MIŠEVA
+   ===================================================== */
+
+/*
+ * Običan i brzi miš imaju istu gameplay veličinu.
+ * Brzi miš već ima svoj vizuelni asset.
+ */
+.flip-cat-arena__mouse--ordinary,
+.flip-cat-arena__mouse--fast {
+  width: 6.4%;
+}
+
+
+/*
+ * Veliki miš je jasno veći, ali ne sme da preplavi teren.
+ */
+.flip-cat-arena__mouse--big {
+  z-index: 16;
+
+  width: 8.55%;
+
+  filter:
+    drop-shadow(
+      0 5px 5px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      )
+    );
+}
+
+
+/*
+ * Prvi i drugi uspešan udarac velikog miša
+ * daju kratak vizuelni feedback.
+ */
+.flip-cat-arena__mouse--hit
+.flip-cat-arena__mouse-frame {
+  animation:
+    flip-cat-big-mouse-hit
+    190ms
+    steps(
+      2,
+      end
+    )
+    1;
+}
+
+
+@keyframes flip-cat-big-mouse-hit {
+  0% {
+    filter:
+      brightness(
+        1
+      );
+  }
+
+  35% {
+    filter:
+      brightness(
+        1.85
+      )
+      contrast(
+        1.25
+      );
+  }
+
+  100% {
+    filter:
+      brightness(
+        1
+      );
+  }
+}
+
+
+/*
+ * Sir koji nosi veliki miš je malo manji u odnosu
+ * na njegovo telo da ne prekrije jaknu / glavu.
+ */
+.flip-cat-arena__mouse--big
+.flip-cat-arena__mouse-cheese {
+  width: 34%;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__mouse--ordinary,
+  .flip-cat-arena__mouse--fast {
+    width: 10.5%;
+  }
+
+
+  .flip-cat-arena__mouse--big {
+    width: 13.9%;
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .flip-cat-arena__hole--active,
+  .flip-cat-arena__mouse--hit
+  .flip-cat-arena__mouse-frame {
+    animation: none;
+  }
+}
+
+
+/* =====================================================
+   GAME OVER — BABA + METLA
+   ===================================================== */
+
+.flip-cat-arena__game-over-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 320;
+
+  display: grid;
+  place-items: center;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding:
+    clamp(
+      10px,
+      1.6vw,
+      20px
+    );
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      4,
+      7,
+      3,
+      0.98
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+  pointer-events: auto;
+}
+
+
+.flip-cat-arena__game-over-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      7px,
+      1.15vh,
+      12px
+    );
+
+  width:
+    min(
+      96vw,
+      980px
+    );
+
+  max-height:
+    calc(
+      100dvh -
+      20px
+    );
+
+  overflow: hidden;
+}
+
+
+.flip-cat-arena__game-over-animation {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+
+  min-height: 0;
+
+  flex:
+    0
+    0
+    auto;
+}
+
+
+/*
+ * Visina je namerno direktno na slici.
+ * Tako frejm ne može da preraste svoj prostor i
+ * da završi iza SCORE / poruke / dugmadi.
+ */
+.flip-cat-arena__game-over-frame {
+  display: block;
+
+  width: auto;
+
+  height:
+    min(
+      56dvh,
+      500px
+    );
+
+  max-width:
+    min(
+      92vw,
+      760px
+    );
+
+  object-fit: contain;
+  object-position: center;
+
+  border:
+    1px solid
+    rgba(
+      203,
+      220,
+      148,
+      0.28
+    );
+
+  box-shadow:
+    0 14px 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.5
+      ),
+    0 0 20px
+      rgba(
+        190,
+        213,
+        126,
+        0.06
+      );
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+.flip-cat-arena__game-over-score {
+  margin-top: 1px;
+
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  opacity: 0.74;
+}
+
+
+.flip-cat-arena__game-over-score strong {
+  font-size: 1.08em;
+}
+
+
+.flip-cat-arena__game-over-message {
+  width:
+    min(
+      94vw,
+      920px
+    );
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      17px,
+      2.05vw,
+      31px
+    );
+
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: 0.03em;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 3px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.5
+      ),
+    0 0 18px
+      rgba(
+        190,
+        213,
+        126,
+        0.14
+      );
+}
+
+
+.flip-cat-arena__game-over-actions {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.5fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      8px,
+      1.2vw,
+      16px
+    );
+
+  width:
+    min(
+      88vw,
+      570px
+    );
+}
+
+
+.flip-cat-arena__game-over-button {
+  min-width: 0;
+
+  padding:
+    clamp(
+      10px,
+      1.15vw,
+      14px
+    )
+    clamp(
+      10px,
+      1.8vw,
+      22px
+    );
+
+  border:
+    1px solid
+    rgba(
+      203,
+      220,
+      148,
+      0.42
+    );
+
+  background:
+    rgba(
+      10,
+      14,
+      8,
+      0.9
+    );
+
+  color:
+    #cbdc94;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      11px,
+      1.35vw,
+      18px
+    );
+
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.055em;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 0 12px
+      rgba(
+        190,
+        213,
+        126,
+        0.04
+      );
+
+  transition:
+    transform 100ms ease,
+    background 100ms ease,
+    box-shadow 100ms ease;
+}
+
+
+.flip-cat-arena__game-over-button--restart {
+  border-color:
+    rgba(
+      203,
+      220,
+      148,
+      0.78
+    );
+
+  background:
+    rgba(
+      25,
+      34,
+      17,
+      0.96
+    );
+
+  box-shadow:
+    0 0 16px
+      rgba(
+        190,
+        213,
+        126,
+        0.16
+      ),
+    inset 0 0 14px
+      rgba(
+        190,
+        213,
+        126,
+        0.08
+      );
+}
+
+
+.flip-cat-arena__game-over-button:hover,
+.flip-cat-arena__game-over-button:focus-visible {
+  outline: none;
+
+  background:
+    rgba(
+      39,
+      51,
+      27,
+      0.98
+    );
+
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+.flip-cat-arena__game-over-button:active {
+  transform:
+    scale(
+      0.98
+    );
+}
+
+
+@media (
+  orientation:
+    portrait
+) {
+  .flip-cat-arena__game-over-overlay {
+    padding: 8px;
+  }
+
+
+  .flip-cat-arena__game-over-panel {
+    gap:
+      clamp(
+        6px,
+        0.9vh,
+        10px
+      );
+
+    width: 100%;
+  }
+
+
+  .flip-cat-arena__game-over-frame {
+    height:
+      min(
+        47dvh,
+        420px
+      );
+
+    max-width: 90vw;
+  }
+
+
+  .flip-cat-arena__game-over-message {
+    width:
+      min(
+        92vw,
+        560px
+      );
+
+    font-size:
+      clamp(
+        14px,
+        4.35vw,
+        22px
+      );
+  }
+
+
+  .flip-cat-arena__game-over-actions {
+    width:
+      min(
+        92vw,
+        440px
+      );
+
+    gap: 7px;
+  }
+
+
+  .flip-cat-arena__game-over-button {
+    padding:
+      10px
+      7px;
+
+    font-size:
+      clamp(
+        9px,
+        3.25vw,
+        14px
+      );
+  }
+}
+
+
+@media (
+  max-height:
+    640px
+) and (
+  orientation:
+    landscape
+) {
+  .flip-cat-arena__game-over-panel {
+    gap: 5px;
+  }
+
+
+  .flip-cat-arena__game-over-frame {
+    height:
+      min(
+        43dvh,
+        310px
+      );
+  }
+
+
+  .flip-cat-arena__game-over-message {
+    font-size:
+      clamp(
+        14px,
+        1.7vw,
+        21px
+      );
+  }
+
+
+  .flip-cat-arena__game-over-button {
+    padding:
+      8px
+      11px;
+  }
+}

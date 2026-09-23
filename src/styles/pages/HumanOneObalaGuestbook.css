@@ -1,0 +1,851 @@
+/* =====================================================
+   AKC OBALA — KNJIGA UTISAKA
+   ===================================================== */
+
+.obala-guestbook {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100vw;
+  height: 100dvh;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  padding: 58px 20px 18px;
+
+  color: #261c13;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(126, 79, 39, 0.22),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #18110c, #090706);
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+.obala-guestbook::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+
+  background-image:
+    url("/images/human-one/obala/obala-bg.png");
+  background-size: cover;
+  background-position: center;
+
+  filter:
+    blur(10px)
+    brightness(0.2)
+    saturate(0.65);
+
+  transform: scale(1.04);
+  opacity: 0.78;
+}
+
+
+/* =====================================================
+   GORNJA TRAKA
+   ===================================================== */
+
+.obala-guestbook__topbar {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 14px;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  pointer-events: none;
+}
+
+
+.obala-guestbook__back {
+  pointer-events: auto;
+
+  border: 1px solid rgba(218, 186, 127, 0.46);
+  background: rgba(18, 13, 10, 0.92);
+  color: #eadbb8;
+
+  padding: 8px 12px;
+
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.obala-guestbook__counter {
+  color: rgba(234, 219, 184, 0.58);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+
+/* =====================================================
+   KNJIGA
+   ===================================================== */
+
+.obala-guestbook__book {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    28px
+    minmax(0, 1fr);
+
+  width: min(94vw, 1220px);
+  height: min(79dvh, 790px);
+  min-height: 430px;
+
+  overflow: visible;
+
+  filter:
+    drop-shadow(
+      0 24px 30px
+      rgba(0, 0, 0, 0.5)
+    );
+
+  touch-action: pan-y;
+  user-select: none;
+}
+
+
+.obala-guestbook__page-slot {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+
+.obala-guestbook__paper {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(83, 62, 40, 0.42);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(88, 61, 36, 0.08),
+      transparent 9%,
+      transparent 91%,
+      rgba(79, 55, 32, 0.08)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(92, 67, 42, 0.035) 0 1px,
+      transparent 1px 29px
+    ),
+    radial-gradient(
+      circle at 18% 16%,
+      rgba(135, 96, 51, 0.08),
+      transparent 14%
+    ),
+    #e7d5ad;
+
+  box-shadow:
+    inset 0 0 46px rgba(83, 55, 31, 0.2),
+    inset 0 0 5px rgba(55, 36, 21, 0.25);
+}
+
+
+.obala-guestbook__page-slot:first-child .obala-guestbook__paper {
+  border-radius: 8px 2px 2px 8px;
+}
+
+
+.obala-guestbook__page-slot:last-child .obala-guestbook__paper {
+  border-radius: 2px 8px 8px 2px;
+}
+
+
+.obala-guestbook__spine {
+  position: relative;
+  z-index: 8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6b472c,
+      #25170f 42%,
+      #120b08 50%,
+      #25170f 58%,
+      #68442a
+    );
+
+  box-shadow:
+    inset 8px 0 10px rgba(0, 0, 0, 0.38),
+    inset -8px 0 10px rgba(0, 0, 0, 0.38);
+}
+
+
+.obala-guestbook__spine i {
+  display: block;
+
+  width: 37px;
+  height: 5px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #b59561,
+      #5c452d 55%,
+      #2b2016
+    );
+
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.42);
+}
+
+
+.obala-guestbook__book--single {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(92vw, 690px);
+}
+
+
+.obala-guestbook__book--single .obala-guestbook__paper {
+  border-radius: 8px;
+}
+
+
+/* =====================================================
+   UTISCI — DIREKTNO ISPISANI NA STRANICI
+   ===================================================== */
+
+.obala-guestbook__note {
+  position: absolute;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 6px 5px;
+
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+
+  color: #281f19;
+
+  transform-origin: center;
+
+  mix-blend-mode: multiply;
+}
+
+
+/*
+ * Nema papirića, selotejpa ni zalepljenog kartona.
+ * Svaki utisak izgleda kao rukopis direktno na listu.
+ */
+.obala-guestbook__note::before,
+.obala-guestbook__note::after {
+  content: none;
+}
+
+
+.obala-guestbook__note--ink-black {
+  color: #2a211b;
+}
+
+
+.obala-guestbook__note--ink-blue {
+  color: #26394c;
+}
+
+
+.obala-guestbook__note--ink-brown {
+  color: #533928;
+}
+
+
+.obala-guestbook__note--ink-faded {
+  color: #514a3f;
+  opacity: 0.9;
+}
+
+
+.obala-guestbook__note-message {
+  position: relative;
+  z-index: 2;
+
+  flex: 0 1 auto;
+
+  margin: 0;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  font-weight: 600;
+  line-height: 1.28;
+
+  text-shadow:
+    0.25px 0.25px 0 rgba(39, 28, 19, 0.18);
+}
+
+
+/*
+ * Potpis je uvek rezervisan ispod utiska,
+ * pa ime ne može više da nestane izvan bloka.
+ */
+.obala-guestbook__note-signature {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 5px;
+
+  width: 100%;
+
+  margin:
+    3px
+    0
+    0;
+
+  padding-top: 0;
+
+  font-size: 0.78em;
+  font-style: italic;
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+
+.obala-guestbook__note-signature strong {
+  max-width: calc(100% - 18px);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-weight: 800;
+}
+
+
+.obala-guestbook__note--short .obala-guestbook__note-message {
+  font-size: clamp(13px, 1.32vw, 19px);
+}
+
+
+.obala-guestbook__note--medium .obala-guestbook__note-message {
+  font-size: clamp(12px, 1.08vw, 16px);
+}
+
+
+.obala-guestbook__note--long .obala-guestbook__note-message {
+  font-size: clamp(11px, 0.92vw, 14px);
+}
+
+
+.obala-guestbook__note--xlong .obala-guestbook__note-message {
+  font-size: clamp(10px, 0.8vw, 13px);
+}
+
+
+.obala-guestbook__note.is-emphasized .obala-guestbook__note-message {
+  font-weight: 700;
+}
+
+
+.obala-guestbook__page-number {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+
+  color: rgba(66, 47, 29, 0.48);
+
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 900;
+
+  transform: translateX(-50%);
+}
+
+
+.obala-guestbook__empty-page {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-content: center;
+  gap: 10px;
+
+  padding: 30px;
+
+  color: rgba(61, 43, 26, 0.52);
+  text-align: center;
+
+  transform: rotate(-1deg);
+}
+
+
+.obala-guestbook__empty-page span {
+  font-family: "Courier New", monospace;
+  font-size: clamp(24px, 3.2vw, 46px);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+
+.obala-guestbook__empty-page small {
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  font-size: clamp(13px, 1.25vw, 18px);
+}
+
+
+/* =====================================================
+   STANJA
+   ===================================================== */
+
+.obala-guestbook__state {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+
+  display: grid;
+  place-items: center;
+
+  color: #eadbb8;
+  background: rgba(15, 10, 7, 0.92);
+
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 900;
+  text-align: center;
+}
+
+
+.obala-guestbook__state--error {
+  color: #ef9a85;
+}
+
+
+/* =====================================================
+   KONTROLE / OLOVKA
+   ===================================================== */
+
+.obala-guestbook__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 38px);
+
+  min-height: 50px;
+}
+
+
+.obala-guestbook__turn {
+  display: grid;
+  place-items: center;
+
+  width: 50px;
+  height: 42px;
+
+  border: 1px solid rgba(218, 186, 127, 0.45);
+  background: rgba(18, 13, 10, 0.92);
+  color: #e7d7b4;
+
+  font-family: "Courier New", monospace;
+  font-size: 22px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.obala-guestbook__turn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+
+.obala-guestbook__pencil {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 164px;
+  height: 44px;
+
+  padding: 5px 15px 5px 12px;
+
+  border: 0;
+  background: transparent;
+  color: #ead7ab;
+
+  cursor: pointer;
+
+  transform: rotate(-2deg);
+}
+
+
+.obala-guestbook__pencil span {
+  display: grid;
+  place-items: center;
+
+  width: 74px;
+  height: 17px;
+
+  color: #2d241a;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d1b25e 0 78%,
+      #b8a3a0 78% 89%,
+      #d57d76 89% 100%
+    );
+
+  border: 1px solid #5a462b;
+  border-radius: 2px 8px 8px 2px;
+
+  font-size: 0;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.32),
+    inset 0 1px rgba(255, 255, 255, 0.23);
+}
+
+
+.obala-guestbook__pencil span::before {
+  content: "";
+
+  position: absolute;
+
+  margin-left: -82px;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 14px solid #d7c28c;
+}
+
+
+.obala-guestbook__pencil small {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+  .obala-guestbook__back:hover,
+  .obala-guestbook__turn:not(:disabled):hover {
+    border-color: rgba(235, 194, 123, 0.84);
+    color: #fff0c8;
+  }
+
+  .obala-guestbook__pencil:hover {
+    filter: brightness(1.14);
+    transform: rotate(-4deg) scale(1.035);
+  }
+}
+
+
+/* =====================================================
+   UPIS UTISKA
+   ===================================================== */
+
+.obala-guestbook__write-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+
+  padding: 18px;
+
+  background: rgba(4, 3, 2, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+
+.obala-guestbook__write-card {
+  position: relative;
+
+  display: grid;
+  gap: 18px;
+
+  width: min(92vw, 620px);
+  box-sizing: border-box;
+
+  padding: clamp(24px, 4vw, 42px);
+
+  border: 1px solid rgba(89, 61, 34, 0.55);
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(94, 66, 40, 0.035) 0 1px,
+      transparent 1px 30px
+    ),
+    #e6d4aa;
+
+  color: #2c2118;
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.56),
+    inset 0 0 35px rgba(90, 59, 31, 0.15);
+
+  transform: rotate(-0.7deg);
+}
+
+
+.obala-guestbook__write-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+  background: transparent;
+  color: #3d2d20;
+
+  font-family: "Courier New", monospace;
+  font-size: 28px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.obala-guestbook__field {
+  display: grid;
+  gap: 7px;
+}
+
+
+.obala-guestbook__field > span {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+
+.obala-guestbook__field input,
+.obala-guestbook__field textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 0;
+  border-bottom: 2px solid rgba(65, 46, 28, 0.45);
+  outline: none;
+
+  background: rgba(255, 250, 232, 0.28);
+  color: #251b13;
+
+  padding: 10px 11px;
+
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+
+.obala-guestbook__field textarea {
+  min-height: 175px;
+  resize: vertical;
+}
+
+
+.obala-guestbook__field input:focus,
+.obala-guestbook__field textarea:focus {
+  border-bottom-color: #7b4d2d;
+  background: rgba(255, 250, 232, 0.48);
+}
+
+
+.obala-guestbook__field small {
+  justify-self: end;
+
+  color: rgba(52, 38, 24, 0.52);
+
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+
+.obala-guestbook__form-error {
+  margin: -5px 0 0;
+
+  color: #8d2c20;
+
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+}
+
+
+.obala-guestbook__submit {
+  justify-self: center;
+
+  min-width: min(100%, 250px);
+
+  padding: 12px 18px;
+
+  border: 1px solid #5f452d;
+  background: #2b1c13;
+  color: #ead8b0;
+
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+}
+
+
+.obala-guestbook__submit:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+
+/* =====================================================
+   TELEFON / USPRAVNI PRIKAZ
+   ===================================================== */
+
+@media (max-width: 760px), (orientation: portrait) {
+  .obala-guestbook {
+    padding: 55px 10px 14px;
+  }
+
+  .obala-guestbook__book {
+    width: min(94vw, 690px);
+    height: min(74dvh, 800px);
+    min-height: 390px;
+  }
+
+  .obala-guestbook__note {
+    padding: 3px 4px 4px;
+  }
+
+  .obala-guestbook__note--short .obala-guestbook__note-message {
+    font-size: clamp(12px, 3vw, 17px);
+  }
+
+  .obala-guestbook__note--medium .obala-guestbook__note-message {
+    font-size: clamp(11px, 2.6vw, 15px);
+  }
+
+  .obala-guestbook__note--long .obala-guestbook__note-message {
+    font-size: clamp(10px, 2.25vw, 13px);
+  }
+
+  .obala-guestbook__note--xlong .obala-guestbook__note-message {
+    font-size: clamp(9px, 1.95vw, 12px);
+  }
+
+  .obala-guestbook__note-signature {
+    font-size: 0.76em;
+    margin-top: 2px;
+    padding-top: 0;
+  }
+
+  .obala-guestbook__controls {
+    gap: 10px;
+  }
+
+  .obala-guestbook__turn {
+    width: 42px;
+    height: 38px;
+  }
+
+  .obala-guestbook__pencil {
+    min-width: 135px;
+    padding-right: 7px;
+  }
+
+  .obala-guestbook__pencil span {
+    width: 58px;
+  }
+
+  .obala-guestbook__pencil small {
+    font-size: 9px;
+  }
+
+  .obala-guestbook__write-card {
+    gap: 14px;
+    padding: 27px 18px 20px;
+  }
+
+  .obala-guestbook__field textarea {
+    min-height: 145px;
+  }
+}
+
+
+@media (max-height: 650px) and (orientation: landscape) {
+  .obala-guestbook {
+    padding-top: 48px;
+    gap: 6px;
+  }
+
+  .obala-guestbook__book {
+    height: 72dvh;
+    min-height: 330px;
+  }
+
+  .obala-guestbook__controls {
+    min-height: 40px;
+  }
+
+  .obala-guestbook__turn,
+  .obala-guestbook__pencil {
+    height: 36px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .obala-guestbook *,
+  .obala-guestbook *::before,
+  .obala-guestbook *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

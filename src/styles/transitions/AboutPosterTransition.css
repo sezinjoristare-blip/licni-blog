@@ -1,0 +1,146 @@
+/* =====================================================
+   SOBA ↔ O MENI MAPA
+   UNWANTED → GLITCH → STICKER
+   ===================================================== */
+
+.about-poster-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  contain:
+    layout
+    paint
+    style;
+}
+
+
+.about-poster-transition__blackout {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: #000;
+  opacity: 0;
+
+  will-change: opacity;
+}
+
+
+.about-poster-transition__paper-ghost,
+.about-poster-transition__paper-slice {
+  position: fixed !important;
+  z-index: 4 !important;
+
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  background: transparent !important;
+
+  overflow: visible !important;
+
+  pointer-events: none !important;
+  cursor: default !important;
+  appearance: none !important;
+
+  transition: none !important;
+
+  transform-origin: 50% 50%;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change:
+    left,
+    top,
+    width,
+    height,
+    transform,
+    opacity,
+    filter,
+    clip-path;
+}
+
+
+.about-poster-transition__paper-ghost:hover,
+.about-poster-transition__paper-ghost:active,
+.about-poster-transition__paper-ghost:focus,
+.about-poster-transition__paper-slice:hover,
+.about-poster-transition__paper-slice:active,
+.about-poster-transition__paper-slice:focus {
+  filter: none !important;
+}
+
+
+.about-poster-transition__sticker-ghost,
+.about-poster-transition__sticker-slice {
+  position: fixed;
+  z-index: 5;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+
+  user-select: none;
+  pointer-events: none;
+
+  transform-origin: 50% 50%;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change:
+    left,
+    top,
+    width,
+    height,
+    transform,
+    opacity,
+    filter,
+    clip-path;
+}
+
+
+.about-poster-transition__paper-slice,
+.about-poster-transition__sticker-slice {
+  z-index: 8 !important;
+}
+
+
+.about-poster-transition__glitch-flash {
+  position: fixed;
+  z-index: 7;
+
+  pointer-events: none;
+
+  border: 1px solid rgba(235, 255, 249, 0.18);
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0 1px,
+      transparent 1px 4px
+    );
+
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .about-poster-transition {
+    display: none;
+  }
+}

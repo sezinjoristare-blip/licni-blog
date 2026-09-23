@@ -1,0 +1,1016 @@
+/* =====================================================
+   BRZE DOSKOČICE
+   ===================================================== */
+
+.quick-wits {
+  position: relative;
+
+  min-height: 100dvh;
+
+  overflow-x: hidden;
+
+  padding:
+    42px
+    clamp(18px, 4vw, 64px)
+    90px;
+
+  box-sizing: border-box;
+
+  background:
+    #282722;
+
+  color:
+    #171712;
+
+  isolation: isolate;
+}
+
+
+.quick-wits__wall {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      rgba(255,255,255,0.05),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 77% 35%,
+      rgba(0,0,0,0.24),
+      transparent 30%
+    ),
+    repeating-linear-gradient(
+      8deg,
+      rgba(255,255,255,0.015) 0 2px,
+      transparent 2px 19px
+    ),
+    linear-gradient(
+      180deg,
+      #393832,
+      #272722 52%,
+      #22211d
+    );
+}
+
+
+.quick-wits__wall::before,
+.quick-wits__wall::after {
+  content: "";
+
+  position: absolute;
+
+  pointer-events: none;
+}
+
+
+.quick-wits__wall::before {
+  inset: 0;
+
+  opacity: 0.32;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 15%,
+      rgba(0,0,0,0.12) 15.1% 15.35%,
+      transparent 15.45% 29%
+    );
+}
+
+
+.quick-wits__wall::after {
+  left: 8%;
+  right: 7%;
+  top: 28%;
+
+  height: 1px;
+
+  background:
+    rgba(10,10,8,0.32);
+
+  box-shadow:
+    0 170px 0 rgba(255,255,255,0.025),
+    0 410px 0 rgba(0,0,0,0.14);
+}
+
+
+/* =====================================================
+   BACK
+   ===================================================== */
+
+.quick-wits__back {
+  position: sticky;
+
+  top:
+    max(
+      12px,
+      env(safe-area-inset-top)
+    );
+
+  z-index: 40;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 38px;
+
+  padding:
+    8px
+    12px;
+
+  border:
+    1px solid
+    rgba(228,218,181,0.46);
+
+  background:
+    rgba(17,17,14,0.7);
+
+  color:
+    #e3d8b7;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+
+.quick-wits__back:hover {
+  transform:
+    translateX(-3px);
+
+  background:
+    rgba(17,17,14,0.9);
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.quick-wits__header {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      1000px,
+      100%
+    );
+
+  margin:
+    26px
+    auto
+    70px;
+
+  text-align: center;
+}
+
+
+.quick-wits__header h1 {
+  margin: 0;
+
+  color:
+    #eee5c8;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      2.8rem,
+      7.2vw,
+      7rem
+    );
+
+  font-weight: 900;
+
+  line-height: 0.92;
+
+  letter-spacing:
+    -0.055em;
+
+  text-shadow:
+    0 5px 0 rgba(0,0,0,0.28),
+    0 18px 38px rgba(0,0,0,0.38);
+}
+
+
+.quick-wits__state {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      900px,
+      100%
+    );
+
+  margin:
+    0
+    auto
+    44px;
+
+  color:
+    rgba(238,229,200,0.72);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+
+  text-align: center;
+}
+
+
+.quick-wits__state--error {
+  color:
+    #e8a49b;
+}
+
+
+/* =====================================================
+   ZID SA PAPIRIĆIMA
+   ===================================================== */
+
+.quick-wits__board {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap:
+    clamp(32px, 5vw, 76px)
+    clamp(24px, 5vw, 70px);
+
+  width:
+    min(
+      1180px,
+      100%
+    );
+
+  margin:
+    0
+    auto;
+
+  padding:
+    36px
+    10px
+    72px;
+
+  box-sizing: border-box;
+}
+
+
+.quick-wits__note {
+  --note-rotation: 0deg;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height:
+    clamp(210px, 23vw, 310px);
+
+  padding:
+    clamp(28px, 3vw, 42px)
+    clamp(22px, 2.6vw, 34px)
+    24px;
+
+  border: 0;
+
+  box-sizing: border-box;
+
+  color:
+    #25231b;
+
+  font: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transform:
+    rotate(
+      var(--note-rotation)
+    );
+
+  transform-origin:
+    center top;
+
+  box-shadow:
+    0 8px 2px rgba(0,0,0,0.09),
+    0 22px 34px rgba(0,0,0,0.28);
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+
+
+.quick-wits__note::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(70,60,30,0.025) 0 1px,
+      transparent 1px 4px
+    );
+
+  mix-blend-mode: multiply;
+}
+
+
+.quick-wits__note::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 34px;
+  height: 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,0,0,0.07) 0 48%,
+      rgba(255,255,255,0.33) 49% 100%
+    );
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+}
+
+
+.quick-wits__note:hover {
+  z-index: 5;
+
+  transform:
+    translateY(-12px)
+    rotate(
+      calc(
+        var(--note-rotation) * 0.55
+      )
+    )
+    scale(1.035);
+
+  box-shadow:
+    0 15px 3px rgba(0,0,0,0.08),
+    0 34px 46px rgba(0,0,0,0.38);
+}
+
+
+.quick-wits__note:active {
+  transform:
+    translateY(-5px)
+    rotate(
+      calc(
+        var(--note-rotation) * 0.35
+      )
+    )
+    scale(1.015);
+}
+
+
+.quick-wits__note--source-hidden {
+  visibility: hidden;
+}
+
+
+.quick-wits__note--yellow,
+.quick-wits__reader-note--yellow {
+  background:
+    linear-gradient(
+      145deg,
+      #f7e984,
+      #e6d469
+    );
+}
+
+
+.quick-wits__note--pink,
+.quick-wits__reader-note--pink {
+  background:
+    linear-gradient(
+      145deg,
+      #f1a9be,
+      #db8fa8
+    );
+}
+
+
+.quick-wits__note--blue,
+.quick-wits__reader-note--blue {
+  background:
+    linear-gradient(
+      145deg,
+      #9fc9e8,
+      #7fb2da
+    );
+}
+
+
+.quick-wits__note--green,
+.quick-wits__reader-note--green {
+  background:
+    linear-gradient(
+      145deg,
+      #b7d98c,
+      #94c26b
+    );
+}
+
+
+.quick-wits__note--orange,
+.quick-wits__reader-note--orange {
+  background:
+    linear-gradient(
+      145deg,
+      #efba72,
+      #db9d4f
+    );
+}
+
+
+.quick-wits__note--violet,
+.quick-wits__reader-note--violet {
+  background:
+    linear-gradient(
+      145deg,
+      #baa5db,
+      #9d88c1
+    );
+}
+
+
+.quick-wits__note-tape {
+  position: absolute;
+
+  left: 50%;
+  top: -15px;
+
+  width: 76px;
+  height: 28px;
+
+  background:
+    rgba(229,214,173,0.53);
+
+  transform:
+    translateX(-50%)
+    rotate(-2deg);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.16);
+}
+
+
+.quick-wits__note-copy {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size:
+    clamp(1.1rem, 2vw, 1.7rem);
+
+  font-weight: 700;
+
+  line-height: 1.28;
+}
+
+
+.quick-wits__note-stamp {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: 26px;
+
+  padding-top: 12px;
+
+  border-top:
+    1px dashed
+    rgba(45,40,25,0.24);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.06em;
+
+  opacity: 0.72;
+}
+
+
+.quick-wits__note-stamp small {
+  font: inherit;
+}
+
+
+/* =====================================================
+   READER — PAPIRIĆ SE ODLEPLJUJE OD ZIDA
+   ===================================================== */
+
+.quick-wits__reader-layer {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 500;
+
+  background:
+    rgba(6,6,5,0);
+
+  backdrop-filter:
+    blur(0);
+
+  -webkit-backdrop-filter:
+    blur(0);
+
+  transition:
+    background 420ms ease,
+    backdrop-filter 420ms ease;
+
+  pointer-events: auto;
+}
+
+
+.quick-wits__reader-layer--open {
+  background:
+    rgba(6,6,5,0.72);
+
+  backdrop-filter:
+    blur(3px);
+
+  -webkit-backdrop-filter:
+    blur(3px);
+}
+
+
+.quick-wits__reader-note {
+  position: fixed;
+
+  left:
+    var(--source-left);
+  top:
+    var(--source-top);
+
+  width:
+    var(--source-width);
+  height:
+    var(--source-height);
+
+  z-index: 510;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding:
+    44px
+    40px
+    36px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  color:
+    #25231b;
+
+  transform:
+    rotate(
+      var(--source-rotation)
+    );
+
+  transform-origin:
+    center;
+
+  box-shadow:
+    0 8px 2px rgba(0,0,0,0.08),
+    0 24px 40px rgba(0,0,0,0.24);
+
+  transition:
+    left 420ms cubic-bezier(0.2,0.76,0.2,1),
+    top 420ms cubic-bezier(0.2,0.76,0.2,1),
+    width 420ms cubic-bezier(0.2,0.76,0.2,1),
+    height 420ms cubic-bezier(0.2,0.76,0.2,1),
+    transform 420ms cubic-bezier(0.2,0.76,0.2,1),
+    box-shadow 420ms ease;
+}
+
+
+.quick-wits__reader-note::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(70,60,30,0.028) 0 1px,
+      transparent 1px 4px
+    );
+
+  pointer-events: none;
+}
+
+
+.quick-wits__reader-note::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 54px;
+  height: 54px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,0,0,0.08) 0 48%,
+      rgba(255,255,255,0.35) 49% 100%
+    );
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+}
+
+
+.quick-wits__reader-note--open {
+  left: 50%;
+  top: 50%;
+
+  width:
+    min(
+      560px,
+      calc(100vw - 34px)
+    );
+
+  height:
+    min(
+      560px,
+      calc(100dvh - 64px)
+    );
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-0.8deg);
+
+  box-shadow:
+    0 28px 12px rgba(0,0,0,0.12),
+    0 54px 90px rgba(0,0,0,0.58);
+}
+
+
+.quick-wits__reader-tape {
+  position: absolute;
+
+  left: 50%;
+  top: -13px;
+
+  z-index: 3;
+
+  width: 98px;
+  height: 34px;
+
+  background:
+    rgba(229,214,173,0.58);
+
+  transform:
+    translateX(-50%)
+    rotate(-2deg);
+}
+
+
+.quick-wits__reader-close {
+  position: absolute;
+
+  right: 18px;
+  top: 15px;
+
+  z-index: 5;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    rgba(36,33,22,0.78);
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: 32px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform:
+    rotate(8deg);
+
+  transition:
+    transform 150ms ease;
+}
+
+
+.quick-wits__reader-close:hover {
+  transform:
+    rotate(-8deg)
+    scale(1.08);
+}
+
+
+.quick-wits__reader-meta {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  top: 24px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing:
+    0.07em;
+
+  opacity: 0.6;
+}
+
+
+.quick-wits__reader-copy {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size:
+    clamp(1.65rem, 4.1vw, 2.7rem);
+
+  font-weight: 700;
+
+  line-height: 1.28;
+
+  text-align: center;
+}
+
+
+.quick-wits__reader-scribble {
+  position: absolute;
+
+  left: 50%;
+  bottom: 20px;
+
+  z-index: 2;
+
+  font-family:
+    "Comic Sans MS",
+    cursive;
+
+  font-size: 34px;
+  font-weight: 900;
+
+  opacity: 0.42;
+
+  transform:
+    translateX(-50%)
+    rotate(-7deg);
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 920px) {
+  .quick-wits__board {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 620px) {
+  .quick-wits {
+    padding:
+      max(
+        18px,
+        env(safe-area-inset-top)
+      )
+      14px
+      max(
+        52px,
+        env(safe-area-inset-bottom)
+      );
+  }
+
+
+  .quick-wits__header {
+    margin:
+      26px
+      auto
+      46px;
+  }
+
+
+  .quick-wits__header h1 {
+    font-size:
+      clamp(
+        2.5rem,
+        12vw,
+        4.4rem
+      );
+  }
+
+
+  .quick-wits__board {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap:
+      28px
+      16px;
+
+    padding:
+      24px
+      2px
+      54px;
+  }
+
+
+  .quick-wits__note {
+    min-height: 185px;
+
+    padding:
+      30px
+      16px
+      16px;
+  }
+
+
+  .quick-wits__note-copy {
+    font-size:
+      clamp(0.96rem, 4.4vw, 1.22rem);
+  }
+
+
+  .quick-wits__note-stamp {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 3px;
+
+    font-size: 8px;
+  }
+
+
+  .quick-wits__reader-note {
+    padding:
+      48px
+      26px
+      36px;
+  }
+
+
+  .quick-wits__reader-note--open {
+    width:
+      calc(100vw - 26px);
+
+    height:
+      min(
+        68dvh,
+        520px
+      );
+  }
+
+
+  .quick-wits__reader-copy {
+    font-size:
+      clamp(1.5rem, 7.2vw, 2.15rem);
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .quick-wits__note,
+  .quick-wits__reader-layer,
+  .quick-wits__reader-note,
+  .quick-wits__back {
+    transition: none;
+  }
+}

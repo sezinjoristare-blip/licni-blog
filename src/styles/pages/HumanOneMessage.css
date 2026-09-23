@@ -1,0 +1,601 @@
+/* =====================================================
+   ČOVEK 1 — POŠALJI MI PORUKU
+   ===================================================== */
+
+.human-one-message {
+  position: relative;
+
+  min-height: 100dvh;
+
+  padding:
+    clamp(74px, 9vh, 110px)
+    20px
+    48px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(118, 105, 73, 0.15),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 82% 78%,
+      rgba(53, 73, 82, 0.18),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #1b1b18,
+      #0c0d0c 68%,
+      #161713
+    );
+
+  color: #1c1a16;
+}
+
+
+.human-one-message__noise {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  opacity: 0.22;
+
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.018) 0 1px,
+      transparent 1px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 0 1px,
+      transparent 1px 5px
+    );
+}
+
+
+.human-one-message__back {
+  position: fixed;
+
+  left: clamp(18px, 3vw, 44px);
+  top: clamp(18px, 3vw, 36px);
+
+  z-index: 20;
+
+  padding:
+    9px
+    13px;
+
+  border:
+    1px solid
+    rgba(225, 215, 185, 0.55);
+
+  background:
+    rgba(20, 20, 17, 0.88);
+
+  color: #d8d0b5;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+}
+
+
+.human-one-message__back:hover {
+  transform:
+    translateX(-3px);
+
+  background:
+    rgba(36, 36, 30, 0.96);
+}
+
+
+.human-one-message__desk {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      860px,
+      94vw
+    );
+
+  margin: 0 auto;
+}
+
+
+.human-one-message__paper {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    clamp(34px, 5vw, 66px)
+    clamp(24px, 5vw, 70px)
+    clamp(32px, 5vw, 58px);
+
+  border:
+    1px solid
+    rgba(55, 46, 32, 0.55);
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0)
+    ),
+    #d8cfb4;
+
+  box-shadow:
+    0 26px 60px
+    rgba(0, 0, 0, 0.5),
+    inset 0 0 40px
+    rgba(85, 69, 42, 0.12);
+
+  transform:
+    rotate(-0.35deg);
+}
+
+
+.human-one-message__paper::before,
+.human-one-message__paper::after {
+  content: "";
+
+  position: absolute;
+
+  pointer-events: none;
+}
+
+
+.human-one-message__paper::before {
+  inset: 11px;
+
+  border:
+    1px dashed
+    rgba(52, 45, 35, 0.2);
+}
+
+
+.human-one-message__paper::after {
+  left: 0;
+  right: 0;
+  bottom: 18%;
+
+  height: 1px;
+
+  background:
+    rgba(71, 59, 43, 0.13);
+}
+
+
+.human-one-message__header {
+  position: relative;
+
+  z-index: 2;
+
+  margin-bottom: 36px;
+}
+
+
+.human-one-message__header p {
+  margin:
+    0
+    0
+    6px;
+
+  color: #6f2d25;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      11px,
+      1.2vw,
+      14px
+    );
+
+  font-weight: 900;
+
+  letter-spacing: 0.15em;
+}
+
+
+.human-one-message__header h1 {
+  margin: 0;
+
+  color: #161512;
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+
+  font-size:
+    clamp(
+      40px,
+      7vw,
+      78px
+    );
+
+  font-weight: 900;
+
+  line-height: 0.9;
+
+  letter-spacing: 0.015em;
+
+  text-transform: uppercase;
+}
+
+
+.human-one-message__header span {
+  display: block;
+
+  max-width: 620px;
+
+  margin-top: 16px;
+
+  color: #4b4538;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      13px,
+      1.4vw,
+      16px
+    );
+
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+
+.human-one-message__form {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    22px
+    20px;
+}
+
+
+.human-one-message__form label {
+  display: grid;
+
+  gap: 8px;
+}
+
+
+.human-one-message__form label > span {
+  color: #342f27;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+
+.human-one-message__wide-field {
+  grid-column:
+    1 / -1;
+}
+
+
+.human-one-message__form input,
+.human-one-message__form textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 0;
+  border-bottom:
+    2px solid
+    rgba(48, 43, 34, 0.58);
+
+  border-radius: 0;
+
+  padding:
+    10px
+    4px;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  color: #171612;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  outline: none;
+}
+
+
+.human-one-message__form textarea {
+  min-height: 180px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+
+.human-one-message__form input:focus,
+.human-one-message__form textarea:focus {
+  border-bottom-color: #792f26;
+
+  background:
+    rgba(255, 255, 255, 0.24);
+
+  box-shadow:
+    inset 0 -3px 0
+    rgba(121, 47, 38, 0.12);
+}
+
+
+.human-one-message__footer {
+  grid-column:
+    1 / -1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-top: 6px;
+}
+
+
+.human-one-message__status {
+  flex: 1;
+
+  min-height: 18px;
+
+  margin: 0;
+
+  color: #5b342d;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.human-one-message__submit {
+  flex: 0 0 auto;
+
+  padding:
+    13px
+    19px;
+
+  border:
+    2px solid
+    #27231b;
+
+  background: #6f2d25;
+
+  color: #eee4cb;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  box-shadow:
+    4px 4px 0
+    #28251e;
+
+  cursor: pointer;
+
+  transform:
+    rotate(-0.7deg);
+}
+
+
+.human-one-message__submit:hover {
+  transform:
+    translateY(-2px)
+    rotate(-0.7deg);
+}
+
+
+.human-one-message__submit:active {
+  transform:
+    translate(
+      2px,
+      2px
+    )
+    rotate(-0.7deg);
+
+  box-shadow:
+    2px 2px 0
+    #28251e;
+}
+
+
+.human-one-message__stamp {
+  position: absolute;
+
+  right: -16px;
+  top: -24px;
+
+  z-index: 5;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 92px;
+  aspect-ratio: 1;
+
+  border:
+    4px double
+    rgba(123, 43, 38, 0.72);
+
+  border-radius: 50%;
+
+  color:
+    rgba(123, 43, 38, 0.82);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 15px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  transform:
+    rotate(12deg);
+}
+
+
+.human-one-message__tape {
+  position: absolute;
+
+  z-index: 6;
+
+  width: 110px;
+  height: 28px;
+
+  background:
+    rgba(184, 170, 127, 0.64);
+
+  box-shadow:
+    inset 0 0 8px
+    rgba(255, 255, 255, 0.13);
+
+  pointer-events: none;
+}
+
+
+.human-one-message__tape--left {
+  left: -28px;
+  top: 8%;
+
+  transform:
+    rotate(-28deg);
+}
+
+
+.human-one-message__tape--right {
+  right: -30px;
+  bottom: 12%;
+
+  transform:
+    rotate(24deg);
+}
+
+
+@media (
+  max-width: 700px
+) {
+  .human-one-message {
+    padding:
+      76px
+      12px
+      30px;
+  }
+
+
+  .human-one-message__paper {
+    padding:
+      34px
+      20px
+      32px;
+  }
+
+
+  .human-one-message__form {
+    grid-template-columns: 1fr;
+  }
+
+
+  .human-one-message__wide-field {
+    grid-column: auto;
+  }
+
+
+  .human-one-message__footer {
+    grid-column: auto;
+
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+
+  .human-one-message__submit {
+    width: 100%;
+  }
+
+
+  .human-one-message__stamp {
+    right: 4px;
+    top: -42px;
+
+    width: 70px;
+
+    font-size: 12px;
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-message__back,
+  .human-one-message__submit {
+    transition: none;
+  }
+}

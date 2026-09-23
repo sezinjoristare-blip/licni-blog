@@ -1,0 +1,278 @@
+/* =====================================================
+   SARADNIK — PRIJAVA / REGISTRACIJA / PANEL
+   Stvarni naziv u projektu:
+   src/styles/ContributorSkate.css
+   ===================================================== */
+
+.contributor-auth,
+.contributor-panel {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  font-family:
+    "Courier New",
+    monospace;
+}
+
+.contributor-auth {
+  display: grid;
+  place-items: center;
+  padding: 28px 18px;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(207, 47, 37, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(216, 198, 57, 0.12),
+      transparent 28%
+    ),
+    #151515;
+  color: #eee8dc;
+}
+
+.contributor-auth__card {
+  width: min(620px, 100%);
+  padding: 34px;
+  box-sizing: border-box;
+  border: 3px solid #0c0c0c;
+  background: #d8d1c3;
+  color: #151515;
+  box-shadow:
+    12px 13px 0 rgba(0, 0, 0, 0.55);
+}
+
+.contributor-auth__eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.contributor-auth h1 {
+  margin: 0 0 26px;
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.contributor-auth__identity {
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  border: 2px solid #111;
+  background: #d4c53b;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.38);
+}
+
+.contributor-auth__identity span,
+.contributor-auth__identity strong {
+  display: block;
+}
+
+.contributor-auth__identity span {
+  margin-bottom: 6px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+}
+
+.contributor-auth__identity strong {
+  font-size: 1.05rem;
+}
+
+.contributor-auth__copy {
+  margin: 0 0 22px;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.contributor-auth__form {
+  display: grid;
+  gap: 16px;
+}
+
+.contributor-auth__form label {
+  display: grid;
+  gap: 7px;
+  font-weight: 900;
+}
+
+.contributor-auth__form input {
+  width: 100%;
+  padding: 11px 12px;
+  box-sizing: border-box;
+  border: 2px solid #111;
+  border-radius: 0;
+  background: #f5f0e6;
+  color: #111;
+  font: inherit;
+}
+
+.contributor-auth__form button,
+.contributor-panel__header button,
+.contributor-panel__header a {
+  border: 2px solid #0d0d0d;
+  background: #d2c53b;
+  color: #111;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.32);
+}
+
+.contributor-auth__form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contributor-auth__error,
+.contributor-auth__success,
+.contributor-auth__state {
+  margin: 14px 0;
+  padding: 12px 14px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.contributor-auth__error {
+  background: #7e211c;
+  color: #fff3e7;
+}
+
+.contributor-auth__success {
+  background: #2f6036;
+  color: #f2f0df;
+}
+
+.contributor-auth__state {
+  background: #222;
+  color: #f5efe2;
+}
+
+.contributor-auth__footer {
+  margin: 22px 0 0;
+}
+
+.contributor-auth__footer a,
+.contributor-auth__link {
+  color: inherit;
+  font-weight: 900;
+}
+
+.contributor-auth__link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+
+/* =====================================================
+   PANEL
+   ===================================================== */
+
+.contributor-panel {
+  padding: 26px 18px 90px;
+  background:
+    repeating-linear-gradient(
+      92deg,
+      rgba(255, 255, 255, 0.015) 0 1px,
+      transparent 1px 6px
+    ),
+    #171717;
+  color: #eee8dc;
+}
+
+.contributor-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  width: min(1180px, 100%);
+  margin: 0 auto 34px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 2px solid #080808;
+  background: #292927;
+  box-shadow: 8px 9px 0 rgba(0, 0, 0, 0.45);
+}
+
+.contributor-panel__header p {
+  margin: 0 0 8px;
+  color: #d6c940;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.contributor-panel__header h1 {
+  margin: 0 0 10px;
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+  font-size: clamp(2.7rem, 7vw, 5.3rem);
+  line-height: 0.86;
+}
+
+.contributor-panel__header strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.contributor-panel__header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.contributor-panel__content {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.contributor-panel__state {
+  width: min(720px, calc(100% - 36px));
+  margin: 100px auto;
+  padding: 24px;
+  border: 2px solid #111;
+  background: #d4cec2;
+  color: #111;
+  text-align: center;
+  font-weight: 900;
+}
+
+.contributor-panel__progress {
+  margin: 0;
+  font-weight: 900;
+  color: #d4c640;
+}
+
+.contributor-panel__list-heading {
+  margin-top: 54px;
+}
+
+.contributor-panel__empty {
+  padding: 18px;
+  border: 2px dashed rgba(238, 232, 220, 0.35);
+}
+
+@media (max-width: 760px) {
+  .contributor-auth__card {
+    padding: 24px 20px;
+  }
+
+  .contributor-panel__header {
+    display: grid;
+  }
+
+  .contributor-panel__header-actions {
+    justify-content: flex-start;
+  }
+}

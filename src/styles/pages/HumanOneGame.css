@@ -1,0 +1,1829 @@
+/* =====================================================
+   FLIP CAT — STARTNI MENI
+   ===================================================== */
+
+.human-one-game {
+  position: fixed;
+
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #24251e 0%,
+      #10110f 48%,
+      #050505 100%
+    );
+
+  color: #1d2717;
+}
+
+
+.human-one-game__noise {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  opacity: 0.16;
+
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.025
+      ) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(
+        0,
+        0,
+        0,
+        0.035
+      ) 0 1px,
+      transparent 1px 4px
+    );
+}
+
+
+.human-one-game__machine {
+  position: relative;
+
+  z-index: 1;
+
+  width:
+    min(
+      94vw,
+      1120px,
+      126dvh
+    );
+
+  padding:
+    clamp(
+      12px,
+      1.7vw,
+      24px
+    );
+
+  box-sizing:
+    border-box;
+
+  border:
+    clamp(
+      5px,
+      0.65vw,
+      9px
+    )
+    solid
+    #171713;
+
+  border-radius:
+    clamp(
+      14px,
+      2vw,
+      28px
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      #4a4639,
+      #191914 42%,
+      #3c382e 75%,
+      #12120f
+    );
+
+  box-shadow:
+    0 32px 70px
+      rgba(
+        0,
+        0,
+        0,
+        0.58
+      ),
+    inset 0 0 0 2px
+      rgba(
+        225,
+        211,
+        158,
+        0.18
+      );
+
+  transform-origin:
+    center;
+
+  animation:
+    flip-cat-machine-boot
+    620ms
+    cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    )
+    both;
+}
+
+
+.human-one-game__bezel {
+  position: relative;
+
+  padding:
+    clamp(
+      10px,
+      1.4vw,
+      20px
+    );
+
+  border:
+    2px solid
+    rgba(
+      0,
+      0,
+      0,
+      0.9
+    );
+
+  border-radius:
+    clamp(
+      8px,
+      1.2vw,
+      18px
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      #282820,
+      #0c0c0a
+    );
+
+  box-shadow:
+    inset 0 0 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.9
+      );
+}
+
+
+.human-one-game__lcd {
+  position: relative;
+
+  isolation: isolate;
+
+  aspect-ratio:
+    1200 / 780;
+
+  overflow: hidden;
+
+  border:
+    3px solid
+    #10150c;
+
+  border-radius:
+    clamp(
+      4px,
+      0.6vw,
+      9px
+    );
+
+  background-color:
+    #7d8e5f;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(
+        52,
+        67,
+        40,
+        0.02
+      ),
+      rgba(
+        46,
+        61,
+        34,
+        0.16
+      )
+    ),
+    url(
+      "/images/human-one/game/flip-cat-menu-bg.webp"
+    );
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  box-shadow:
+    inset 0 0 32px
+      rgba(
+        16,
+        24,
+        10,
+        0.72
+      ),
+    0 0 20px
+      rgba(
+        150,
+        176,
+        99,
+        0.15
+      );
+
+  image-rendering:
+    pixelated;
+}
+
+
+.human-one-game__lcd::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 58%,
+      rgba(
+        87,
+        101,
+        62,
+        0.76
+      ) 70%,
+      rgba(
+        94,
+        108,
+        66,
+        0.92
+      ) 100%
+    );
+}
+
+
+.human-one-game__scanlines {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 8;
+
+  pointer-events: none;
+
+  opacity: 0.21;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 3px,
+      rgba(
+        18,
+        28,
+        13,
+        0.34
+      ) 4px
+    );
+}
+
+
+.human-one-game__screen-glare {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 9;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(
+        255,
+        255,
+        210,
+        0.08
+      ) 0%,
+      transparent 28%,
+      transparent 70%,
+      rgba(
+        255,
+        255,
+        220,
+        0.035
+      ) 100%
+    );
+
+  mix-blend-mode:
+    screen;
+}
+
+
+.human-one-game__header {
+  position: absolute;
+
+  z-index: 4;
+
+  top:
+    clamp(
+      14px,
+      2.5vw,
+      34px
+    );
+
+  right:
+    clamp(
+      18px,
+      4vw,
+      58px
+    );
+
+  display: flex;
+  align-items: baseline;
+
+  gap:
+    clamp(
+      8px,
+      1.3vw,
+      18px
+    );
+
+  color:
+    #24301b;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight: 900;
+
+  text-shadow:
+    1px 1px 0
+      rgba(
+        130,
+        147,
+        92,
+        0.5
+      );
+}
+
+
+.human-one-game__header span {
+  font-size:
+    clamp(
+      16px,
+      2vw,
+      30px
+    );
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.human-one-game__header small {
+  font-size:
+    clamp(
+      8px,
+      0.9vw,
+      13px
+    );
+
+  opacity: 0.72;
+}
+
+
+/* =====================================================
+   PLAYER + GLAVNI MENI
+   ===================================================== */
+
+.human-one-game__menu {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 7%;
+  top: 20%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    clamp(
+      3px,
+      0.55vw,
+      8px
+    );
+
+  width: 33%;
+}
+
+
+.human-one-game__player {
+  position: relative;
+
+  margin-bottom:
+    clamp(
+      3px,
+      0.55vw,
+      8px
+    );
+
+  padding:
+    clamp(
+      6px,
+      0.8vw,
+      10px
+    );
+
+  border:
+    2px solid
+    rgba(
+      39,
+      53,
+      27,
+      0.28
+    );
+
+  background:
+    rgba(
+      190,
+      203,
+      135,
+      0.27
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  color:
+    #26321d;
+}
+
+
+.human-one-game__player label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom:
+    clamp(
+      3px,
+      0.45vw,
+      6px
+    );
+
+  font-weight: 900;
+
+  font-size:
+    clamp(
+      9px,
+      1vw,
+      14px
+    );
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.human-one-game__player label small {
+  font-size:
+    0.72em;
+
+  opacity: 0.58;
+}
+
+
+.human-one-game__player input {
+  display: block;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding:
+    clamp(
+      4px,
+      0.55vw,
+      8px
+    )
+    clamp(
+      6px,
+      0.75vw,
+      10px
+    );
+
+  border: 0;
+
+  border-bottom:
+    2px solid
+    rgba(
+      38,
+      50,
+      29,
+      0.66
+    );
+
+  outline: none;
+
+  background:
+    rgba(
+      196,
+      210,
+      143,
+      0.46
+    );
+
+  color:
+    #213019;
+
+  caret-color:
+    #213019;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      13px,
+      1.55vw,
+      22px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.05em;
+
+  text-transform:
+    uppercase;
+
+  box-shadow:
+    inset 0 -7px 14px
+      rgba(
+        45,
+        58,
+        31,
+        0.07
+      );
+}
+
+
+.human-one-game__player input::placeholder {
+  color:
+    rgba(
+      38,
+      50,
+      29,
+      0.45
+    );
+}
+
+
+.human-one-game__player input:focus {
+  background:
+    rgba(
+      205,
+      219,
+      151,
+      0.62
+    );
+
+  box-shadow:
+    inset 0 -7px 14px
+      rgba(
+        45,
+        58,
+        31,
+        0.08
+      ),
+    0 0 0 2px
+      rgba(
+        38,
+        50,
+        29,
+        0.18
+      );
+}
+
+
+.human-one-game__connection {
+  margin:
+    5px
+    0
+    0;
+
+  font-size:
+    clamp(
+      7px,
+      0.72vw,
+      10px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+
+  opacity: 0.68;
+}
+
+
+.human-one-game__connection--error {
+  opacity: 0.9;
+
+  text-decoration:
+    underline;
+}
+
+
+.human-one-game__menu-button,
+.human-one-game__choice,
+.human-one-game__back-button {
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    #26321d;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight: 900;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  text-shadow:
+    1px 1px 0
+      rgba(
+        139,
+        153,
+        102,
+        0.55
+      );
+
+  transition:
+    transform 110ms ease,
+    background 110ms ease,
+    color 110ms ease,
+    filter 110ms ease,
+    opacity 110ms ease;
+}
+
+
+.human-one-game__menu-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height:
+    clamp(
+      27px,
+      4vw,
+      49px
+    );
+
+  padding:
+    0
+    clamp(
+      8px,
+      1.25vw,
+      16px
+    );
+
+  font-size:
+    clamp(
+      13px,
+      1.9vw,
+      27px
+    );
+
+  letter-spacing:
+    0.03em;
+}
+
+
+.human-one-game__menu-button::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 10%;
+
+  height: 1px;
+
+  opacity: 0.15;
+
+  background:
+    currentColor;
+}
+
+
+.human-one-game__menu-button small {
+  font-size:
+    0.48em;
+
+  letter-spacing:
+    0.08em;
+
+  opacity: 0.68;
+}
+
+
+.human-one-game__menu-button--primary {
+  background:
+    rgba(
+      190,
+      203,
+      135,
+      0.56
+    );
+
+  box-shadow:
+    inset 0 0 0 2px
+      rgba(
+        54,
+        69,
+        39,
+        0.22
+      );
+}
+
+
+.human-one-game__menu-button:hover,
+.human-one-game__menu-button:focus-visible,
+.human-one-game__choice:hover,
+.human-one-game__choice:focus-visible,
+.human-one-game__back-button:hover,
+.human-one-game__back-button:focus-visible {
+  outline: none;
+
+  background:
+    rgba(
+      194,
+      207,
+      139,
+      0.55
+    );
+
+  transform:
+    translateX(
+      5px
+    );
+}
+
+
+.human-one-game__menu-button:active,
+.human-one-game__choice:active,
+.human-one-game__back-button:active {
+  transform:
+    translateX(
+      8px
+    )
+    scale(
+      0.985
+    );
+}
+
+
+.human-one-game__menu-button:disabled {
+  opacity: 0.32;
+
+  cursor: not-allowed;
+
+  filter:
+    grayscale(
+      0.4
+    );
+}
+
+
+.human-one-game__menu-button:disabled:hover,
+.human-one-game__menu-button:disabled:active {
+  background:
+    rgba(
+      190,
+      203,
+      135,
+      0.56
+    );
+
+  transform:
+    none;
+}
+
+
+/* =====================================================
+   PODMENIJI
+   ===================================================== */
+
+.human-one-game__panel {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 7%;
+  top: 22%;
+
+  width: 34%;
+
+  padding:
+    clamp(
+      8px,
+      1.2vw,
+      16px
+    );
+
+  box-sizing:
+    border-box;
+
+  background:
+    rgba(
+      128,
+      145,
+      91,
+      0.42
+    );
+
+  border:
+    2px solid
+    rgba(
+      39,
+      53,
+      27,
+      0.5
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  color:
+    #26321d;
+}
+
+
+.human-one-game__panel h1 {
+  margin:
+    0
+    0
+    clamp(
+      8px,
+      1.3vw,
+      16px
+    );
+
+  font-size:
+    clamp(
+      16px,
+      2vw,
+      29px
+    );
+
+  line-height: 1;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.human-one-game__difficulty-list {
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    clamp(
+      4px,
+      0.7vw,
+      8px
+    );
+}
+
+
+.human-one-game__choice {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-height:
+    clamp(
+      31px,
+      4vw,
+      48px
+    );
+
+  padding:
+    0
+    8px;
+
+  font-size:
+    clamp(
+      14px,
+      1.7vw,
+      24px
+    );
+}
+
+
+.human-one-game__choice--active {
+  background:
+    rgba(
+      194,
+      207,
+      139,
+      0.48
+    );
+}
+
+
+.human-one-game__difficulty-note {
+  margin:
+    clamp(
+      8px,
+      1vw,
+      12px
+    )
+    0
+    0;
+
+  font-size:
+    clamp(
+      8px,
+      0.9vw,
+      13px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+
+  opacity: 0.66;
+}
+
+
+.human-one-game__back-button {
+  margin-top:
+    clamp(
+      10px,
+      1.4vw,
+      18px
+    );
+
+  padding:
+    7px
+    9px;
+
+  font-size:
+    clamp(
+      11px,
+      1.3vw,
+      18px
+    );
+}
+
+
+/* =====================================================
+   TOP 5
+   ===================================================== */
+
+.human-one-game__scores {
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    clamp(
+      3px,
+      0.45vw,
+      6px
+    );
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style:
+    none;
+}
+
+
+.human-one-game__scores li {
+  display: grid;
+
+  grid-template-columns:
+    2em
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items: baseline;
+
+  gap: 8px;
+
+  padding:
+    3px
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      38,
+      50,
+      29,
+      0.17
+    );
+
+  font-size:
+    clamp(
+      10px,
+      1.15vw,
+      16px
+    );
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-game__scores strong {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.human-one-game__scores b {
+  font-weight: 900;
+
+  text-align:
+    right;
+}
+
+
+.human-one-game__empty {
+  margin:
+    clamp(
+      18px,
+      3vw,
+      40px
+    )
+    0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      13px,
+      1.6vw,
+      22px
+    );
+
+  font-weight: 900;
+}
+
+
+/* =====================================================
+   READY
+   ===================================================== */
+
+.human-one-game__panel--ready {
+  text-align:
+    center;
+}
+
+
+.human-one-game__panel--ready p {
+  margin:
+    6px
+    0;
+
+  font-size:
+    clamp(
+      10px,
+      1.15vw,
+      16px
+    );
+}
+
+
+.human-one-game__ready-cat {
+  margin:
+    clamp(
+      10px,
+      1.6vw,
+      20px
+    )
+    auto;
+
+  font-size:
+    clamp(
+      28px,
+      4vw,
+      58px
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    -0.16em;
+}
+
+
+.human-one-game__ready-note {
+  font-weight: 900;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+/* =====================================================
+   CRT BOOT
+   ===================================================== */
+
+@keyframes flip-cat-machine-boot {
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        0.15
+      )
+      scaleY(
+        0.015
+      );
+
+    filter:
+      brightness(
+        2.4
+      );
+  }
+
+  38% {
+    opacity: 1;
+
+    transform:
+      scaleX(
+        1
+      )
+      scaleY(
+        0.03
+      );
+
+    filter:
+      brightness(
+        1.8
+      );
+  }
+
+  72% {
+    transform:
+      scaleX(
+        1
+      )
+      scaleY(
+        1.03
+      );
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(
+        1
+      );
+
+    filter:
+      brightness(
+        1
+      );
+  }
+}
+
+
+/* =====================================================
+   MOBILNI
+   ===================================================== */
+
+@media (
+  max-aspect-ratio:
+    4 / 5
+) {
+  .human-one-game__machine {
+    width:
+      min(
+        95vw,
+        720px
+      );
+  }
+
+
+  .human-one-game__lcd {
+    aspect-ratio:
+      4 / 5;
+
+    background-size:
+      auto
+      100%;
+
+    background-position:
+      32%
+      center;
+  }
+
+
+  .human-one-game__lcd::before {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 0 38%,
+        rgba(
+          87,
+          101,
+          62,
+          0.68
+        ) 52%,
+        rgba(
+          94,
+          108,
+          66,
+          0.94
+        ) 100%
+      );
+  }
+
+
+  .human-one-game__header {
+    top: 45%;
+
+    right: auto;
+
+    left: 10%;
+  }
+
+
+  .human-one-game__menu {
+    top: 52%;
+
+    right: 8%;
+
+    width: 84%;
+
+    gap: 2px;
+  }
+
+
+  .human-one-game__player {
+    margin-bottom: 2px;
+
+    padding: 6px 8px;
+  }
+
+
+  .human-one-game__player input {
+    font-size:
+      clamp(
+        14px,
+        4.2vw,
+        23px
+      );
+  }
+
+
+  .human-one-game__menu-button {
+    min-height:
+      clamp(
+        29px,
+        7.2vw,
+        46px
+      );
+
+    font-size:
+      clamp(
+        13px,
+        4vw,
+        23px
+      );
+  }
+
+
+  .human-one-game__panel {
+    top: 54%;
+
+    right: 8%;
+
+    width: 84%;
+  }
+
+
+  .human-one-game__panel h1 {
+    font-size:
+      clamp(
+        18px,
+        5.5vw,
+        30px
+      );
+  }
+
+
+  .human-one-game__choice {
+    min-height:
+      clamp(
+        29px,
+        7vw,
+        44px
+      );
+
+    font-size:
+      clamp(
+        15px,
+        4.5vw,
+        25px
+      );
+  }
+
+
+  .human-one-game__scores li {
+    font-size:
+      clamp(
+        11px,
+        3.4vw,
+        17px
+      );
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-game__machine {
+    animation:
+      none;
+  }
+
+
+  .human-one-game__menu-button,
+  .human-one-game__choice,
+  .human-one-game__back-button {
+    transition:
+      none;
+  }
+}
+/* =====================================================
+   FLIP CAT — MOBILE LANDSCAPE MENU FIX
+
+   Cilj:
+   - ceo meni staje u ekran;
+   - QUIT ostaje vidljiv;
+   - ne menjamo desktop;
+   - ne menjamo portrait gate.
+   ===================================================== */
+
+@media
+  (max-height: 520px)
+  and (orientation: landscape)
+  and (hover: none)
+  and (pointer: coarse) {
+
+  .human-one-game__menu {
+    top: 24%;
+
+    gap: 1px;
+  }
+
+
+  .human-one-game__player {
+    margin-bottom: 1px;
+
+    padding:
+      3px
+      6px;
+  }
+
+
+  .human-one-game__player label {
+    margin-bottom: 2px;
+
+    font-size:
+      clamp(
+        7px,
+        1.45vw,
+        10px
+      );
+  }
+
+
+  .human-one-game__player input {
+    padding:
+      3px
+      6px;
+
+    font-size:
+      clamp(
+        11px,
+        2vw,
+        15px
+      );
+  }
+
+
+  .human-one-game__menu-button {
+    min-height: 25px;
+
+    padding:
+      0
+      7px;
+
+    font-size:
+      clamp(
+        11px,
+        2.1vw,
+        16px
+      );
+
+    line-height: 1;
+  }
+
+
+  .human-one-game__menu-button small {
+    font-size: 0.46em;
+  }
+
+
+  .human-one-game__connection {
+    margin-top: 2px;
+
+    font-size: 7px;
+  }
+}
+/* =====================================================
+   FLIP CAT — CRT SHUTDOWN
+
+   Ista animacija kao boot,
+   samo puštena unazad.
+
+   Boot ostaje potpuno netaknut.
+   ===================================================== */
+
+@keyframes flip-cat-machine-shutdown {
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        0.15
+      )
+      scaleY(
+        0.015
+      );
+
+    filter:
+      brightness(
+        2.4
+      );
+  }
+
+
+  38% {
+    opacity: 1;
+
+    transform:
+      scaleX(
+        1
+      )
+      scaleY(
+        0.03
+      );
+
+    filter:
+      brightness(
+        1.8
+      );
+  }
+
+
+  72% {
+    transform:
+      scaleX(
+        1
+      )
+      scaleY(
+        1.03
+      );
+  }
+
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(
+        1
+      );
+
+    filter:
+      brightness(
+        1
+      );
+  }
+}
+
+
+/* =====================================================
+   KADA KLIKNEŠ QUIT
+
+   Novi naziv animacije garantuje da se animacija
+   stvarno pokrene iz početka, a reverse je pušta
+   od pune konzole nazad do CRT linije.
+   ===================================================== */
+
+.human-one-game__machine--closing {
+  pointer-events: none;
+
+  /*
+   * Gašenje više ne radi lokalna CSS animacija.
+   * Reverse tranziciju sada vodi
+   * gameConsoleTransition.js, jer konzola mora
+   * fizički da se vrati nazad u sobu.
+   */
+  animation:
+    none;
+}
+/* =====================================================
+   FLIP CAT — PRAVA FRONTALNA KONZOLA
+
+   Novi front-facing asset sada JE okvir menija.
+   HTML igrice leži samo preko njegovog ekrana.
+   ===================================================== */
+
+.human-one-game__machine {
+  width:
+    min(
+      98vw,
+      147dvh
+    ) !important;
+
+  aspect-ratio:
+    3 / 2;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    url(
+      "/images/human-one/game-console-transition.png"
+    )
+    center
+    center /
+    contain
+    no-repeat !important;
+
+  box-shadow:
+    none !important;
+
+  animation:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+/*
+ * Ovo je fizička rupa ekrana
+ * na frontalnom Gameboy assetu.
+ *
+ * Ako kasnije bude trebalo fino pomeranje,
+ * menjamo SAMO ova četiri broja.
+ */
+
+.human-one-game__bezel {
+  position:
+    absolute;
+
+  left:
+    31%;
+
+  top:
+    19.5%;
+
+  width:
+    41%;
+
+  height:
+    44.5%;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  overflow:
+    hidden;
+}
+
+
+.human-one-game__lcd {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  aspect-ratio:
+    auto !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    1.5%;
+
+  box-sizing:
+    border-box;
+}
+
+
+/*
+ * Stari boot/shutdown više ne pomeraju
+ * CELU konzolu.
+ *
+ * Nova transition logika pali/gasi samo LCD.
+ */
+
+.human-one-game__machine--closing {
+  pointer-events:
+    none;
+
+  animation:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+/* =====================================================
+   MOBILE / PORTRAIT OVERRIDE
+
+   Konzola uvek ostaje ista fizička konzola.
+   Ne pretvaramo njen ekran u 4:5.
+   ===================================================== */
+
+@media (
+  max-aspect-ratio:
+    4 / 5
+) {
+  .human-one-game__machine {
+    width:
+      min(
+        118vw,
+        205dvh
+      ) !important;
+
+    aspect-ratio:
+      3 / 2 !important;
+  }
+
+
+  .human-one-game__lcd {
+    width:
+      100% !important;
+
+    height:
+      100% !important;
+
+    aspect-ratio:
+      auto !important;
+
+    background-size:
+      cover !important;
+
+    background-position:
+      center center !important;
+  }
+}
+/* =====================================================
+   FLIP CAT — FINALNA VELIČINA KONZOLE
+   MORA BITI POSLEDNJI BLOK U FAJLU
+   ===================================================== */
+
+.human-one-game
+.human-one-game__machine[data-game-console-transition-target="game-console"] {
+  width:
+    min(
+      118vw,
+      205dvh
+    ) !important;
+
+  max-width:
+    none !important;
+
+  height:
+    auto !important;
+
+  aspect-ratio:
+    3 / 2 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    url(
+      "/images/human-one/game-console-transition.png"
+    )
+    center
+    center /
+    contain
+    no-repeat !important;
+
+  box-shadow:
+    none !important;
+
+  animation:
+    none !important;
+
+  transform:
+    none !important;
+}

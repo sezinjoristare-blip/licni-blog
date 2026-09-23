@@ -1,0 +1,2312 @@
+/* =====================================================
+   ČOVEK 1 — GLAVNA SOBA
+   ===================================================== */
+
+.human-one-room {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+
+.human-one-room::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -20px;
+
+  z-index: 0;
+
+  background-image:
+    url("/images/human-one/room-bg.png");
+
+  background-size: cover;
+
+  background-position:
+    center center;
+
+  background-repeat:
+    no-repeat;
+
+  filter:
+    blur(10px);
+
+  transform:
+    scale(1.03);
+
+  opacity: 0.72;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   ZAJEDNIČKI CANVAS
+   ===================================================== */
+
+.human-one-room__stage {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    min(
+      100vw,
+      150dvh
+    );
+
+  aspect-ratio: 3 / 2;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   POZADINA
+   ===================================================== */
+
+.human-one-room__background-picture {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+
+.human-one-room__background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   ZAJEDNIČKA PRAVILA ZA KLIKABILNE OBJEKTE
+   ===================================================== */
+
+.human-one-room__object {
+  position: absolute;
+
+  z-index: 10;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  appearance: none;
+
+  transform-origin: center;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+
+/*
+ * Touch browseri umeju da ostave plavi / sivi
+ * tap highlight oko dugmeta, naročito u landscape modu.
+ * Ovo važi za celu sobu bez obzira na širinu viewporta.
+ */
+.human-one-room button {
+  -webkit-tap-highlight-color:
+    transparent;
+
+  -webkit-touch-callout:
+    none;
+}
+
+
+.human-one-room button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+.human-one-room__object img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =====================================================
+   SIGNAL DA JE OBJEKAT KLIKABILAN
+   ===================================================== */
+
+.human-one-room__object:hover {
+  filter:
+    brightness(1.08)
+    drop-shadow(
+      0 0 8px
+      rgba(
+        225,
+        189,
+        92,
+        0.32
+      )
+    );
+}
+
+
+.human-one-room__object:active {
+  filter:
+    brightness(0.95);
+}
+
+
+/* =====================================================
+   DIGITALNI SAT — BRZE DOSKOČICE
+   ===================================================== */
+
+.human-one-room__clock {
+  left: 20%;
+  top: 0%;
+
+  width: 15%;
+
+  overflow: visible;
+}
+
+
+.human-one-room__clock-shell {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
+.human-one-room__clock-display {
+  position: absolute;
+
+  left: 7%;
+  top: 33%;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 85.4%;
+  height: 32%;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        10,
+        6,
+        28,
+        0.96
+      ),
+      rgba(
+        4,
+        2,
+        14,
+        0.98
+      )
+    );
+
+  box-shadow:
+    inset
+    0
+    0
+    12px
+    rgba(
+      0,
+      0,
+      0,
+      0.95
+    ),
+    inset
+    0
+    0
+    10px
+    rgba(
+      82,
+      220,
+      72,
+      0.18
+    );
+
+  pointer-events: none;
+}
+
+
+.human-one-room__seven-segment-clock {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 4%;
+
+  width: 86%;
+  height: 76%;
+}
+
+
+.human-one-room__seven-segment-clock--category {
+  width: 84%;
+  height: 74%;
+}
+
+
+.human-one-room__seven-segment-digit {
+  --segment-color: #78ff63;
+  --segment-glow: rgba(120, 255, 99, 0.96);
+  --segment-glow-soft: rgba(74, 220, 72, 0.52);
+  --segment-off: rgba(92, 210, 82, 0.09);
+  --digit-width: 17%;
+  --digit-height: 100%;
+  --segment-thickness: 15%;
+  --segment-slant: 18%;
+
+  position: relative;
+
+  flex: 0 0 var(--digit-width);
+
+  width: var(--digit-width);
+  height: var(--digit-height);
+}
+
+
+.human-one-room__seven-segment-digit--category {
+  --digit-width: 17.5%;
+  --segment-thickness: 16%;
+  --segment-slant: 19%;
+}
+
+
+.human-one-room__segment {
+  position: absolute;
+
+  opacity: 0.08;
+
+  background: var(--segment-off);
+
+  border-radius: 999px;
+
+  transition:
+    opacity 150ms ease,
+    box-shadow 150ms ease,
+    background 150ms ease;
+}
+
+
+.human-one-room__segment--on {
+  opacity: 1;
+
+  background: var(--segment-color);
+
+  box-shadow:
+    0 0 3px var(--segment-glow),
+    0 0 8px var(--segment-glow),
+    0 0 14px var(--segment-glow-soft);
+}
+
+
+.human-one-room__segment--a,
+.human-one-room__segment--d,
+.human-one-room__segment--g {
+  left: 50%;
+
+  width: 70%;
+  height: var(--segment-thickness);
+
+  transform:
+    translateX(-50%);
+
+  clip-path:
+    polygon(
+      var(--segment-slant) 0,
+      calc(100% - var(--segment-slant)) 0,
+      100% 50%,
+      calc(100% - var(--segment-slant)) 100%,
+      var(--segment-slant) 100%,
+      0 50%
+    );
+}
+
+
+.human-one-room__segment--a {
+  top: 0;
+}
+
+
+.human-one-room__segment--g {
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+.human-one-room__segment--d {
+  bottom: 0;
+}
+
+
+.human-one-room__segment--b,
+.human-one-room__segment--c,
+.human-one-room__segment--e,
+.human-one-room__segment--f {
+  width: var(--segment-thickness);
+  height: 39%;
+
+  clip-path:
+    polygon(
+      0 var(--segment-slant),
+      50% 0,
+      100% var(--segment-slant),
+      100% calc(100% - var(--segment-slant)),
+      50% 100%,
+      0 calc(100% - var(--segment-slant))
+    );
+}
+
+
+.human-one-room__segment--b,
+.human-one-room__segment--f {
+  top: 5%;
+}
+
+
+.human-one-room__segment--c,
+.human-one-room__segment--e {
+  bottom: 5%;
+}
+
+
+.human-one-room__segment--b,
+.human-one-room__segment--c {
+  right: 0;
+}
+
+
+.human-one-room__segment--e,
+.human-one-room__segment--f {
+  left: 0;
+}
+
+
+.human-one-room__seven-segment-colon {
+  display: flex;
+
+  flex: 0 0 6%;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 24%;
+
+  width: 6%;
+  height: 92%;
+}
+
+
+.human-one-room__seven-segment-colon-dot {
+  width: 52%;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+
+  background: #78ff63;
+
+  box-shadow:
+    0 0 4px rgba(120, 255, 99, 0.96),
+    0 0 10px rgba(74, 220, 72, 0.52);
+}
+
+
+.human-one-room__clock:hover {
+  transform:
+    translateY(-2px)
+    scale(1.025);
+
+  filter:
+    brightness(1.08)
+    drop-shadow(
+      0
+      0
+      9px
+      rgba(
+        255,
+        42,
+        33,
+        0.28
+      )
+    );
+}
+
+
+.human-one-room__clock:active {
+  transform:
+    translateY(1px)
+    scale(0.985);
+}
+
+
+/* =====================================================
+   SKEJT
+   ===================================================== */
+
+.human-one-room__skateboard {
+  left: 14%;
+  top: 60%;
+
+  width: 17.2%;
+
+  rotate: 9deg;
+}
+
+
+.human-one-room__skateboard:hover {
+  transform:
+    rotate(6deg)
+    scale(1.025);
+}
+
+
+.human-one-room__skateboard:active {
+  transform:
+    rotate(-6deg)
+    scale(0.985);
+}
+
+
+/* =====================================================
+   ZVUČNIK
+   ===================================================== */
+
+.human-one-room__boombox {
+  left: 66%;
+  top: 72%;
+
+  width: 25%;
+
+  overflow: visible;
+}
+
+
+.human-one-room__boombox:hover {
+  transform:
+    scale(1.025);
+}
+
+
+.human-one-room__boombox:active {
+  transform:
+    scale(0.985);
+}
+
+
+/* =====================================================
+   MUZIČKE NOTE — ZVUČNIK
+   ===================================================== */
+
+.human-one-room__notes {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+
+.human-one-room__notes i {
+  position: absolute;
+
+  left:
+    var(
+      --note-left
+    );
+
+  top: 20%;
+
+  color:
+    var(
+      --note-color
+    );
+
+  font-size:
+    var(
+      --note-size
+    );
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-style: normal;
+  font-weight: 900;
+
+  opacity: 0;
+
+  text-shadow:
+    0 0 6px
+    currentColor;
+
+  pointer-events: none;
+}
+
+
+.human-one-room__boombox:hover
+.human-one-room__notes i {
+  animation:
+    boombox-note-float
+    1.8s
+    ease-out
+    infinite;
+
+  animation-delay:
+    var(
+      --note-delay
+    );
+}
+
+
+/* =====================================================
+   PUTANJA NOTE
+   ===================================================== */
+
+@keyframes boombox-note-float {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        15px
+      )
+      scale(0.65)
+      rotate(0deg);
+  }
+
+
+  15% {
+    opacity: 1;
+  }
+
+
+  70% {
+    opacity: 0.9;
+  }
+
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        var(
+          --note-drift
+        ),
+        calc(
+          -1 *
+          var(
+            --note-rise
+          )
+        )
+      )
+      scale(1.25)
+      rotate(
+        var(
+          --note-rotate
+        )
+      );
+  }
+}
+
+
+/* =====================================================
+   GITARA
+   ===================================================== */
+
+.human-one-room__guitar {
+  left: 61%;
+  top: -6%;
+
+  width: 28%;
+}
+
+
+.human-one-room__guitar:hover {
+  transform:
+    scale(1.02);
+}
+
+
+.human-one-room__guitar:active {
+  transform:
+    scale(0.985);
+}
+
+
+/* =====================================================
+   POSTERI
+   ===================================================== */
+
+.human-one-room__posters {
+  left: 5.5%;
+  top: 22%;
+
+  width: 29%;
+
+  rotate: 19deg;
+}
+
+
+.human-one-room__posters:hover {
+  transform:
+    scale(1.02);
+}
+
+
+.human-one-room__posters:active {
+  transform:
+    scale(0.985);
+}
+
+
+/* =====================================================
+   UNWANTED PLAKAT
+   ===================================================== */
+
+/*
+ * NAMERNO JE MNOGO VEĆI NEGO PRE.
+ *
+ * Cilj je raspored sa originalne skice:
+ * veliki centralni plakat koji dominira zidom.
+ */
+
+.human-one-room__profile-poster {
+  left: 31%;
+  top: 10%;
+
+  width: 36%;
+
+  overflow: visible;
+}
+
+
+/* =====================================================
+   OSNOVA PLAKATA
+   ===================================================== */
+
+.human-one-room__profile-poster
+.human-one-room__profile-poster-frame {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
+/* =====================================================
+   DINAMIČKA FOTOGRAFIJA
+   ===================================================== */
+
+/*
+ * Fotografija iz admina sada popunjava
+ * mnogo veći pravougaonik na plakatu,
+ * približno kao na zaključanoj skici.
+ */
+
+.human-one-room__profile-poster
+.human-one-room__profile-photo {
+  position: absolute;
+
+  left: 19%;
+  top: 23.2%;
+
+  z-index: 2;
+
+  width: 64%;
+  height: 42.5%;
+
+  object-fit: cover;
+
+  object-position:
+    center center;
+
+  filter:
+    saturate(0.72)
+    contrast(1.08)
+    brightness(0.86);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =====================================================
+   CRT / VHS PREKO FOTOGRAFIJE
+   ===================================================== */
+
+.human-one-room__profile-scanlines {
+  position: absolute;
+
+  left: 20.5%;
+  top: 23.2%;
+
+  z-index: 3;
+
+  width: 69.5%;
+  height: 42.5%;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 3px,
+      rgba(
+        20,
+        20,
+        20,
+        0.24
+      ) 4px
+    );
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   DINAMIČKO IME
+   ===================================================== */
+
+/*
+ * Ime više ne stoji preko sredine fotografije.
+ * Spušteno je u NAME deo plakata.
+ */
+
+.human-one-room__profile-name {
+  position: absolute;
+
+  left: 18%;
+  top: 69%;
+
+  z-index: 4;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 58%;
+  min-height: 4.3%;
+
+  padding:
+    0
+    1%;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      194,
+      180,
+      148,
+      0.96
+    );
+
+  color:
+    #171613;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    clamp(
+      8px,
+      0.9vw,
+      14px
+    );
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+.human-one-room__profile-poster:hover {
+  transform:
+    scale(1.018);
+}
+
+
+.human-one-room__profile-poster:active {
+  transform:
+    scale(0.985);
+}
+
+
+/* =====================================================
+   POŠTANSKO SANDUČE — POŠALJI MI PORUKU
+   ===================================================== */
+
+/*
+ * Novi predmet je potpuno nezavisan od postojećih
+ * elemenata sobe. Za fino pomeranje menjamo samo
+ * left / top / width u ovom bloku.
+ */
+.human-one-room__mailbox {
+  left: 52%;
+  top: 72%;
+
+  width: 11%;
+}
+
+
+.human-one-room__mailbox:hover {
+  transform:
+    translateY(-3px)
+    rotate(-1deg)
+    scale(1.025);
+}
+
+
+.human-one-room__mailbox:active {
+  transform:
+    translateY(1px)
+    scale(0.985);
+}
+
+
+/* =====================================================
+   RETRO KONZOLA — FLIP CAT
+   ===================================================== */
+
+/*
+ * Ovo je potpuno nezavisan predmet.
+ * Ako hoćeš ručno fino nameštanje, menjaš samo:
+ * left / top / width.
+ */
+.human-one-room__game-console {
+  left: 34%;
+  top: 80%;
+
+  width: 17%;
+
+  rotate: -7deg;
+
+  overflow: visible;
+}
+
+
+.human-one-room__game-console-shell {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+
+/*
+ * Transparentni WebP sadrži samo upaljeni ekran.
+ * Pošto je istih proporcija kao konzola, leži tačno preko nje.
+ */
+.human-one-room__game-console-screen {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  width: 100%;
+  height: auto;
+
+  opacity: 0;
+
+  transform-origin:
+    50% 44%;
+
+  transform:
+    scaleY(0.015);
+
+  filter:
+    brightness(3.4)
+    contrast(1.18)
+    saturate(0.72);
+
+  transition:
+    opacity 160ms ease,
+    transform 180ms ease;
+
+  pointer-events: none;
+}
+
+
+.human-one-room__game-console:hover {
+  transform:
+    translateY(-2px)
+    scale(1.025);
+}
+
+
+.human-one-room__game-console:hover
+.human-one-room__game-console-screen {
+  animation:
+    human-one-game-console-crt-on
+    720ms
+    cubic-bezier(
+      0.18,
+      0.78,
+      0.18,
+      1
+    )
+    forwards;
+}
+
+
+.human-one-room__game-console:active {
+  transform:
+    translateY(1px)
+    scale(0.985);
+}
+
+
+@keyframes human-one-game-console-crt-on {
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleY(0.01);
+
+    filter:
+      brightness(5)
+      contrast(1.35)
+      saturate(0.35);
+  }
+
+
+  12% {
+    opacity: 0.96;
+
+    transform:
+      scaleY(0.018);
+  }
+
+
+  28% {
+    opacity: 1;
+
+    transform:
+      scaleY(0.075);
+
+    filter:
+      brightness(3.2)
+      contrast(1.3)
+      saturate(0.5);
+  }
+
+
+  52% {
+    opacity: 0.82;
+
+    transform:
+      scaleY(0.66);
+  }
+
+
+  72% {
+    opacity: 1;
+
+    transform:
+      scaleY(1.045);
+
+    filter:
+      brightness(1.45)
+      contrast(1.16)
+      saturate(0.82);
+  }
+
+
+  86% {
+    transform:
+      scaleY(0.975);
+  }
+
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scaleY(1);
+
+    filter:
+      brightness(1)
+      contrast(1)
+      saturate(1);
+  }
+}
+
+
+/* =====================================================
+   TASTATURA
+   ===================================================== */
+
+.human-one-room__object:focus-visible {
+  outline:
+    3px solid
+    rgba(
+      238,
+      218,
+      140,
+      0.9
+    );
+
+  outline-offset: 5px;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-room__object {
+    transition: none;
+  }
+
+  .human-one-room__game-console-screen {
+    transition: none;
+  }
+
+  .human-one-room__game-console:hover
+  .human-one-room__game-console-screen {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+  }
+}
+
+
+/* =====================================================
+   MOBILE CATEGORY UI — DESKTOP JE SKRIVEN
+   ===================================================== */
+
+.human-one-room__category-button,
+.human-one-room__category-picker {
+  display: none;
+}
+
+
+/* =====================================================
+   SFX ON / OFF
+   ===================================================== */
+
+.human-one-room__sound {
+  position: absolute;
+
+  left: 1.5%;
+  bottom: 2%;
+
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    7px
+    12px;
+
+  border:
+    1px solid
+    rgba(
+      225,
+      215,
+      185,
+      0.55
+    );
+
+  background:
+    rgba(
+      20,
+      20,
+      17,
+      0.88
+    );
+
+  color:
+    #d8d0b5;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.human-one-room__sound span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background:
+    #5c5c4b;
+}
+
+
+.human-one-room__sound--on span {
+  background:
+    #8abf34;
+
+  box-shadow:
+    0 0 7px
+    rgba(
+      138,
+      191,
+      52,
+      0.8
+    );
+}
+
+
+.human-one-room__sound strong {
+  font-weight: 700;
+}
+/* =====================================================
+   BACK
+   ===================================================== */
+
+.human-one-room__back {
+  left: 5%;
+  top: 1%;
+
+  width: 12%;
+}
+
+
+.human-one-room__back:hover {
+  transform:
+    translateX(-4px)
+    scale(1.035);
+}
+
+
+.human-one-room__back:active {
+  transform:
+    translateX(-8px)
+    scale(0.97);
+}
+
+/* =====================================================
+   MOBILE — POSEBNA USPRAVNA SOBA
+   ===================================================== */
+
+@media (max-width: 700px) {
+  .human-one-room {
+    width: 100vw;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #111;
+  }
+
+
+  .human-one-room::before {
+    inset: -12px;
+
+    background-image:
+      url("/images/human-one/room-bg-mobile.png");
+
+    background-position:
+      center center;
+
+    filter:
+      blur(8px);
+
+    transform:
+      scale(1.04);
+
+    opacity: 0.78;
+  }
+
+
+  .human-one-room__stage {
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    aspect-ratio: auto;
+
+    transform: none;
+
+    overflow: hidden;
+  }
+
+
+  .human-one-room__background-picture {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .human-one-room__background {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position:
+      center center;
+  }
+
+
+  /* ===================================================
+     MOBILE — GORNJE KONTROLE
+     =================================================== */
+
+  .human-one-room__back {
+    left: 3%;
+    top:
+      max(
+        10px,
+        env(safe-area-inset-top)
+      );
+
+    z-index: 70;
+
+    width: 20%;
+  }
+
+
+  .human-one-room__category-button {
+    position: absolute;
+
+    left: auto;
+
+    right:
+      max(
+        12px,
+        env(
+          safe-area-inset-right
+        )
+      );
+
+    top:
+      max(
+        10px,
+        env(
+          safe-area-inset-top
+        )
+      );
+
+    z-index: 70;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    border:
+      1px solid
+      rgba(
+        230,
+        218,
+        184,
+        0.46
+      );
+
+    background:
+      rgba(
+        18,
+        17,
+        14,
+        0.68
+      );
+
+    color:
+      #e5dcc1;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    box-shadow:
+      0 4px 13px
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      );
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+    backdrop-filter:
+      blur(4px);
+
+    -webkit-backdrop-filter:
+      blur(4px);
+  }
+
+
+  .human-one-room__category-button span {
+    display: block;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    transform:
+      translateY(-1px);
+  }
+
+
+  /* ===================================================
+     MOBILE — RASPORED KLIKABILNIH ELEMENATA
+     =================================================== */
+
+  .human-one-room__clock {
+    left: 64%;
+    top: 13%;
+
+    rotate: 9deg;
+
+    width: 22%;
+
+    z-index: 20;
+  }
+
+
+  .human-one-room__seven-segment-clock--room {
+    gap: 3.5%;
+  }
+
+
+  .human-one-room__seven-segment-digit--room {
+    --digit-width: 17.4%;
+    --segment-thickness: 16%;
+  }
+
+
+  .human-one-room__profile-poster {
+    left: -1%;
+    top: 29%;
+
+    width: 60%;
+  }
+
+
+  .human-one-room__posters {
+    left: 3%;
+    top: 14%;
+
+    width: 60%;
+
+    rotate: 11deg;
+  }
+
+
+  .human-one-room__guitar {
+    left: 50%;
+    top: 20%;
+
+    width: 55%;
+
+    rotate: 3deg;
+  }
+
+
+  .human-one-room__skateboard {
+    left: -3%;
+    top: 63%;
+
+    width: 36%;
+
+    rotate: 15deg;
+  }
+
+
+  .human-one-room__mailbox {
+    left: 75%;
+    top: 80%;
+
+    width: 25%;
+  }
+
+
+  .human-one-room__game-console {
+    left: 50%;
+    top: 61%;
+
+    width: 35%;
+
+    rotate: -10deg;
+  }
+
+
+  .human-one-room__boombox {
+    left: 27%;
+    top: 72%;
+
+    width: 54%;
+  }
+
+
+  .human-one-room__boombox-frequency {
+    min-width: 28px !important;
+
+    padding:
+      1px
+      4px
+      2px !important;
+
+    font-size:
+      clamp(
+        6px,
+        2vw,
+        9px
+      ) !important;
+  }
+
+
+  .human-one-room__sound {
+    left: 3%;
+    bottom:
+      max(
+        10px,
+        env(safe-area-inset-bottom)
+      );
+
+    z-index: 75;
+
+    gap: 5px;
+
+    padding:
+      6px
+      9px;
+
+    font-size: 10px;
+  }
+
+
+  .human-one-room__sound span {
+    width: 7px;
+    height: 7px;
+  }
+
+
+  /* ===================================================
+     MOBILE — HORIZONTALNI IZBOR KATEGORIJE
+     =================================================== */
+
+  .human-one-room__category-picker {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 120;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          11,
+          10,
+          8,
+          0.91
+        ),
+        rgba(
+          14,
+          12,
+          9,
+          0.86
+        )
+      );
+
+    backdrop-filter:
+      blur(7px);
+
+    -webkit-backdrop-filter:
+      blur(7px);
+  }
+
+
+  .human-one-room__category-picker-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    min-height: 58px;
+
+    padding:
+      max(
+        12px,
+        env(safe-area-inset-top)
+      )
+      14px
+      8px;
+
+    box-sizing: border-box;
+  }
+
+
+  .human-one-room__category-picker-top p {
+    margin: 0;
+
+    color:
+      rgba(
+        226,
+        216,
+        188,
+        0.72
+      );
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      clamp(
+        8px,
+        2.6vw,
+        11px
+      );
+
+    font-weight: 700;
+
+    letter-spacing:
+      0.06em;
+  }
+
+
+  .human-one-room__category-close {
+    padding:
+      7px
+      10px;
+
+    border:
+      1px solid
+      rgba(
+        226,
+        216,
+        188,
+        0.55
+      );
+
+    background:
+      rgba(
+        15,
+        14,
+        12,
+        0.9
+      );
+
+    color:
+      #e2d8bc;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      10px;
+
+    font-weight: 900;
+
+    letter-spacing:
+      0.05em;
+
+    cursor: pointer;
+  }
+
+
+  .human-one-room__category-track {
+    flex:
+      1
+      1
+      auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11vw;
+
+    width: 100%;
+
+    padding:
+      18px
+      17vw
+      max(
+        34px,
+        env(safe-area-inset-bottom)
+      );
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type:
+      x mandatory;
+
+    scroll-padding-inline:
+      17vw;
+
+    overscroll-behavior-x:
+      contain;
+
+    scrollbar-width: none;
+
+    touch-action:
+      pan-x;
+  }
+
+
+  .human-one-room__category-track::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .human-one-room__category-card {
+    flex:
+      0
+      0
+      66vw;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    min-width: 0;
+    height:
+      min(
+        62dvh,
+        520px
+      );
+
+    padding:
+      24px
+      18px;
+
+    box-sizing: border-box;
+
+    border:
+      1px solid
+      rgba(
+        224,
+        211,
+        174,
+        0.48
+      );
+
+    background:
+      rgba(
+        22,
+        19,
+        15,
+        0.76
+      );
+
+    box-shadow:
+      0 18px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      );
+
+    color:
+      #e9dfc3;
+
+    scroll-snap-align:
+      center;
+
+    scroll-snap-stop:
+      always;
+
+    cursor: pointer;
+  }
+
+
+  .human-one-room__category-card > span:first-child {
+    flex:
+      0
+      0
+      auto;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size:
+      clamp(
+        1rem,
+        5vw,
+        1.45rem
+      );
+
+    font-weight: 900;
+
+    letter-spacing:
+      0.06em;
+
+    text-align: center;
+
+    text-shadow:
+      0 2px 7px
+      rgba(
+        0,
+        0,
+        0,
+        0.85
+      );
+  }
+
+
+  .human-one-room__category-card > img {
+    display: block;
+
+    width: 100%;
+    height: 78%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+      drop-shadow(
+        0 14px 17px
+        rgba(
+          0,
+          0,
+          0,
+          0.48
+        )
+      );
+  }
+
+
+  .human-one-room__category-clock {
+    position: relative;
+
+    display: block;
+
+    width:
+      min(
+        100%,
+        270px
+      );
+
+    margin: auto;
+
+    pointer-events: none;
+  }
+
+
+  .human-one-room__category-clock > img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    filter:
+      drop-shadow(
+        0 14px 17px
+        rgba(
+          0,
+          0,
+          0,
+          0.48
+        )
+      );
+  }
+
+
+  .human-one-room__category-clock-display {
+    position: absolute;
+
+    left: 27.3%;
+    top: 39.5%;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 50.4%;
+    height: 35.5%;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          10,
+          6,
+          28,
+          0.97
+        ),
+        rgba(
+          4,
+          2,
+          14,
+          0.99
+        )
+      );
+
+    box-shadow:
+      inset
+      0
+      0
+      8px
+      rgba(
+        0,
+        0,
+        0,
+        0.9
+      ),
+      inset
+      0
+      0
+      8px
+      rgba(
+        82,
+        220,
+        72,
+        0.2
+      );
+
+    pointer-events: none;
+  }
+
+
+  .human-one-room__category-card--profile {
+    justify-content:
+      flex-start;
+  }
+
+
+  .human-one-room__category-profile {
+    position: relative;
+
+    display: block;
+
+    width:
+      min(
+        100%,
+        235px
+      );
+
+    aspect-ratio:
+      0.73;
+
+    margin: auto;
+  }
+
+
+  .human-one-room__category-profile-frame {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+  }
+
+
+  .human-one-room__category-profile-photo {
+    position: absolute;
+
+    left: 19%;
+    top: 23.2%;
+
+    z-index: 2;
+
+    width: 64%;
+    height: 42.5%;
+
+    object-fit: cover;
+
+    object-position:
+      center center;
+
+    filter:
+      saturate(0.72)
+      contrast(1.08)
+      brightness(0.86);
+
+    pointer-events: none;
+  }
+}
+
+
+/* =====================================================
+   MOBILE TOUCH — NE ZADRŽAVAJ DESKTOP HOVER
+   ===================================================== */
+
+@media (hover: none),
+(pointer: coarse) {
+  .human-one-room button {
+    -webkit-tap-highlight-color:
+      transparent;
+
+    -webkit-touch-callout:
+      none;
+  }
+
+
+  .human-one-room__object:hover {
+    filter: none;
+  }
+
+
+  .human-one-room__boombox:not(
+    .human-one-room__boombox--touch-playing
+  ):hover
+  .human-one-room__notes i {
+    animation: none;
+  }
+
+
+  .human-one-room__game-console:not(
+    .human-one-room__game-console--touch-active
+  ):hover
+  .human-one-room__game-console-screen {
+    animation: none;
+
+    opacity: 0;
+
+    transform:
+      scaleY(0.015);
+  }
+
+
+  .human-one-room__skateboard:hover,
+  .human-one-room__boombox:hover,
+  .human-one-room__guitar:hover,
+  .human-one-room__posters:hover,
+  .human-one-room__profile-poster:hover,
+  .human-one-room__mailbox:hover,
+  .human-one-room__clock:hover,
+  .human-one-room__game-console:hover,
+  .human-one-room__back:hover {
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   MOBILE — ZVUČNIK NA DRŽANJE
+   ===================================================== */
+
+@media (pointer: coarse) {
+  .human-one-room__boombox {
+    touch-action: none;
+
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+
+  .human-one-room__boombox--touch-playing {
+    filter:
+      brightness(1.08)
+      drop-shadow(
+        0 0 10px
+        rgba(
+          225,
+          189,
+          92,
+          0.34
+        )
+      );
+  }
+
+
+  .human-one-room__boombox.human-one-room__boombox--touch-playing
+  .human-one-room__notes i {
+    animation:
+      boombox-note-float
+      1.8s
+      ease-out
+      infinite;
+
+    animation-delay:
+      var(
+        --note-delay
+      );
+  }
+
+
+  .human-one-room button {
+    -webkit-tap-highlight-color:
+      transparent;
+  }
+
+
+  .human-one-room button:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* =====================================================
+   MOBILE — FLIP CAT KONZOLA NA DRŽANJE
+   ===================================================== */
+
+@media (pointer: coarse) {
+  .human-one-room__game-console {
+    touch-action: none;
+
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+
+  .human-one-room__game-console.human-one-room__game-console--touch-active
+  .human-one-room__game-console-screen {
+    animation:
+      human-one-game-console-crt-on
+      720ms
+      cubic-bezier(
+        0.18,
+        0.78,
+        0.18,
+        1
+      )
+      forwards;
+  }
+}
+
+
+@media (pointer: coarse)
+and (
+  prefers-reduced-motion: reduce
+) {
+  .human-one-room__game-console.human-one-room__game-console--touch-active
+  .human-one-room__game-console-screen {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+  }
+}
+
+/* =====================================================
+   MOBILE — DRŽANJE = DESKTOP HOVER
+
+   Skejt, gitara, posteri i UNWANTED dobijaju
+   isti vizuelni feedback koji imaju na desktopu
+   dok ih korisnik drži prstom.
+   ===================================================== */
+
+@media (pointer: coarse) {
+  .human-one-room__skateboard,
+  .human-one-room__guitar,
+  .human-one-room__posters,
+  .human-one-room__profile-poster {
+    touch-action: none;
+
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+
+  .human-one-room__object.human-one-room__touch-hover-active {
+    filter:
+      brightness(1.08)
+      drop-shadow(
+        0 0 8px
+        rgba(
+          225,
+          189,
+          92,
+          0.32
+        )
+      );
+  }
+
+
+  .human-one-room__skateboard.human-one-room__touch-hover-active {
+    transform:
+      rotate(6deg)
+      scale(1.025);
+  }
+
+
+  .human-one-room__guitar.human-one-room__touch-hover-active {
+    transform:
+      scale(1.02);
+  }
+
+
+  .human-one-room__posters.human-one-room__touch-hover-active {
+    transform:
+      scale(1.02);
+  }
+
+
+  .human-one-room__profile-poster.human-one-room__touch-hover-active {
+    transform:
+      scale(1.018);
+  }
+}
+

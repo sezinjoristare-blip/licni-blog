@@ -1,0 +1,2069 @@
+/* =====================================================
+   AKC OBALA — FIZIČKA SVESKA / READER
+   ===================================================== */
+
+.obala-notebook-reader {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  width: 100vw;
+
+  height: 100dvh;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  padding:
+    58px
+    22px
+    18px;
+
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(
+        110,
+        70,
+        38,
+        0.2
+      ),
+      transparent 44%
+    ),
+    linear-gradient(
+      180deg,
+      #17110d,
+      #090706
+    );
+
+  color:
+    #241b14;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  user-select:
+    none;
+}
+
+
+.obala-notebook-reader::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background-image:
+    url("/images/human-one/obala/obala-bg.png");
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  filter:
+    blur(8px)
+    brightness(0.2)
+    saturate(0.55);
+
+  transform:
+    scale(1.04);
+
+  opacity:
+    0.7;
+}
+
+
+/* =====================================================
+   GORNJA TRAKA
+   ===================================================== */
+
+.obala-notebook-reader__topbar {
+  position: absolute;
+
+  left: 18px;
+
+  right: 18px;
+
+  top: 14px;
+
+  z-index: 50;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+}
+
+
+.obala-notebook-reader__back,
+.obala-notebook-reader__contents-button,
+.obala-notebook-reader__turn {
+  border:
+    1px solid
+    rgba(
+      218,
+      186,
+      127,
+      0.48
+    );
+
+  background:
+    rgba(
+      18,
+      13,
+      10,
+      0.9
+    );
+
+  color:
+    #e7d7b4;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight:
+    900;
+
+  cursor:
+    pointer;
+}
+
+
+.obala-notebook-reader__back {
+  padding:
+    8px
+    12px;
+
+  font-size:
+    12px;
+}
+
+
+.obala-notebook-reader__hint {
+  color:
+    rgba(
+      232,
+      215,
+      178,
+      0.56
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    10px;
+}
+
+
+/* =====================================================
+   KNJIGA / SVESKA
+   ===================================================== */
+
+.obala-notebook-reader__book {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    30px
+    minmax(
+      0,
+      1fr
+    );
+
+  width:
+    min(
+      94vw,
+      1220px
+    );
+
+  height:
+    min(
+      82dvh,
+      810px
+    );
+
+  min-height:
+    420px;
+
+  overflow:
+    visible;
+
+  filter:
+    drop-shadow(
+      0 22px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.52
+      )
+    );
+
+  touch-action:
+    pan-y;
+}
+
+
+.obala-notebook-reader__book--single {
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  width:
+    min(
+      92vw,
+      590px
+    );
+
+  height:
+    min(
+      80dvh,
+      780px
+    );
+
+  min-height:
+    0;
+}
+
+
+/* =====================================================
+   SLOTOVI
+   ===================================================== */
+
+.obala-notebook-reader__page-slot {
+  position: relative;
+
+  min-width: 0;
+
+  height: 100%;
+}
+
+
+.obala-notebook-reader__page-slot--left {
+  grid-column: 1;
+}
+
+
+.obala-notebook-reader__page-slot--right {
+  grid-column: 3;
+}
+
+
+/* =====================================================
+   PAPIR
+   ===================================================== */
+
+.obala-notebook-reader__paper {
+  --obala-line-height:
+    32px;
+
+  --obala-paper-padding-top:
+    clamp(
+      28px,
+      3.1vw,
+      48px
+    );
+
+  --obala-paper-padding-x:
+    clamp(
+      26px,
+      3.2vw,
+      50px
+    );
+
+  --obala-paper-padding-bottom:
+    clamp(
+      38px,
+      4vw,
+      58px
+    );
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  box-sizing:
+    border-box;
+
+  padding:
+    var(
+      --obala-paper-padding-top
+    )
+    var(
+      --obala-paper-padding-x
+    )
+    var(
+      --obala-paper-padding-bottom
+    );
+
+  border:
+    1px solid
+    rgba(
+      83,
+      62,
+      42,
+      0.36
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        102,
+        78,
+        51,
+        0.1
+      ),
+      transparent 8%,
+      transparent 92%,
+      rgba(
+        81,
+        57,
+        36,
+        0.08
+      )
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent
+      0 30px,
+      rgba(
+        92,
+        128,
+        156,
+        0.16
+      )
+      31px,
+      transparent
+      32px
+    ),
+    #d7c8a8;
+
+  /*
+   * Drugi background layer su linije.
+   * Pomeramo ih tako da baseline teksta padne na njih.
+   */
+  background-position:
+    0 0,
+    0
+    calc(
+      var(
+        --obala-paper-padding-top
+      )
+      - 8px
+    );
+
+  background-size:
+    auto,
+    100%
+    var(
+      --obala-line-height
+    );
+
+  box-shadow:
+    inset 0 0 42px
+    rgba(
+      74,
+      47,
+      24,
+      0.12
+    );
+
+  user-select:
+    text;
+}
+
+
+.obala-notebook-reader__page-slot--left
+.obala-notebook-reader__paper {
+  border-radius:
+    13px
+    3px
+    4px
+    12px;
+
+  box-shadow:
+    inset -18px 0 22px
+    rgba(
+      65,
+      42,
+      24,
+      0.08
+    ),
+    inset 0 0 42px
+    rgba(
+      74,
+      47,
+      24,
+      0.12
+    );
+}
+
+
+.obala-notebook-reader__page-slot--right
+.obala-notebook-reader__paper {
+  border-radius:
+    3px
+    13px
+    12px
+    4px;
+
+  box-shadow:
+    inset 18px 0 22px
+    rgba(
+      65,
+      42,
+      24,
+      0.08
+    ),
+    inset 0 0 42px
+    rgba(
+      74,
+      47,
+      24,
+      0.12
+    );
+}
+
+
+.obala-notebook-reader__book--single
+.obala-notebook-reader__paper {
+  border-radius:
+    12px;
+
+  box-shadow:
+    inset 0 0 42px
+    rgba(
+      74,
+      47,
+      24,
+      0.14
+    );
+}
+
+
+/* =====================================================
+   MERAČ — ISTE DIMENZIJE KAO STRANA
+   ===================================================== */
+
+.obala-notebook-reader__paper--measure {
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  z-index: -100;
+
+  width:
+    calc(
+      (
+        100% - 30px
+      ) / 2
+    );
+
+  height:
+    100%;
+
+  visibility:
+    hidden;
+
+  pointer-events:
+    none;
+}
+
+
+.obala-notebook-reader__book--single
+.obala-notebook-reader__paper--measure {
+  width:
+    100%;
+}
+
+
+/* =====================================================
+   SADRŽAJ STRANE
+   ===================================================== */
+
+.obala-notebook-reader__content {
+  width: 100%;
+
+  height: 100%;
+
+  overflow:
+    hidden;
+
+  box-sizing:
+    border-box;
+}
+
+
+.obala-notebook-reader__paper--measure
+.obala-notebook-reader__content {
+  overflow:
+    visible;
+}
+
+
+.obala-notebook-reader__entry-title {
+  margin:
+    0
+    0
+    var(
+      --obala-line-height
+    );
+
+  color:
+    #34251a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      22px,
+      2.1vw,
+      32px
+    );
+
+  font-weight:
+    800;
+
+  line-height:
+    var(
+      --obala-line-height
+    );
+
+  letter-spacing:
+    -0.02em;
+
+  transform:
+    rotate(
+      -0.45deg
+    );
+}
+
+
+.obala-notebook-reader__paragraph {
+  margin:
+    0;
+
+  color:
+    #2d241d;
+
+  font-size:
+    clamp(
+      14px,
+      1.3vw,
+      19px
+    );
+
+  line-height:
+    var(
+      --obala-line-height
+    );
+
+  text-align:
+    left;
+
+  white-space:
+    pre-wrap;
+
+  overflow-wrap:
+    anywhere;
+
+  tab-size:
+    4;
+}
+
+
+.obala-notebook-reader__paragraph:last-child {
+  margin-bottom:
+    0;
+}
+
+
+/* =====================================================
+   BROJ STRANE
+   ===================================================== */
+
+.obala-notebook-reader__page-number {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 15px;
+
+  transform:
+    translateX(
+      -50%
+    );
+
+  color:
+    rgba(
+      50,
+      37,
+      28,
+      0.68
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+}
+
+
+/* =====================================================
+   SADRŽAJ
+   ===================================================== */
+
+.obala-notebook-reader__toc-title {
+  margin:
+    0
+    0
+    28px;
+
+  color:
+    #37281d;
+
+  font-size:
+    clamp(
+      22px,
+      2.2vw,
+      34px
+    );
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.obala-notebook-reader__toc-list {
+  display: flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    7px;
+}
+
+
+.obala-notebook-reader__toc-item {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(
+      20px,
+      1fr
+    )
+    auto;
+
+  align-items:
+    end;
+
+  gap:
+    8px;
+
+  width: 100%;
+
+  padding:
+    8px
+    0;
+
+  border:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    #33251b;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      13px,
+      1.25vw,
+      18px
+    );
+
+  text-align:
+    left;
+
+  cursor:
+    pointer;
+}
+
+
+.obala-notebook-reader__toc-item:hover
+.obala-notebook-reader__toc-name {
+  text-decoration:
+    underline;
+}
+
+
+.obala-notebook-reader__toc-name {
+  font-weight:
+    700;
+}
+
+
+.obala-notebook-reader__toc-dots {
+  min-width:
+    10px;
+
+  border-bottom:
+    2px dotted
+    rgba(
+      58,
+      42,
+      31,
+      0.5
+    );
+
+  transform:
+    translateY(
+      -4px
+    );
+}
+
+
+.obala-notebook-reader__toc-page {
+  white-space:
+    nowrap;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.76em;
+
+  font-weight:
+    900;
+}
+
+
+.obala-notebook-reader__toc-counter {
+  position: absolute;
+
+  right: 28px;
+
+  bottom: 18px;
+
+  color:
+    rgba(
+      55,
+      41,
+      30,
+      0.55
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    10px;
+}
+
+
+/* =====================================================
+   UNUTRAŠNJE KORICE
+   ===================================================== */
+
+.obala-notebook-reader__paper--art {
+  padding:
+    16px;
+
+  background:
+    #b9aa8c;
+}
+
+
+.obala-notebook-reader__paper--art img {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    contain;
+
+  filter:
+    contrast(
+      0.97
+    )
+    saturate(
+      0.82
+    );
+
+  user-select:
+    none;
+
+  pointer-events:
+    none;
+}
+
+
+.obala-notebook-reader__paper--blank {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  color:
+    rgba(
+      52,
+      37,
+      25,
+      0.22
+    );
+
+  font-size:
+    28px;
+}
+
+
+/* =====================================================
+   SPIRALE
+   ===================================================== */
+
+.obala-notebook-reader__spine {
+  position: relative;
+
+  z-index: 20;
+
+  grid-column: 2;
+
+  display: flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-around;
+
+  height:
+    calc(
+      100% - 24px
+    );
+
+  margin:
+    12px
+    0;
+
+  pointer-events:
+    none;
+}
+
+
+.obala-notebook-reader__spine::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 0;
+
+  bottom: 0;
+
+  width:
+    5px;
+
+  transform:
+    translateX(
+      -50%
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #362a22,
+      #9b8b75,
+      #33271f
+    );
+
+  opacity:
+    0.92;
+}
+
+
+.obala-notebook-reader__spine i {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width:
+    34px;
+
+  height:
+    14px;
+
+  border:
+    3px solid
+    #51453a;
+
+  border-left-color:
+    #b3a48d;
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0 2px 3px
+    rgba(
+      0,
+      0,
+      0,
+      0.35
+    );
+
+  transform:
+    rotate(
+      -7deg
+    );
+}
+
+
+/* =====================================================
+   KONTROLE
+   ===================================================== */
+
+.obala-notebook-reader__controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    center;
+
+  gap:
+    12px;
+
+  min-height:
+    42px;
+}
+
+
+.obala-notebook-reader__turn {
+  display: grid;
+
+  place-items:
+    center;
+
+  width:
+    46px;
+
+  height:
+    40px;
+
+  font-size:
+    22px;
+}
+
+
+.obala-notebook-reader__contents-button {
+  height:
+    40px;
+
+  padding:
+    0
+    18px;
+
+  font-size:
+    11px;
+}
+
+
+.obala-notebook-reader__turn:disabled {
+  opacity:
+    0.2;
+
+  cursor:
+    default;
+}
+
+
+.obala-notebook-reader__back:hover,
+.obala-notebook-reader__contents-button:hover,
+.obala-notebook-reader__turn:not(:disabled):hover {
+  border-color:
+    rgba(
+      236,
+      201,
+      133,
+      0.88
+    );
+
+  color:
+    #fff0c8;
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.obala-notebook-reader__loading {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 60;
+
+  display: grid;
+
+  place-items:
+    center;
+
+  background:
+    rgba(
+      13,
+      9,
+      7,
+      0.88
+    );
+
+  color:
+    #e3d2ad;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    13px;
+
+  letter-spacing:
+    0.03em;
+}
+
+
+/* =====================================================
+   TELEFON — PORTRAIT: JEDNA STRANA
+   ===================================================== */
+
+@media (
+  max-width: 760px
+) and (
+  orientation: portrait
+) {
+  .obala-notebook-reader {
+    gap:
+      9px;
+
+    padding:
+      calc(
+        55px +
+        env(
+          safe-area-inset-top,
+          0px
+        )
+      )
+      calc(
+        10px +
+        env(
+          safe-area-inset-right,
+          0px
+        )
+      )
+      calc(
+        12px +
+        env(
+          safe-area-inset-bottom,
+          0px
+        )
+      )
+      calc(
+        10px +
+        env(
+          safe-area-inset-left,
+          0px
+        )
+      );
+  }
+
+
+  .obala-notebook-reader__topbar {
+    left:
+      calc(
+        10px +
+        env(
+          safe-area-inset-left,
+          0px
+        )
+      );
+
+    right:
+      calc(
+        10px +
+        env(
+          safe-area-inset-right,
+          0px
+        )
+      );
+
+    top:
+      calc(
+        10px +
+        env(
+          safe-area-inset-top,
+          0px
+        )
+      );
+  }
+
+
+  .obala-notebook-reader__hint {
+    display:
+      none;
+  }
+
+
+  .obala-notebook-reader__page-slot--left {
+    grid-column:
+      1;
+  }
+
+
+  .obala-notebook-reader__paper {
+    --obala-paper-padding-top:
+      30px;
+
+    --obala-paper-padding-x:
+      26px;
+
+    --obala-paper-padding-bottom:
+      43px;
+
+    padding:
+      var(
+        --obala-paper-padding-top
+      )
+      var(
+        --obala-paper-padding-x
+      )
+      var(
+        --obala-paper-padding-bottom
+      );
+  }
+
+
+  .obala-notebook-reader__entry-title {
+    font-size:
+      clamp(
+        23px,
+        7vw,
+        31px
+      );
+  }
+
+
+  .obala-notebook-reader__paragraph {
+    font-size:
+      clamp(
+        14px,
+        4.15vw,
+        18px
+      );
+
+    line-height:
+      1.5;
+  }
+
+
+  .obala-notebook-reader__toc-item {
+    font-size:
+      clamp(
+        13px,
+        4vw,
+        17px
+      );
+  }
+}
+
+
+/* =====================================================
+   NIZAK LANDSCAPE TELEFON
+   ===================================================== */
+
+@media (
+  max-height: 520px
+) and (
+  orientation: landscape
+) {
+  .obala-notebook-reader {
+    padding:
+      42px
+      12px
+      8px;
+
+    gap:
+      7px;
+  }
+
+
+  .obala-notebook-reader__book {
+    height:
+      min(
+        78dvh,
+        430px
+      );
+
+    min-height:
+      0;
+  }
+
+
+  .obala-notebook-reader__paper {
+    --obala-paper-padding-top:
+      21px;
+
+    --obala-paper-padding-x:
+      28px;
+
+    --obala-paper-padding-bottom:
+      30px;
+
+    padding:
+      var(
+        --obala-paper-padding-top
+      )
+      var(
+        --obala-paper-padding-x
+      )
+      var(
+        --obala-paper-padding-bottom
+      );
+  }
+
+
+  .obala-notebook-reader__paragraph {
+    font-size:
+      clamp(
+        10px,
+        1.45vw,
+        14px
+      );
+
+    line-height:
+      1.4;
+
+    margin-bottom:
+      8px;
+  }
+
+
+  .obala-notebook-reader__entry-title,
+  .obala-notebook-reader__toc-title {
+    margin-bottom:
+      13px;
+
+    font-size:
+      clamp(
+        17px,
+        2.3vw,
+        24px
+      );
+  }
+
+
+  .obala-notebook-reader__controls {
+    min-height:
+      34px;
+  }
+
+
+  .obala-notebook-reader__turn,
+  .obala-notebook-reader__contents-button {
+    height:
+      32px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .obala-notebook-reader * {
+    scroll-behavior:
+      auto !important;
+  }
+}
+
+
+/* =====================================================
+   DODACI NA KRAJU SVAKOG TEKSTA
+
+   Ako postoje:
+   1) pesma / YouTube / audio / video
+   2) "Šta me je inspirisalo?"
+
+   Reader ih računa kao deo stranice.
+   Ako ne stanu, automatski prelaze na sledeću.
+   ===================================================== */
+
+.obala-notebook-reader__entry-extra {
+  width: 100%;
+
+  box-sizing:
+    border-box;
+
+  margin-top:
+    14px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight:
+    900;
+}
+
+
+.obala-notebook-reader__entry-extra--media {
+  border:
+    2px dashed
+    rgba(
+      66,
+      45,
+      28,
+      0.78
+    );
+
+  border-radius:
+    3px
+    7px
+    2px
+    6px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        228,
+        210,
+        170,
+        0.48
+      ),
+      rgba(
+        190,
+        161,
+        112,
+        0.28
+      )
+    );
+
+  color:
+    #241b14;
+
+  box-shadow:
+    3px 4px 0
+    rgba(
+      78,
+      49,
+      27,
+      0.14
+    );
+
+  transform:
+    rotate(
+      -0.35deg
+    );
+}
+
+
+.obala-notebook-reader__entry-extra--link {
+  display: flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  min-height:
+    58px;
+
+  padding:
+    11px
+    14px;
+
+  color:
+    #241b14;
+
+  text-decoration:
+    none;
+
+  cursor:
+    pointer;
+}
+
+
+.obala-notebook-reader__entry-extra--link:hover
+.obala-notebook-reader__media-copy {
+  text-decoration:
+    underline;
+}
+
+
+.obala-notebook-reader__media-icon {
+  display: grid;
+
+  place-items:
+    center;
+
+  flex: 0 0 34px;
+
+  width: 34px;
+
+  height: 34px;
+
+  border:
+    1px solid
+    rgba(
+      58,
+      43,
+      31,
+      0.62
+    );
+
+  border-radius:
+    50%;
+
+  font-size:
+    16px;
+}
+
+
+.obala-notebook-reader__media-copy {
+  font-size:
+    clamp(
+      11px,
+      1.08vw,
+      15px
+    );
+
+  line-height:
+    1.3;
+}
+
+
+.obala-notebook-reader__media-heading {
+  display: flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    10px
+    12px
+    0;
+
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+}
+
+
+.obala-notebook-reader__audio {
+  display: block;
+
+  width:
+    calc(
+      100% - 20px
+    );
+
+  height:
+    38px;
+
+  margin:
+    9px
+    10px
+    10px;
+}
+
+
+.obala-notebook-reader__video {
+  display: block;
+
+  width:
+    calc(
+      100% - 20px
+    );
+
+  max-height:
+    145px;
+
+  margin:
+    9px
+    10px
+    10px;
+
+  background:
+    #111;
+
+  object-fit:
+    contain;
+}
+
+
+/*
+ * Ove dve klase postoje samo u skrivenom
+ * meraču stranice, da veličina audio/video
+ * bloka bude uračunata u paginaciju.
+ */
+
+.obala-notebook-reader__media-audio-measure {
+  height:
+    57px;
+}
+
+
+.obala-notebook-reader__media-video-measure {
+  height:
+    164px;
+}
+
+
+.obala-notebook-reader__entry-extra--inspiration {
+  display: block;
+
+  min-height:
+    50px;
+
+  padding:
+    10px
+    14px;
+
+  border:
+    2px dashed
+    rgba(
+      61,
+      42,
+      27,
+      0.84
+    );
+
+  border-radius:
+    4px
+    2px
+    7px
+    3px;
+
+  background:
+    linear-gradient(
+      175deg,
+      rgba(
+        222,
+        200,
+        155,
+        0.56
+      ),
+      rgba(
+        183,
+        151,
+        102,
+        0.30
+      )
+    );
+
+  color:
+    #241b14;
+
+  font-size:
+    clamp(
+      11px,
+      1.1vw,
+      15px
+    );
+
+  text-align:
+    center;
+
+  text-decoration:
+    underline;
+
+  text-decoration-style:
+    wavy;
+
+  text-underline-offset:
+    3px;
+
+  box-shadow:
+    3px 4px 0
+    rgba(
+      77,
+      48,
+      26,
+      0.14
+    );
+
+  transform:
+    rotate(
+      0.45deg
+    );
+
+  cursor:
+    pointer;
+}
+
+
+.obala-notebook-reader__entry-extra--inspiration:hover {
+  background:
+    linear-gradient(
+      175deg,
+      rgba(
+        236,
+        217,
+        177,
+        0.72
+      ),
+      rgba(
+        191,
+        157,
+        104,
+        0.40
+      )
+    );
+
+  transform:
+    rotate(
+      -0.2deg
+    )
+    scale(
+      1.01
+    );
+}
+
+
+/* =====================================================
+   "ŠTA ME JE INSPIRISALO?" — POSEBAN READER
+   ===================================================== */
+
+.obala-notebook-inspiration {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 200;
+
+  display: grid;
+
+  place-items:
+    center;
+
+  padding:
+    24px;
+
+  box-sizing:
+    border-box;
+
+  background:
+    rgba(
+      6,
+      4,
+      3,
+      0.78
+    );
+}
+
+
+.obala-notebook-inspiration__paper {
+  position: relative;
+
+  width:
+    min(
+      720px,
+      92vw
+    );
+
+  max-height:
+    82dvh;
+
+  overflow-y:
+    auto;
+
+  box-sizing:
+    border-box;
+
+  padding:
+    clamp(
+      30px,
+      4.5vw,
+      58px
+    );
+
+  border:
+    1px solid
+    rgba(
+      82,
+      61,
+      42,
+      0.55
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent
+      0 30px,
+      rgba(
+        92,
+        128,
+        156,
+        0.12
+      )
+      31px,
+      transparent
+      32px
+    ),
+    #d7c8a8;
+
+  box-shadow:
+    0 24px 70px
+    rgba(
+      0,
+      0,
+      0,
+      0.62
+    );
+
+  color:
+    #2d241d;
+}
+
+
+.obala-notebook-inspiration__close {
+  position: absolute;
+
+  right: 14px;
+
+  top: 10px;
+
+  width:
+    38px;
+
+  height:
+    38px;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    #493729;
+
+  font-size:
+    28px;
+
+  cursor:
+    pointer;
+}
+
+
+.obala-notebook-inspiration__eyebrow {
+  display: block;
+
+  margin-bottom:
+    10px;
+
+  color:
+    rgba(
+      49,
+      35,
+      25,
+      0.62
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+
+  text-transform:
+    uppercase;
+}
+
+
+.obala-notebook-inspiration__paper h2 {
+  margin:
+    0
+    44px
+    28px
+    0;
+
+  color:
+    #34251a;
+
+  font-size:
+    clamp(
+      25px,
+      3.4vw,
+      42px
+    );
+
+  line-height:
+    1.04;
+}
+
+
+.obala-notebook-inspiration__text p {
+  margin:
+    0
+    0
+    18px;
+
+  font-size:
+    clamp(
+      15px,
+      1.45vw,
+      19px
+    );
+
+  line-height:
+    1.65;
+}
+
+
+.obala-notebook-inspiration__text p:last-child {
+  margin-bottom:
+    0;
+}
+
+
+@media (
+  max-width: 760px
+) and (
+  orientation: portrait
+) {
+  .obala-notebook-reader__entry-extra--link,
+  .obala-notebook-reader__entry-extra--inspiration {
+    min-height:
+      50px;
+  }
+
+
+  .obala-notebook-reader__media-copy,
+  .obala-notebook-reader__entry-extra--inspiration {
+    font-size:
+      clamp(
+        10px,
+        3.5vw,
+        14px
+      );
+  }
+
+
+  .obala-notebook-inspiration {
+    padding:
+      calc(
+        12px +
+        env(
+          safe-area-inset-top,
+          0px
+        )
+      )
+      calc(
+        12px +
+        env(
+          safe-area-inset-right,
+          0px
+        )
+      )
+      calc(
+        12px +
+        env(
+          safe-area-inset-bottom,
+          0px
+        )
+      )
+      calc(
+        12px +
+        env(
+          safe-area-inset-left,
+          0px
+        )
+      );
+  }
+
+
+  .obala-notebook-inspiration__paper {
+    width:
+      96vw;
+
+    max-height:
+      88dvh;
+
+    padding:
+      34px
+      24px
+      28px;
+  }
+}
+
+
+/* =====================================================
+   SUPABASE STANJA
+   ===================================================== */
+
+.obala-notebook-reader__toc-empty {
+  margin:
+    22px
+    0
+    0;
+
+  color:
+    rgba(
+      51,
+      37,
+      27,
+      0.62
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    12px;
+
+  font-weight:
+    900;
+
+  line-height:
+    1.5;
+}
+
+
+.obala-notebook-reader__loading {
+  gap:
+    8px;
+
+  padding:
+    24px;
+
+  text-align:
+    center;
+}
+
+
+.obala-notebook-reader__loading strong,
+.obala-notebook-reader__loading span {
+  display:
+    block;
+}
+
+
+.obala-notebook-reader__loading span {
+  max-width:
+    520px;
+
+  opacity:
+    0.7;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.45;
+}
+
+
+/* =====================================================
+   RUČNI PRELOMI U TEKSTU INSPIRACIJE
+   ===================================================== */
+
+.obala-notebook-inspiration__text p {
+  white-space:
+    pre-wrap;
+
+  overflow-wrap:
+    anywhere;
+}

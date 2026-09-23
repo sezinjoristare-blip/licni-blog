@@ -1,0 +1,987 @@
+.character-select {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background-color: #080808;
+
+  background-image:
+    url(
+      "/images/character-select/character-select-desktop-bg.png"
+    );
+
+  background-repeat: no-repeat;
+
+  background-position:
+    center center;
+
+  background-size: cover;
+
+  color: #e7e4dc;
+
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   ПОЗАДИНСКА ТЕКСТУРА
+   НИЈЕ ПОТРЕБНА — ТЕКСТУРА ЈЕ ВЕЋ У СЛИЦИ
+   ===================================================== */
+
+.character-select__texture {
+  display: none;
+}
+
+
+/* =====================================================
+   НАСЛОВ
+   ===================================================== */
+
+.character-select__header {
+  position: absolute;
+
+  left: 50%;
+  top: 3.5%;
+
+  z-index: 20;
+
+  width: 100%;
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+
+.character-select__header h1 {
+  margin: 0;
+
+  color:
+    #eeeae0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      2rem
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 3px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.9
+    );
+}
+
+
+/* =====================================================
+   ДВЕ ЛИЧНОСТИ
+   СВАКА ЈЕ У ЦЕНТРУ СВОЈЕ ПОЛОВИНЕ
+   ===================================================== */
+
+.character-select__fighters {
+  position: relative;
+
+  z-index: 5;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  align-items: center;
+  justify-items: center;
+
+  gap: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding:
+    10vh
+    2vw
+    3vh;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   ЈЕДНА ЛИЧНОСТ
+   ===================================================== */
+
+.character-select__fighter {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width:
+    min(
+      32vw,
+      430px,
+      calc(
+        (100dvh - 180px)
+        * 0.75
+      )
+    );
+
+  color: inherit;
+
+  text-decoration: none;
+
+  outline: none;
+}
+
+
+/* =====================================================
+   СПОЉНИ РАМ
+   ===================================================== */
+
+.character-select__frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 3 / 4;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  border:
+    4px solid
+    rgba(
+      225,
+      222,
+      212,
+      0.78
+    );
+
+  background:
+    #090909;
+
+  box-shadow:
+    0 14px 38px
+    rgba(
+      0,
+      0,
+      0,
+      0.65
+    );
+
+  transition:
+    transform 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+
+/* =====================================================
+   УНУТРАШЊИ РАМ
+   ===================================================== */
+
+.character-select__frame-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border:
+    3px solid
+    rgba(
+      225,
+      222,
+      212,
+      0.62
+    );
+
+  box-sizing: border-box;
+
+  background:
+    #121212;
+}
+
+
+/* =====================================================
+   ФОТОГРАФИЈА
+   ===================================================== */
+
+.character-select__image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position:
+    center center;
+
+  filter:
+    saturate(0.78)
+    contrast(1.08)
+    brightness(0.88);
+
+  transform:
+    scale(1.01);
+
+  transition:
+    transform 500ms ease,
+    filter 500ms ease;
+}
+
+
+/* =====================================================
+   CRT / СТАРА КАМЕРА
+   ===================================================== */
+
+.character-select__scanlines {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  opacity: 0.17;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 3px,
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      ) 4px
+    );
+}
+
+
+/* =====================================================
+   АКО ФОТОГРАФИЈА НИЈЕ ПОСТАВЉЕНА
+   ===================================================== */
+
+.character-select__empty {
+  display: grid;
+
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  color:
+    rgba(
+      235,
+      232,
+      222,
+      0.38
+    );
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.35em;
+}
+
+
+/* =====================================================
+   ИМЕ
+   ===================================================== */
+
+.character-select__name {
+  position: relative;
+
+  margin-top:
+    clamp(
+      12px,
+      1.6vh,
+      20px
+    );
+
+  max-width: 100%;
+
+  color:
+    #eeeae0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.2vw,
+      2.6rem
+    );
+
+  font-weight: 900;
+
+  letter-spacing:
+    0.06em;
+
+  text-align: center;
+
+  text-shadow:
+    0 3px 8px
+    rgba(
+      0,
+      0,
+      0,
+      0.85
+    );
+
+  transition:
+    transform 350ms ease,
+    text-shadow 350ms ease;
+}
+
+
+/* =====================================================
+   HOVER
+   ===================================================== */
+
+.character-select__fighter:hover
+.character-select__frame {
+  transform:
+    translateY(-5px)
+    scale(1.015);
+
+  border-color:
+    rgba(
+      245,
+      241,
+      228,
+      0.95
+    );
+
+  box-shadow:
+    0 18px 48px
+    rgba(
+      0,
+      0,
+      0,
+      0.8
+    ),
+    0 0 20px
+    rgba(
+      230,
+      224,
+      205,
+      0.13
+    );
+}
+
+
+.character-select__fighter:hover
+.character-select__image {
+  transform:
+    scale(1.055);
+
+  filter:
+    saturate(0.9)
+    contrast(1.1)
+    brightness(0.97);
+}
+
+
+.character-select__fighter:hover
+.character-select__name {
+  transform:
+    scale(1.035);
+
+  text-shadow:
+    0 3px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.9
+    ),
+    0 0 14px
+    rgba(
+      238,
+      234,
+      224,
+      0.18
+    );
+}
+
+
+/* =====================================================
+   TASTATURA
+   ===================================================== */
+
+.character-select__fighter:focus-visible
+.character-select__frame {
+  outline:
+    3px solid
+    #eeeae0;
+
+  outline-offset: 7px;
+}
+
+
+/* =====================================================
+   КЛИК
+   ===================================================== */
+
+.character-select__fighter:active
+.character-select__frame {
+  transform:
+    scale(0.99);
+}
+
+
+/* =====================================================
+   УЧИТАВАЊЕ
+   ===================================================== */
+
+.character-select--loading {
+  display: grid;
+
+  place-items: center;
+}
+
+
+.character-select--loading p {
+  font-size: 0.75rem;
+
+  letter-spacing:
+    0.35em;
+
+  opacity: 0.6;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+  .character-select {
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #080808;
+  }
+
+
+  .character-select__texture {
+    display: none;
+  }
+
+
+  /* ===================================================
+     НАСЛОВ САД ЛЕБДИ ПРЕКО СЕКИЈЕВЕ ПОЗАДИНЕ
+     =================================================== */
+
+  .character-select__header {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    z-index: 30;
+
+    width: 100%;
+
+    padding:
+      max(
+        20px,
+        env(safe-area-inset-top)
+      )
+      14px
+      8px;
+
+    box-sizing: border-box;
+
+    transform: none;
+  }
+
+
+  .character-select__header h1 {
+    font-size:
+      clamp(
+        1rem,
+        5vw,
+        1.25rem
+      );
+
+    line-height: 1.15;
+
+    letter-spacing: 0.055em;
+
+    white-space: nowrap;
+
+    text-shadow:
+      0 2px 4px
+      rgba(0, 0, 0, 1),
+      0 4px 12px
+      rgba(0, 0, 0, 0.95);
+  }
+
+
+  /* ===================================================
+     ОБЕ ПОЗАДИНЕ САД ИДУ ОД ВРХА ДО ДНА
+     =================================================== */
+
+  .character-select__fighters {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+    justify-content: stretch;
+
+    gap: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+  }
+
+
+  .character-select__fighter {
+    position: relative;
+
+    flex:
+      1
+      1
+      50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    isolation: isolate;
+  }
+
+
+  .character-select__fighter::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+  }
+
+
+  /* ===================================================
+     СЕКИ
+     =================================================== */
+
+  .character-select__fighter:first-child::before {
+    background-image:
+      url(
+        "/images/character-select/seki-bg-mobile.png"
+      );
+
+    background-position:
+      center center;
+  }
+
+
+  /* ===================================================
+     СЕРГЕЈ
+     ЛАМПА УВЕК ОСТАЈЕ ГОРЕ
+     =================================================== */
+
+  .character-select__fighter:nth-child(2)::before {
+    background-image:
+      url(
+        "/images/character-select/sergej-bg-mobile.png"
+      );
+
+    background-position:
+      center top;
+  }
+
+
+  .character-select__frame,
+  .character-select__name {
+    z-index: 2;
+  }
+
+
+  /* ===================================================
+     ПОДЕЛА ДВА СВЕТА
+     =================================================== */
+
+  .character-select__fighter:first-child {
+    border-bottom:
+      3px solid
+      rgba(
+        235,
+        232,
+        222,
+        0.82
+      );
+  }
+
+
+  /* ===================================================
+     РАМ
+     =================================================== */
+
+  .character-select__frame {
+    width:
+      min(
+        58vw,
+        205px,
+        calc(
+          (50dvh - 72px)
+          * 0.75
+        )
+      );
+
+    padding: 6px;
+
+    border-width: 3px;
+
+    box-shadow:
+      0 8px 22px
+      rgba(
+        0,
+        0,
+        0,
+        0.62
+      );
+  }
+
+
+  .character-select__frame-inner {
+    border-width: 2px;
+  }
+
+
+  /* ===================================================
+     СЕКИ — МАЛО МЕСТА ЗА НАСЛОВ ИЗНАД ЊЕГА
+     =================================================== */
+
+  .character-select__fighter:first-child
+  .character-select__frame {
+    top: 14px;
+  }
+
+
+  .character-select__fighter:first-child
+  .character-select__name {
+    top: 14px;
+  }
+
+
+  /* ===================================================
+     СЕРГЕЈ — СПУШТАМО ГА ПОД ЛАМПУ
+     =================================================== */
+
+  .character-select__fighter:nth-child(2)
+  .character-select__frame {
+    top: 24px;
+  }
+
+
+  .character-select__fighter:nth-child(2)
+  .character-select__name {
+    top: 24px;
+  }
+
+
+  /* ===================================================
+     ИМЕ
+     =================================================== */
+
+  .character-select__name {
+    margin-top:
+      clamp(
+        6px,
+        1vh,
+        10px
+      );
+
+    font-size:
+      clamp(
+        1rem,
+        5vw,
+        1.35rem
+      );
+
+    line-height: 1;
+
+    letter-spacing: 0.045em;
+
+    text-shadow:
+      0 2px 3px
+      rgba(
+        0,
+        0,
+        0,
+        1
+      ),
+      0 4px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.95
+      );
+  }
+
+
+  .character-select__empty {
+    font-size: 0.62rem;
+
+    letter-spacing: 0.22em;
+  }
+}
+
+
+/* =====================================================
+   НИЖИ ТЕЛЕФОНИ
+   ===================================================== */
+
+@media (
+  max-width: 700px
+)
+and (
+  max-height: 700px
+) {
+  .character-select__header {
+    padding-top:
+      max(
+        14px,
+        env(safe-area-inset-top)
+      );
+  }
+
+
+  .character-select__header h1 {
+    font-size: 1rem;
+  }
+
+
+  .character-select__frame {
+    width:
+      min(
+        52vw,
+        175px,
+        calc(
+          (50dvh - 58px)
+          * 0.75
+        )
+      );
+
+    padding: 5px;
+  }
+
+
+  .character-select__fighter:first-child
+  .character-select__frame,
+  .character-select__fighter:first-child
+  .character-select__name {
+    top: 12px;
+  }
+
+
+  .character-select__fighter:nth-child(2)
+  .character-select__frame,
+  .character-select__fighter:nth-child(2)
+  .character-select__name {
+    top: 18px;
+  }
+
+
+  .character-select__name {
+    margin-top: 5px;
+
+    font-size:
+      clamp(
+        0.9rem,
+        4.5vw,
+        1.15rem
+      );
+  }
+}
+
+
+/* =====================================================
+   БАШ МАЛИ / НИСКИ ТЕЛЕФОНИ
+   ===================================================== */
+
+@media (
+  max-width: 380px
+)
+and (
+  max-height: 650px
+) {
+  .character-select__frame {
+    width:
+      min(
+        48vw,
+        155px,
+        calc(
+          (50dvh - 52px)
+          * 0.75
+        )
+      );
+
+    padding: 4px;
+
+    border-width: 2px;
+  }
+
+
+  .character-select__fighter:nth-child(2)
+  .character-select__frame,
+  .character-select__fighter:nth-child(2)
+  .character-select__name {
+    top: 12px;
+  }
+
+
+  .character-select__name {
+    margin-top: 4px;
+
+    font-size: 0.9rem;
+  }
+}
+
+
+/* =====================================================
+   TOUCH
+   ===================================================== */
+
+@media (
+  hover: none
+)
+and (
+  pointer: coarse
+) {
+  .character-select__fighter:hover
+  .character-select__frame {
+    transform: none;
+
+    border-color:
+      rgba(
+        225,
+        222,
+        212,
+        0.78
+      );
+
+    box-shadow:
+      0 8px 22px
+      rgba(
+        0,
+        0,
+        0,
+        0.62
+      );
+  }
+
+
+  .character-select__fighter:hover
+  .character-select__image {
+    transform:
+      scale(1.01);
+
+    filter:
+      saturate(0.78)
+      contrast(1.08)
+      brightness(0.88);
+  }
+
+
+  .character-select__fighter:hover
+  .character-select__name {
+    transform: none;
+  }
+
+
+  .character-select__fighter:active
+  .character-select__frame {
+    transform:
+      scale(0.985);
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .character-select__frame,
+  .character-select__image,
+  .character-select__name {
+    transition: none;
+  }
+}

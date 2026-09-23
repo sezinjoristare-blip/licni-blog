@@ -1,0 +1,126 @@
+/* =====================================================
+   SKATE RIDE RIG
+   ===================================================== */
+
+.skate-ride-rig {
+  --wheel-size: 10%;
+
+  --left-wheel-x: 16.5%;
+  --left-wheel-y: 59%;
+
+  --right-wheel-x: 74.6%;
+  --right-wheel-y: 60%;
+
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio:
+    2048 / 682;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+}
+
+
+/* =====================================================
+   BASE
+   ===================================================== */
+
+.skate-ride-rig__base {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =====================================================
+   TOČKOVI
+   ===================================================== */
+
+.skate-ride-rig__wheel {
+  position: absolute;
+
+  z-index: 2;
+
+  display: block;
+
+  width:
+    var(
+      --wheel-size
+    );
+
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  -webkit-user-drag: none;
+
+  transform-origin:
+    50%
+    50%;
+
+  will-change:
+    transform;
+}
+
+
+.skate-ride-rig__wheel--left {
+  left:
+    var(
+      --left-wheel-x
+    );
+
+  top:
+    var(
+      --left-wheel-y
+    );
+}
+
+
+.skate-ride-rig__wheel--right {
+  left:
+    var(
+      --right-wheel-x
+    );
+
+  top:
+    var(
+      --right-wheel-y
+    );
+}
+
+
+/* =====================================================
+   PRIVREMENI TEST U SKEJT SVETU VIŠE NE PRIKAZUJEMO
+   ===================================================== */
+
+.skate-ride-rig-test {
+  display: none !important;
+}

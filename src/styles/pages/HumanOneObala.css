@@ -1,0 +1,1493 @@
+/* =====================================================
+
+   AKC OBALA — GLAVNA SCENA
+
+   ===================================================== */
+
+.human-one-obala {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #0c0a08;
+
+}
+
+
+.human-one-obala::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -20px;
+
+  z-index: 0;
+
+  background-image:
+    url("/images/human-one/obala/obala-bg.png");
+
+  background-size: cover;
+
+  background-position:
+    center center;
+
+  background-repeat:
+    no-repeat;
+
+  filter:
+    blur(11px)
+    brightness(0.52);
+
+  transform:
+    scale(1.04);
+
+  opacity: 0.9;
+
+  pointer-events: none;
+
+}
+
+
+/* =====================================================
+
+   GLAVNI CANVAS
+
+   ===================================================== */
+
+.human-one-obala__stage {
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+
+  top: 50%;
+
+  width:
+    min(
+      100vw,
+      150dvh
+    );
+
+  aspect-ratio: 3 / 2;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background: #0d0b09;
+
+}
+
+
+/* =====================================================
+
+   POZADINA
+
+   ===================================================== */
+
+.human-one-obala__background {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: fill;
+
+  pointer-events: none;
+
+  user-select: none;
+
+}
+
+
+/* =====================================================
+
+   ZAJEDNIČKI KLIKABILNI PREDMETI
+
+   ===================================================== */
+
+.human-one-obala__object {
+
+  position: absolute;
+
+  z-index: 10;
+
+  display: block;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  appearance: none;
+
+  cursor: pointer;
+
+  transform-origin: center;
+
+  transition:
+    transform 170ms ease,
+    filter 170ms ease;
+
+}
+
+
+.human-one-obala__object img {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+
+}
+
+
+.human-one-obala__board-picture,
+.human-one-obala__stage-picture {
+
+  display: block;
+
+  width: 100%;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__object:hover {
+
+    filter:
+      brightness(1.08)
+      drop-shadow(
+        0 0 8px
+        rgba(
+          226,
+          161,
+          73,
+          0.28
+        )
+      );
+
+  }
+
+}
+
+
+.human-one-obala__object:active {
+
+  transform:
+    scale(0.98);
+
+  filter:
+    brightness(0.94);
+
+}
+
+
+.human-one-obala__object:focus-visible {
+
+  outline:
+    3px solid
+    rgba(
+      235,
+      185,
+      105,
+      0.9
+    );
+
+  outline-offset: 4px;
+
+}
+
+
+/* =====================================================
+
+   KONOBARI
+
+   ===================================================== */
+
+.human-one-obala__bartenders {
+
+  z-index: 12;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__bartenders:hover {
+
+    transform:
+      scale(1.015);
+
+  }
+
+}
+
+
+.human-one-obala__bartenders--sober {
+
+  left: 10%;
+
+  top: 13%;
+
+  width: 24%;
+
+}
+
+
+.human-one-obala__bartenders--50 {
+
+  left: 10%;
+
+  top: 13%;
+
+  width: 26%;
+
+}
+
+
+.human-one-obala__bartenders--100 {
+
+  left: 40%;
+
+  top: 68%;
+
+  rotate: 0deg;
+
+  width: 60%;
+
+}
+
+
+/* =====================================================
+
+   OGLASNA TABLA
+
+   ===================================================== */
+
+.human-one-obala__board {
+
+  left: 53%;
+
+  top: 0%;
+
+  z-index: 11;
+
+  width: 30%;
+
+}
+
+
+.human-one-obala__board-base {
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__board:hover {
+
+    transform:
+      scale(1.025);
+
+  }
+
+}
+
+
+/* =====================================================
+
+   AKTUELNI POSTERI NA TABLI
+
+   ===================================================== */
+
+.human-one-obala__board-posters {
+
+  position: absolute;
+
+  z-index: 4;
+
+  left: 11%;
+
+  top: 15%;
+
+  width: 78%;
+
+  height: 67%;
+
+  pointer-events: none;
+
+}
+
+
+.human-one-obala__board-poster {
+
+  position: absolute;
+
+  display: block;
+
+  width: 31%;
+
+  max-height: 68%;
+
+  transform-origin:
+    50% 2%;
+
+  filter:
+    drop-shadow(
+      0 4px 4px
+      rgba(
+        0,
+        0,
+        0,
+        0.36
+      )
+    );
+
+}
+
+
+.human-one-obala__board-poster img {
+
+  display: block;
+
+  width: 100%;
+
+  max-height: 100%;
+
+  object-fit: cover;
+
+  border:
+    1px solid
+    rgba(
+      61,
+      39,
+      22,
+      0.36
+    );
+
+  background: #eee1c8;
+
+}
+
+
+.human-one-obala__board-poster i {
+
+  position: absolute;
+
+  left: 50%;
+
+  top: -3px;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 34% 30%,
+      #f4e7ba,
+      #ac2f20 44%,
+      #5d160f 100%
+    );
+
+  box-shadow:
+    0 2px 2px
+    rgba(
+      0,
+      0,
+      0,
+      0.45
+    );
+
+  transform:
+    translateX(-50%);
+
+}
+
+
+.human-one-obala__board-poster--1 {
+
+  left: 4%;
+
+  top: 3%;
+
+  transform:
+    rotate(-4deg);
+
+}
+
+
+.human-one-obala__board-poster--2 {
+
+  left: 36%;
+
+  top: 10%;
+
+  transform:
+    rotate(2.5deg);
+
+}
+
+
+.human-one-obala__board-poster--3 {
+
+  right: 2%;
+
+  top: 2%;
+
+  transform:
+    rotate(-1.5deg);
+
+}
+
+
+.human-one-obala__board-poster--4 {
+
+  left: 21%;
+
+  bottom: 0%;
+
+  transform:
+    rotate(3.5deg);
+
+}
+
+
+/* =====================================================
+
+   BINA / INSTRUMENTI
+
+   ===================================================== */
+
+.human-one-obala__stage-object {
+
+  left: 51%;
+
+  top: 30%;
+
+  z-index: 11;
+
+  width: 49%;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__stage-object:hover {
+
+    transform:
+      scale(1.018);
+
+  }
+
+}
+
+
+/* =====================================================
+
+   SVESKA
+
+   ===================================================== */
+
+.human-one-obala__notebook {
+
+  left: 35%;
+
+  top: 33%;
+
+  z-index: 14;
+
+  width: 9%;
+
+  rotate: -11deg;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__notebook:hover {
+
+    transform:
+      rotate(3deg)
+      scale(1.045);
+
+  }
+
+}
+
+
+.human-one-obala__notebook:active {
+
+  transform:
+    rotate(-2deg)
+    scale(0.98);
+
+}
+
+
+/* =====================================================
+
+   KNJIGA UTISAKA / TIKVAN
+
+   CEO TIKVAN JE KLIKABILAN
+
+   ===================================================== */
+
+.human-one-obala__guestbook-guy {
+
+  left: 8%;
+
+  bottom: 0%;
+
+  z-index: 17;
+
+  width: 37%;
+
+  transform:
+    rotate(3deg);
+
+  transform-origin:
+    52% 82%;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+
+  user-select: none;
+
+}
+
+
+.human-one-obala__guestbook-guy img {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  pointer-events: none;
+
+  user-select: none;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__guestbook-guy:hover {
+
+    transform:
+      rotate(3deg)
+      translateY(-2px)
+      scale(1.012);
+
+    filter:
+      brightness(1.045)
+      drop-shadow(
+        0 7px 6px
+        rgba(
+          0,
+          0,
+          0,
+          0.38
+        )
+      );
+
+  }
+
+}
+
+
+.human-one-obala__guestbook-guy:active {
+
+  transform:
+    rotate(3deg)
+    scale(0.985);
+
+}
+
+
+/* =====================================================
+
+   NAZAD
+
+   ===================================================== */
+
+.human-one-obala__back {
+
+  left: 2.5%;
+
+  top: 2%;
+
+  z-index: 30;
+
+  width: 10%;
+
+}
+
+
+@media (
+  hover: hover
+) and (
+  pointer: fine
+) {
+
+  .human-one-obala__back:hover {
+
+    transform:
+      translateX(-4px)
+      scale(1.035);
+
+  }
+
+}
+
+
+.human-one-obala__back:active {
+
+  transform:
+    translateX(-7px)
+    scale(0.97);
+
+}
+
+
+
+
+/* =====================================================
+
+   MOBILE CATEGORY UI — DESKTOP JE SKRIVEN
+
+   ===================================================== */
+
+.human-one-obala__category-button,
+.human-one-obala__category-picker {
+
+  display: none;
+
+}
+
+
+/* =====================================================
+
+   MOBILE
+
+   Desktop ostaje netaknut.
+   Ovo su samo početne mobilne vrednosti
+   koje ćemo ručno doterati po screenshotu.
+
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .human-one-obala::before {
+
+    background-image:
+      url("/images/human-one/obala/obala-bg-mobile.png");
+
+    filter:
+      blur(10px)
+      brightness(0.46);
+
+  }
+
+
+  .human-one-obala__stage {
+
+    left: 0;
+
+    top: 0;
+
+    width: 100vw;
+
+    height: 100dvh;
+
+    aspect-ratio: auto;
+
+    transform: none;
+
+  }
+
+
+  .human-one-obala__background {
+
+    object-fit: fill;
+
+  }
+
+
+  /*
+    NAZAD
+  */
+
+  .human-one-obala__back {
+
+    left: 2.5%;
+
+    top: 1.5%;
+
+    width: 20%;
+
+  }
+
+
+  /*
+    KONOBARI
+  */
+
+  .human-one-obala__bartenders--sober {
+
+    left: 2%;
+
+    top: 30%;
+
+    width: 50%;
+
+  }
+
+
+  .human-one-obala__bartenders--50 {
+
+    left: 1%;
+
+    top: 28.5%;
+
+    width: 60%;
+
+  }
+
+
+  .human-one-obala__bartenders--100 {
+
+    left: 12%;
+
+    top: 75%;
+
+    width: 94%;
+
+    rotate: 35deg;
+
+  }
+
+
+  /*
+    PANO — DESNI ZID
+  */
+
+  .human-one-obala__board {
+
+    left: 50%;
+
+    top: 13%;
+
+    width: 50%;
+
+  }
+
+
+  /*
+    Mobilni pano je portret format,
+    pa posteri dobijaju poseban raspored.
+  */
+
+  .human-one-obala__board-posters {
+
+    left: 12%;
+
+    top: 9%;
+
+    width: 72%;
+
+    height: 82%;
+
+  }
+
+
+  .human-one-obala__board-poster {
+
+    width: 42%;
+
+    max-height: 44%;
+
+  }
+
+
+  .human-one-obala__board-poster--1 {
+
+    left: 4%;
+
+    top: 3%;
+
+  }
+
+
+  .human-one-obala__board-poster--2 {
+
+    left: 52%;
+
+    top: 8%;
+
+  }
+
+
+  .human-one-obala__board-poster--3 {
+
+    left: 5%;
+
+    top: 48%;
+
+    right: auto;
+
+  }
+
+
+  .human-one-obala__board-poster--4 {
+
+    left: 52%;
+
+    top: 54%;
+
+    bottom: auto;
+
+  }
+
+
+  /*
+    BINA / INSTRUMENTI — samo bubanj
+  */
+
+  .human-one-obala__stage-object {
+
+    left: 30%;
+
+    top: 62%;
+
+    width: 90%;
+
+  }
+
+
+  /*
+    SVESKA
+  */
+
+  .human-one-obala__notebook {
+
+    left: 35%;
+
+    top: 48%;
+
+    width: 20%;
+
+    rotate: -11deg;
+
+  }
+
+
+  /*
+    KNJIGA UTISAKA / TIKVAN
+  */
+
+  .human-one-obala__guestbook-guy {
+
+    left: -10%;
+
+    bottom: 3%;
+
+    width: 63%;
+    rotate: 15deg;
+
+    transform:
+      rotate(3deg);
+
+  }
+
+
+  /*
+    MOBILE TAP
+  */
+
+  .human-one-obala__object {
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+  }
+
+
+  .human-one-obala__object:focus:not(:focus-visible) {
+
+    outline: none;
+
+  }
+
+}
+
+
+
+
+/* =====================================================
+
+   MOBILE — BIRAJ KATEGORIJU
+
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .human-one-obala__category-button {
+
+    position: absolute;
+
+    left: auto;
+
+    right:
+      max(
+        12px,
+        env(
+          safe-area-inset-right
+        )
+      );
+
+    top:
+      max(
+        10px,
+        env(
+          safe-area-inset-top
+        )
+      );
+
+    z-index: 70;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    border:
+      1px solid
+      rgba(
+        230,
+        218,
+        184,
+        0.46
+      );
+
+    background:
+      rgba(
+        18,
+        17,
+        14,
+        0.68
+      );
+
+    color:
+      #e5dcc1;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+    backdrop-filter:
+      blur(4px);
+
+    -webkit-backdrop-filter:
+      blur(4px);
+
+  }
+
+
+  .human-one-obala__category-button span {
+
+    display: block;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    transform:
+      translateY(-1px);
+
+  }
+
+
+  .human-one-obala__category-picker {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 120;
+
+    display: flex;
+
+    flex-direction:
+      column;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          11,
+          8,
+          5,
+          0.93
+        ),
+        rgba(
+          24,
+          15,
+          9,
+          0.89
+        )
+      );
+
+    backdrop-filter:
+      blur(7px);
+
+    -webkit-backdrop-filter:
+      blur(7px);
+
+  }
+
+
+  .human-one-obala__category-picker-top {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+      space-between;
+
+    gap: 10px;
+
+    min-height: 58px;
+
+    padding:
+      max(
+        12px,
+        env(
+          safe-area-inset-top
+        )
+      )
+      14px
+      8px;
+
+    box-sizing:
+      border-box;
+
+  }
+
+
+  .human-one-obala__category-picker-top p {
+
+    margin: 0;
+
+    color:
+      rgba(
+        226,
+        196,
+        157,
+        0.74
+      );
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      clamp(
+        8px,
+        2.6vw,
+        11px
+      );
+
+    font-weight: 700;
+
+    letter-spacing:
+      0.06em;
+
+  }
+
+
+  .human-one-obala__category-close {
+
+    padding:
+      7px
+      10px;
+
+    border:
+      1px solid
+      rgba(
+        226,
+        190,
+        145,
+        0.58
+      );
+
+    background:
+      rgba(
+        20,
+        13,
+        8,
+        0.92
+      );
+
+    color:
+      #ead9b9;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      10px;
+
+    font-weight: 900;
+
+    letter-spacing:
+      0.05em;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+  }
+
+
+  .human-one-obala__category-track {
+
+    flex:
+      1
+      1
+      auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11vw;
+
+    width: 100%;
+
+    padding:
+      18px
+      17vw
+      max(
+        34px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    box-sizing:
+      border-box;
+
+    overflow-x: auto;
+
+    overflow-y:
+      hidden;
+
+    scroll-snap-type:
+      x mandatory;
+
+    scroll-padding-inline:
+      17vw;
+
+    overscroll-behavior-x:
+      contain;
+
+    scrollbar-width:
+      none;
+
+    touch-action:
+      pan-x;
+
+  }
+
+
+  .human-one-obala__category-track::-webkit-scrollbar {
+
+    display: none;
+
+  }
+
+
+  .human-one-obala__category-card {
+
+    flex:
+      0
+      0
+      66vw;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction:
+      column;
+
+    align-items: center;
+
+    justify-content:
+      center;
+
+    gap: 18px;
+
+    min-width: 0;
+
+    height:
+      min(
+        62dvh,
+        520px
+      );
+
+    padding:
+      24px
+      18px;
+
+    box-sizing:
+      border-box;
+
+    border:
+      1px solid
+      rgba(
+        224,
+        190,
+        146,
+        0.5
+      );
+
+    background:
+      rgba(
+        30,
+        19,
+        12,
+        0.78
+      );
+
+    box-shadow:
+      0 18px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+
+    color:
+      #eadbc0;
+
+    scroll-snap-align:
+      center;
+
+    scroll-snap-stop:
+      always;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+  }
+
+
+  .human-one-obala__category-card > span:first-child {
+
+    flex:
+      0
+      0
+      auto;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size:
+      clamp(
+        1rem,
+        5vw,
+        1.45rem
+      );
+
+    font-weight: 900;
+
+    letter-spacing:
+      0.06em;
+
+    text-align:
+      center;
+
+    text-shadow:
+      0 2px 7px
+      rgba(
+        0,
+        0,
+        0,
+        0.85
+      );
+
+  }
+
+
+  .human-one-obala__category-card > img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 78%;
+
+    object-fit:
+      contain;
+
+    pointer-events:
+      none;
+
+    user-select:
+      none;
+
+    filter:
+      drop-shadow(
+        0 14px 17px
+        rgba(
+          0,
+          0,
+          0,
+          0.48
+        )
+      );
+
+  }
+
+
+  .human-one-obala__category-card--guestbook > img {
+
+    height: 82%;
+
+  }
+
+
+  .human-one-obala__category-button:focus-visible,
+  .human-one-obala__category-close:focus-visible,
+  .human-one-obala__category-card:focus-visible {
+
+    outline:
+      3px solid
+      rgba(
+        235,
+        185,
+        105,
+        0.92
+      );
+
+    outline-offset:
+      3px;
+
+  }
+
+}
+
+
+/* =====================================================
+
+   REDUCED MOTION
+
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .human-one-obala__object {
+
+    transition: none;
+
+  }
+
+}

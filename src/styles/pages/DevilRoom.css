@@ -1,0 +1,974 @@
+.devil-room {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background: #0d0a07;
+}
+
+
+/* =========================================
+   POPUNA SA STRANE
+   ========================================= */
+
+.devil-room::before {
+  content: "";
+
+  position: absolute;
+  inset: -30px;
+
+  background-image:
+    url("/images/devil/devil-room.png");
+
+  background-size: cover;
+  background-position: center;
+
+  filter:
+    blur(18px)
+    brightness(0.42);
+
+  transform:
+    scale(1.05);
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ARTBOARD
+   ========================================= */
+
+.devil-room__artboard {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    min(
+      100vw,
+      150dvh
+    );
+
+  aspect-ratio: 3 / 2;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   POZADINA
+   ========================================= */
+
+.devil-room__background {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: fill;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   KLIKABILNI ELEMENTI
+   ========================================= */
+
+.devil-room__hotspot {
+  position: absolute;
+
+  z-index: 4;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  appearance: none;
+
+  cursor: pointer;
+
+  overflow: visible;
+}
+
+
+/* =========================================
+   ĐAVO
+   ========================================= */
+
+.devil-room__hotspot--character {
+  left: 50%;
+  bottom: 2.5%;
+
+  width: 33%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 3;
+}
+
+
+/* =========================================
+   MALI DEMON
+   ========================================= */
+
+.devil-room__hotspot--demon {
+  left: 10%;
+  top: 2%;
+
+  width: 17%;
+}
+
+
+/* =========================================
+   DUŠE
+   ========================================= */
+
+.devil-room__hotspot--souls {
+  right: 5%;
+  top: 6%;
+
+  width: 28%;
+}
+
+
+/* =========================================
+   PNG SLIKE
+   ========================================= */
+
+.devil-room__clickable-image {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  z-index: 2;
+
+  user-select: none;
+  pointer-events: none;
+
+  transform:
+    scale(1);
+
+  transition:
+    transform 220ms ease;
+}
+
+
+/* =========================================
+   STALNO SVETLUCANJE
+   ========================================= */
+
+.devil-room__clickable-image--character {
+  animation:
+    devil-character-glow
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+
+.devil-room__clickable-image--demon {
+  animation:
+    devil-demon-glow
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+
+.devil-room__clickable-image--souls {
+  animation:
+    devil-souls-glow
+    3s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================
+   ĐAVO — MIKROČESTICE OKO IVICA
+   ========================================= */
+
+.devil-room__edge-particles {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  z-index: 8;
+
+  pointer-events: none;
+}
+
+
+.devil-particle {
+  position: absolute;
+
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      68,
+      38,
+      1
+    );
+
+  box-shadow:
+    0 0 6px
+    rgba(
+      255,
+      80,
+      45,
+      1
+    ),
+    0 0 12px
+    rgba(
+      255,
+      30,
+      15,
+      0.95
+    ),
+    0 0 20px
+    rgba(
+      190,
+      15,
+      5,
+      0.65
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   GLAVA / ROGOVI
+   ========================================= */
+
+.devil-particle--1 {
+  left: 39%;
+  top: 8%;
+
+  animation:
+    devil-particle-up-left
+    2.8s
+    ease-out
+    0s
+    infinite;
+}
+
+
+.devil-particle--2 {
+  left: 59%;
+  top: 10%;
+
+  animation:
+    devil-particle-up-right
+    3.1s
+    ease-out
+    1.1s
+    infinite;
+}
+
+
+/* =========================================
+   RAMENA
+   ========================================= */
+
+.devil-particle--3 {
+  left: 32%;
+  top: 29%;
+
+  animation:
+    devil-particle-left
+    3s
+    ease-out
+    0.5s
+    infinite;
+}
+
+
+.devil-particle--4 {
+  left: 67%;
+  top: 30%;
+
+  animation:
+    devil-particle-right
+    2.9s
+    ease-out
+    1.6s
+    infinite;
+}
+
+
+/* =========================================
+   RUKE
+   ========================================= */
+
+.devil-particle--5 {
+  left: 26%;
+  top: 45%;
+
+  animation:
+    devil-particle-left
+    3.3s
+    ease-out
+    1.2s
+    infinite;
+}
+
+
+.devil-particle--6 {
+  left: 73%;
+  top: 46%;
+
+  animation:
+    devil-particle-right
+    3.2s
+    ease-out
+    0.3s
+    infinite;
+}
+
+
+/* =========================================
+   BOKOVI
+   ========================================= */
+
+.devil-particle--7 {
+  left: 31%;
+  top: 61%;
+
+  animation:
+    devil-particle-left
+    3.4s
+    ease-out
+    2s
+    infinite;
+}
+
+
+.devil-particle--8 {
+  left: 68%;
+  top: 63%;
+
+  animation:
+    devil-particle-right
+    3.1s
+    ease-out
+    1s
+    infinite;
+}
+
+
+/* =========================================
+   NOGE
+   ========================================= */
+
+.devil-particle--9 {
+  left: 39%;
+  top: 78%;
+
+  animation:
+    devil-particle-left
+    3.5s
+    ease-out
+    1.5s
+    infinite;
+}
+
+
+.devil-particle--10 {
+  left: 61%;
+  top: 79%;
+
+  animation:
+    devil-particle-right
+    3.4s
+    ease-out
+    0.7s
+    infinite;
+}
+
+
+/* =========================================
+   DEMON — NARANDŽASTA PARA
+   ========================================= */
+
+.devil-room__hotspot--demon::before,
+.devil-room__hotspot--demon::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 18%;
+
+  width: 48%;
+  height: 35%;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  z-index: 6;
+
+  filter:
+    blur(8px);
+
+  mix-blend-mode:
+    screen;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        255,
+        175,
+        80,
+        0.60
+      ) 0%,
+      rgba(
+        235,
+        95,
+        30,
+        0.32
+      ) 38%,
+      rgba(
+        140,
+        45,
+        10,
+        0.10
+      ) 64%,
+      transparent 80%
+    );
+}
+
+
+.devil-room__hotspot--demon::before {
+  animation:
+    demon-visible-vapor
+    3.4s
+    ease-out
+    infinite;
+}
+
+
+.devil-room__hotspot--demon::after {
+  left: 42%;
+
+  animation:
+    demon-visible-vapor
+    3.4s
+    ease-out
+    1.7s
+    infinite;
+}
+
+
+/* =========================================
+   DUŠE — BELA IZMAGLICA
+   ========================================= */
+
+.devil-room__hotspot--souls::before,
+.devil-room__hotspot--souls::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 15%;
+
+  width: 48%;
+  height: 38%;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  z-index: 6;
+
+  filter:
+    blur(8px);
+
+  mix-blend-mode:
+    screen;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        245,
+        245,
+        245,
+        0.60
+      ) 0%,
+      rgba(
+        205,
+        215,
+        225,
+        0.30
+      ) 40%,
+      rgba(
+        150,
+        165,
+        175,
+        0.10
+      ) 65%,
+      transparent 80%
+    );
+}
+
+
+.devil-room__hotspot--souls::before {
+  animation:
+    souls-visible-vapor
+    4.2s
+    ease-out
+    infinite;
+}
+
+
+.devil-room__hotspot--souls::after {
+  left: 61%;
+
+  animation:
+    souls-visible-vapor
+    4.2s
+    ease-out
+    2.1s
+    infinite;
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.devil-room__hotspot:hover
+.devil-room__clickable-image {
+  transform:
+    scale(1.055);
+}
+
+
+/* =========================================
+   KLIK
+   ========================================= */
+
+.devil-room__hotspot:active
+.devil-room__clickable-image {
+  transform:
+    scale(1.025);
+}
+
+
+/* =========================================
+   TASTATURA
+   ========================================= */
+
+.devil-room__hotspot:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      255,
+      220,
+      170,
+      0.75
+    );
+
+  outline-offset:
+    5px;
+}
+
+
+/* =========================================
+   SVETLUCANJE — ĐAVO
+   ========================================= */
+
+@keyframes devil-character-glow {
+  0%,
+  100% {
+    filter:
+      brightness(1.04)
+      drop-shadow(
+        0 0 7px
+        rgba(
+          220,
+          45,
+          25,
+          0.34
+        )
+      );
+  }
+
+  50% {
+    filter:
+      brightness(1.13)
+      drop-shadow(
+        0 0 18px
+        rgba(
+          255,
+          65,
+          35,
+          0.62
+        )
+      );
+  }
+}
+
+
+/* =========================================
+   SVETLUCANJE — DEMON
+   ========================================= */
+
+@keyframes devil-demon-glow {
+  0%,
+  100% {
+    filter:
+      brightness(1.05)
+      drop-shadow(
+        0 0 7px
+        rgba(
+          255,
+          135,
+          55,
+          0.38
+        )
+      );
+  }
+
+  50% {
+    filter:
+      brightness(1.16)
+      drop-shadow(
+        0 0 17px
+        rgba(
+          255,
+          155,
+          65,
+          0.68
+        )
+      );
+  }
+}
+
+
+/* =========================================
+   SVETLUCANJE — DUŠE
+   ========================================= */
+
+@keyframes devil-souls-glow {
+  0%,
+  100% {
+    filter:
+      brightness(1.05)
+      drop-shadow(
+        0 0 8px
+        rgba(
+          220,
+          225,
+          230,
+          0.36
+        )
+      );
+  }
+
+  50% {
+    filter:
+      brightness(1.15)
+      drop-shadow(
+        0 0 20px
+        rgba(
+          235,
+          240,
+          245,
+          0.65
+        )
+      );
+  }
+}
+
+
+/* =========================================
+   ČESTICE — LEVA IVICA
+   ========================================= */
+
+@keyframes devil-particle-left {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        0
+      )
+      scale(0.65);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        -24px,
+        -32px
+      )
+      scale(0.15);
+  }
+}
+
+
+/* =========================================
+   ČESTICE — DESNA IVICA
+   ========================================= */
+
+@keyframes devil-particle-right {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        0
+      )
+      scale(0.65);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        24px,
+        -32px
+      )
+      scale(0.15);
+  }
+}
+
+
+/* =========================================
+   ČESTICE — LEVI ROG / GLAVA
+   ========================================= */
+
+@keyframes devil-particle-up-left {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        0
+      )
+      scale(0.65);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        -14px,
+        -38px
+      )
+      scale(0.15);
+  }
+}
+
+
+/* =========================================
+   ČESTICE — DESNI ROG / GLAVA
+   ========================================= */
+
+@keyframes devil-particle-up-right {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(
+        0,
+        0
+      )
+      scale(0.65);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        14px,
+        -38px
+      )
+      scale(0.15);
+  }
+}
+
+
+/* =========================================
+   DEMON — ISPARAVANJE
+   ========================================= */
+
+@keyframes demon-visible-vapor {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(15%)
+      scale(0.6);
+  }
+
+  20% {
+    opacity: 0.68;
+  }
+
+  55% {
+    opacity: 0.38;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-38%)
+      translateY(-110%)
+      scale(1.35);
+  }
+}
+
+
+/* =========================================
+   DUŠE — ISPARAVANJE
+   ========================================= */
+
+@keyframes souls-visible-vapor {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(15%)
+      scale(0.7);
+  }
+
+  20% {
+    opacity: 0.58;
+  }
+
+  60% {
+    opacity: 0.34;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-58%)
+      translateY(-125%)
+      scale(1.5);
+  }
+}
+
+
+/* =========================================
+   SMANJENO KRETANJE
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .devil-room__clickable-image {
+    animation: none;
+
+    filter:
+      brightness(1.08)
+      drop-shadow(
+        0 0 10px
+        rgba(
+          255,
+          220,
+          180,
+          0.4
+        )
+      );
+
+    transition: none;
+  }
+
+
+  .devil-room__edge-particles,
+  .devil-room__hotspot::before,
+  .devil-room__hotspot::after {
+    display: none;
+  }
+}

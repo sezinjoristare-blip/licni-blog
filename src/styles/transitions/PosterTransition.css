@@ -1,0 +1,64 @@
+/* =====================================================
+   POSTER TRANSITION
+   SOBA ↔ POSTERI
+   ===================================================== */
+
+.poster-transition {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2147483647;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+
+  isolation: isolate;
+
+  contain:
+    layout
+    paint
+    style;
+}
+
+
+.poster-transition__blackout {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    #000;
+
+  opacity: 0;
+
+  will-change:
+    opacity;
+}
+
+
+.poster-transition__canvas {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-select: none;
+
+  will-change:
+    transform,
+    opacity;
+}

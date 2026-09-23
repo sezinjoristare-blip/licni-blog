@@ -1,0 +1,1616 @@
+/* =========================================================
+   ADMIN V3 — CHARACTERS / CABINET
+   ========================================================= */
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+.admin-characters,
+.admin-character-cabinet {
+  width:
+    100%;
+
+  display:
+    grid;
+
+  gap:
+    28px;
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.admin-characters__back {
+  width:
+    fit-content;
+
+  min-height:
+    34px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      var(
+        --admin-transition
+      ),
+    transform
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-characters__back:hover {
+  color:
+    var(
+      --admin-text
+    );
+
+  transform:
+    translateX(
+      -3px
+    );
+}
+
+
+/* =========================================================
+   CABINET HERO
+   ========================================================= */
+
+.admin-character-cabinet__hero {
+  position:
+    relative;
+
+  min-height:
+    275px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    clamp(
+      24px,
+      4vw,
+      46px
+    );
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius-lg
+    );
+
+  background:
+    linear-gradient(
+      125deg,
+      #faf7f0
+      0%,
+      #f2ece0
+      58%,
+      #e7dece
+      100%
+    );
+
+  padding:
+    clamp(
+      24px,
+      4vw,
+      42px
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-soft
+    );
+}
+
+
+.admin-character-cabinet__hero::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    380px;
+
+  height:
+    380px;
+
+  right:
+    -180px;
+
+  bottom:
+    -235px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      138,
+      47,
+      0.13
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-character-cabinet__hero::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    235px;
+
+  height:
+    235px;
+
+  right:
+    -70px;
+
+  bottom:
+    -150px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      138,
+      47,
+      0.13
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-character-cabinet__hero > * {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+/* =========================================================
+   PORTRAIT
+   ========================================================= */
+
+.admin-character-cabinet__portrait-wrap {
+  position:
+    relative;
+
+  width:
+    180px;
+
+  aspect-ratio:
+    4 / 5;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --admin-border-strong
+    );
+
+  border-radius:
+    13px;
+
+  background:
+    #25201b;
+
+  box-shadow:
+    0
+    18px
+    38px
+    rgba(
+      35,
+      28,
+      22,
+      0.13
+    );
+}
+
+
+.admin-character-cabinet__portrait {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    block;
+
+  object-fit:
+    cover;
+}
+
+
+.admin-character-cabinet__portrait-fallback {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    4rem;
+}
+
+
+.admin-character-cabinet__portrait-index {
+  position:
+    absolute;
+
+  right:
+    8px;
+
+  bottom:
+    8px;
+
+  min-width:
+    33px;
+
+  min-height:
+    26px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+
+  border-radius:
+    5px;
+
+  background:
+    rgba(
+      20,
+      17,
+      14,
+      0.78
+    );
+
+  color:
+    #dec27c;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.59rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.08em;
+
+  backdrop-filter:
+    blur(
+      7px
+    );
+}
+
+
+/* =========================================================
+   HERO COPY
+   ========================================================= */
+
+.admin-character-cabinet__hero-copy {
+  min-width:
+    0;
+}
+
+
+.admin-character-cabinet__hero-copy h1 {
+  margin:
+    7px
+    0
+    14px;
+
+  max-width:
+    720px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      3rem,
+      6vw,
+      5.8rem
+    );
+
+  font-weight:
+    400;
+
+  line-height:
+    0.92;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+.admin-character-cabinet__lead {
+  max-width:
+    590px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.9rem;
+
+  line-height:
+    1.65;
+}
+
+
+.admin-character-cabinet__meta {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    7px;
+
+  margin-top:
+    21px;
+}
+
+
+/* =========================================================
+   HERO FILE MARK
+   ========================================================= */
+
+.admin-character-cabinet__hero-mark {
+  width:
+    102px;
+
+  height:
+    102px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  align-content:
+    center;
+
+  flex:
+    0
+    0 auto;
+
+  border:
+    1px solid
+    rgba(
+      91,
+      69,
+      34,
+      0.24
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    var(
+      --admin-accent-dark
+    );
+
+  transform:
+    rotate(
+      6deg
+    );
+}
+
+
+.admin-character-cabinet__hero-mark small,
+.admin-character-cabinet__hero-mark span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.43rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+.admin-character-cabinet__hero-mark strong {
+  margin:
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    2.15rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1;
+}
+
+
+/* =========================================================
+   GROUPS
+   ========================================================= */
+
+.admin-character-cabinet__groups {
+  display:
+    grid;
+
+  gap:
+    44px;
+}
+
+
+.admin-character-cabinet__group {
+  display:
+    grid;
+
+  gap:
+    17px;
+}
+
+
+.admin-character-cabinet__group-heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  gap:
+    15px;
+
+  padding-bottom:
+    15px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border
+    );
+}
+
+
+.admin-character-cabinet__group-index {
+  width:
+    34px;
+
+  min-height:
+    34px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  flex:
+    0
+    0 auto;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    var(
+      --admin-accent-dark
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    0.83rem;
+}
+
+
+.admin-character-cabinet__group-heading h2 {
+  margin:
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.8rem;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.admin-character-cabinet__group-heading p {
+  max-width:
+    620px;
+
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.75rem;
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   CABINET CARDS GRID
+   ========================================================= */
+
+.admin-character-options {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    12px;
+}
+
+
+/* =========================================================
+   CABINET CARD
+   ========================================================= */
+
+.admin-character-option {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  grid-template-rows:
+    170px
+    minmax(
+      0,
+      1fr
+    );
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius
+    );
+
+  background:
+    var(
+      --admin-surface
+    );
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  box-shadow:
+    var(
+      --admin-shadow-card
+    );
+
+  transition:
+    transform
+      var(
+        --admin-transition
+      ),
+    border-color
+      var(
+        --admin-transition
+      ),
+    box-shadow
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-character-option:hover {
+  transform:
+    translateY(
+      -3px
+    );
+
+  border-color:
+    rgba(
+      181,
+      138,
+      47,
+      0.4
+    );
+
+  box-shadow:
+    0
+    15px
+    34px
+    rgba(
+      29,
+      23,
+      18,
+      0.085
+    );
+}
+
+
+/* =========================================================
+   CARD PREVIEW
+   ========================================================= */
+
+.admin-character-option__preview {
+  position:
+    relative;
+
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    #28231e;
+}
+
+
+.admin-character-option__preview img {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    block;
+
+  object-fit:
+    cover;
+
+  transform:
+    scale(
+      1.005
+    );
+
+  filter:
+    saturate(
+      0.82
+    )
+    contrast(
+      1.02
+    );
+
+  transition:
+    transform
+      350ms
+      ease,
+    filter
+      350ms
+      ease;
+}
+
+
+.admin-character-option:hover
+.admin-character-option__preview img {
+  transform:
+    scale(
+      1.045
+    );
+
+  filter:
+    saturate(
+      1
+    )
+    contrast(
+      1.05
+    );
+}
+
+
+.admin-character-option__shade {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        18,
+        15,
+        12,
+        0.02
+      )
+      30%,
+      rgba(
+        18,
+        15,
+        12,
+        0.72
+      )
+      100%
+    );
+}
+
+
+.admin-character-option__number {
+  position:
+    absolute;
+
+  top:
+    10px;
+
+  left:
+    10px;
+
+  min-width:
+    31px;
+
+  min-height:
+    25px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.18
+    );
+
+  border-radius:
+    5px;
+
+  background:
+    rgba(
+      20,
+      17,
+      14,
+      0.7
+    );
+
+  color:
+    #e3cb91;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.56rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.08em;
+
+  backdrop-filter:
+    blur(
+      7px
+    );
+}
+
+
+.admin-character-option__preview-label {
+  position:
+    absolute;
+
+  left:
+    13px;
+
+  right:
+    13px;
+
+  bottom:
+    11px;
+
+  overflow:
+    hidden;
+
+  color:
+    #fff9ec;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.67rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.08em;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   CARD FALLBACK
+   ========================================================= */
+
+.admin-character-option__fallback {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #28221c,
+      #171411
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    2.8rem;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.admin-character-option__body {
+  min-width:
+    0;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  padding:
+    17px;
+}
+
+
+.admin-character-option__body-top {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+}
+
+
+.admin-character-option__body-top p {
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-accent-dark
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.54rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.admin-character-option__body-top
+> span {
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.67rem;
+
+  transition:
+    color
+      var(
+        --admin-transition
+      ),
+    transform
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-character-option:hover
+.admin-character-option__body-top
+> span {
+  color:
+    var(
+      --admin-accent-dark
+    );
+
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+.admin-character-option__body h3 {
+  margin:
+    8px
+    0
+    8px;
+
+  color:
+    var(
+      --admin-text
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.45rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    1.05;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.admin-character-option__description {
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.71rem;
+
+  line-height:
+    1.55;
+}
+
+
+.admin-character-option__footer {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  margin-top:
+    auto;
+
+  padding-top:
+    18px;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.55rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.07em;
+
+  transition:
+    color
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-character-option:hover
+.admin-character-option__footer {
+  color:
+    var(
+      --admin-text
+    );
+}
+
+
+/* =========================================================
+   GENERIC CHARACTERS PAGE
+   ========================================================= */
+
+.admin-characters__heading {
+  display:
+    grid;
+
+  gap:
+    7px;
+
+  padding-bottom:
+    22px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border
+    );
+}
+
+
+.admin-characters__heading h1 {
+  margin:
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      2.7rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+.admin-characters__heading p {
+  max-width:
+    650px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.6;
+}
+
+
+.admin-characters__grid,
+.admin-characters__list {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    14px;
+}
+
+
+.admin-character-card,
+.admin-characters__card {
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius
+    );
+
+  background:
+    var(
+      --admin-surface
+    );
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  box-shadow:
+    var(
+      --admin-shadow-card
+    );
+
+  transition:
+    transform
+      var(
+        --admin-transition
+      ),
+    border-color
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-character-card:hover,
+.admin-characters__card:hover {
+  transform:
+    translateY(
+      -2px
+    );
+
+  border-color:
+    rgba(
+      181,
+      138,
+      47,
+      0.36
+    );
+}
+
+
+/* =========================================================
+   DESKTOP MEDIUM
+   ========================================================= */
+
+@media (
+  max-width:
+    1180px
+) {
+  .admin-character-options {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .admin-character-cabinet__hero {
+    grid-template-columns:
+      155px
+      minmax(
+        0,
+        1fr
+      )
+      auto;
+  }
+
+
+  .admin-character-cabinet__portrait-wrap {
+    width:
+      155px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (
+  max-width:
+    820px
+) {
+  .admin-character-cabinet__hero {
+    min-height:
+      auto;
+
+    grid-template-columns:
+      120px
+      minmax(
+        0,
+        1fr
+      );
+
+    align-items:
+      start;
+  }
+
+
+  .admin-character-cabinet__portrait-wrap {
+    width:
+      120px;
+  }
+
+
+  .admin-character-cabinet__hero-mark {
+    position:
+      absolute;
+
+    right:
+      20px;
+
+    bottom:
+      20px;
+
+    width:
+      72px;
+
+    height:
+      72px;
+
+    opacity:
+      0.7;
+  }
+
+
+  .admin-character-cabinet__hero-mark
+  strong {
+    font-size:
+      1.5rem;
+  }
+
+
+  .admin-character-cabinet__lead {
+    padding-right:
+      60px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+    620px
+) {
+  .admin-character-cabinet {
+    gap:
+      22px;
+  }
+
+
+  .admin-character-cabinet__hero {
+    display:
+      flex;
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap:
+      20px;
+
+    padding:
+      20px;
+  }
+
+
+  .admin-character-cabinet__portrait-wrap {
+    width:
+      100px;
+  }
+
+
+  .admin-character-cabinet__hero-copy h1 {
+    font-size:
+      clamp(
+        2.6rem,
+        14vw,
+        4rem
+      );
+  }
+
+
+  .admin-character-cabinet__lead {
+    padding-right:
+      0;
+  }
+
+
+  .admin-character-cabinet__hero-mark {
+    top:
+      18px;
+
+    right:
+      18px;
+
+    bottom:
+      auto;
+
+    width:
+      64px;
+
+    height:
+      64px;
+  }
+
+
+  .admin-character-cabinet__hero-mark
+  small,
+  .admin-character-cabinet__hero-mark
+  span {
+    font-size:
+      0.36rem;
+  }
+
+
+  .admin-character-cabinet__hero-mark
+  strong {
+    font-size:
+      1.3rem;
+  }
+
+
+  .admin-character-options {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-character-option {
+    grid-template-rows:
+      145px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .admin-character-cabinet__group-heading {
+    gap:
+      11px;
+  }
+
+
+  .admin-character-cabinet__group-heading h2 {
+    font-size:
+      1.55rem;
+  }
+
+
+  .admin-characters__grid,
+  .admin-characters__list {
+    grid-template-columns:
+      1fr;
+  }
+}

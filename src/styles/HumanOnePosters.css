@@ -1,0 +1,4455 @@
+.human-one-posters {
+  min-height: 100dvh;
+
+  padding:
+    30px 20px 90px;
+
+  box-sizing:
+    border-box;
+
+  color:
+    #181614;
+
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(214, 87, 55, 0.12),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 88% 74%,
+      rgba(54, 116, 128, 0.1),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #d8c8aa,
+      #b9a785
+    );
+}
+
+
+/* =====================================================
+
+   KATEGORIJE — POZADINA I POLICA
+
+   Ovaj modifier koristi samo HumanOnePosters.jsx.
+   HumanOnePosterCategory i HumanOnePosterEntry ostaju
+   vizuelno netaknuti.
+
+   ===================================================== */
+
+.human-one-posters--shelves {
+  position:
+    relative;
+
+  color:
+    #ece3d2;
+
+  background:
+    radial-gradient(
+      circle at 50% -8%,
+      rgba(
+        183,
+        129,
+        72,
+        0.17
+      ),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 12% 48%,
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(
+        0,
+        0,
+        0,
+        0.34
+      ),
+      transparent 34%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.012
+      )
+        0 1px,
+      rgba(
+        0,
+        0,
+        0,
+        0.035
+      )
+        1px 3px,
+      transparent
+        3px 38px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #2b1b12
+        0 34px,
+      #25170f
+        34px 36px,
+      #301f14
+        36px 68px,
+      #21150e
+        68px 70px
+    );
+}
+
+
+.human-one-posters--shelves::before {
+  content: "";
+
+  position:
+    fixed;
+
+  inset: 0;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ) 100%
+    );
+
+  box-shadow:
+    inset 0 0 120px
+      rgba(
+        0,
+        0,
+        0,
+        0.55
+      );
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__shell {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  width:
+    min(
+      1180px,
+      100%
+    );
+}
+
+
+.human-one-posters__shell {
+  width:
+    min(
+      1120px,
+      100%
+    );
+
+  margin:
+    0 auto;
+}
+
+
+.human-one-posters__back {
+  position:
+    sticky;
+
+  top:
+    12px;
+
+  z-index:
+    50;
+
+  display:
+    block;
+
+  width:
+    fit-content;
+
+  margin-bottom:
+    30px;
+
+  padding:
+    8px 13px;
+
+  border:
+    2px solid #171511;
+
+  background:
+    #d8c743;
+
+  color:
+    #171511;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.75rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
+
+  box-shadow:
+    4px 4px 0
+    rgba(0, 0, 0, 0.24);
+}
+
+
+.human-one-posters__hero {
+  position:
+    relative;
+
+  margin-bottom:
+    34px;
+
+  padding:
+    36px 40px;
+
+  border:
+    3px solid #171511;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 30px,
+      rgba(30, 25, 18, 0.035)
+        31px
+    ),
+    #e1d2b7;
+
+  box-shadow:
+    11px 11px 0
+    rgba(30, 25, 18, 0.17);
+
+  transform:
+    rotate(-0.15deg);
+}
+
+
+.human-one-posters__hero::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    39%;
+
+  top:
+    -11px;
+
+  width:
+    22%;
+
+  height:
+    22px;
+
+  background:
+    rgba(
+      204,
+      187,
+      124,
+      0.9
+    );
+
+  transform:
+    rotate(1.2deg);
+}
+
+
+.human-one-posters__hero p {
+  margin:
+    0 0 10px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+.human-one-posters__hero h1 {
+  margin: 0;
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(
+      3.4rem,
+      8vw,
+      6.8rem
+    );
+
+  line-height:
+    0.9;
+
+  letter-spacing:
+    0.02em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-posters__hero span {
+  display:
+    block;
+
+  max-width:
+    680px;
+
+  margin-top:
+    18px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.6;
+}
+
+
+
+
+/* =====================================================
+
+   KATEGORIJE — GORNJA TABLA POLICE
+
+   ===================================================== */
+
+.human-one-posters--shelves
+.human-one-posters__hero {
+  margin-bottom:
+    22px;
+
+  padding:
+    34px
+    38px
+    38px;
+
+  border:
+    9px solid
+    #5c371f;
+
+  outline:
+    2px solid
+    #100b08;
+
+  color:
+    #efe7d6;
+
+  background:
+    radial-gradient(
+      circle at 19% 24%,
+      rgba(
+        255,
+        205,
+        126,
+        0.07
+      ),
+      transparent 27%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 31px,
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      )
+        32px
+    ),
+    linear-gradient(
+      145deg,
+      #211914,
+      #15110e 58%,
+      #1d1510
+    );
+
+  box-shadow:
+    0 17px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      ),
+    inset 0 0 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.36
+      ),
+    inset 0 0 0 2px
+      rgba(
+        176,
+        112,
+        58,
+        0.13
+      );
+
+  transform:
+    none;
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__hero p {
+  color:
+    #c9b84b;
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__hero h1 {
+  color:
+    #f1eadb;
+
+  text-shadow:
+    4px 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      );
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__hero span {
+  color:
+    #cfc5b2;
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__hero::before {
+  left:
+    50%;
+
+  top:
+    -18px;
+
+  width:
+    min(
+      220px,
+      34%
+    );
+
+  height:
+    18px;
+
+  border:
+    1px solid
+    #3f3214;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cdbc55,
+      #9f9137
+    );
+
+  box-shadow:
+    0 2px 4px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+
+  transform:
+    translateX(-50%)
+    rotate(0.6deg);
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__hero::after {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    -9px;
+
+  right:
+    -9px;
+
+  bottom:
+    -16px;
+
+  height:
+    10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #704329,
+      #3a2215
+    );
+
+  border:
+    1px solid
+    #170e09;
+
+  box-shadow:
+    0 6px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters--shelves
+.human-one-posters__back {
+  position: sticky;
+
+  top:
+    max(
+      12px,
+      env(
+        safe-area-inset-top
+      )
+    );
+
+  z-index: 500;
+
+  border-color:
+    #17100b;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d4c64c,
+      #afa238
+    );
+
+  color:
+    #15110c;
+
+  box-shadow:
+    4px 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+}
+
+.human-one-posters--shelves,
+.human-one-posters--shelves
+.human-one-posters__shell {
+  overflow: visible;
+}
+
+
+.human-one-posters__category-grid {
+  --shelf-row:
+    20px;
+
+  --shelf-column:
+    15px;
+
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  grid-auto-rows:
+    minmax(
+      255px,
+      auto
+    );
+
+  gap:
+    var(--shelf-row)
+    var(--shelf-column);
+
+  padding:
+    22px;
+
+  border:
+    7px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        255,
+        193,
+        117,
+        0.06
+      ),
+      transparent 16%,
+      rgba(
+        0,
+        0,
+        0,
+        0.18
+      ) 48%,
+      rgba(
+        255,
+        190,
+        108,
+        0.05
+      ) 75%,
+      transparent
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #684020
+        0 7px,
+      #4e2c18
+        7px 12px,
+      #754823
+        12px 17px,
+      #3f2516
+        17px 22px
+    );
+
+  box-shadow:
+    0 24px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      ),
+    inset 0 0 0 2px
+      rgba(
+        215,
+        148,
+        78,
+        0.10
+      ),
+    inset 0 0 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+}
+
+
+/*
+  Svetlija ivica drveta na vrhu police.
+*/
+.human-one-posters__category-grid::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    10px;
+
+  right:
+    10px;
+
+  top:
+    7px;
+
+  height:
+    3px;
+
+  background:
+    rgba(
+      226,
+      154,
+      82,
+      0.20
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/*
+  Svaka kategorija je sada jedna "pregrada" police.
+  Nema rotiranja ni lebdećih web-kartica.
+*/
+.human-one-posters__category-card,
+.human-one-posters__category-empty-slot {
+  position:
+    relative;
+
+  min-width:
+    0;
+
+  min-height:
+    255px;
+
+  border:
+    2px solid
+    rgba(
+      35,
+      23,
+      14,
+      0.88
+    );
+
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      ),
+      transparent 58%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #3a261a
+        0 28px,
+      #332117
+        28px 30px,
+      #412b1c
+        30px 58px,
+      #2b1c14
+        58px 60px
+    );
+
+  box-shadow:
+    inset 0 8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      ),
+    inset 0 -8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      );
+}
+
+
+.human-one-posters__category-card {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    46%
+    minmax(0, 1fr);
+
+  align-items:
+    stretch;
+
+  min-width:
+    0;
+
+  padding:
+    15px 16px 18px;
+
+  box-sizing:
+    border-box;
+
+  color:
+    #171511;
+
+  text-decoration:
+    none;
+
+  perspective:
+    900px;
+
+  transform:
+    none;
+
+  transition:
+    filter 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+/*
+  Centralni žleb knjige. Ne menja stvarni raspored,
+  samo daje osećaj otvorenih korica / prve strane.
+*/
+.human-one-posters__category-card::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    calc(
+      46% + 15px
+    );
+
+  top:
+    18px;
+
+  bottom:
+    21px;
+
+  z-index:
+    7;
+
+  width:
+    11px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        60,
+        40,
+        24,
+        0.30
+      ),
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ) 48%,
+      rgba(
+        255,
+        243,
+        210,
+        0.25
+      ) 54%,
+      rgba(
+        60,
+        40,
+        24,
+        0.14
+      )
+    );
+
+  filter:
+    blur(0.2px);
+
+  pointer-events:
+    none;
+}
+
+
+/*
+  Donje ivice listova.
+*/
+.human-one-posters__category-card::after {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    27px;
+
+  right:
+    27px;
+
+  bottom:
+    11px;
+
+  z-index:
+    1;
+
+  height:
+    8px;
+
+  border-radius:
+    0 0 7px 7px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #cbc8bf
+        0 1px,
+      #aaa79f
+        1px 2px
+    );
+
+  box-shadow:
+    0 4px 5px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters__category-card:nth-child(4n + 2),
+.human-one-posters__category-card:nth-child(4n + 3) {
+  transform:
+    none;
+}
+
+
+.human-one-posters__category-card:hover {
+  z-index:
+    3;
+
+  transform:
+    translateY(-3px);
+
+  filter:
+    brightness(1.025);
+
+  box-shadow:
+    inset 0 8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+    inset 0 -8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.22
+      ),
+    0 8px 12px
+      rgba(
+        42,
+        29,
+        18,
+        0.24
+      );
+}
+
+
+/* =====================================================
+
+   LEVA STRANA — KORICA SA FOTOGRAFIJOM
+
+   ===================================================== */
+
+.human-one-posters__category-image {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+  overflow:
+    hidden;
+
+  padding:
+    9px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    2px solid
+    #24170f;
+
+  border-right:
+    0;
+
+  border-radius:
+    9px 1px 1px 7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5a3822,
+      #2c1b12
+    );
+
+  box-shadow:
+    -5px 5px 8px
+      rgba(
+        0,
+        0,
+        0,
+        0.26
+      ),
+    inset 4px 0 8px
+      rgba(
+        255,
+        217,
+        156,
+        0.08
+      );
+
+  transform:
+    rotateY(2.2deg);
+
+  transform-origin:
+    right center;
+}
+
+
+.human-one-posters__category-image::after {
+  content: "";
+
+  position:
+    absolute;
+
+  inset:
+    7px;
+
+  border:
+    1px solid
+    rgba(
+      224,
+      202,
+      157,
+      0.36
+    );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters__category-image img {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  border:
+    1px solid
+    rgba(
+      232,
+      216,
+      185,
+      0.24
+    );
+
+  box-sizing:
+    border-box;
+
+  filter:
+    sepia(0.08)
+    contrast(1.03)
+    saturate(0.92);
+
+  transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+
+
+.human-one-posters__category-card:hover
+.human-one-posters__category-image img {
+  transform:
+    scale(1.018);
+
+  filter:
+    sepia(0.04)
+    contrast(1.04)
+    saturate(0.98);
+}
+
+
+.human-one-posters__category-image > span {
+  color:
+    #e0cd93;
+
+  font-size:
+    4rem;
+}
+
+
+/* =====================================================
+
+   DESNA STRANA — PRVA STRANA KNJIGE
+
+   ===================================================== */
+
+.human-one-posters__category-copy {
+  position:
+    relative;
+
+  z-index:
+    4;
+
+  min-width:
+    0;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  padding:
+    23px 22px 24px 28px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    1px solid
+    #666864;
+
+  border-left:
+    0;
+
+  border-radius:
+    1px 9px 7px 1px;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 27px,
+      rgba(
+        25,
+        25,
+        25,
+        0.045
+      )
+        28px
+    ),
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(
+        255,
+        255,
+        255,
+        0.34
+      ),
+      transparent 31%
+    ),
+    linear-gradient(
+      145deg,
+      #f0f0ed,
+      #d1d2cf
+    );
+
+  box-shadow:
+    5px 5px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      ),
+    inset -6px 0 10px
+      rgba(
+        88,
+        63,
+        37,
+        0.10
+      );
+
+  transform:
+    rotateY(-1.6deg);
+
+  transform-origin:
+    left center;
+}
+
+
+.human-one-posters__category-copy::after {
+  content: "";
+
+  position:
+    absolute;
+
+  top:
+    9px;
+
+  right:
+    8px;
+
+  bottom:
+    9px;
+
+  width:
+    4px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(
+        92,
+        92,
+        88,
+        0.22
+      )
+        0 1px,
+      transparent
+        1px 3px
+    );
+
+  opacity:
+    0.52;
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters__category-copy small,
+.human-one-posters__article-copy > p,
+.human-one-posters__part-card small,
+.human-one-posters__continue small {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+.human-one-posters__category-copy small {
+  color:
+    #555653;
+}
+
+
+.human-one-posters__category-copy h2 {
+  max-width:
+    100%;
+
+  margin:
+    10px 0 13px;
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(
+      2rem,
+      3.7vw,
+      3.25rem
+    );
+
+  line-height:
+    0.95;
+
+  text-transform:
+    uppercase;
+
+  word-break:
+    normal;
+
+  overflow-wrap:
+    break-word;
+}
+
+
+.human-one-posters__category-copy p {
+  margin:
+    0;
+
+  max-width:
+    29ch;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    0.95rem;
+
+  line-height:
+    1.48;
+}
+
+
+/* =====================================================
+
+   PRAZNA PREGRADA AKO JE BROJ KATEGORIJA NEPARAN
+
+   ===================================================== */
+
+.human-one-posters__category-empty-slot {
+  overflow:
+    hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      #473020,
+      #302117
+    );
+}
+
+
+.human-one-posters__category-empty-slot::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    16%;
+
+  right:
+    16%;
+
+  bottom:
+    17%;
+
+  height:
+    10px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
+
+  filter:
+    blur(6px);
+}
+
+
+.human-one-posters__category-empty-slot::after {
+  content:
+    "ПРАЗНА ПОЛИЦА";
+
+  position:
+    absolute;
+
+  left:
+    50%;
+
+  top:
+    50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  color:
+    rgba(
+      224,
+      202,
+      157,
+      0.28
+    );
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.16em;
+
+  white-space:
+    nowrap;
+}
+
+
+.human-one-posters__article-list {
+  display:
+    grid;
+
+  gap:
+    18px;
+}
+
+
+.human-one-posters__article-card {
+  display:
+    grid;
+
+  grid-template-columns:
+    150px 1fr auto;
+
+  align-items:
+    stretch;
+
+  gap:
+    22px;
+
+  min-height:
+    150px;
+
+  padding:
+    14px 20px
+    14px 14px;
+
+  border:
+    2px solid #171511;
+
+  color:
+    #171511;
+
+  background:
+    #eadfc9;
+
+  text-decoration:
+    none;
+
+  box-shadow:
+    7px 7px 0
+    rgba(25, 22, 18, 0.18);
+
+  transition:
+    transform 150ms ease;
+}
+
+
+.human-one-posters__article-card:hover {
+  transform:
+    translateX(7px);
+}
+
+
+.human-one-posters__article-image {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    150px;
+
+  min-height:
+    125px;
+
+  overflow:
+    hidden;
+
+  background:
+    #2e302d;
+}
+
+
+.human-one-posters__article-image img {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+}
+
+
+.human-one-posters__article-image span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
+
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    4rem;
+}
+
+
+.human-one-posters__article-copy {
+  align-self:
+    center;
+}
+
+
+.human-one-posters__article-copy > p {
+  margin:
+    0 0 7px;
+
+  color:
+    #a33c2d;
+}
+
+
+.human-one-posters__article-copy h2 {
+  margin: 0;
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.8rem,
+      4vw,
+      3rem
+    );
+
+  line-height:
+    0.95;
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-posters__article-copy h3 {
+  margin:
+    7px 0 0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.8rem;
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-posters__article-copy > span {
+  display:
+    block;
+
+  max-width:
+    720px;
+
+  margin-top:
+    13px;
+
+  font-family:
+    Georgia,
+    serif;
+
+  line-height:
+    1.55;
+}
+
+
+.human-one-posters__article-card > strong {
+  align-self:
+    center;
+
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    2.8rem;
+}
+
+
+.human-one-posters__parts {
+  display:
+    grid;
+
+  gap:
+    14px;
+}
+
+
+.human-one-posters__part-card,
+.human-one-posters__continue {
+  width:
+    100%;
+
+  border:
+    2px solid #171511;
+
+  color:
+    #171511;
+
+  background:
+    #eadfc9;
+
+  cursor:
+    pointer;
+
+  box-shadow:
+    6px 6px 0
+    rgba(25, 22, 18, 0.18);
+}
+
+
+.human-one-posters__part-card {
+  display:
+    grid;
+
+  grid-template-columns:
+    90px 1fr auto;
+
+  align-items:
+    center;
+
+  gap:
+    20px;
+
+  padding:
+    18px 22px;
+
+  text-align:
+    left;
+}
+
+
+.human-one-posters__part-card > span {
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    3.4rem;
+
+  opacity:
+    0.22;
+}
+
+
+.human-one-posters__part-card h2 {
+  margin:
+    5px 0 0;
+
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    2rem;
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-posters__part-card p {
+  margin:
+    7px 0 0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.72rem;
+}
+
+
+.human-one-posters__part-card > strong {
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    2.5rem;
+}
+
+
+.human-one-posters__continue {
+  display:
+    grid;
+
+  gap:
+    5px;
+
+  margin-bottom:
+    24px;
+
+  padding:
+    20px 24px;
+
+  text-align:
+    left;
+
+  background:
+    #d5c64b;
+}
+
+
+.human-one-posters__continue strong {
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size:
+    2rem;
+
+  text-transform:
+    uppercase;
+}
+
+
+.human-one-posters__continue span {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size:
+    0.75rem;
+}
+
+
+.human-one-posters__state {
+  padding:
+    34px;
+
+  border:
+    2px solid #171511;
+
+  background:
+    #e9ddc7;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-weight:
+    800;
+
+  text-align:
+    center;
+
+  box-shadow:
+    7px 7px 0
+    rgba(25, 22, 18, 0.16);
+}
+
+
+
+
+.human-one-posters--shelves
+.human-one-posters__state {
+  border:
+    5px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  color:
+    #e9dfcb;
+
+  background:
+    linear-gradient(
+      145deg,
+      #231914,
+      #15110e
+    );
+
+  box-shadow:
+    0 14px 22px
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ),
+    inset 0 0 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.26
+      );
+}
+
+
+@media (
+  max-width: 780px
+) {
+  .human-one-posters__category-grid {
+    --shelf-row:
+      15px;
+
+    grid-template-columns:
+      1fr;
+
+    grid-auto-rows:
+      auto;
+
+    padding:
+      15px;
+
+    border-width:
+      4px;
+  }
+
+
+  .human-one-posters__category-empty-slot {
+    display:
+      none;
+  }
+
+
+  .human-one-posters__category-card {
+    min-height:
+      205px;
+  }
+}
+
+
+@media (
+  max-width: 580px
+) {
+  .human-one-posters {
+    padding:
+      18px 12px 60px;
+  }
+
+
+  .human-one-posters__hero {
+    padding:
+      30px 20px;
+  }
+
+
+  /*
+    Na telefonu je jedna otvorena knjiga po polici.
+    Obe strane ostaju vidljive — levo korica/fotka,
+    desno prva strana sa nazivom i opisom.
+  */
+  .human-one-posters--shelves
+  .human-one-posters__category-grid {
+    padding:
+      10px;
+
+    gap:
+      11px;
+
+    border-width:
+      4px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-card {
+    grid-template-columns:
+      43%
+      minmax(0, 1fr);
+
+    min-height:
+      182px;
+
+    padding:
+      11px 12px 14px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-card::before {
+    left:
+      calc(
+        43% + 11px
+      );
+
+    top:
+      14px;
+
+    bottom:
+      17px;
+
+    width:
+      8px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-card::after {
+    left:
+      21px;
+
+    right:
+      21px;
+
+    bottom:
+      7px;
+
+    height:
+      6px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-image {
+    min-height:
+      156px;
+
+    padding:
+      6px;
+
+    border-bottom:
+      2px solid
+      #24170f;
+
+    border-right:
+      0;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-image::after {
+    inset:
+      5px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-copy {
+    min-height:
+      156px;
+
+    padding:
+      14px
+      12px
+      14px
+      17px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-copy small {
+    font-size:
+      0.57rem;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-copy h2 {
+    margin:
+      7px 0 9px;
+
+    font-size:
+      clamp(
+        1.45rem,
+        7.2vw,
+        2.1rem
+      );
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__category-copy p {
+    max-width:
+      none;
+
+    font-size:
+      clamp(
+        0.72rem,
+        3.2vw,
+        0.84rem
+      );
+
+    line-height:
+      1.38;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__hero {
+    margin-bottom:
+      16px;
+
+    padding:
+      26px 18px 28px;
+
+    border-width:
+      6px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__hero::after {
+    left:
+      -6px;
+
+    right:
+      -6px;
+
+    bottom:
+      -12px;
+
+    height:
+      7px;
+  }
+
+
+  .human-one-posters__article-card {
+    grid-template-columns:
+      90px 1fr auto;
+
+    gap:
+      12px;
+
+    padding:
+      10px;
+  }
+
+
+  .human-one-posters__article-image {
+    width:
+      90px;
+
+    min-height:
+      90px;
+  }
+
+
+  .human-one-posters__part-card {
+    grid-template-columns:
+      55px 1fr auto;
+
+    gap:
+      10px;
+
+    padding:
+      14px;
+  }
+
+
+  .human-one-posters__part-card > span {
+    font-size:
+      2.5rem;
+  }
+
+
+  .human-one-posters__part-card h2 {
+    font-size:
+      1.5rem;
+  }
+}
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-posters__category-card,
+  .human-one-posters__category-image img {
+    transition:
+      none;
+  }
+
+
+  .human-one-posters__category-card:hover {
+    transform:
+      none;
+  }
+}
+
+
+@media (
+  max-width: 580px
+) {
+  .human-one-posters--shelves {
+    padding:
+      18px 10px 64px;
+
+    background:
+      radial-gradient(
+        circle at 50% -6%,
+        rgba(
+          182,
+          126,
+          68,
+          0.16
+        ),
+        transparent 30%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        #291a12
+          0 30px,
+        #21150f
+          30px 32px,
+        #302017
+          32px 62px,
+        #1d130e
+          62px 64px
+      );
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__back {
+    margin-bottom:
+      24px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__hero {
+    border-width:
+      7px;
+
+    outline-width:
+      1px;
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__hero h1 {
+    font-size:
+      clamp(
+        2.85rem,
+        16vw,
+        4.4rem
+      );
+  }
+
+
+  .human-one-posters--shelves
+  .human-one-posters__hero span {
+    color:
+      #c9bfad;
+  }
+}
+
+
+/* =====================================================
+
+   KATEGORIJA — TAMNA POLICA / KNJIGE
+
+   ===================================================== */
+
+.human-one-posters--category-page {
+  position:
+    relative;
+
+  min-height:
+    100dvh;
+
+  overflow:
+    visible;
+
+  color:
+    #ece3d2;
+
+  background:
+    radial-gradient(
+      circle at 50% -8%,
+      rgba(
+        183,
+        129,
+        72,
+        0.17
+      ),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 12% 48%,
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(
+        0,
+        0,
+        0,
+        0.34
+      ),
+      transparent 34%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.012
+      )
+        0 1px,
+      rgba(
+        0,
+        0,
+        0,
+        0.035
+      )
+        1px 3px,
+      transparent
+        3px 38px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #2b1b12
+        0 34px,
+      #25170f
+        34px 36px,
+      #301f14
+        36px 68px,
+      #21150e
+        68px 70px
+    );
+}
+
+
+.human-one-posters--category-page::before {
+  content: "";
+
+  position:
+    fixed;
+
+  inset: 0;
+
+  z-index:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ) 100%
+    );
+
+  box-shadow:
+    inset 0 0 120px
+      rgba(
+        0,
+        0,
+        0,
+        0.55
+      );
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__shell {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  overflow:
+    visible;
+
+  width:
+    min(
+      1180px,
+      100%
+    );
+}
+
+
+/* =====================================================
+
+   STICKY DUGME KATEGORIJE
+
+   ===================================================== */
+
+.human-one-posters--category-page
+.human-one-posters__back {
+  position:
+    sticky;
+
+  top:
+    max(
+      12px,
+      env(
+        safe-area-inset-top
+      )
+    );
+
+  z-index:
+    300;
+
+  margin-bottom:
+    30px;
+
+  border-color:
+    #17100b;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d4c64c,
+      #afa238
+    );
+
+  color:
+    #15110c;
+
+  box-shadow:
+    4px 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+
+  isolation:
+    isolate;
+}
+
+
+/* =====================================================
+
+   HERO KATEGORIJE — ISTA GORNJA TABLA
+
+   ===================================================== */
+
+.human-one-posters--category-page
+.human-one-posters__hero--category {
+  position:
+    relative;
+
+  margin-bottom:
+    24px;
+
+  padding:
+    34px
+    38px
+    38px;
+
+  border:
+    9px solid
+    #5c371f;
+
+  outline:
+    2px solid
+    #100b08;
+
+  color:
+    #efe7d6;
+
+  background:
+    radial-gradient(
+      circle at 19% 24%,
+      rgba(
+        255,
+        205,
+        126,
+        0.07
+      ),
+      transparent 27%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 31px,
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      )
+        32px
+    ),
+    linear-gradient(
+      145deg,
+      #211914,
+      #15110e 58%,
+      #1d1510
+    );
+
+  box-shadow:
+    0 17px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.46
+      ),
+    inset 0 0 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.36
+      ),
+    inset 0 0 0 2px
+      rgba(
+        176,
+        112,
+        58,
+        0.13
+      );
+
+  transform:
+    none;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__hero--category::before {
+  left:
+    50%;
+
+  top:
+    -18px;
+
+  width:
+    min(
+      220px,
+      34%
+    );
+
+  height:
+    18px;
+
+  border:
+    1px solid
+    #3f3214;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cdbc55,
+      #9f9137
+    );
+
+  box-shadow:
+    0 2px 4px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+
+  transform:
+    translateX(-50%)
+    rotate(0.6deg);
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__hero--category::after {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    -9px;
+
+  right:
+    -9px;
+
+  bottom:
+    -16px;
+
+  height:
+    10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #704329,
+      #3a2215
+    );
+
+  border:
+    1px solid
+    #170e09;
+
+  box-shadow:
+    0 6px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__hero--category p {
+  color:
+    #c9b84b;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__hero--category h1 {
+  color:
+    #f1eadb;
+
+  text-shadow:
+    4px 4px 0
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      );
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__hero--category span {
+  color:
+    #cfc5b2;
+}
+
+
+/* =====================================================
+
+   LISTA TEKSTOVA — VELIKA DRVENA POLICA
+
+   ===================================================== */
+
+.human-one-posters--category-page
+.human-one-posters__article-list {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  gap:
+    14px;
+
+  padding:
+    20px;
+
+  border:
+    7px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        255,
+        193,
+        117,
+        0.06
+      ),
+      transparent 16%,
+      rgba(
+        0,
+        0,
+        0,
+        0.18
+      ) 48%,
+      rgba(
+        255,
+        190,
+        108,
+        0.05
+      ) 75%,
+      transparent
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #684020
+        0 7px,
+      #4e2c18
+        7px 12px,
+      #754823
+        12px 17px,
+      #3f2516
+        17px 22px
+    );
+
+  box-shadow:
+    0 24px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      ),
+    inset 0 0 0 2px
+      rgba(
+        215,
+        148,
+        78,
+        0.10
+      ),
+    inset 0 0 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-list::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    10px;
+
+  right:
+    10px;
+
+  top:
+    7px;
+
+  height:
+    3px;
+
+  background:
+    rgba(
+      226,
+      154,
+      82,
+      0.20
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =====================================================
+
+   SVAKI TEKST = KNJIGA / DOSIJE U POLICI
+
+   ===================================================== */
+
+.human-one-posters--category-page
+.human-one-posters__article-card {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    170px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    stretch;
+
+  gap:
+    0;
+
+  min-width:
+    0;
+
+  min-height:
+    170px;
+
+  padding:
+    13px;
+
+  overflow:
+    hidden;
+
+  border:
+    2px solid
+    rgba(
+      35,
+      23,
+      14,
+      0.88
+    );
+
+  color:
+    #171511;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      ),
+      transparent 58%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #3a261a
+        0 28px,
+      #332117
+        28px 30px,
+      #412b1c
+        30px 58px,
+      #2b1c14
+        58px 60px
+    );
+
+  text-decoration:
+    none;
+
+  box-shadow:
+    inset 0 8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      ),
+    inset 0 -8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      );
+
+  transform:
+    none;
+
+  transition:
+    transform 160ms ease,
+    filter 160ms ease,
+    box-shadow 160ms ease;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-card::after {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    28px;
+
+  right:
+    28px;
+
+  bottom:
+    7px;
+
+  z-index:
+    1;
+
+  height:
+    6px;
+
+  border-radius:
+    0 0 6px 6px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #cbc8bf
+        0 1px,
+      #aaa79f
+        1px 2px
+    );
+
+  box-shadow:
+    0 4px 5px
+      rgba(
+        0,
+        0,
+        0,
+        0.35
+      );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-card:hover {
+  transform:
+    translateY(-3px);
+
+  filter:
+    brightness(1.025);
+
+  box-shadow:
+    inset 0 8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+    inset 0 -8px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.22
+      ),
+    0 8px 12px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      );
+}
+
+
+/* LEVA KORICA */
+
+.human-one-posters--category-page
+.human-one-posters__article-image {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    170px;
+
+  min-height:
+    142px;
+
+  overflow:
+    hidden;
+
+  padding:
+    7px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    2px solid
+    #24170f;
+
+  border-right:
+    0;
+
+  border-radius:
+    7px 0 0 6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3a3a36,
+      #1f211f
+    );
+
+  box-shadow:
+    -4px 4px 7px
+      rgba(
+        0,
+        0,
+        0,
+        0.26
+      );
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-image::after {
+  content: "";
+
+  position:
+    absolute;
+
+  inset:
+    6px;
+
+  border:
+    1px solid
+    rgba(
+      225,
+      218,
+      200,
+      0.20
+    );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-image img {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  box-sizing:
+    border-box;
+
+  filter:
+    sepia(0.05)
+    contrast(1.03)
+    saturate(0.92);
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-image span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.24
+    );
+}
+
+
+/* DESNA STRANA / PAPIR */
+
+.human-one-posters--category-page
+.human-one-posters__article-copy {
+  position:
+    relative;
+
+  z-index:
+    4;
+
+  align-self:
+    stretch;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  min-width:
+    0;
+
+  padding:
+    20px 26px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    1px solid
+    #666864;
+
+  border-left:
+    0;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 27px,
+      rgba(
+        25,
+        25,
+        25,
+        0.045
+      )
+        28px
+    ),
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(
+        255,
+        255,
+        255,
+        0.34
+      ),
+      transparent 31%
+    ),
+    linear-gradient(
+      145deg,
+      #f0f0ed,
+      #d1d2cf
+    );
+
+  box-shadow:
+    5px 5px 9px
+      rgba(
+        0,
+        0,
+        0,
+        0.24
+      ),
+    inset -6px 0 10px
+      rgba(
+        55,
+        55,
+        52,
+        0.08
+      );
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-copy::before {
+  content: "";
+
+  position:
+    absolute;
+
+  left:
+    -6px;
+
+  top:
+    5px;
+
+  bottom:
+    5px;
+
+  width:
+    10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        50,
+        48,
+        44,
+        0.34
+      ),
+      rgba(
+        0,
+        0,
+        0,
+        0.40
+      ) 47%,
+      rgba(
+        255,
+        255,
+        255,
+        0.30
+      ) 55%,
+      transparent
+    );
+
+  pointer-events:
+    none;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-copy > p {
+  color:
+    #9a3126;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-copy h2,
+.human-one-posters--category-page
+.human-one-posters__article-copy h3,
+.human-one-posters--category-page
+.human-one-posters__article-copy > span {
+  max-width:
+    100%;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+.human-one-posters--category-page
+.human-one-posters__article-card > strong {
+  position:
+    relative;
+
+  z-index:
+    5;
+
+  align-self:
+    center;
+
+  margin:
+    0 12px;
+
+  color:
+    #171511;
+}
+
+
+/* =====================================================
+
+   PRAZNO / ERROR STANJE
+
+   ===================================================== */
+
+.human-one-posters--category-page
+.human-one-posters__state {
+  border:
+    5px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  color:
+    #e9dfcb;
+
+  background:
+    linear-gradient(
+      145deg,
+      #231914,
+      #15110e
+    );
+
+  box-shadow:
+    0 14px 22px
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ),
+    inset 0 0 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.26
+      );
+}
+
+
+/* =====================================================
+
+   MOBILNI — KATEGORIJA
+
+   ===================================================== */
+
+@media (
+  max-width: 580px
+) {
+  .human-one-posters--category-page {
+    padding:
+      18px 10px 64px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__back {
+    top:
+      max(
+        8px,
+        env(
+          safe-area-inset-top
+        )
+      );
+
+    z-index:
+      500;
+
+    margin-bottom:
+      24px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__hero--category {
+    margin-bottom:
+      22px;
+
+    padding:
+      26px 18px 28px;
+
+    border-width:
+      7px;
+
+    outline-width:
+      1px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__hero--category h1 {
+    font-size:
+      clamp(
+        2.6rem,
+        14vw,
+        4rem
+      );
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-list {
+    gap:
+      11px;
+
+    padding:
+      10px;
+
+    border-width:
+      4px;
+
+    outline-width:
+      1px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-card {
+    grid-template-columns:
+      84px
+      minmax(
+        0,
+        1fr
+      )
+      34px;
+
+    min-height:
+      150px;
+
+    padding:
+      9px;
+
+    gap:
+      0;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-image {
+    width:
+      84px;
+
+    min-height:
+      132px;
+
+    padding:
+      5px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-copy {
+    min-height:
+      132px;
+
+    padding:
+      13px 12px 13px 16px;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-copy > p {
+    margin-bottom:
+      5px;
+
+    font-size:
+      0.58rem;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-copy h2 {
+    font-size:
+      clamp(
+        1.35rem,
+        7.3vw,
+        2rem
+      );
+
+    line-height:
+      0.94;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-copy h3 {
+    font-size:
+      0.68rem;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-copy > span {
+    margin-top:
+      9px;
+
+    font-size:
+      0.82rem;
+
+    line-height:
+      1.42;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-card > strong {
+    margin:
+      0 5px;
+
+    font-size:
+      2rem;
+  }
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  .human-one-posters--category-page
+  .human-one-posters__article-card {
+    transition:
+      none;
+  }
+
+
+  .human-one-posters--category-page
+  .human-one-posters__article-card:hover {
+    transform:
+      none;
+  }
+}
+/* =====================================================
+   POSTERI — IZBOR DELOVA
+
+   Kada rad ima više PDF delova,
+   ova stranica više ne koristi stari bež izgled.
+
+   Vizuelno pripada istoj drvenoj polici /
+   dosije svetu kao stranica kategorije.
+   ===================================================== */
+
+
+/* =====================================================
+   CELA STRANICA
+   :has() gađa samo poster stranicu koja ima
+   izbor delova.
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+) {
+  position: relative;
+
+  min-height: 100dvh;
+
+  overflow: visible;
+
+  color: #ece3d2;
+
+  background:
+    radial-gradient(
+      circle at 50% -8%,
+      rgba(
+        183,
+        129,
+        72,
+        0.17
+      ),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 12% 48%,
+      rgba(
+        0,
+        0,
+        0,
+        0.30
+      ),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(
+        0,
+        0,
+        0,
+        0.34
+      ),
+      transparent 34%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.012
+      )
+        0 1px,
+      rgba(
+        0,
+        0,
+        0,
+        0.035
+      )
+        1px 3px,
+      transparent
+        3px 38px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #2b1b12
+        0 34px,
+      #25170f
+        34px 36px,
+      #301f14
+        36px 68px,
+      #21150e
+        68px 70px
+    );
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(
+        0,
+        0,
+        0,
+        0.44
+      ) 100%
+    );
+
+  box-shadow:
+    inset 0 0 120px
+    rgba(
+      0,
+      0,
+      0,
+      0.55
+    );
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__shell {
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =====================================================
+   BACK — ISTO ŽUTO DUGME KAO KATEGORIJE
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__back {
+  position: sticky;
+
+  top:
+    max(
+      12px,
+      env(
+        safe-area-inset-top
+      )
+    );
+
+  z-index: 300;
+
+  margin-bottom: 30px;
+
+  border-color: #17100b;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d4c64c,
+      #afa238
+    );
+
+  color: #15110c;
+
+  box-shadow:
+    4px 4px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.48
+    );
+}
+
+
+/* =====================================================
+   HERO — TAMNA DRVENA TABLA
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero {
+  position: relative;
+
+  margin-bottom: 28px;
+
+  padding:
+    34px
+    38px
+    38px;
+
+  border:
+    9px solid
+    #5c371f;
+
+  outline:
+    2px solid
+    #100b08;
+
+  color: #efe7d6;
+
+  background:
+    radial-gradient(
+      circle at 19% 24%,
+      rgba(
+        255,
+        205,
+        126,
+        0.07
+      ),
+      transparent 27%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 31px,
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      )
+        32px
+    ),
+    linear-gradient(
+      145deg,
+      #211914,
+      #15110e 58%,
+      #1d1510
+    );
+
+  box-shadow:
+    0 17px 24px
+    rgba(
+      0,
+      0,
+      0,
+      0.46
+    ),
+    inset 0 0 34px
+    rgba(
+      0,
+      0,
+      0,
+      0.36
+    );
+
+  transform: none;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero::before {
+  left: 50%;
+
+  top: -18px;
+
+  width:
+    min(
+      220px,
+      34%
+    );
+
+  height: 18px;
+
+  border:
+    1px solid
+    #3f3214;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cdbc55,
+      #9f9137
+    );
+
+  transform:
+    translateX(-50%)
+    rotate(0.6deg);
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero::after {
+  content: "";
+
+  position: absolute;
+
+  left: -9px;
+  right: -9px;
+  bottom: -16px;
+
+  height: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #704329,
+      #3a2215
+    );
+
+  border:
+    1px solid
+    #170e09;
+
+  box-shadow:
+    0 6px 9px
+    rgba(
+      0,
+      0,
+      0,
+      0.44
+    );
+
+  pointer-events: none;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero p {
+  color: #c9b84b;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero h1 {
+  color: #f1eadb;
+
+  text-shadow:
+    4px 4px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.30
+    );
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__hero > span {
+  color: #cfc5b2;
+}
+
+
+/* =====================================================
+   NASTAVI ČITANJE
+
+   Ostaje žuti akcenat, ali sada izgleda
+   kao kartica zakačena na drvenu policu.
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__continue {
+  position: relative;
+
+  margin-bottom: 22px;
+
+  padding:
+    18px 24px;
+
+  border:
+    5px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  color: #171511;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dfd04c,
+      #c9b83b
+    );
+
+  box-shadow:
+    0 10px 16px
+    rgba(
+      0,
+      0,
+      0,
+      0.34
+    ),
+    inset 0 0 18px
+    rgba(
+      255,
+      255,
+      255,
+      0.10
+    );
+
+  transition:
+    transform 150ms ease,
+    filter 150ms ease;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__continue:hover {
+  transform:
+    translateY(-2px);
+
+  filter:
+    brightness(1.04);
+}
+
+
+/* =====================================================
+   POLICA SA DELOVIMA
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__parts {
+  position: relative;
+
+  display: grid;
+
+  gap: 14px;
+
+  padding: 16px;
+
+  border:
+    7px solid
+    #4f2d1a;
+
+  outline:
+    2px solid
+    #100a06;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #3a261a
+        0 28px,
+      #332117
+        28px 30px,
+      #412b1c
+        30px 58px,
+      #2b1c14
+        58px 60px
+    );
+
+  box-shadow:
+    0 18px 28px
+    rgba(
+      0,
+      0,
+      0,
+      0.45
+    ),
+    inset 0 8px 20px
+    rgba(
+      0,
+      0,
+      0,
+      0.35
+    );
+}
+
+
+/* =====================================================
+   POJEDINAČAN DEO = KNJIGA / DOSIJE
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    120px
+    minmax(
+      0,
+      1fr
+    )
+    64px;
+
+  align-items: stretch;
+
+  gap: 0;
+
+  min-height: 118px;
+
+  padding: 9px;
+
+  overflow: hidden;
+
+  border:
+    2px solid
+    #24170f;
+
+  color: #171511;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 80%,
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      ),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      #3a261a
+        0 28px,
+      #332117
+        28px 30px,
+      #412b1c
+        30px 58px,
+      #2b1c14
+        58px 60px
+    );
+
+  box-shadow:
+    inset 0 6px 14px
+    rgba(
+      0,
+      0,
+      0,
+      0.30
+    ),
+    inset 0 -6px 14px
+    rgba(
+      0,
+      0,
+      0,
+      0.22
+    );
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    filter 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card:hover {
+  transform:
+    translateY(-3px);
+
+  filter:
+    brightness(1.03);
+
+  box-shadow:
+    inset 0 6px 14px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    ),
+    0 7px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.30
+    );
+}
+
+
+/* =====================================================
+   BROJ DELA — TAMNA KORICA
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card > span {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  place-items: center;
+
+  min-width: 0;
+
+  margin: 0;
+
+  border:
+    2px solid
+    #1d1f1d;
+
+  border-right: 0;
+
+  border-radius:
+    6px 0 0 5px;
+
+  color:
+    rgba(
+      235,
+      232,
+      219,
+      0.36
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      #3a3a36,
+      #20221f
+    );
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    3.3rem;
+
+  opacity: 1;
+
+  box-shadow:
+    -4px 4px 7px
+    rgba(
+      0,
+      0,
+      0,
+      0.24
+    );
+}
+
+
+/* =====================================================
+   SREDINA — PAPIR / DOSIJE
+
+   U postojećem JSX-u sadržaj dela je u
+   srednjem div-u, pa ne menjamo komponentu.
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card > div {
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  padding:
+    16px 22px;
+
+  box-sizing:
+    border-box;
+
+  border:
+    1px solid
+    #666864;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent
+        0 27px,
+      rgba(
+        25,
+        25,
+        25,
+        0.045
+      )
+        28px
+    ),
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(
+        255,
+        255,
+        255,
+        0.34
+      ),
+      transparent 31%
+    ),
+    linear-gradient(
+      145deg,
+      #f0f0ed,
+      #d1d2cf
+    );
+
+  box-shadow:
+    5px 5px 9px
+    rgba(
+      0,
+      0,
+      0,
+      0.24
+    );
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card small {
+  color: #9a3126;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.65rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card h2 {
+  margin:
+    5px 0 0;
+
+  color: #171511;
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    2rem;
+
+  line-height: 0.95;
+
+  text-transform: uppercase;
+}
+
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card p {
+  margin:
+    7px 0 0;
+
+  color: #302d28;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.72rem;
+}
+
+
+/* =====================================================
+   STRELICA
+   ===================================================== */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card > strong {
+  position: relative;
+
+  z-index: 4;
+
+  display: grid;
+
+  place-items: center;
+
+  color: #e6dcc7;
+
+  font-family:
+    Impact,
+    sans-serif;
+
+  font-size: 2.5rem;
+}
+
+
+/* DONJA IVICA STRANICA KNJIGE */
+
+.human-one-posters:has(
+  .human-one-posters__parts
+)
+.human-one-posters__part-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 5px;
+
+  z-index: 1;
+
+  height: 5px;
+
+  border-radius:
+    0 0 5px 5px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #cbc8bf
+        0 1px,
+      #aaa79f
+        1px 2px
+    );
+
+  box-shadow:
+    0 3px 4px
+    rgba(
+      0,
+      0,
+      0,
+      0.35
+    );
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (
+  max-width: 580px
+) {
+  .human-one-posters:has(
+    .human-one-posters__parts
+  ) {
+    padding:
+      18px
+      10px
+      64px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__hero {
+    padding:
+      26px
+      18px
+      28px;
+
+    border-width: 7px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__parts {
+    padding: 9px;
+
+    gap: 10px;
+
+    border-width: 4px;
+
+    outline-width: 1px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__part-card {
+    grid-template-columns:
+      68px
+      minmax(
+        0,
+        1fr
+      )
+      34px;
+
+    min-height: 110px;
+
+    padding: 7px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__part-card > span {
+    font-size: 2.35rem;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__part-card > div {
+    padding:
+      12px
+      10px
+      12px
+      14px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__part-card h2 {
+    font-size: 1.45rem;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__part-card > strong {
+    font-size: 1.8rem;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__continue {
+    padding:
+      15px 17px;
+
+    border-width: 4px;
+  }
+
+
+  .human-one-posters:has(
+    .human-one-posters__parts
+  )
+  .human-one-posters__continue strong {
+    font-size: 1.55rem;
+  }
+}

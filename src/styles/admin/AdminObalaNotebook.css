@@ -1,0 +1,1560 @@
+/* =========================================================
+   ADMIN V3 — AKC OBALA / SVESKA
+   ========================================================= */
+
+.admin-obala-notebook {
+  --obala-accent:
+    #8f5b32;
+
+  --obala-accent-dark:
+    #67401f;
+
+  --obala-accent-soft:
+    rgba(
+      143,
+      91,
+      50,
+      0.1
+    );
+
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  display:
+    grid;
+
+  gap:
+    22px;
+
+  margin:
+    0;
+
+  padding:
+    0
+    0
+    50px;
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.admin-obala-notebook__back {
+  width:
+    fit-content;
+
+  min-height:
+    32px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.64rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      var(
+        --admin-transition
+      ),
+    transform
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-obala-notebook__back:hover {
+  color:
+    var(
+      --admin-text
+    );
+
+  transform:
+    translateX(
+      -3px
+    );
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.admin-obala-notebook__heading {
+  position:
+    relative;
+
+  min-height:
+    205px;
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap:
+    32px;
+
+  overflow:
+    hidden;
+
+  padding:
+    clamp(
+      27px,
+      3.5vw,
+      42px
+    );
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius-lg
+    );
+
+  background:
+    linear-gradient(
+      125deg,
+      #fbf7ee
+      0%,
+      #f3eadb
+      56%,
+      #e7dac6
+      100%
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-soft
+    );
+}
+
+
+.admin-obala-notebook__heading::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    330px;
+
+  height:
+    330px;
+
+  right:
+    -160px;
+
+  bottom:
+    -220px;
+
+  border:
+    1px solid
+    rgba(
+      143,
+      91,
+      50,
+      0.16
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-obala-notebook__heading::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    205px;
+
+  height:
+    205px;
+
+  right:
+    -58px;
+
+  bottom:
+    -145px;
+
+  border:
+    1px solid
+    rgba(
+      143,
+      91,
+      50,
+      0.14
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-obala-notebook__heading > * {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.admin-obala-notebook__heading h1 {
+  margin:
+    7px
+    0
+    14px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      3.1rem,
+      6vw,
+      5.4rem
+    );
+
+  font-weight:
+    400;
+
+  line-height:
+    0.9;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+.admin-obala-notebook__heading
+> div
+> p:last-child {
+  max-width:
+    620px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* =========================================================
+   PUBLIC PREVIEW
+   ========================================================= */
+
+.admin-obala-notebook__preview-link {
+  min-height:
+    39px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex:
+    0
+    0 auto;
+
+  border:
+    1px solid
+    rgba(
+      103,
+      64,
+      31,
+      0.34
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.42
+    );
+
+  color:
+    var(
+      --obala-accent-dark
+    );
+
+  padding:
+    8px
+    13px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.045em;
+
+  text-decoration:
+    none;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform
+      var(
+        --admin-transition
+      ),
+    background-color
+      var(
+        --admin-transition
+      ),
+    border-color
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-obala-notebook__preview-link:hover {
+  transform:
+    translateY(
+      -1px
+    );
+
+  border-color:
+    var(
+      --obala-accent
+    );
+
+  background:
+    #fffdf7;
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.admin-obala-notebook__message {
+  margin:
+    0;
+
+  border:
+    1px solid;
+
+  border-radius:
+    8px;
+
+  padding:
+    11px
+    13px;
+
+  font-size:
+    0.75rem;
+
+  line-height:
+    1.45;
+}
+
+
+.admin-obala-notebook__message--success {
+  border-color:
+    rgba(
+      69,
+      112,
+      73,
+      0.28
+    );
+
+  background:
+    rgba(
+      69,
+      112,
+      73,
+      0.08
+    );
+
+  color:
+    #426847;
+}
+
+
+.admin-obala-notebook__message--error {
+  border-color:
+    rgba(
+      157,
+      64,
+      55,
+      0.3
+    );
+
+  background:
+    rgba(
+      157,
+      64,
+      55,
+      0.07
+    );
+
+  color:
+    #853a34;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.admin-obala-notebook__form {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  gap:
+    18px;
+
+  padding:
+    clamp(
+      20px,
+      3vw,
+      30px
+    );
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius
+    );
+
+  background:
+    var(
+      --admin-surface
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-card
+    );
+}
+
+
+/* =========================================================
+   FORM HEADING
+   ========================================================= */
+
+.admin-obala-notebook__form-heading {
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  padding-bottom:
+    16px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border
+    );
+}
+
+
+.admin-obala-notebook__form-heading h2 {
+  margin:
+    4px
+    0
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      2.4rem
+    );
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.admin-obala-notebook__grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    14px;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.admin-obala-notebook label {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  gap:
+    7px;
+
+  color:
+    var(
+      --admin-text-soft
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.67rem;
+
+  font-weight:
+    800;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.admin-obala-notebook input,
+.admin-obala-notebook textarea,
+.admin-obala-notebook select {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  box-sizing:
+    border-box;
+
+  border:
+    1px solid
+    var(
+      --admin-border-strong
+    );
+
+  border-radius:
+    7px;
+
+  outline:
+    none;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.58
+    );
+
+  color:
+    var(
+      --admin-text
+    );
+
+  padding:
+    10px
+    11px;
+
+  font:
+    inherit;
+
+  font-size:
+    0.78rem;
+
+  transition:
+    border-color
+      var(
+        --admin-transition
+      ),
+    background-color
+      var(
+        --admin-transition
+      ),
+    box-shadow
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-obala-notebook input:focus,
+.admin-obala-notebook textarea:focus,
+.admin-obala-notebook select:focus {
+  border-color:
+    rgba(
+      143,
+      91,
+      50,
+      0.7
+    );
+
+  background:
+    #fffdf8;
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      143,
+      91,
+      50,
+      0.08
+    );
+}
+
+
+.admin-obala-notebook textarea {
+  resize:
+    vertical;
+
+  line-height:
+    1.65;
+}
+
+
+.admin-obala-notebook
+input[type="file"] {
+  padding:
+    7px;
+}
+
+
+.admin-obala-notebook
+input[type="file"]::file-selector-button {
+  min-height:
+    31px;
+
+  margin-right:
+    9px;
+
+  border:
+    0;
+
+  border-radius:
+    6px;
+
+  background:
+    #2a241f;
+
+  color:
+    #fff8e9;
+
+  padding:
+    6px
+    10px;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    800;
+
+  cursor:
+    pointer;
+}
+
+
+/* =========================================================
+   MAIN TEXT
+   ========================================================= */
+
+.admin-obala-notebook__wide {
+  margin:
+    0;
+}
+
+
+.admin-obala-notebook__wide textarea {
+  min-height:
+    340px;
+
+  padding:
+    16px;
+
+  background:
+    #fffdf8;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    0.94rem;
+
+  line-height:
+    1.8;
+}
+
+
+/* =========================================================
+   FIELDSETS
+   ========================================================= */
+
+.admin-obala-notebook__fieldset {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  gap:
+    14px;
+
+  margin:
+    0;
+
+  padding:
+    17px;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    var(
+      --admin-surface-soft
+    );
+}
+
+
+.admin-obala-notebook__fieldset legend {
+  padding:
+    0
+    7px;
+
+  color:
+    var(
+      --obala-accent-dark
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.64rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.admin-obala-notebook__fieldset small,
+.admin-obala-notebook__muted {
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   FORM ACTIONS — STICKY
+   ========================================================= */
+
+.admin-obala-notebook__form-actions {
+  position:
+    sticky;
+
+  z-index:
+    20;
+
+  bottom:
+    12px;
+
+  display:
+    flex;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    8px;
+
+  margin:
+    4px
+    -8px
+    -8px;
+
+  padding:
+    10px;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      250,
+      248,
+      243,
+      0.93
+    );
+
+  box-shadow:
+    0
+    10px
+    28px
+    rgba(
+      35,
+      28,
+      22,
+      0.08
+    );
+
+  backdrop-filter:
+    blur(
+      11px
+    );
+
+  -webkit-backdrop-filter:
+    blur(
+      11px
+    );
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.admin-obala-notebook__button {
+  min-height:
+    37px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    var(
+      --admin-border-strong
+    );
+
+  border-radius:
+    7px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+
+  color:
+    var(
+      --admin-text-soft
+    );
+
+  padding:
+    7px
+    11px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.6rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.04em;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform
+      var(
+        --admin-transition
+      ),
+    border-color
+      var(
+        --admin-transition
+      ),
+    background-color
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-obala-notebook__button:hover:not(
+  :disabled
+) {
+  transform:
+    translateY(
+      -1px
+    );
+
+  background:
+    #fffdf8;
+}
+
+
+.admin-obala-notebook__button--primary {
+  border-color:
+    var(
+      --obala-accent-dark
+    );
+
+  background:
+    var(
+      --obala-accent-dark
+    );
+
+  color:
+    #fff7e8;
+}
+
+
+.admin-obala-notebook__button--primary:hover:not(
+  :disabled
+) {
+  background:
+    #533219;
+}
+
+
+.admin-obala-notebook__button--danger {
+  border-color:
+    rgba(
+      157,
+      64,
+      55,
+      0.27
+    );
+
+  background:
+    rgba(
+      157,
+      64,
+      55,
+      0.07
+    );
+
+  color:
+    #873a34;
+}
+
+
+.admin-obala-notebook__button:disabled {
+  opacity:
+    0.48;
+
+  cursor:
+    not-allowed;
+}
+
+
+/* =========================================================
+   LIST SECTION
+   ========================================================= */
+
+.admin-obala-notebook__list-section {
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  border-radius:
+    var(
+      --admin-radius
+    );
+
+  background:
+    var(
+      --admin-surface
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-card
+    );
+}
+
+
+/* =========================================================
+   LIST HEADING
+   ========================================================= */
+
+.admin-obala-notebook__list-heading {
+  min-height:
+    76px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  padding:
+    16px
+    18px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border
+    );
+}
+
+
+.admin-obala-notebook__list-heading h2 {
+  margin:
+    3px
+    0
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.55rem;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.admin-obala-notebook__list-heading
+> strong {
+  min-width:
+    38px;
+
+  height:
+    38px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      143,
+      91,
+      50,
+      0.23
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --obala-accent-soft
+    );
+
+  color:
+    var(
+      --obala-accent-dark
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1rem;
+
+  font-weight:
+    400;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.admin-obala-notebook__cards {
+  display:
+    grid;
+
+  gap:
+    0;
+
+  margin:
+    0;
+}
+
+
+.admin-obala-notebook__card {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    18px;
+
+  padding:
+    14px
+    17px;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border
+    );
+
+  background:
+    transparent;
+
+  transition:
+    background-color
+      var(
+        --admin-transition
+      );
+}
+
+
+.admin-obala-notebook__card:last-child {
+  border-bottom:
+    0;
+}
+
+
+.admin-obala-notebook__card:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.43
+    );
+}
+
+
+.admin-obala-notebook__card-copy {
+  min-width:
+    0;
+}
+
+
+.admin-obala-notebook__status {
+  margin:
+    0
+    0
+    4px;
+
+  color:
+    var(
+      --obala-accent-dark
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.52rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.admin-obala-notebook__card-copy h3 {
+  overflow:
+    hidden;
+
+  margin:
+    0
+    0
+    5px;
+
+  color:
+    var(
+      --admin-text
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.12rem;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.02em;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.admin-obala-notebook__card-copy
+> p:last-child {
+  max-width:
+    800px;
+
+  overflow:
+    hidden;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.5;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   CARD ACTIONS
+   ========================================================= */
+
+.admin-obala-notebook__card-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    5px;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.admin-obala-notebook__empty {
+  margin:
+    0;
+
+  padding:
+    24px
+    18px;
+
+  color:
+    var(
+      --admin-muted
+    );
+
+  font-size:
+    0.75rem;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (
+  max-width:
+    900px
+) {
+  .admin-obala-notebook__heading {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+    720px
+) {
+  .admin-obala-notebook {
+    gap:
+      17px;
+  }
+
+
+  .admin-obala-notebook__heading {
+    min-height:
+      auto;
+
+    padding:
+      21px;
+  }
+
+
+  .admin-obala-notebook__heading h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        15vw,
+        4.1rem
+      );
+  }
+
+
+  .admin-obala-notebook__preview-link {
+    width:
+      100%;
+  }
+
+
+  .admin-obala-notebook__form {
+    padding:
+      17px;
+  }
+
+
+  .admin-obala-notebook__form-heading {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .admin-obala-notebook__grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-obala-notebook__wide
+  textarea {
+    min-height:
+      280px;
+  }
+
+
+  .admin-obala-notebook__form-actions {
+    bottom:
+      7px;
+  }
+
+
+  .admin-obala-notebook__form-actions
+  .admin-obala-notebook__button {
+    flex:
+      1;
+  }
+
+
+  .admin-obala-notebook__card {
+    grid-template-columns:
+      1fr;
+
+    align-items:
+      start;
+  }
+
+
+  .admin-obala-notebook__card-actions {
+    justify-content:
+      flex-start;
+  }
+}

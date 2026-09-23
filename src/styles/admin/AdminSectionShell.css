@@ -1,0 +1,2413 @@
+/* =========================================================
+   ADMIN V3 — WORK SECTION SHELL
+
+   Zajednički vizuelni sistem za:
+   - Tekstove
+   - Muziku
+   - Skejt
+
+   Ne dira poslovnu logiku.
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+.admin-section-shell {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  gap:
+    22px;
+}
+
+
+/* =========================================================
+   BACK LINK
+   ========================================================= */
+
+.admin-section-shell__back {
+  width:
+    fit-content;
+
+  min-height:
+    32px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.64rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.08em;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+      140ms
+      ease,
+    transform
+      140ms
+      ease;
+}
+
+
+.admin-section-shell__back:hover {
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  transform:
+    translateX(
+      -3px
+    );
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.admin-section-shell__hero {
+  position:
+    relative;
+
+  min-height:
+    194px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    end;
+
+  gap:
+    32px;
+
+  overflow:
+    hidden;
+
+  padding:
+    clamp(
+      26px,
+      3.5vw,
+      42px
+    );
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    var(
+      --admin-radius-lg,
+      16px
+    );
+
+  background:
+    linear-gradient(
+      125deg,
+      #faf7f0
+      0%,
+      #f2ebdf
+      62%,
+      #e8dfcf
+      100%
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-soft,
+      0
+      10px
+      32px
+      rgba(
+        30,
+        24,
+        18,
+        0.05
+      )
+    );
+}
+
+
+.admin-section-shell__hero::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    300px;
+
+  height:
+    300px;
+
+  right:
+    -145px;
+
+  bottom:
+    -210px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      138,
+      47,
+      0.14
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-section-shell__hero::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    190px;
+
+  height:
+    190px;
+
+  right:
+    -58px;
+
+  bottom:
+    -135px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      138,
+      47,
+      0.14
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.admin-section-shell__hero > * {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+/* =========================================================
+   HERO COPY
+   ========================================================= */
+
+.admin-section-shell__hero-copy {
+  min-width:
+    0;
+}
+
+
+.admin-section-shell__hero-copy
+.eyebrow {
+  margin-bottom:
+    8px;
+}
+
+
+.admin-section-shell__hero h1 {
+  margin:
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      3rem,
+      6vw,
+      5.4rem
+    );
+
+  font-weight:
+    400;
+
+  line-height:
+    0.9;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+.admin-section-shell__hero-description {
+  max-width:
+    650px;
+
+  margin:
+    16px
+    0
+    0;
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* =========================================================
+   HERO META
+   ========================================================= */
+
+.admin-section-shell__meta {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    6px;
+
+  margin-top:
+    17px;
+}
+
+
+.admin-section-shell__chip {
+  min-height:
+    25px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.33
+    );
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  padding:
+    4px
+    8px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.51rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.075em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.admin-section-shell__chip--accent {
+  border-color:
+    rgba(
+      181,
+      138,
+      47,
+      0.25
+    );
+
+  background:
+    rgba(
+      181,
+      138,
+      47,
+      0.08
+    );
+
+  color:
+    var(
+      --admin-accent-dark,
+      #795a20
+    );
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+   ========================================================= */
+
+.admin-section-shell__actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+}
+
+
+.admin-section-shell__action {
+  min-height:
+    39px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    7px;
+
+  border:
+    1px solid
+    var(
+      --admin-border-strong,
+      rgba(
+        58,
+        48,
+        38,
+        0.24
+      )
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.52
+    );
+
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  padding:
+    8px
+    12px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.055em;
+
+  text-decoration:
+    none;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform
+      140ms
+      ease,
+    border-color
+      140ms
+      ease,
+    background-color
+      140ms
+      ease;
+}
+
+
+.admin-section-shell__action:hover {
+  transform:
+    translateY(
+      -1px
+    );
+
+  border-color:
+    rgba(
+      181,
+      138,
+      47,
+      0.42
+    );
+
+  background:
+    #fffdf8;
+}
+
+
+.admin-section-shell__action--primary {
+  border-color:
+    #27211c;
+
+  background:
+    #27211c;
+
+  color:
+    #fff8e9;
+}
+
+
+.admin-section-shell__action--primary:hover {
+  border-color:
+    #41372e;
+
+  background:
+    #41372e;
+}
+
+
+/* =========================================================
+   TAB BAR
+   ========================================================= */
+
+.admin-section-shell__tabs {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    4px;
+
+  min-height:
+    50px;
+
+  padding:
+    5px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.31
+    );
+}
+
+
+.admin-section-shell__tab {
+  position:
+    relative;
+
+  min-height:
+    38px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:
+    7px;
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  padding:
+    7px
+    13px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.61rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.06em;
+
+  text-decoration:
+    none;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    color
+      140ms
+      ease,
+    background-color
+      140ms
+      ease,
+    border-color
+      140ms
+      ease;
+}
+
+
+.admin-section-shell__tab:hover {
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.42
+    );
+}
+
+
+.admin-section-shell__tab--active {
+  border-color:
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  background:
+    var(
+      --admin-surface,
+      #faf8f3
+    );
+
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  box-shadow:
+    0
+    2px
+    8px
+    rgba(
+      35,
+      28,
+      22,
+      0.045
+    );
+}
+
+
+.admin-section-shell__tab--active::after {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    11px;
+
+  right:
+    11px;
+
+  bottom:
+    4px;
+
+  height:
+    2px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(
+      --admin-accent,
+      #b58a2f
+    );
+}
+
+
+/* =========================================================
+   WORK PANEL
+   ========================================================= */
+
+.admin-section-shell__panel {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  gap:
+    22px;
+}
+
+
+/* =========================================================
+   REMOVE DUPLICATE INNER HEADERS
+
+   Spoljašnji V3 hero već govori
+   gde se nalazimo.
+   ========================================================= */
+
+.admin-section-shell__panel
+> section
+> .admin-page-heading:first-child {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   GENERIC SECTION HEADINGS
+   ========================================================= */
+
+.admin-section-shell
+.admin-music-section__heading,
+.admin-section-shell
+.admin-skate__section-heading {
+  min-height:
+    72px;
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap:
+    24px;
+
+  padding-bottom:
+    14px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+}
+
+
+.admin-section-shell
+.admin-music-section__heading h2,
+.admin-section-shell
+.admin-skate__section-heading h2 {
+  margin:
+    3px
+    0
+    0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      1.8rem,
+      3vw,
+      2.6rem
+    );
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.admin-section-shell
+.admin-music-section__heading
+> p {
+  max-width:
+    470px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  font-size:
+    0.72rem;
+
+  line-height:
+    1.55;
+}
+
+
+/* =========================================================
+   FORMS — GLOBAL V3
+   ========================================================= */
+
+.admin-section-shell
+.admin-form {
+  min-width:
+    0;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    var(
+      --admin-surface,
+      #faf8f3
+    );
+
+  padding:
+    clamp(
+      18px,
+      2.5vw,
+      28px
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-card,
+      0
+      4px
+      14px
+      rgba(
+        35,
+        28,
+        22,
+        0.035
+      )
+    );
+}
+
+
+.admin-section-shell
+.admin-form h2,
+.admin-section-shell
+.admin-form h3 {
+  margin:
+    0
+    0
+    5px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.admin-section-shell
+.admin-form label {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  gap:
+    7px;
+
+  color:
+    var(
+      --admin-text-soft,
+      #50473f
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.67rem;
+
+  font-weight:
+    800;
+}
+
+
+.admin-section-shell
+.admin-form input:not(
+  [type="radio"]
+):not(
+  [type="checkbox"]
+),
+.admin-section-shell
+.admin-form textarea,
+.admin-section-shell
+.admin-form select {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  box-sizing:
+    border-box;
+
+  border:
+    1px solid
+    var(
+      --admin-border-strong,
+      rgba(
+        58,
+        48,
+        38,
+        0.24
+      )
+    );
+
+  border-radius:
+    7px;
+
+  outline:
+    none;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.57
+    );
+
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  padding:
+    10px
+    11px;
+
+  font:
+    inherit;
+
+  font-size:
+    0.78rem;
+
+  transition:
+    border-color
+      140ms
+      ease,
+    background-color
+      140ms
+      ease,
+    box-shadow
+      140ms
+      ease;
+}
+
+
+.admin-section-shell
+.admin-form input:focus,
+.admin-section-shell
+.admin-form textarea:focus,
+.admin-section-shell
+.admin-form select:focus {
+  border-color:
+    rgba(
+      181,
+      138,
+      47,
+      0.65
+    );
+
+  background:
+    #fffdf8;
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      181,
+      138,
+      47,
+      0.08
+    );
+}
+
+
+.admin-section-shell
+.admin-form textarea {
+  resize:
+    vertical;
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   TEXTOVI — 70 / 30 EDITOR
+   ========================================================= */
+
+.admin-section-shell--articles
+.article-form {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      245px,
+      310px
+    );
+
+  align-items:
+    start;
+
+  gap:
+    17px
+    22px;
+}
+
+
+/* naslov forme */
+
+.admin-section-shell--articles
+.article-form
+> h2 {
+  grid-column:
+    1 / -1;
+
+  padding-bottom:
+    14px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+}
+
+
+/*
+   Direktni label elementi u postojećoj
+   formi su:
+
+   1 Naslov
+   2 Podnaslov
+   3 Kategorija
+   4 Kratak opis
+   5 Status
+*/
+
+.admin-section-shell--articles
+.article-form
+> label:nth-of-type(1),
+.admin-section-shell--articles
+.article-form
+> label:nth-of-type(2),
+.admin-section-shell--articles
+.article-form
+> label:nth-of-type(4),
+.admin-section-shell--articles
+.article-form
+> .content-type-panel,
+.admin-section-shell--articles
+.article-form
+> section {
+  grid-column:
+    1;
+}
+
+
+.admin-section-shell--articles
+.article-form
+> label:nth-of-type(3),
+.admin-section-shell--articles
+.article-form
+> label:nth-of-type(5),
+.admin-section-shell--articles
+.article-form
+> .admin-image-field,
+.admin-section-shell--articles
+.article-form
+> .form-actions {
+  grid-column:
+    2;
+}
+
+
+.admin-section-shell--articles
+.article-form
+> .error-message {
+  grid-column:
+    1 / -1;
+}
+
+
+/* =========================================================
+   ARTICLE SIDE PANELS
+   ========================================================= */
+
+.admin-section-shell--articles
+.admin-image-field {
+  display:
+    grid;
+
+  gap:
+    10px;
+
+  padding:
+    14px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.31
+    );
+}
+
+
+.admin-section-shell--articles
+.admin-image-preview {
+  width:
+    100%;
+
+  max-height:
+    210px;
+
+  object-fit:
+    cover;
+
+  border-radius:
+    7px;
+}
+
+
+/* =========================================================
+   CONTENT TYPE
+   ========================================================= */
+
+.admin-section-shell
+.content-type-panel {
+  padding:
+    14px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+}
+
+
+.admin-section-shell
+.content-type-title {
+  margin:
+    0
+    0
+    10px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.63rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.admin-section-shell
+.content-type-options {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    7px;
+}
+
+
+.admin-section-shell
+.content-type-option {
+  min-height:
+    42px;
+
+  display:
+    flex
+    !important;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    7px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  padding:
+    8px
+    10px;
+}
+
+
+/* =========================================================
+   STICKY FORM ACTIONS
+   ========================================================= */
+
+.admin-section-shell--articles
+.article-form
+> .form-actions {
+  position:
+    sticky;
+
+  top:
+    84px;
+
+  z-index:
+    4;
+
+  display:
+    grid;
+
+  gap:
+    7px;
+
+  align-self:
+    start;
+
+  padding:
+    12px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(
+      250,
+      248,
+      243,
+      0.94
+    );
+
+  box-shadow:
+    0
+    10px
+    26px
+    rgba(
+      35,
+      28,
+      22,
+      0.06
+    );
+
+  backdrop-filter:
+    blur(
+      10px
+    );
+}
+
+
+/* =========================================================
+   MUSIC FORM
+   ========================================================= */
+
+.admin-section-shell--music
+.admin-music-section {
+  display:
+    grid;
+
+  gap:
+    19px;
+}
+
+
+.admin-section-shell--music
+.admin-music-form {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    15px;
+}
+
+
+.admin-section-shell--music
+.admin-music-form
+> h3,
+.admin-section-shell--music
+.admin-music-form
+> label:has(
+  textarea
+),
+.admin-section-shell--music
+.admin-music-form
+> .admin-image-field,
+.admin-section-shell--music
+.admin-music-form
+> fieldset,
+.admin-section-shell--music
+.admin-music-form
+> .form-actions,
+.admin-section-shell--music
+.admin-music-form
+> .error-message {
+  grid-column:
+    1 / -1;
+}
+
+
+/* =========================================================
+   RICH ARTICLE EDITOR
+   ========================================================= */
+
+.admin-section-shell
+.admin-article-rich {
+  margin:
+    0;
+
+  border-color:
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+}
+
+
+.admin-section-shell
+.admin-article-rich__block {
+  border-color:
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.38
+    );
+}
+
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.admin-section-shell
+.admin-list {
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  display:
+    grid;
+
+  gap:
+    0;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    var(
+      --admin-surface,
+      #faf8f3
+    );
+
+  box-shadow:
+    var(
+      --admin-shadow-card,
+      0
+      4px
+      14px
+      rgba(
+        35,
+        28,
+        22,
+        0.035
+      )
+    );
+}
+
+
+.admin-section-shell
+.admin-list
+> h2,
+.admin-section-shell
+.admin-list
+> h3 {
+  margin:
+    0;
+
+  padding:
+    16px
+    17px;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.4rem;
+
+  font-weight:
+    400;
+}
+
+
+.admin-section-shell
+.admin-list
+> p {
+  margin:
+    0;
+
+  padding:
+    18px;
+}
+
+
+/* =========================================================
+   COMPACT LIST ROW
+   ========================================================= */
+
+.admin-section-shell
+.admin-list-item {
+  min-width:
+    0;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    17px;
+
+  padding:
+    11px
+    14px;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.11
+      )
+    );
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  transition:
+    background-color
+      130ms
+      ease;
+}
+
+
+.admin-section-shell
+.admin-list-item:last-child {
+  border-bottom:
+    0;
+}
+
+
+.admin-section-shell
+.admin-list-item:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.42
+    );
+}
+
+
+/* =========================================================
+   LIST INFO
+   ========================================================= */
+
+.admin-section-shell
+.admin-list-info {
+  min-width:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+}
+
+
+.admin-section-shell
+.admin-list-info
+> div {
+  min-width:
+    0;
+}
+
+
+.admin-section-shell
+.admin-list-thumb {
+  width:
+    58px;
+
+  height:
+    58px;
+
+  flex:
+    0
+    0 auto;
+
+  object-fit:
+    cover;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.14
+      )
+    );
+
+  border-radius:
+    6px;
+
+  background:
+    #e8e0d3;
+}
+
+
+.admin-section-shell
+.admin-list-info h3 {
+  overflow:
+    hidden;
+
+  margin:
+    3px
+    0
+    2px;
+
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    1.03rem;
+
+  font-weight:
+    400;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.admin-section-shell
+.admin-list-info
+p:not(
+  .admin-status
+) {
+  overflow:
+    hidden;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-muted,
+      #776d62
+    );
+
+  font-size:
+    0.67rem;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.admin-section-shell
+.admin-status {
+  margin:
+    0;
+
+  color:
+    var(
+      --admin-accent-dark,
+      #795a20
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.49rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   ROW ACTIONS
+   ========================================================= */
+
+.admin-section-shell
+.item-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    5px;
+}
+
+
+.admin-section-shell
+.item-actions button,
+.admin-section-shell
+.admin-list-item button {
+  min-height:
+    32px;
+
+  border:
+    1px solid
+    var(
+      --admin-border,
+      rgba(
+        58,
+        48,
+        38,
+        0.16
+      )
+    );
+
+  border-radius:
+    6px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.4
+    );
+
+  color:
+    var(
+      --admin-text-soft,
+      #50473f
+    );
+
+  padding:
+    6px
+    9px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    800;
+
+  cursor:
+    pointer;
+}
+
+
+.admin-section-shell
+.item-actions button:hover,
+.admin-section-shell
+.admin-list-item button:hover {
+  background:
+    #fffdf8;
+}
+
+
+.admin-section-shell
+.item-actions
+.danger-button,
+.admin-section-shell
+.admin-list-item
+.danger-button {
+  border-color:
+    rgba(
+      151,
+      55,
+      48,
+      0.25
+    );
+
+  background:
+    rgba(
+      151,
+      55,
+      48,
+      0.055
+    );
+
+  color:
+    #843a34;
+}
+
+
+/* =========================================================
+   PRIMARY / SECONDARY BUTTONS
+   ========================================================= */
+
+.admin-section-shell
+.primary-button,
+.admin-section-shell
+.secondary-button {
+  min-height:
+    39px;
+
+  border-radius:
+    7px;
+
+  padding:
+    8px
+    12px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    0.63rem;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.03em;
+}
+
+
+.admin-section-shell
+.primary-button {
+  border:
+    1px solid
+    #2a241f;
+
+  background:
+    #2a241f;
+
+  color:
+    #fff8e9;
+}
+
+
+.admin-section-shell
+.secondary-button {
+  border:
+    1px solid
+    var(
+      --admin-border-strong,
+      rgba(
+        58,
+        48,
+        38,
+        0.24
+      )
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.38
+    );
+
+  color:
+    var(
+      --admin-text,
+      #27211c
+    );
+}
+
+
+/* =========================================================
+   SKATE
+   ========================================================= */
+
+.admin-section-shell--skate
+.admin-skate {
+  max-width:
+    none;
+
+  margin:
+    0;
+
+  padding:
+    0;
+}
+
+
+.admin-section-shell--skate
+.admin-skate__tabs {
+  display:
+    none;
+}
+
+
+/*
+   Stari unutrašnji naslov i back
+   više nisu potrebni kada postoji
+   V3 shell.
+*/
+
+.admin-section-shell--skate
+.admin-skate
+> .admin-skate__back,
+.admin-section-shell--skate
+.admin-skate
+> .admin-page-heading {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   MUSIC
+
+   Novi shell preuzima tabove,
+   zato sakrivamo stare ako je
+   ostao legacy CSS/markup.
+   ========================================================= */
+
+.admin-section-shell--music
+.admin-music
+> .admin-page-heading {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.admin-section-shell
+.error-message {
+  margin:
+    0;
+
+  border:
+    1px solid
+    rgba(
+      151,
+      55,
+      48,
+      0.27
+    );
+
+  border-radius:
+    7px;
+
+  background:
+    rgba(
+      151,
+      55,
+      48,
+      0.06
+    );
+
+  color:
+    #7f3732;
+
+  padding:
+    10px
+    12px;
+
+  font-size:
+    0.72rem;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (
+  max-width:
+    960px
+) {
+  .admin-section-shell__hero {
+    align-items:
+      start;
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-section-shell__actions {
+    justify-content:
+      flex-start;
+  }
+
+
+  .admin-section-shell--articles
+  .article-form {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      245px;
+
+    gap:
+      15px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+    720px
+) {
+  .admin-section-shell {
+    gap:
+      17px;
+  }
+
+
+  .admin-section-shell__hero {
+    min-height:
+      auto;
+
+    padding:
+      21px;
+  }
+
+
+  .admin-section-shell__hero h1 {
+    font-size:
+      clamp(
+        2.7rem,
+        14vw,
+        4rem
+      );
+  }
+
+
+  .admin-section-shell__actions {
+    width:
+      100%;
+  }
+
+
+  .admin-section-shell__action {
+    flex:
+      1
+      1 auto;
+  }
+
+
+  .admin-section-shell__tabs {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .admin-section-shell--music
+  .admin-section-shell__tabs {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-section-shell__tab {
+    width:
+      100%;
+  }
+
+
+  .admin-section-shell--articles
+  .article-form,
+  .admin-section-shell--music
+  .admin-music-form {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-section-shell--articles
+  .article-form
+  > * {
+    grid-column:
+      1
+      !important;
+  }
+
+
+  .admin-section-shell--articles
+  .article-form
+  > .form-actions {
+    position:
+      static;
+  }
+
+
+  .admin-section-shell
+  .content-type-options {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-section-shell
+  .admin-list-item {
+    grid-template-columns:
+      1fr;
+
+    align-items:
+      start;
+  }
+
+
+  .admin-section-shell
+  .item-actions {
+    justify-content:
+      flex-start;
+  }
+
+
+  .admin-section-shell
+  .admin-list-info {
+    align-items:
+      flex-start;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+    460px
+) {
+  .admin-section-shell__hero {
+    padding:
+      18px;
+  }
+
+
+  .admin-section-shell__tabs {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .admin-section-shell
+  .admin-list-thumb {
+    width:
+      50px;
+
+    height:
+      50px;
+  }
+}

@@ -1,0 +1,627 @@
+/* =====================================================
+   ČOVEK 1 — O MENI
+   DIGITALNI DIVLJI ZAPAD / MAPA + STIKERI
+   ===================================================== */
+
+.human-one-about {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #0d0c0a;
+}
+
+
+/* =====================================================
+   GLAVNA MAPA
+   ===================================================== */
+
+.human-one-about__world {
+position: fixed !important;
+z-index: 2147483000;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #17130e;
+}
+
+
+.human-one-about__map-picture,
+.human-one-about__map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.human-one-about__map {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* Blago zatamni ivice da stikeri ostanu glavni. */
+.human-one-about__map-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 44%,
+      rgba(7, 6, 5, 0.08) 68%,
+      rgba(7, 6, 5, 0.34) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.08),
+      transparent 18%,
+      transparent 82%,
+      rgba(0, 0, 0, 0.12)
+    );
+}
+
+
+/* =====================================================
+   POVRATAK
+   ===================================================== */
+
+.human-one-about__back {
+  position: fixed;
+  left: clamp(18px, 2.3vw, 44px);
+  top: clamp(18px, 2.2vw, 40px);
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 14px;
+
+  border: 2px solid #15120e;
+  background: rgba(214, 194, 61, 0.95);
+
+  color: #15120e;
+
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.68rem, 0.75vw, 0.82rem);
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+
+  cursor: pointer;
+  appearance: none;
+
+  box-shadow:
+    4px 4px 0 rgba(10, 8, 6, 0.75);
+
+  transform: rotate(-1.2deg);
+
+  transition:
+    transform 170ms ease,
+    box-shadow 170ms ease,
+    background 170ms ease;
+}
+
+
+.human-one-about__back:hover {
+  background: #e4cf42;
+
+  transform:
+    rotate(-1.2deg)
+    translate(-2px, -2px);
+
+  box-shadow:
+    7px 7px 0 rgba(10, 8, 6, 0.78);
+}
+
+
+/* =====================================================
+   STIKER LAYER
+   ===================================================== */
+
+.human-one-about__stickers {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+
+.human-one-about__sticker {
+  position: absolute;
+  z-index: 10;
+
+  display: block;
+
+  text-decoration: none;
+
+  transform-origin: center;
+
+  filter:
+    drop-shadow(0 11px 8px rgba(13, 9, 5, 0.27));
+
+  transition:
+    transform 240ms cubic-bezier(0.18, 0.82, 0.24, 1),
+    filter 240ms ease;
+}
+
+
+.human-one-about__sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+.human-one-about__sticker:hover,
+.human-one-about__sticker:focus-visible {
+  z-index: 30;
+
+  filter:
+    drop-shadow(0 17px 11px rgba(10, 7, 4, 0.34))
+    contrast(1.03)
+    saturate(1.04);
+}
+
+
+.human-one-about__sticker:focus-visible {
+  outline: none;
+}
+
+
+/* =====================================================
+   ETIKETE
+   ===================================================== */
+
+.human-one-about__sticker-label {
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+
+  display: block;
+
+  min-width: max-content;
+  padding: 6px 9px 5px;
+
+  border: 2px solid #15120e;
+  background: rgba(221, 201, 164, 0.96);
+
+  color: #16120e;
+
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.55rem, 0.66vw, 0.76rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+
+  box-shadow:
+    3px 3px 0 rgba(13, 10, 7, 0.72);
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, 6px)
+    rotate(-1deg);
+
+  transition:
+    opacity 160ms ease,
+    transform 180ms ease;
+
+  pointer-events: none;
+}
+
+
+.human-one-about__sticker:hover .human-one-about__sticker-label,
+.human-one-about__sticker:focus-visible .human-one-about__sticker-label {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0)
+    rotate(-1deg);
+}
+
+
+/* =====================================================
+   DESKTOP — TAČAN RASPORED SA SKICE
+   ===================================================== */
+
+/* SUDBINA — gore levo */
+.human-one-about__sticker--fate {
+  left: 5.2%;
+  top: 9.2%;
+  width: 28%;
+
+  transform: rotate(-2deg);
+}
+
+
+.human-one-about__sticker--fate:hover,
+.human-one-about__sticker--fate:focus-visible {
+  transform:
+    rotate(-1deg)
+    translate(5px, -7px)
+    scale(1.035);
+}
+
+
+/* LIČNI PRINCIPI — gore desno */
+.human-one-about__sticker--principles {
+  right: 4.3%;
+  top: 14.5%;
+  width: 25.5%;
+
+  transform: rotate(1.6deg);
+}
+
+
+.human-one-about__sticker--principles:hover,
+.human-one-about__sticker--principles:focus-visible {
+  transform:
+    rotate(0.7deg)
+    translate(-4px, -7px)
+    scale(1.04);
+}
+
+
+/* ŽELJE — centralni, najveći sticker */
+.human-one-about__sticker--desires {
+  left: 33.5%;
+  top: 26%;
+  width: 34.5%;
+
+  transform: rotate(-0.4deg);
+}
+
+
+.human-one-about__sticker--desires:hover,
+.human-one-about__sticker--desires:focus-visible {
+  transform:
+    rotate(0deg)
+    translateY(-9px)
+    scale(1.035);
+}
+
+
+/* PUT — dole levo */
+.human-one-about__sticker--path {
+  left: 4.5%;
+  bottom: 5.3%;
+  width: 29%;
+
+  transform: rotate(1.2deg);
+}
+
+
+.human-one-about__sticker--path:hover,
+.human-one-about__sticker--path:focus-visible {
+  transform:
+    rotate(0.4deg)
+    translate(4px, -7px)
+    scale(1.035);
+}
+
+
+/* FILOZOFIJA — dole desno */
+.human-one-about__sticker--philosophy {
+  right: 3.4%;
+  bottom: 4.7%;
+  width: 28.5%;
+
+  transform: rotate(-1.25deg);
+}
+
+
+.human-one-about__sticker--philosophy:hover,
+.human-one-about__sticker--philosophy:focus-visible {
+  transform:
+    rotate(-0.4deg)
+    translate(-4px, -7px)
+    scale(1.035);
+}
+
+
+/* =====================================================
+   SUptilni ulazak stikera
+   ===================================================== */
+
+@media (
+  min-width: 701px
+) {
+  .human-one-about__sticker {
+    animation:
+      human-one-about-sticker-enter
+      700ms
+      cubic-bezier(0.18, 0.82, 0.24, 1)
+      both;
+  }
+
+
+  .human-one-about__sticker--fate {
+    animation-delay: 60ms;
+  }
+
+
+  .human-one-about__sticker--principles {
+    animation-delay: 120ms;
+  }
+
+
+  .human-one-about__sticker--desires {
+    animation-delay: 180ms;
+  }
+
+
+  .human-one-about__sticker--path {
+    animation-delay: 240ms;
+  }
+
+
+  .human-one-about__sticker--philosophy {
+    animation-delay: 300ms;
+  }
+}
+
+
+@keyframes human-one-about-sticker-enter {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (
+  max-width: 1000px
+) and (
+  min-width: 701px
+) {
+  .human-one-about__sticker--fate {
+    width: 30%;
+  }
+
+
+  .human-one-about__sticker--principles {
+    width: 28%;
+  }
+
+
+  .human-one-about__sticker--desires {
+    left: 31%;
+    width: 38%;
+  }
+
+
+  .human-one-about__sticker--path {
+    width: 31%;
+  }
+
+
+  .human-one-about__sticker--philosophy {
+    width: 30%;
+  }
+}
+
+
+/* =====================================================
+   TELEFON — POSEBNA VERTIKALNA MAPA
+   ===================================================== */
+
+@media (
+  max-width: 700px
+) {
+  .human-one-about {
+    width: 100vw;
+    height: 100dvh;
+  }
+
+
+  .human-one-about__world {
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .human-one-about__map {
+    object-fit: cover;
+    object-position: center center;
+  }
+
+
+  .human-one-about__back {
+    left: 12px;
+    top: 12px;
+
+    padding: 7px 9px;
+
+    font-size: 0.62rem;
+  }
+
+
+
+  .human-one-about__sticker {
+    filter:
+      drop-shadow(0 7px 5px rgba(13, 9, 5, 0.24));
+  }
+
+
+  /* SUDBINA — gore levo */
+  .human-one-about__sticker--fate {
+    left: 1.5%;
+    top: 9.5%;
+    width: 55%;
+
+    transform: rotate(-2deg);
+  }
+
+
+  /* LIČNI PRINCIPI — gore desno */
+  .human-one-about__sticker--principles {
+    right: 4%;
+    top: 25%;
+    width: 50%;
+
+    transform: rotate(2deg);
+  }
+
+
+  /* ŽELJE — sredina */
+  .human-one-about__sticker--desires {
+    left: 15%;
+    top: 42%;
+    width: 70%;
+
+    transform: rotate(-0.5deg);
+  }
+
+
+  /* PUT — dole levo */
+  .human-one-about__sticker--path {
+    left: 2%;
+    bottom: 16%;
+    width: 54%;
+
+    transform: rotate(1.2deg);
+  }
+
+
+  /* FILOZOFIJA — dole desno */
+  .human-one-about__sticker--philosophy {
+    right: 3%;
+    bottom: 2.6%;
+    width: 55%;
+
+    transform: rotate(-1.3deg);
+  }
+
+
+  /* Na telefonu nema hover etikete koja bi prekrila mapu. */
+  .human-one-about__sticker-label {
+    display: none;
+  }
+
+
+  .human-one-about__sticker:hover,
+  .human-one-about__sticker:focus-visible {
+    filter:
+      drop-shadow(0 8px 6px rgba(13, 9, 5, 0.28));
+  }
+
+
+  .human-one-about__sticker--fate:hover,
+  .human-one-about__sticker--fate:focus-visible,
+  .human-one-about__sticker--principles:hover,
+  .human-one-about__sticker--principles:focus-visible,
+  .human-one-about__sticker--desires:hover,
+  .human-one-about__sticker--desires:focus-visible,
+  .human-one-about__sticker--path:hover,
+  .human-one-about__sticker--path:focus-visible,
+  .human-one-about__sticker--philosophy:hover,
+  .human-one-about__sticker--philosophy:focus-visible {
+    scale: 1.015;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  .human-one-about__sticker,
+  .human-one-about__back,
+  .human-one-about__sticker-label {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+/* =====================================================
+   UNWANTED STICKER — ZALEPLJEN NA MAPI
+
+   Poziciju NE DIRAMO — ovo su vrednosti koje su već
+   legle kako treba. Menja se samo vizuel iz DOM postera
+   u gotov PNG sticker.
+   ===================================================== */
+
+.human-one-about__profile-poster-anchor {
+  position: absolute;
+
+  left: 43.5%;
+  top: -2.2%;
+
+  z-index: 8;
+
+  width: 13%;
+
+  pointer-events: none;
+}
+
+
+.human-one-about__profile-poster-sticker {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  transform:
+    rotate(-2deg);
+
+  transform-origin:
+    50% 5%;
+
+  filter:
+    drop-shadow(
+      0 8px 7px
+      rgba(24, 14, 6, 0.28)
+    );
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+@media (max-width: 700px) {
+  .human-one-about__profile-poster-anchor {
+    left: auto;
+    right: 3%;
+    top: 3.2%;
+
+    width: 27%;
+  }
+}

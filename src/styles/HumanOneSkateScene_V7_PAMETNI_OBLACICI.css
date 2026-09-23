@@ -1,0 +1,1286 @@
+/* =====================================================
+   SKEJT SVET — FULLSCREEN SCENA
+   ===================================================== */
+
+.human-one-skate-scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #111;
+}
+
+.human-one-skate-scene::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  z-index: 0;
+  background-image:
+    url("/images/human-one/skate/skate-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  transform: scale(1.03);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   STAGE
+   ===================================================== */
+
+.human-one-skate-scene__stage {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width:
+    min(
+      100vw,
+      177.68dvh
+    );
+  aspect-ratio: 1672 / 941;
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   POZADINA
+   ===================================================== */
+
+.human-one-skate-scene__background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   OPŠTA PRAVILA ZA KLIKABILNE ELEMENTE
+   ===================================================== */
+
+.human-one-skate-scene__object {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  transform-origin: center;
+  overflow: visible;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease,
+    opacity 180ms ease;
+}
+
+.human-one-skate-scene__object img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.human-one-skate-scene__object:hover {
+  filter:
+    brightness(1.08)
+    drop-shadow(
+      0 0 8px
+      rgba(
+        225,
+        189,
+        92,
+        0.32
+      )
+    );
+}
+
+.human-one-skate-scene__object:active {
+  filter:
+    brightness(0.95);
+}
+
+
+/* =====================================================
+   TVOJE NAMEŠTENE VREDNOSTI
+   POSTOJEĆE POZICIJE NISU MENJANE.
+   ===================================================== */
+
+/* ZID */
+.human-one-skate-scene__wall {
+  left: 28.7%;
+  top: 5%;
+  width: 40%;
+  z-index: 10;
+}
+
+/* ПАТЕБ ЗНАК */
+.human-one-skate-scene__pateb-sign {
+  left: 42%;
+  top: 25%;
+  width: 15%;
+  z-index: 25;
+}
+
+/* VOŽNJA */
+.human-one-skate-scene__ride {
+  left: 0%;
+  top: 54%;
+  width: 36%;
+  z-index: 12;
+}
+
+/* ULICA */
+.human-one-skate-scene__street {
+  right: 1.4%;
+  top: 53%;
+  width: 37%;
+  z-index: 12;
+}
+
+
+/* =====================================================
+   LIKOVI
+   ===================================================== */
+
+.human-one-skate-scene__person {
+  z-index: 30;
+}
+
+/* Lik koji trenutno govori ide iznad svih ostalih likova. */
+.human-one-skate-scene__person--speaking {
+  z-index: 200;
+}
+
+
+/* SERGEJ RISTIĆ SEKI */
+.human-one-skate-scene__dogodovstine-person {
+  left: 31.5%;
+  top: 11%;
+  width: 11.5%;
+}
+
+
+/* TODOR PAVLOVIĆ TOKA */
+.human-one-skate-scene__toka {
+  left: 44%;
+  top: 0%;
+  width: 11.5%;
+}
+
+
+/* OGNJEN LEONTIJEVIĆ LENTO */
+.human-one-skate-scene__lento {
+  left: 55%;
+  top: 9%;
+  width: 11.5%;
+}
+
+
+/* =====================================================
+   NOVA TROJICA
+   OVO SU SAMO POČETNE VREDNOSTI.
+   TI IH RUČNO NAMEŠTAŠ KAKO TI ODGOVARA.
+   ===================================================== */
+
+/* DOSITEJ OBRADOVIĆ DOSKE */
+.human-one-skate-scene__doske {
+  left: 53%;
+  top: 38.5%;
+  width: 17%;
+}
+
+
+/* LAZAR VOJINOVIĆ VOJIN */
+.human-one-skate-scene__vojin {
+  left: 40%;
+  top: 35%;
+  width: 20%;
+}
+
+
+/* ANDREJ FILIPOVIĆ ČAKI */
+.human-one-skate-scene__caki {
+  left: 31%;
+  top: 51%;
+  width: 12%;
+}
+
+
+/* =====================================================
+   OBLAČIĆ
+   ===================================================== */
+
+.human-one-skate-scene__speech {
+  --bubble-shift-x: 0px;
+  --bubble-shift-y: 0px;
+
+  position: absolute;
+  z-index: 210;
+  width:
+    clamp(
+      220px,
+      18vw,
+      320px
+    );
+  max-width: 320px;
+  padding:
+    12px 14px;
+  border:
+    2px solid
+    #111;
+  border-radius: 18px;
+  background: #f5f1e7;
+  color: #171717;
+  box-shadow:
+    5px 6px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.42
+    );
+  font-family:
+    "Courier New",
+    monospace;
+  font-size:
+    clamp(
+      0.66rem,
+      0.9vw,
+      0.88rem
+    );
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+  white-space: normal;
+  word-break: break-word;
+}
+
+
+/* Vidljiv */
+.human-one-skate-scene__speech--visible {
+  opacity: 1;
+  transform:
+    translate3d(
+      var(--bubble-shift-x),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(1);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+
+/* Nestajanje */
+.human-one-skate-scene__speech--closing {
+  opacity: 0;
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+}
+
+
+/* =====================================================
+   PLASMAN OBLAČIĆA
+   ===================================================== */
+
+/* GORE */
+.human-one-skate-scene__speech--top {
+  left: 50%;
+  bottom:
+    calc(
+      100% + 14px
+    );
+  transform:
+    translateX(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(1);
+}
+
+.human-one-skate-scene__speech--top.human-one-skate-scene__speech--closing {
+  transform:
+    translateX(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      calc(
+        var(--bubble-shift-y) -
+        10px
+      ),
+      0
+    )
+    scale(0.97);
+}
+
+.human-one-skate-scene__speech--top::after {
+  content: "";
+  position: absolute;
+  left:
+    clamp(
+      18px,
+      calc(
+        50% -
+        var(--bubble-shift-x)
+      ),
+      calc(
+        100% - 18px
+      )
+    );
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left:
+    11px solid
+    transparent;
+  border-right:
+    11px solid
+    transparent;
+  border-top:
+    15px solid
+    #f5f1e7;
+  transform:
+    translateX(-50%);
+}
+
+
+/* DOLE */
+.human-one-skate-scene__speech--bottom {
+  left: 50%;
+  top:
+    calc(
+      100% + 14px
+    );
+  transform:
+    translateX(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(1);
+}
+
+.human-one-skate-scene__speech--bottom.human-one-skate-scene__speech--closing {
+  transform:
+    translateX(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      calc(
+        var(--bubble-shift-y) +
+        10px
+      ),
+      0
+    )
+    scale(0.97);
+}
+
+.human-one-skate-scene__speech--bottom::after {
+  content: "";
+  position: absolute;
+  left:
+    clamp(
+      18px,
+      calc(
+        50% -
+        var(--bubble-shift-x)
+      ),
+      calc(
+        100% - 18px
+      )
+    );
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-left:
+    11px solid
+    transparent;
+  border-right:
+    11px solid
+    transparent;
+  border-bottom:
+    15px solid
+    #f5f1e7;
+  transform:
+    translateX(-50%);
+}
+
+
+/* LEVO */
+.human-one-skate-scene__speech--left {
+  right:
+    calc(
+      100% + 14px
+    );
+  top: 50%;
+  transform:
+    translateY(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(1);
+}
+
+.human-one-skate-scene__speech--left.human-one-skate-scene__speech--closing {
+  transform:
+    translateY(-50%)
+    translate3d(
+      calc(
+        var(--bubble-shift-x) -
+        10px
+      ),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(0.97);
+}
+
+.human-one-skate-scene__speech--left::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top:
+    clamp(
+      18px,
+      calc(
+        50% -
+        var(--bubble-shift-y)
+      ),
+      calc(
+        100% - 18px
+      )
+    );
+  width: 0;
+  height: 0;
+  border-top:
+    11px solid
+    transparent;
+  border-bottom:
+    11px solid
+    transparent;
+  border-left:
+    15px solid
+    #f5f1e7;
+  transform:
+    translateY(-50%);
+}
+
+
+/* DESNO */
+.human-one-skate-scene__speech--right {
+  left:
+    calc(
+      100% + 14px
+    );
+  top: 50%;
+  transform:
+    translateY(-50%)
+    translate3d(
+      var(--bubble-shift-x),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(1);
+}
+
+.human-one-skate-scene__speech--right.human-one-skate-scene__speech--closing {
+  transform:
+    translateY(-50%)
+    translate3d(
+      calc(
+        var(--bubble-shift-x) +
+        10px
+      ),
+      var(--bubble-shift-y),
+      0
+    )
+    scale(0.97);
+}
+
+.human-one-skate-scene__speech--right::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top:
+    clamp(
+      18px,
+      calc(
+        50% -
+        var(--bubble-shift-y)
+      ),
+      calc(
+        100% - 18px
+      )
+    );
+  width: 0;
+  height: 0;
+  border-top:
+    11px solid
+    transparent;
+  border-bottom:
+    11px solid
+    transparent;
+  border-right:
+    15px solid
+    #f5f1e7;
+  transform:
+    translateY(-50%);
+}
+
+
+/* =====================================================
+   NAZAD
+   ===================================================== */
+
+.human-one-skate-scene__back {
+  position: absolute;
+  left: 2%;
+  top: 3%;
+  z-index: 50;
+  display: block;
+  padding:
+    8px 12px;
+  border:
+    2px solid
+    rgba(
+      0,
+      0,
+      0,
+      0.8
+    );
+  background:
+    rgba(
+      209,
+      196,
+      60,
+      0.92
+    );
+  color: #111;
+  font-family:
+    "Courier New",
+    monospace;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   STATE
+   ===================================================== */
+
+.human-one-skate-scene__state {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+  padding:
+    14px 18px;
+  background:
+    rgba(
+      20,
+      20,
+      20,
+      0.88
+    );
+  color: #f2ecd9;
+  font-family:
+    "Courier New",
+    monospace;
+  font-weight: 900;
+}
+
+
+
+/* =====================================================
+   MOBILE CATEGORY UI — DESKTOP JE SKRIVEN
+   ===================================================== */
+
+.human-one-skate-scene__category-button,
+.human-one-skate-scene__category-picker {
+  display: none;
+}
+
+
+/* =====================================================
+   MOBILE — POSEBNA USPRAVNA SCENA
+   Desktop iznad ostaje potpuno netaknut.
+   Ovde ručno nameštaš SAMO mobilne vrednosti.
+   ===================================================== */
+
+@media (max-width: 700px) {
+  .human-one-skate-scene {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Blurovana pozadina iza canvasa takođe koristi
+     mobilnu verziju slike. */
+  .human-one-skate-scene::before {
+    background-image:
+      url("/images/human-one/skate/skate-scene-mobile.png");
+    background-position: center center;
+    background-size: cover;
+  }
+
+  /* Na telefonu je stage ceo ekran i više nema
+     desktop 1672/941 odnos. */
+  .human-one-skate-scene__stage {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+  .human-one-skate-scene__background-picture {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .human-one-skate-scene__background {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center center;
+  }
+
+  /* -----------------------------------------------------
+     NAZAD
+     ----------------------------------------------------- */
+
+  .human-one-skate-scene__back {
+    left: 3.5%;
+    top:
+      max(
+        14px,
+        env(safe-area-inset-top)
+      );
+    padding: 7px 10px;
+    font-size: 0.66rem;
+  }
+
+  /* -----------------------------------------------------
+     RUČNE MOBILNE POZICIJE
+
+     left  -> veće = desno
+     top   -> veće = dole
+     right -> veće = levo
+     width -> veće = veći element
+
+     OVO JE DEO KOJI ĆEMO SAD ŠTELOVATI PO SCREENSHOTU.
+     ----------------------------------------------------- */
+
+  /* ZID / EKIPA */
+  .human-one-skate-scene__wall {
+    left: -2%;
+    top: 7%;
+    width: 102%;
+  }
+
+  /* ПАТЕБ */
+  .human-one-skate-scene__pateb-sign {
+    left: 29%;
+    top: 19%;
+    width: 46%;
+  }
+
+  /* VOŽNJA */
+  .human-one-skate-scene__ride {
+    left: 0%;
+    top: 54%;
+    width: 85%;
+    rotate: -20deg;
+  }
+
+  /* ULICA */
+  .human-one-skate-scene__street {
+    right: 0%;
+    top: 73%;
+    width: 85%;
+  }
+
+  /* SERGEJ RISTIĆ SEKI */
+  .human-one-skate-scene__dogodovstine-person {
+    left: 2%;
+    top: 9%;
+    width: 34%;
+  }
+
+  /* TODOR PAVLOVIĆ TOKA */
+  .human-one-skate-scene__toka {
+    left: 33.5%;
+    top: 0.8%;
+    width: 34%;
+  }
+
+  /* OGNJEN LEONTIJEVIĆ LENTO */
+  .human-one-skate-scene__lento {
+    left: 66%;
+    top: 8%;
+    width: 34%;
+  }
+
+  /* DOSITEJ OBRADOVIĆ DOSKE */
+  .human-one-skate-scene__doske {
+    left: 59%;
+    top: 28%;
+    width: 46%;
+  }
+
+  /* LAZAR VOJINOVIĆ VOJIN */
+  .human-one-skate-scene__vojin {
+    left: 28%;
+    top: 27%;
+    width: 50%;
+  }
+
+  /* ANDREJ FILIPOVIĆ ČAKI */
+  .human-one-skate-scene__caki {
+    left: 7%;
+    top: 39%;
+    width: 32%;
+  }
+
+  /* -----------------------------------------------------
+     OBLAČIĆI — samo ih smanjujemo za telefon.
+     Logika prvog/drugog klika ostaje ista.
+     ----------------------------------------------------- */
+
+  .human-one-skate-scene__speech {
+    width:
+      min(
+        58vw,
+        245px
+      );
+    max-width: 245px;
+    padding: 9px 10px;
+    border-radius: 14px;
+    font-size: 0.63rem;
+    line-height: 1.3;
+  }
+
+  /* Ukloni browserov plavi tap highlight. */
+  .human-one-skate-scene a,
+  .human-one-skate-scene button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .human-one-skate-scene button:focus:not(:focus-visible),
+  .human-one-skate-scene a:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+
+
+
+/* =====================================================
+   MOBILE — HAMBURGER + HORIZONTALNI IZBOR KATEGORIJE
+   ===================================================== */
+
+@media (max-width: 700px) {
+  .human-one-skate-scene__category-button {
+    position: absolute;
+
+    left: auto;
+
+    right:
+      max(
+        12px,
+        env(
+          safe-area-inset-right
+        )
+      );
+
+    top:
+      max(
+        10px,
+        env(
+          safe-area-inset-top
+        )
+      );
+
+    z-index: 260;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border:
+      1px solid
+      rgba(
+        230,
+        218,
+        184,
+        0.46
+      );
+
+    background:
+      rgba(
+        18,
+        17,
+        14,
+        0.68
+      );
+
+    color:
+      #e5dcc1;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    box-shadow:
+      0 4px 13px
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      );
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+    backdrop-filter:
+      blur(4px);
+
+    -webkit-backdrop-filter:
+      blur(4px);
+  }
+
+
+  .human-one-skate-scene__category-button span {
+    display: block;
+
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1;
+
+    transform:
+      translateY(-1px);
+  }
+
+
+  .human-one-skate-scene__category-picker {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 400;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          10,
+          10,
+          9,
+          0.93
+        ),
+        rgba(
+          17,
+          15,
+          12,
+          0.89
+        )
+      );
+
+    backdrop-filter:
+      blur(7px);
+
+    -webkit-backdrop-filter:
+      blur(7px);
+  }
+
+
+  .human-one-skate-scene__category-picker-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    min-height: 58px;
+
+    padding:
+      max(
+        12px,
+        env(
+          safe-area-inset-top
+        )
+      )
+      14px
+      8px;
+
+    box-sizing: border-box;
+  }
+
+
+  .human-one-skate-scene__category-picker-top p {
+    margin: 0;
+
+    color:
+      rgba(
+        226,
+        216,
+        188,
+        0.72
+      );
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size:
+      clamp(
+        8px,
+        2.6vw,
+        11px
+      );
+
+    font-weight: 700;
+
+    letter-spacing:
+      0.06em;
+  }
+
+
+  .human-one-skate-scene__category-close {
+    padding:
+      7px
+      10px;
+
+    border:
+      1px solid
+      rgba(
+        226,
+        216,
+        188,
+        0.55
+      );
+
+    background:
+      rgba(
+        15,
+        14,
+        12,
+        0.9
+      );
+
+    color:
+      #e2d8bc;
+
+    font-family:
+      "Courier New",
+      monospace;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing:
+      0.05em;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+  }
+
+
+  .human-one-skate-scene__category-track {
+    flex:
+      1
+      1
+      auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11vw;
+
+    width: 100%;
+
+    padding:
+      18px
+      17vw
+      max(
+        34px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type:
+      x mandatory;
+
+    scroll-padding-inline:
+      17vw;
+
+    overscroll-behavior-x:
+      contain;
+
+    scrollbar-width: none;
+
+    touch-action:
+      pan-x;
+  }
+
+
+  .human-one-skate-scene__category-track::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .human-one-skate-scene__category-card {
+    flex:
+      0
+      0
+      66vw;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    min-width: 0;
+
+    height:
+      min(
+        62dvh,
+        520px
+      );
+
+    padding:
+      24px
+      18px;
+
+    box-sizing: border-box;
+
+    border:
+      1px solid
+      rgba(
+        224,
+        211,
+        174,
+        0.48
+      );
+
+    background:
+      rgba(
+        20,
+        19,
+        16,
+        0.78
+      );
+
+    box-shadow:
+      0 18px 36px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      );
+
+    color:
+      #e9dfc3;
+
+    scroll-snap-align:
+      center;
+
+    scroll-snap-stop:
+      always;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+      transparent;
+  }
+
+
+  .human-one-skate-scene__category-card > span:first-child {
+    flex:
+      0
+      0
+      auto;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+
+    font-size:
+      clamp(
+        1rem,
+        5vw,
+        1.45rem
+      );
+
+    font-weight: 900;
+
+    letter-spacing:
+      0.06em;
+
+    text-align: center;
+
+    text-shadow:
+      0 2px 7px
+      rgba(
+        0,
+        0,
+        0,
+        0.85
+      );
+  }
+
+
+  .human-one-skate-scene__category-card > img {
+    display: block;
+
+    width: 100%;
+    height: 78%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+    user-select: none;
+
+    filter:
+      drop-shadow(
+        0 14px 17px
+        rgba(
+          0,
+          0,
+          0,
+          0.48
+        )
+      );
+  }
+
+
+  .human-one-skate-scene__category-card--person > img {
+    height: 82%;
+  }
+
+
+  .human-one-skate-scene__category-button:focus-visible,
+  .human-one-skate-scene__category-close:focus-visible,
+  .human-one-skate-scene__category-card:focus-visible {
+    outline:
+      3px solid
+      rgba(
+        235,
+        185,
+        105,
+        0.92
+      );
+
+    outline-offset:
+      3px;
+  }
+}
+
+
+/* =====================================================
+   TOUCH — DRŽANJE = ISTI SIGNAL KAO DESKTOP HOVER
+   Pustiš -> postojeći klik normalno radi.
+   ===================================================== */
+
+@media (
+  max-width: 700px
+) and (
+  hover: none
+) and (
+  pointer: coarse
+) {
+  .human-one-skate-scene__object:hover {
+    filter: none;
+  }
+
+  .human-one-skate-scene__object:active {
+    filter:
+      brightness(1.08)
+      drop-shadow(
+        0 0 8px
+        rgba(
+          225,
+          189,
+          92,
+          0.32
+        )
+      );
+  }
+}
+
