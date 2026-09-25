@@ -4453,3 +4453,57 @@
     font-size: 1.55rem;
   }
 }
+
+/* =====================================================
+   MOBILE OVERFLOW FIX — GLAVNA STRANA POSTERA
+   ===================================================== */
+
+@media (max-width: 580px) {
+  .human-one-posters--shelves {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .human-one-posters--shelves
+  .human-one-posters__shell,
+  .human-one-posters--shelves
+  .human-one-posters__hero,
+  .human-one-posters--shelves
+  .human-one-posters__category-grid,
+  .human-one-posters--shelves
+  .human-one-posters__category-card {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .human-one-posters--shelves
+  .human-one-posters__hero h1 {
+    max-width: 100%;
+    font-size: clamp(
+      2.15rem,
+      10.7vw,
+      3.1rem
+    );
+    line-height: 0.94;
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+  }
+
+  .human-one-posters--shelves
+  .human-one-posters__category-image,
+  .human-one-posters--shelves
+  .human-one-posters__category-copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .human-one-posters--shelves
+  .human-one-posters__category-copy h2,
+  .human-one-posters--shelves
+  .human-one-posters__category-copy p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}

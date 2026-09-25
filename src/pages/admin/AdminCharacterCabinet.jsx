@@ -128,7 +128,7 @@ function AdminCharacterCabinet() {
 
       preview:
         isCharacterOne
-          ? "/images/human-one/profile-poster.png"
+          ? "/images/human-one/profile-poster.webp"
           : characterImage,
     },
 
@@ -156,7 +156,7 @@ function AdminCharacterCabinet() {
 
       preview:
         isCharacterOne
-          ? "/images/human-one/room-bg.png"
+          ? "/images/human-one/room-bg.webp"
           : characterImage,
     },
 
@@ -184,7 +184,7 @@ function AdminCharacterCabinet() {
 
       preview:
         isCharacterOne
-          ? "/images/human-one/boombox.png"
+          ? "/images/human-one/boombox.webp"
           : characterImage,
     },
 
@@ -212,7 +212,7 @@ function AdminCharacterCabinet() {
 
       preview:
         isCharacterOne
-          ? "/images/human-one/posters.png"
+          ? "/images/human-one/posters.webp"
           : characterImage,
     },
 
@@ -241,7 +241,7 @@ function AdminCharacterCabinet() {
               `/admin/likovi/${characterKey}/doskocice`,
 
             preview:
-              "/images/human-one/digital-clock.png",
+              "/images/human-one/digital-clock.webp",
           },
         ]
       : []),
@@ -274,7 +274,7 @@ function AdminCharacterCabinet() {
               `/admin/likovi/${characterKey}/skejt`,
 
             preview:
-              "/images/human-one/skateboard.png",
+              "/images/human-one/skateboard.webp",
           },
 
           {
@@ -300,7 +300,7 @@ function AdminCharacterCabinet() {
               `/admin/likovi/${characterKey}/obala-sveska`,
 
             preview:
-              "/images/human-one/obala/obala-notebook.png",
+              "/images/human-one/obala/obala-notebook.webp",
           },
 
           {
@@ -326,7 +326,7 @@ function AdminCharacterCabinet() {
               `/admin/likovi/${characterKey}/obala-pano`,
 
             preview:
-              "/images/human-one/obala/obala-board.png",
+              "/images/human-one/obala/obala-board.webp",
           },
         ]
       : [];

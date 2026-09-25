@@ -1,4 +1,6 @@
-import { StrictMode } from "react";
+import {
+  StrictMode,
+} from "react";
 
 import {
   createRoot,
@@ -19,6 +21,33 @@ import {
 } from "./context/BlogContext";
 
 import "./index.css";
+
+
+if (
+  "serviceWorker" in navigator
+) {
+  window.addEventListener(
+    "load",
+    () => {
+      navigator.serviceWorker
+        .register(
+          "/sw.js",
+          {
+            scope: "/",
+          }
+        )
+        .catch(
+          (error) => {
+            console.error(
+              "Service worker nije registrovan:",
+              error
+            );
+          }
+        );
+    }
+  );
+}
+
 
 createRoot(
   document.getElementById("root")

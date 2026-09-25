@@ -47,7 +47,7 @@ function DevilRoom() {
 
         <img
           className="devil-room__background"
-          src="/images/devil/devil-room.png"
+          src="/images/devil/devil-room.webp"
           alt=""
         />
 
@@ -70,7 +70,7 @@ function DevilRoom() {
               devil-room__clickable-image
               devil-room__clickable-image--character
             "
-            src="/images/devil/devil-character.png"
+            src="/images/devil/devil-character.webp"
             alt=""
           />
 
@@ -110,7 +110,7 @@ function DevilRoom() {
               devil-room__clickable-image
               devil-room__clickable-image--demon
             "
-            src="/images/devil/devil-demon.png"
+            src="/images/devil/devil-demon.webp"
             alt=""
           />
         </button>
@@ -134,7 +134,7 @@ function DevilRoom() {
               devil-room__clickable-image
               devil-room__clickable-image--souls
             "
-            src="/images/devil/devil-souls.png"
+            src="/images/devil/devil-souls.webp"
             alt=""
           />
         </button>

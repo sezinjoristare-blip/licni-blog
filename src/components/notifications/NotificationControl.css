@@ -1,0 +1,495 @@
+.push-notifications {
+  position: fixed;
+
+  top: 18px;
+  right: 108px;
+
+  z-index: 2147483600;
+
+  font-family:
+    "Courier New",
+    monospace;
+}
+
+
+/* =====================================================
+   MALO ZVONCE
+   ===================================================== */
+
+.push-notifications__trigger {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      218,
+      196,
+      61,
+      0.55
+    );
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      17,
+      15,
+      12,
+      0.84
+    );
+
+  color:
+    #dcc83d;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.32
+    );
+
+  backdrop-filter:
+    blur(3px);
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+
+.push-notifications__trigger:hover {
+  transform:
+    translateY(-1px)
+    rotate(-4deg);
+
+  background:
+    rgba(
+      28,
+      24,
+      17,
+      0.95
+    );
+
+  border-color:
+    rgba(
+      229,
+      208,
+      66,
+      0.9
+    );
+}
+
+
+.push-notifications__trigger:active {
+  transform:
+    translateY(1px)
+    scale(0.96);
+}
+
+
+.push-notifications__trigger:focus-visible {
+  outline:
+    2px solid
+    #e4cf42;
+
+  outline-offset:
+    3px;
+}
+
+
+.push-notifications__bell-icon {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+
+  fill:
+    rgba(
+      220,
+      200,
+      61,
+      0.16
+    );
+
+  stroke:
+    currentColor;
+
+  stroke-width:
+    1.8;
+
+  stroke-linecap:
+    round;
+
+  stroke-linejoin:
+    round;
+
+  pointer-events: none;
+}
+
+
+.push-notifications__active-dot {
+  position: absolute;
+
+  right: 3px;
+  top: 3px;
+
+  width: 7px;
+  height: 7px;
+
+  border:
+    1px solid
+    #10100d;
+
+  border-radius: 50%;
+
+  background:
+    #63dc63;
+
+  box-shadow:
+    0 0 5px
+    rgba(
+      99,
+      220,
+      99,
+      0.75
+    );
+}
+
+
+/* =====================================================
+   PANEL
+   ===================================================== */
+
+.push-notifications__panel {
+  position: absolute;
+
+  right: 0;
+  top: calc(
+    100% + 10px
+  );
+
+  width: min(
+    310px,
+    calc(
+      100vw - 32px
+    )
+  );
+
+  padding: 14px;
+
+  border:
+    2px solid
+    #d7c43d;
+
+  background:
+    rgba(
+      15,
+      14,
+      12,
+      0.97
+    );
+
+  color:
+    #f1ead9;
+
+  box-shadow:
+    7px 7px 0
+    rgba(
+      0,
+      0,
+      0,
+      0.72
+    );
+}
+
+
+.push-notifications__heading {
+  display: flex;
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 12px;
+
+  margin-bottom: 10px;
+}
+
+
+.push-notifications__heading strong {
+  font-size:
+    0.82rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.push-notifications__close {
+  border: 0;
+
+  background:
+    none;
+
+  color:
+    #f1ead9;
+
+  font: inherit;
+
+  font-size:
+    1.4rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.push-notifications__intro {
+  margin:
+    0 0 12px;
+
+  color:
+    #cfc6b4;
+
+  font-size:
+    0.72rem;
+
+  line-height:
+    1.45;
+}
+
+
+.push-notifications__topics {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    8px 10px;
+
+  margin-bottom:
+    14px;
+}
+
+
+.push-notifications__topic {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  min-width: 0;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    700;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.push-notifications__topic:first-child {
+  grid-column:
+    1 / -1;
+}
+
+
+.push-notifications__topic input {
+  flex:
+    0 0 auto;
+
+  width: 15px;
+  height: 15px;
+
+  margin: 0;
+
+  accent-color:
+    #d7c43d;
+}
+
+
+.push-notifications__action,
+.push-notifications__disable {
+  width: 100%;
+
+  padding:
+    9px 10px;
+
+  font: inherit;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.05em;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.push-notifications__action {
+  border:
+    2px solid
+    #17130e;
+
+  background:
+    #d7c43d;
+
+  color:
+    #17130e;
+}
+
+
+.push-notifications__disable {
+  margin-top:
+    8px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  background:
+    transparent;
+
+  color:
+    #c9c0ae;
+}
+
+
+.push-notifications__action:disabled,
+.push-notifications__disable:disabled {
+  opacity:
+    0.55;
+
+  cursor:
+    default;
+}
+
+
+.push-notifications__warning {
+  margin:
+    0 0 12px;
+
+  color:
+    #ff8b77;
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.4;
+}
+
+
+.push-notifications__message {
+  margin:
+    10px 0 0;
+
+  color:
+    #a9e58e;
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.4;
+}
+
+
+/* =====================================================
+   TELEFON
+   Zvonce sedi levo od hamburger dugmeta.
+   ===================================================== */
+
+@media (
+  max-width: 700px
+) {
+  .push-notifications {
+    top: 12px;
+
+    /*
+     * Hamburger je na desnoj ivici.
+     * Zvonce stavljamo neposredno levo.
+     */
+    right: 58px;
+  }
+
+
+  .push-notifications__trigger {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .push-notifications__bell-icon {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  .push-notifications__panel {
+    position: fixed;
+
+    top: 56px;
+    right: 10px;
+
+    width:
+      min(
+        310px,
+        calc(
+          100vw - 20px
+        )
+      );
+  }
+
+
+  .push-notifications__topics {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .push-notifications__topic:first-child {
+    grid-column:
+      auto;
+  }
+}

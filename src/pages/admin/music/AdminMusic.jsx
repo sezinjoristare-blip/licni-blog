@@ -40,6 +40,10 @@ function AdminMusic() {
     `${recommendationsPath}?tip=radio-drame`;
 
 
+  const listenerRecommendationsPath =
+    `${basePath}/predlozi-slusalaca`;
+
+
   const analysesPath =
     `${basePath}/analize`;
 
@@ -94,6 +98,11 @@ function AdminMusic() {
       "radio-drame";
 
 
+  const isListenerRecommendations =
+    location.pathname ===
+      listenerRecommendationsPath;
+
+
   const isAnalyses =
     location.pathname ===
       analysesPath ||
@@ -127,7 +136,8 @@ function AdminMusic() {
           <p className="admin-section-shell__hero-description">
             Организуј жанрове,
             дискове, плејлисте,
-            радио драме, анализе
+            радио драме, предлоге
+            слушалаца, анализе
             и преводе из једног
             музичког кабинета.
           </p>
@@ -148,6 +158,10 @@ function AdminMusic() {
 
             <span className="admin-section-shell__chip">
               РАДИО ДРАМЕ
+            </span>
+
+            <span className="admin-section-shell__chip">
+              ПРЕДЛОЗИ СЛУШАЛАЦА
             </span>
 
             <span className="admin-section-shell__chip">
@@ -231,6 +245,20 @@ function AdminMusic() {
           }
         >
           РАДИО ДРАМЕ
+        </Link>
+
+
+        <Link
+          to={
+            listenerRecommendationsPath
+          }
+          className={
+            isListenerRecommendations
+              ? "admin-section-shell__tab admin-section-shell__tab--active"
+              : "admin-section-shell__tab"
+          }
+        >
+          ПРЕДЛОЗИ СЛУШАЛАЦА
         </Link>
 
 

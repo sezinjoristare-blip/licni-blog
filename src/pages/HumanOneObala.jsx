@@ -372,12 +372,12 @@ function HumanOneObala() {
         <picture>
           <source
             media="(max-width: 700px)"
-            srcSet="/images/human-one/obala/obala-bg-mobile.png"
+            srcSet="/images/human-one/obala/obala-bg-mobile.webp"
           />
 
           <img
             className="human-one-obala__background"
-            src="/images/human-one/obala/obala-bg.png"
+            src="/images/human-one/obala/obala-bg.webp"
             alt=""
             draggable="false"
           />
@@ -404,7 +404,7 @@ function HumanOneObala() {
           }
         >
           <img
-            src="/images/human-one/back-sign.png"
+            src="/images/human-one/back-sign.webp"
             alt=""
             draggable="false"
           />
@@ -468,12 +468,12 @@ function HumanOneObala() {
           <picture className="human-one-obala__board-picture">
             <source
               media="(max-width: 700px)"
-              srcSet="/images/human-one/obala/obala-board-mobile.png"
+              srcSet="/images/human-one/obala/obala-board-mobile.webp"
             />
 
             <img
               className="human-one-obala__board-base"
-              src="/images/human-one/obala/obala-board.png"
+              src="/images/human-one/obala/obala-board.webp"
               alt=""
               draggable="false"
             />
@@ -538,11 +538,11 @@ function HumanOneObala() {
           <picture className="human-one-obala__stage-picture">
             <source
               media="(max-width: 700px)"
-              srcSet="/images/human-one/obala/obala-stage-mobile.png"
+              srcSet="/images/human-one/obala/obala-stage-mobile.webp"
             />
 
             <img
-              src="/images/human-one/obala/obala-stage.png"
+              src="/images/human-one/obala/obala-stage.webp"
               alt=""
               draggable="false"
             />
@@ -570,7 +570,7 @@ function HumanOneObala() {
           }
         >
           <img
-            src="/images/human-one/obala/obala-notebook.png"
+            src="/images/human-one/obala/obala-notebook.webp"
             alt=""
             draggable="false"
           />
@@ -598,7 +598,7 @@ function HumanOneObala() {
         >
           <img
             data-obala-transition-target="tikvan"
-            src="/images/human-one/obala/obala-guestbook-guy.png"
+            src="/images/human-one/obala/obala-guestbook-guy.webp"
             alt=""
             draggable="false"
           />
@@ -658,7 +658,7 @@ function HumanOneObala() {
                 </span>
 
                 <img
-                  src="/images/human-one/obala/obala-bartenders.png"
+                  src="/images/human-one/obala/obala-bartenders.webp"
                   alt=""
                   draggable="false"
                 />
@@ -681,7 +681,7 @@ function HumanOneObala() {
                 </span>
 
                 <img
-                  src="/images/human-one/obala/obala-board-mobile.png"
+                  src="/images/human-one/obala/obala-board-mobile.webp"
                   alt=""
                   draggable="false"
                 />
@@ -704,7 +704,7 @@ function HumanOneObala() {
                 </span>
 
                 <img
-                  src="/images/human-one/obala/obala-stage-mobile.png"
+                  src="/images/human-one/obala/obala-stage-mobile.webp"
                   alt=""
                   draggable="false"
                 />
@@ -727,7 +727,7 @@ function HumanOneObala() {
                 </span>
 
                 <img
-                  src="/images/human-one/obala/obala-notebook.png"
+                  src="/images/human-one/obala/obala-notebook.webp"
                   alt=""
                   draggable="false"
                 />
@@ -753,7 +753,7 @@ function HumanOneObala() {
                 </span>
 
                 <img
-                  src="/images/human-one/obala/obala-guestbook-guy.png"
+                  src="/images/human-one/obala/obala-guestbook-guy.webp"
                   alt=""
                   draggable="false"
                 />

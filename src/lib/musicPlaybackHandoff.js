@@ -37,6 +37,21 @@ function normalizeOrigin(
 }
 
 
+function normalizeReaderPath(
+  value
+) {
+  return (
+    typeof value ===
+      "string" &&
+    value.startsWith(
+      "/"
+    )
+  )
+    ? value
+    : null;
+}
+
+
 export function normalizeMusicPlaybackTrack(
   track
 ) {
@@ -98,19 +113,96 @@ export function normalizeMusicPlaybackTrack(
       "СА ПОЛИЦЕ",
 
     readerPath:
-      typeof track.readerPath ===
-        "string" &&
-      track.readerPath.startsWith(
-        "/"
-      )
-        ? track.readerPath
-        : null,
+      normalizeReaderPath(
+        track.readerPath
+      ),
+  };
+}
+
+
+export function normalizeYouTubePlaylist(
+  playlist
+) {
+  if (
+    !playlist ||
+    typeof playlist !==
+      "object"
+  ) {
+    return null;
+  }
+
+
+  const title =
+    String(
+      playlist.title ??
+      ""
+    ).trim();
+
+
+  const playlistId =
+    String(
+      playlist
+        .youtube_playlist_id ??
+      ""
+    ).trim();
+
+
+  if (
+    !title ||
+    !playlistId
+  ) {
+    return null;
+  }
+
+
+  return {
+    ...playlist,
+
+    id:
+      playlist.id ??
+      `youtube-playlist:${playlistId}`,
+
+    title,
+
+    artist:
+      String(
+        playlist.artist ??
+        ""
+      ).trim(),
+
+    slug:
+      String(
+        playlist.slug ??
+        ""
+      ).trim(),
+
+    youtube_url:
+      String(
+        playlist.youtube_url ??
+        ""
+      ).trim(),
+
+    youtube_playlist_id:
+      playlistId,
+
+    source:
+      "youtube-playlist",
+
+    sourceLabel:
+      playlist.sourceLabel ??
+      "ПЛЕЈЛИСТА",
+
+    readerPath:
+      normalizeReaderPath(
+        playlist.readerPath
+      ),
   };
 }
 
 
 export function createMusicPlaybackHandoff({
-  queue,
+  queue = [],
+  playlist = null,
   startIndex = 0,
   origin = null,
   autoplay = true,
@@ -127,6 +219,12 @@ export function createMusicPlaybackHandoff({
             Boolean
           )
       : [];
+
+
+  const cleanPlaylist =
+    normalizeYouTubePlaylist(
+      playlist
+    );
 
 
   const safeStartIndex =
@@ -149,6 +247,9 @@ export function createMusicPlaybackHandoff({
   return {
     queue:
       cleanQueue,
+
+    playlist:
+      cleanPlaylist,
 
     startIndex:
       safeStartIndex,
@@ -188,10 +289,13 @@ export function getMusicPlaybackHandoff(
     );
 
 
-  return normalized
-    .queue.length
-      ? normalized
-      : null;
+  return (
+    normalized
+      .queue.length ||
+    normalized.playlist
+  )
+    ? normalized
+    : null;
 }
 
 

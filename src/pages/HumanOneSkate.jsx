@@ -37,7 +37,7 @@ const ZONES = [
     slug: "ekipa-zid",
     className: "wall",
     image:
-      "/images/human-one/skate/skate-wall.png",
+      "/images/human-one/skate/skate-wall.webp",
     labelKey:
       "skate.zoneCrewWall",
     label:
@@ -48,7 +48,7 @@ const ZONES = [
     slug: "voznja",
     className: "ride",
     image:
-      "/images/human-one/skate/skate-ride.png",
+      "/images/human-one/skate/skate-ride.webp",
     labelKey:
       "skate.zoneRide",
     label:
@@ -59,7 +59,7 @@ const ZONES = [
     slug: "ulica",
     className: "street",
     image:
-      "/images/human-one/skate/skate-street.png",
+      "/images/human-one/skate/skate-street.webp",
     labelKey:
       "skate.zoneStreet",
     label:
@@ -83,7 +83,7 @@ const PEOPLE = [
       "dogodovstine-person",
 
     image:
-      "/images/human-one/skate/skate-dogodovstine.png",
+      "/images/human-one/skate/skate-dogodovstine.webp",
 
     name:
       "Сергеј Ристић Секи",
@@ -109,7 +109,7 @@ const PEOPLE = [
       "toka",
 
     image:
-      "/images/human-one/skate/skate-toka.png",
+      "/images/human-one/skate/skate-toka.webp",
 
     name:
       "Тодор Павловић Тока",
@@ -135,7 +135,7 @@ const PEOPLE = [
       "lento",
 
     image:
-      "/images/human-one/skate/skate-lento.png",
+      "/images/human-one/skate/skate-lento.webp",
 
     name:
       "Огњен Леонтијевић Ленто",
@@ -161,7 +161,7 @@ const PEOPLE = [
       "doske",
 
     image:
-      "/images/human-one/skate/skate-doske.png",
+      "/images/human-one/skate/skate-doske.webp",
 
     name:
       "Доситеј Обрадовић Доске",
@@ -187,7 +187,7 @@ const PEOPLE = [
       "vojin",
 
     image:
-      "/images/human-one/skate/skate-vojin.png",
+      "/images/human-one/skate/skate-vojin.webp",
 
     name:
       "Лазар Војиновић Војин",
@@ -213,7 +213,7 @@ const PEOPLE = [
       "caki",
 
     image:
-      "/images/human-one/skate/skate-caki.png",
+      "/images/human-one/skate/skate-caki.webp",
 
     name:
       "Андреј Филиповић Чаки",
@@ -1670,12 +1670,12 @@ function HumanOneSkate() {
         <picture className="human-one-skate-scene__background-picture">
           <source
             media="(max-width: 700px)"
-            srcSet="/images/human-one/skate/skate-scene-mobile.png"
+            srcSet="/images/human-one/skate/skate-scene-mobile.webp"
           />
 
           <img
             className="human-one-skate-scene__background"
-            src="/images/human-one/skate/skate-background.png"
+            src="/images/human-one/skate/skate-background.webp"
             alt=""
             draggable="false"
             onLoad={
@@ -1818,7 +1818,7 @@ function HumanOneSkate() {
                 }
               >
                 <img
-                  src="/images/human-one/skate/pateb-sign.png"
+                  src="/images/human-one/skate/pateb-sign.webp"
                   alt=""
                   draggable="false"
                 />

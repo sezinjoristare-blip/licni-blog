@@ -21,6 +21,10 @@ import {
 } from "../lib/musicPlaybackHandoff";
 
 import {
+  loadYouTubePlaylistInfo,
+} from "../lib/youtubePlaylistInfo";
+
+import {
   playUiBack,
   playUiSelect,
 } from "../audio/uiSounds";
@@ -56,7 +60,8 @@ function getGenre(
 function HumanOneMusicPlaylist() {
   const {
     playlistSlug,
-  } = useParams();
+  } =
+    useParams();
 
 
   const location =
@@ -66,119 +71,295 @@ function HumanOneMusicPlaylist() {
   const [
     playlist,
     setPlaylist,
-  ] = useState(null);
+  ] =
+    useState(null);
+
+
+  const [
+    youtubeInfo,
+    setYoutubeInfo,
+  ] =
+    useState(null);
+
+
+  const [
+    youtubeLoading,
+    setYoutubeLoading,
+  ] =
+    useState(false);
+
+
+  const [
+    youtubeError,
+    setYoutubeError,
+  ] =
+    useState("");
 
 
   const [
     loading,
     setLoading,
-  ] = useState(true);
+  ] =
+    useState(true);
 
 
   const [
     notFound,
     setNotFound,
-  ] = useState(false);
+  ] =
+    useState(false);
 
 
   const [
     errorMessage,
     setErrorMessage,
-  ] = useState("");
+  ] =
+    useState("");
 
 
-  useEffect(() => {
-    let active = true;
+  useEffect(
+    () => {
+      let active =
+        true;
 
 
-    async function loadPlaylist() {
-      setLoading(true);
-      setNotFound(false);
-      setErrorMessage("");
+      async function loadPlaylist() {
+        setLoading(
+          true
+        );
 
-
-      const {
-        data,
-        error,
-      } = await supabase
-        .from(
-          "music_playlists"
-        )
-        .select(`
-          id,
-          title,
-          slug,
-          description,
-          music_playlist_items (
-            id,
-            position,
-            music_recommendations (
-              id,
-              title,
-              artist,
-              slug,
-              youtube_url,
-              release_year,
-              status,
-              music_genres (
-                name,
-                slug
-              )
-            )
-          )
-        `)
-        .eq(
-          "slug",
-          playlistSlug
-        )
-        .eq(
-          "status",
-          "published"
-        )
-        .maybeSingle();
-
-
-      if (!active) {
-        return;
-      }
-
-
-      if (error) {
-        console.error(
-          "Učitavanje plejliste:",
-          error
+        setNotFound(
+          false
         );
 
         setErrorMessage(
-          "Плејлисту тренутно није могуће учитати."
+          ""
         );
 
-        setLoading(false);
-        return;
+
+        const {
+          data,
+          error,
+        } =
+          await supabase
+            .from(
+              "music_playlists"
+            )
+            .select(`
+              id,
+              title,
+              slug,
+              description,
+              youtube_url,
+              youtube_playlist_id,
+              recommendation_signature,
+              music_playlist_items (
+                id,
+                position,
+                music_recommendations (
+                  id,
+                  title,
+                  artist,
+                  slug,
+                  youtube_url,
+                  release_year,
+                  status,
+                  music_genres (
+                    name,
+                    slug
+                  )
+                )
+              )
+            `)
+            .eq(
+              "slug",
+              playlistSlug
+            )
+            .eq(
+              "status",
+              "published"
+            )
+            .maybeSingle();
+
+
+        if (
+          !active
+        ) {
+          return;
+        }
+
+
+        if (
+          error
+        ) {
+          console.error(
+            "Učitavanje plejliste:",
+            error
+          );
+
+          setErrorMessage(
+            "Плејлисту тренутно није могуће учитати."
+          );
+
+          setLoading(
+            false
+          );
+
+          return;
+        }
+
+
+        if (
+          !data
+        ) {
+          setNotFound(
+            true
+          );
+
+          setLoading(
+            false
+          );
+
+          return;
+        }
+
+
+        setPlaylist(
+          data
+        );
+
+        setLoading(
+          false
+        );
       }
 
 
-      if (!data) {
-        setNotFound(true);
-        setLoading(false);
-        return;
+      loadPlaylist();
+
+
+      return () => {
+        active =
+          false;
+      };
+    },
+    [
+      playlistSlug,
+    ]
+  );
+
+
+  useEffect(
+    () => {
+      const playlistId =
+        String(
+          playlist
+            ?.youtube_playlist_id ??
+          ""
+        ).trim();
+
+
+      if (
+        !playlistId
+      ) {
+        setYoutubeInfo(
+          null
+        );
+
+        setYoutubeError(
+          ""
+        );
+
+        setYoutubeLoading(
+          false
+        );
+
+        return undefined;
       }
 
 
-      setPlaylist(data);
-      setLoading(false);
-    }
+      let active =
+        true;
 
 
-    loadPlaylist();
+      async function loadExternalInfo() {
+        setYoutubeLoading(
+          true
+        );
+
+        setYoutubeError(
+          ""
+        );
 
 
-    return () => {
-      active = false;
-    };
-  }, [
-    playlistSlug,
-  ]);
+        try {
+          const infoMap =
+            await loadYouTubePlaylistInfo(
+              [
+                playlistId,
+              ],
+              {
+                includeItems:
+                  true,
+              }
+            );
+
+
+          if (
+            !active
+          ) {
+            return;
+          }
+
+
+          setYoutubeInfo(
+            infoMap[
+              playlistId
+            ] ??
+            null
+          );
+
+        } catch (
+          error
+        ) {
+          console.error(
+            "YouTube playlist metadata:",
+            error
+          );
+
+
+          if (
+            active
+          ) {
+            setYoutubeError(
+              "Списак песама тренутно није могуће учитати."
+            );
+          }
+
+        } finally {
+          if (
+            active
+          ) {
+            setYoutubeLoading(
+              false
+            );
+          }
+        }
+      }
+
+
+      loadExternalInfo();
+
+
+      return () => {
+        active =
+          false;
+      };
+    },
+    [
+      playlist
+        ?.youtube_playlist_id,
+    ]
+  );
 
 
   const tracks =
@@ -234,7 +415,47 @@ function HumanOneMusicPlaylist() {
     );
 
 
-  const playbackQueue =
+  const externalTracks =
+    useMemo(
+      () =>
+        Array.isArray(
+          youtubeInfo
+            ?.items
+        )
+          ? youtubeInfo
+              .items
+          : [],
+      [
+        youtubeInfo,
+      ]
+    );
+
+
+  const displayExternalTracks =
+    useMemo(
+      () =>
+        externalTracks.slice(
+          0,
+          12
+        ),
+      [
+        externalTracks,
+      ]
+    );
+
+
+  const isExternalYouTubePlaylist =
+    Boolean(
+      playlist
+        ?.youtube_playlist_id
+    );
+
+
+  const currentPath =
+    `${location.pathname}${location.search}`;
+
+
+  const localPlaybackQueue =
     useMemo(
       () =>
         tracks
@@ -299,6 +520,68 @@ function HumanOneMusicPlaylist() {
     );
 
 
+  /*
+   * YouTube plejlista postaje potpuno
+   * normalan queue za naš postojeći
+   * zvučnik.
+   */
+  const externalPlaybackQueue =
+    useMemo(
+      () =>
+        externalTracks
+          .filter(
+            (
+              track
+            ) =>
+              Boolean(
+                track.videoId
+              )
+          )
+          .map(
+            (
+              track,
+              index
+            ) => ({
+              id:
+                `youtube-playlist:${playlist?.id}:${track.videoId}`,
+
+              title:
+                track.title,
+
+              artist:
+                track.channelTitle ||
+                "YOUTUBE",
+
+              slug:
+                `${playlist?.slug ?? "playlist"}-${index + 1}`,
+
+              youtube_url:
+                `https://www.youtube.com/watch?v=${track.videoId}`,
+
+              source:
+                "youtube-playlist",
+
+              sourceLabel:
+                "ПЛЕЈЛИСТА",
+
+              readerPath:
+                currentPath,
+            })
+          ),
+      [
+        externalTracks,
+        playlist,
+        currentPath,
+      ]
+    );
+
+
+  const playbackQueue =
+    isExternalYouTubePlaylist
+      ? externalPlaybackQueue
+      : localPlaybackQueue;
+
+
   const playbackState =
     playbackQueue.length
       ? createMusicPlaybackState({
@@ -310,10 +593,12 @@ function HumanOneMusicPlaylist() {
 
           origin: {
             path:
-              `${location.pathname}${location.search}`,
+              currentPath,
 
             label:
-              "НАЗАД У ПЛЕЈЛИСТУ",
+              isExternalYouTubePlaylist
+                ? "ЧИТАЈ"
+                : "НАЗАД У ПЛЕЈЛИСТУ",
 
             state:
               location.state ??
@@ -326,7 +611,15 @@ function HumanOneMusicPlaylist() {
       : null;
 
 
-  if (notFound) {
+  const visualTracks =
+    isExternalYouTubePlaylist
+      ? displayExternalTracks
+      : tracks;
+
+
+  if (
+    notFound
+  ) {
     return (
       <Navigate
         to="/autor/covek/muzika/preporuke/plejliste"
@@ -366,7 +659,7 @@ function HumanOneMusicPlaylist() {
               <div className="music-recommendations__playlist-open-lid" />
 
               <div className="music-recommendations__playlist-open-stack">
-                {tracks
+                {visualTracks
                   .slice(
                     0,
                     12
@@ -378,7 +671,9 @@ function HumanOneMusicPlaylist() {
                     ) => (
                       <span
                         key={
-                          track.id
+                          track.id ??
+                          track.videoId ??
+                          index
                         }
                         style={{
                           "--disc-index":
@@ -390,6 +685,7 @@ function HumanOneMusicPlaylist() {
               </div>
 
               <div className="music-recommendations__playlist-open-pin" />
+
               <div className="music-recommendations__playlist-open-base" />
             </div>
 
@@ -398,6 +694,14 @@ function HumanOneMusicPlaylist() {
               <header className="music-recommendations__heading">
                 <p>
                   ПЛЕЈЛИСТА
+
+                  {isExternalYouTubePlaylist &&
+                  Number.isFinite(
+                    youtubeInfo
+                      ?.itemCount
+                  )
+                    ? ` · ${youtubeInfo.itemCount} ПЕСАМА`
+                    : ""}
                 </p>
 
                 <h1>
@@ -412,10 +716,20 @@ function HumanOneMusicPlaylist() {
               </header>
 
 
-              {playbackState ? (
+              {isExternalYouTubePlaylist &&
+              youtubeLoading ? (
+                <p className="music-recommendations__radio-play-note">
+                  ПРИПРЕМА ПЛЕЈЛИСТЕ...
+                </p>
+
+              ) : playbackState ? (
                 <Link
-                  to={MUSIC_HUB_PATH}
-                  state={playbackState}
+                  to={
+                    MUSIC_HUB_PATH
+                  }
+                  state={
+                    playbackState
+                  }
                   className="music-recommendations__radio-play"
                   onClick={
                     playUiSelect
@@ -423,111 +737,243 @@ function HumanOneMusicPlaylist() {
                 >
                   ПУСТИ НА РАДИЈУ ▶
                 </Link>
+
               ) : (
                 <p className="music-recommendations__radio-play-note">
-                  У овој плејлисти још нема
-                  песама са YouTube линком.
+                  Плејлиста нема доступне
+                  YouTube песме.
                 </p>
               )}
 
 
-              <div className="music-recommendations__playlist-tracklist">
-                {tracks.map(
-                  (
-                    track,
-                    index
-                  ) => {
-                    const genre =
-                      getGenre(
-                        track
+              {isExternalYouTubePlaylist ? (
+                <>
+                  {youtubeLoading ? (
+                    <div className="music-recommendations__state">
+                      Учитавање списка песама...
+                    </div>
+
+                  ) : youtubeError ? (
+                    <div className="music-recommendations__state">
+                      {youtubeError}
+                    </div>
+
+                  ) : displayExternalTracks.length ? (
+                    <div className="music-recommendations__playlist-tracklist">
+                      {displayExternalTracks.map(
+                        (
+                          track,
+                          index
+                        ) => (
+                          <Link
+                            key={
+                              track.videoId ||
+                              index
+                            }
+                            to={
+                              MUSIC_HUB_PATH
+                            }
+                            state={
+                              createMusicPlaybackState({
+                                queue:
+                                  externalPlaybackQueue,
+
+                                startIndex:
+                                  index,
+
+                                origin: {
+                                  path:
+                                    currentPath,
+
+                                  label:
+                                    "ЧИТАЈ",
+
+                                  state:
+                                    location.state ??
+                                    null,
+                                },
+
+                                autoplay:
+                                  true,
+                              })
+                            }
+                            className="music-recommendations__playlist-track"
+                            onClick={
+                              playUiSelect
+                            }
+                          >
+                            <span className="music-recommendations__playlist-track-number">
+                              {String(
+                                index +
+                                1
+                              ).padStart(
+                                2,
+                                "0"
+                              )}
+                            </span>
+
+                            <span
+                              className="music-recommendations__playlist-track-disc"
+                              aria-hidden="true"
+                            />
+
+                            <div>
+                              <h2>
+                                {track.title}
+                              </h2>
+
+                              <p>
+                                {track.channelTitle ||
+                                  "YOUTUBE"}
+                              </p>
+                            </div>
+
+                            <small>
+                              YOUTUBE
+                            </small>
+
+                            <span
+                              aria-hidden="true"
+                            >
+                              ▶
+                            </span>
+                          </Link>
+                        )
+                      )}
+
+
+                      {Number(
+                        youtubeInfo
+                          ?.itemCount ??
+                        0
+                      ) >
+                      displayExternalTracks.length ? (
+                        <p className="music-recommendations__radio-play-note">
+                          + још{" "}
+                          {
+                            Number(
+                              youtubeInfo
+                                .itemCount
+                            ) -
+                            displayExternalTracks.length
+                          }{" "}
+                          песама у плејлисти
+                        </p>
+                      ) : null}
+                    </div>
+
+                  ) : (
+                    <div className="music-recommendations__state">
+                      Нема доступних песама.
+                    </div>
+                  )}
+                </>
+
+              ) : (
+                <div className="music-recommendations__playlist-tracklist">
+                  {tracks.map(
+                    (
+                      track,
+                      index
+                    ) => {
+                      const genre =
+                        getGenre(
+                          track
+                        );
+
+
+                      const readerPath =
+                        genre?.slug
+                          ? `/autor/covek/muzika/preporuke/${genre.slug}/${track.slug}`
+                          : null;
+
+
+                      const content = (
+                        <>
+                          <span className="music-recommendations__playlist-track-number">
+                            {String(
+                              index +
+                                1
+                            ).padStart(
+                              2,
+                              "0"
+                            )}
+                          </span>
+
+                          <span
+                            className="music-recommendations__playlist-track-disc"
+                            aria-hidden="true"
+                          />
+
+                          <div>
+                            <h2>
+                              {track.title}
+                            </h2>
+
+                            <p>
+                              {track.artist ||
+                                "НЕПОЗНАТ ИЗВОЂАЧ"}
+                            </p>
+                          </div>
+
+                          <small>
+                            {genre?.name ||
+                              "БЕЗ ЖАНРА"}
+
+                            {track.release_year
+                              ? ` · ${track.release_year}`
+                              : ""}
+                          </small>
+
+                          <span
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
+                        </>
                       );
 
 
-                    const readerPath =
-                      genre?.slug
-                        ? `/autor/covek/muzika/preporuke/${genre.slug}/${track.slug}`
-                        : null;
+                      if (
+                        !readerPath
+                      ) {
+                        return (
+                          <div
+                            key={
+                              track.id
+                            }
+                            className="music-recommendations__playlist-track is-disabled"
+                          >
+                            {content}
+                          </div>
+                        );
+                      }
 
 
-                    const content = (
-                      <>
-                        <span className="music-recommendations__playlist-track-number">
-                          {String(
-                            index +
-                            1
-                          ).padStart(
-                            2,
-                            "0"
-                          )}
-                        </span>
-
-                        <span
-                          className="music-recommendations__playlist-track-disc"
-                          aria-hidden="true"
-                        />
-
-                        <div>
-                          <h2>
-                            {track.title}
-                          </h2>
-
-                          <p>
-                            {track.artist ||
-                              "НЕПОЗНАТ ИЗВОЂАЧ"}
-                          </p>
-                        </div>
-
-                        <small>
-                          {genre?.name ||
-                            "БЕЗ ЖАНРА"}
-
-                          {track.release_year
-                            ? ` · ${track.release_year}`
-                            : ""}
-                        </small>
-
-                        <span aria-hidden="true">
-                          →
-                        </span>
-                      </>
-                    );
-
-
-                    if (!readerPath) {
                       return (
-                        <div
+                        <Link
                           key={
                             track.id
                           }
-                          className="music-recommendations__playlist-track is-disabled"
+                          to={
+                            readerPath
+                          }
+                          state={{
+                            musicRecommendationsBackTo:
+                              `/autor/covek/muzika/preporuke/plejliste/${playlist.slug}`,
+                          }}
+                          className="music-recommendations__playlist-track"
+                          onClick={
+                            playUiSelect
+                          }
                         >
                           {content}
-                        </div>
+                        </Link>
                       );
                     }
-
-
-                    return (
-                      <Link
-                        key={
-                          track.id
-                        }
-                        to={readerPath}
-                        state={{
-                          musicRecommendationsBackTo:
-                            `/autor/covek/muzika/preporuke/plejliste/${playlist.slug}`,
-                        }}
-                        className="music-recommendations__playlist-track"
-                        onClick={
-                          playUiSelect
-                        }
-                      >
-                        {content}
-                      </Link>
-                    );
-                  }
-                )}
-              </div>
+                  )}
+                </div>
+              )}
             </div>
           </section>
         ) : null}

@@ -6,7 +6,8 @@
    Cilj:
    - telefon mora da bude položen horizontalno;
    - portrait samo prikazuje "okreni telefon";
-   - landscape koristi isti 3:2 gameplay kao desktop;
+   - landscape koristi CELOKUPAN viewport;
+   - background, playfield i HUD imaju identične dimenzije;
    - action dugme je malo, dole levo;
    - POJEDI = crveno + mačje čeljusti;
    - VRATI SIR = žuto + sir;
@@ -173,13 +174,18 @@
 
 
 /* =====================================================
-   TOUCH LANDSCAPE — ACTION DUGME
+   TOUCH LANDSCAPE
 
-   Namerno je kompaktno:
-   oko 80–96 px široko i 46–56 px visoko.
+   Na telefonu arena više NIJE zaključana na 3:2.
 
-   Na većini telefona sedi u levoj crnoj margini
-   pored 3:2 arene, pa minimalno ulazi u gameplay.
+   Background, playfield i HUD razvlačimo zajedno na
+   kompletan browser viewport.
+
+   Zato:
+   - nema crnih stubova;
+   - gameplay koordinate ostaju poravnate sa slikom;
+   - HUD ostaje poravnat sa ramom;
+   - desktop ostaje potpuno netaknut.
    ===================================================== */
 
 @media (
@@ -189,6 +195,69 @@
 ) and (
   orientation: landscape
 ) {
+  .flip-cat-arena,
+  .flip-cat-arena__screen {
+    width: 100vw;
+    width: 100dvw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    max-width: none;
+    max-height: none;
+
+    overflow: hidden;
+  }
+
+
+  .flip-cat-arena__picture,
+  .flip-cat-arena__playfield,
+  .flip-cat-arena__hud {
+    width: 100vw;
+    width: 100dvw;
+
+    height: 100vh;
+    height: 100dvh;
+
+    max-width: none;
+    max-height: none;
+
+    aspect-ratio: auto;
+  }
+
+
+  /*
+   * Važno:
+   * arena slika se razvlači ISTO kao playfield.
+   *
+   * Da smo koristili object-fit: cover,
+   * slika bi se sekla gore/dole dok bi gameplay
+   * koordinate ostale na drugom prostoru.
+   *
+   * Ovako se pozadina i gameplay deformišu zajedno
+   * i ostaju 1:1 poravnati.
+   */
+
+  .flip-cat-arena__background {
+    width: 100%;
+    height: 100%;
+
+    object-fit: fill;
+    object-position: center;
+  }
+
+
+  .flip-cat-arena__playfield {
+    overflow: hidden;
+  }
+
+
+  /* ===================================================
+     ACTION DUGME
+
+     Ostaje dole levo i koristi safe-area margine.
+     =================================================== */
+
   .flip-cat-arena__action {
     left:
       max(
@@ -345,8 +414,6 @@
 
   /*
    * Gornja i donja vilica.
-   * Dve bele trake su isečene u zube,
-   * bez dodatnog asseta.
    */
 
   .flip-cat-arena__action--eat::before,
@@ -554,26 +621,6 @@
         1.55vw,
         12px
       );
-  }
-
-
-  /*
-   * Landscape na telefonu koristi ISTU desktop 3:2 arenu.
-   * Za sada je ne sužavamo dodatno.
-   * Ako test pokaže da treba, menjaćemo samo ovu vrednost.
-   */
-
-  .flip-cat-arena__picture,
-  .flip-cat-arena__playfield,
-  .flip-cat-arena__hud {
-    width:
-      min(
-        100vw,
-        150dvh
-      );
-
-    aspect-ratio:
-      3 / 2;
   }
 }
 

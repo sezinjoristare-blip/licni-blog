@@ -40,28 +40,28 @@ const WORLD_BACKGROUND_SELECTOR =
 
 const ASSETS = {
   rideBase:
-    "/images/human-one/skate/skateboard-ride-base.png",
+    "/images/human-one/skate/skateboard-ride-base.webp",
 
   leftWheel:
-    "/images/human-one/skate/skateboard-front-wheel-left.png",
+    "/images/human-one/skate/skateboard-front-wheel-left.webp",
 
   rightWheel:
-    "/images/human-one/skate/skateboard-front-wheel-right.png",
+    "/images/human-one/skate/skateboard-front-wheel-right.webp",
 
   roomSkate:
-    "/images/human-one/skateboard.png",
+    "/images/human-one/skateboard.webp",
 
   roomDesktop:
-    "/images/human-one/room-bg.png",
+    "/images/human-one/room-bg.webp",
 
   roomMobile:
-    "/images/human-one/room-bg-mobile.png",
+    "/images/human-one/room-bg-mobile.webp",
 
   worldDesktop:
-    "/images/human-one/skate/skate-background.png",
+    "/images/human-one/skate/skate-background.webp",
 
   worldMobile:
-    "/images/human-one/skate/skate-scene-mobile.png",
+    "/images/human-one/skate/skate-scene-mobile.webp",
 };
 
 

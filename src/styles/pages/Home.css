@@ -26,7 +26,7 @@
   z-index: 0;
 
   background-image:
-    url("/images/human-one/room-bg.png");
+    url("/images/human-one/room-bg.webp");
 
   background-size: cover;
 
@@ -1310,7 +1310,7 @@
     inset: -12px;
 
     background-image:
-      url("/images/human-one/room-bg-mobile.png");
+      url("/images/human-one/room-bg-mobile.webp");
 
     background-position:
       center center;

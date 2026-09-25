@@ -29,49 +29,49 @@ const VALID_SECTIONS = [
 const READER_STICKERS = [
   {
     key: "baby",
-    src: "/images/human-one/stickers/01-baby-sock.png",
+    src: "/images/human-one/stickers/01-baby-sock.webp",
     className:
       "human-one-about-reader__sticker--baby",
   },
 
   {
     key: "skeleton",
-    src: "/images/human-one/stickers/02-full-skeleton.png",
+    src: "/images/human-one/stickers/02-full-skeleton.webp",
     className:
       "human-one-about-reader__sticker--skeleton",
   },
 
   {
     key: "astronaut",
-    src: "/images/human-one/stickers/03-astronaut.png",
+    src: "/images/human-one/stickers/03-astronaut.webp",
     className:
       "human-one-about-reader__sticker--astronaut",
   },
 
   {
     key: "guitar",
-    src: "/images/human-one/stickers/04-acoustic-guitar.png",
+    src: "/images/human-one/stickers/04-acoustic-guitar.webp",
     className:
       "human-one-about-reader__sticker--guitar",
   },
 
   {
     key: "lollipops",
-    src: "/images/human-one/stickers/05-lollipops.png",
+    src: "/images/human-one/stickers/05-lollipops.webp",
     className:
       "human-one-about-reader__sticker--lollipops",
   },
 
   {
     key: "ice-cream",
-    src: "/images/human-one/stickers/06-ice-cream.png",
+    src: "/images/human-one/stickers/06-ice-cream.webp",
     className:
       "human-one-about-reader__sticker--ice-cream",
   },
 
   {
     key: "puppy",
-    src: "/images/human-one/stickers/07-puppy.png",
+    src: "/images/human-one/stickers/07-puppy.webp",
     className:
       "human-one-about-reader__sticker--puppy",
   },
@@ -85,7 +85,7 @@ const READER_STICKERS = [
 
   {
     key: "orange",
-    src: "/images/human-one/stickers/09-orange-round.png",
+    src: "/images/human-one/stickers/09-orange-round.webp",
     className:
       "human-one-about-reader__sticker--orange",
   },

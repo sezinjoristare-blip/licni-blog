@@ -1084,7 +1084,7 @@ function ObalaBartenders() {
      =================================================== */
 
   let bartenderImage =
-    "/images/human-one/obala/obala-bartenders.png";
+    "/images/human-one/obala/obala-bartenders.webp";
 
 
   let bartenderStateClass =
@@ -1101,7 +1101,7 @@ function ObalaBartenders() {
     FINAL_IMAGE_AVAILABLE
   ) {
     bartenderImage =
-      "/images/human-one/obala/obala-bartenders-100.png";
+      "/images/human-one/obala/obala-bartenders-100.webp";
 
 
     bartenderStateClass =
@@ -1116,7 +1116,7 @@ function ObalaBartenders() {
     50
   ) {
     bartenderImage =
-      "/images/human-one/obala/obala-bartenders-50.png";
+      "/images/human-one/obala/obala-bartenders-50.webp";
 
 
     bartenderStateClass =

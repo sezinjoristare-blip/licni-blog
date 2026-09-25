@@ -12,7 +12,7 @@
 
   background-image:
     url(
-      "/images/character-select/character-select-desktop-bg.png"
+      "/images/character-select/character-select-desktop-bg.webp"
     );
 
   background-repeat: no-repeat;
@@ -639,7 +639,7 @@
   .character-select__fighter:first-child::before {
     background-image:
       url(
-        "/images/character-select/seki-bg-mobile.png"
+        "/images/character-select/seki-bg-mobile.webp"
       );
 
     background-position:
@@ -655,7 +655,7 @@
   .character-select__fighter:nth-child(2)::before {
     background-image:
       url(
-        "/images/character-select/sergej-bg-mobile.png"
+        "/images/character-select/sergej-bg-mobile.webp"
       );
 
     background-position:

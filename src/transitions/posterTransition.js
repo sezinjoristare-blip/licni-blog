@@ -28,13 +28,13 @@ const ROOM_BACKGROUND_SELECTOR =
 
 
 const POSTERS_ASSET =
-  "/images/human-one/posters.png";
+  "/images/human-one/posters.webp";
 
 const ROOM_DESKTOP_BACKGROUND =
-  "/images/human-one/room-bg.png";
+  "/images/human-one/room-bg.webp";
 
 const ROOM_MOBILE_BACKGROUND =
-  "/images/human-one/room-bg-mobile.png";
+  "/images/human-one/room-bg-mobile.webp";
 
 
 /* =====================================================

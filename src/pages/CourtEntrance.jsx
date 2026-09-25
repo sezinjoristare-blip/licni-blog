@@ -52,7 +52,7 @@ function CourtEntrance() {
 
       <img
         className="court-entrance__background"
-        src="/images/court-room.png"
+        src="/images/court-room.webp"
         alt=""
       />
 
@@ -61,7 +61,7 @@ function CourtEntrance() {
 
       <img
         className="court-entrance__gavel"
-        src="/images/court-gavel.png"
+        src="/images/court-gavel.webp"
         alt=""
       />
 
@@ -81,7 +81,7 @@ function CourtEntrance() {
       >
         <img
           className="court-entrance__paper"
-          src="/images/court-paper.png"
+          src="/images/court-paper.webp"
           alt="Започни суђење"
         />
       </button>

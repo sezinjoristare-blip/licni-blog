@@ -157,6 +157,8 @@ z-index: 2147483000;
 
   text-decoration: none;
 
+  -webkit-tap-highlight-color: transparent;
+
   transform-origin: center;
 
   filter:

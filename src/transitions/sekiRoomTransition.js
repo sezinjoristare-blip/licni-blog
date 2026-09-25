@@ -28,20 +28,20 @@ const ROOM_BACKGROUND_SELECTOR =
 
 
 const ROOM_DESKTOP_BACKGROUND =
-  "/images/human-one/room-bg.png";
+  "/images/human-one/room-bg.webp";
 
 
 const ROOM_MOBILE_BACKGROUND =
-  "/images/human-one/room-bg-mobile.png";
+  "/images/human-one/room-bg-mobile.webp";
 
 
 const CHARACTER_SELECT_DESKTOP_BACKGROUND =
-  "/images/character-select/character-select-desktop-bg.png";
+  "/images/character-select/character-select-desktop-bg.webp";
 
 
 const CHARACTER_SELECT_MOBILE_BACKGROUNDS = [
-  "/images/character-select/seki-bg-mobile.png",
-  "/images/character-select/sergej-bg-mobile.png",
+  "/images/character-select/seki-bg-mobile.webp",
+  "/images/character-select/sergej-bg-mobile.webp",
 ];
 
 

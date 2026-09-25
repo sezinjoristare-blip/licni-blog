@@ -27,22 +27,22 @@ const ROOM_BACKGROUND_SELECTOR =
 
 const ASSETS = {
   sticker:
-    "/images/human-one/about/unwanted-sticker.png",
+    "/images/human-one/about/unwanted-sticker.webp",
 
   posterFrame:
-    "/images/human-one/profile-poster.png",
+    "/images/human-one/profile-poster.webp",
 
   mapDesktop:
-    "/images/human-one/about/about-map-desktop.png",
+    "/images/human-one/about/about-map-desktop.webp",
 
   mapMobile:
-    "/images/human-one/about/about-map-mobile.png",
+    "/images/human-one/about/about-map-mobile.webp",
 
   roomDesktop:
-    "/images/human-one/room-bg.png",
+    "/images/human-one/room-bg.webp",
 
   roomMobile:
-    "/images/human-one/room-bg-mobile.png",
+    "/images/human-one/room-bg-mobile.webp",
 };
 
 const STICKER_ASPECT_RATIO =

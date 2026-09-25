@@ -28,10 +28,10 @@ const ROUTE_LEAVE_CLASS =
 
 const ASSETS = {
   room:
-    "/images/human-one/game-console-off.png",
+    "/images/human-one/game-console-off.webp",
 
   front:
-    "/images/human-one/game-console-transition.png",
+    "/images/human-one/game-console-transition.webp",
 
   menu:
     "/images/human-one/game/flip-cat-menu-bg.webp",

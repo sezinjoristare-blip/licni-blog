@@ -97,7 +97,7 @@ function HumanOneMusicView({
           aria-label="Назад у собу"
         >
           <img
-            src="/images/human-one/music/music-exit-button.png"
+            src="/images/human-one/music/music-exit-button.webp"
             alt=""
             draggable="false"
           />
@@ -124,7 +124,7 @@ function HumanOneMusicView({
           }
         >
           <img
-            src="/images/human-one/music/music-prev-button.png"
+            src="/images/human-one/music/music-prev-button.webp"
             alt=""
             draggable="false"
           />
@@ -151,7 +151,7 @@ function HumanOneMusicView({
           }
         >
           <img
-            src="/images/human-one/music/music-next-button.png"
+            src="/images/human-one/music/music-next-button.webp"
             alt=""
             draggable="false"
           />
@@ -387,7 +387,7 @@ function HumanOneMusicView({
           >
             <img
               className="human-one-music__mini-frame"
-              src="/images/human-one/music/music-mini-frame.png"
+              src="/images/human-one/music/music-mini-frame.webp"
               alt=""
               draggable="false"
               aria-hidden="true"
@@ -412,7 +412,7 @@ function HumanOneMusicView({
               }
             >
               <img
-                src="/images/human-one/music/music-read-button.png"
+                src="/images/human-one/music/music-read-button.webp"
                 alt=""
                 draggable="false"
               />
@@ -433,7 +433,7 @@ function HumanOneMusicView({
         >
           <img
             className="human-one-music__mini-frame"
-            src="/images/human-one/music/music-mini-frame.png"
+            src="/images/human-one/music/music-mini-frame.webp"
             alt=""
             draggable="false"
             aria-hidden="true"
@@ -457,8 +457,8 @@ function HumanOneMusicView({
             <img
               src={
                 autoplayEnabled
-                  ? "/images/human-one/music/music-autoplay-button-on.png"
-                  : "/images/human-one/music/music-autoplay-button.png"
+                  ? "/images/human-one/music/music-autoplay-button-on.webp"
+                  : "/images/human-one/music/music-autoplay-button.webp"
               }
               alt=""
               draggable="false"
@@ -492,7 +492,7 @@ function HumanOneMusicView({
           }
         >
           <img
-            src="/images/human-one/music/music-radio-button.png"
+            src="/images/human-one/music/music-radio-button.webp"
             alt=""
             draggable="false"
           />
@@ -546,7 +546,7 @@ function HumanOneMusicView({
           }
         >
           <img
-            src="/images/human-one/music/music-volume-knob.png"
+            src="/images/human-one/music/music-volume-knob.webp"
             alt=""
             draggable="false"
             style={{
@@ -602,7 +602,7 @@ function HumanOneMusicView({
           }
         >
           <img
-            src="/images/human-one/music/music-station-knob.png"
+            src="/images/human-one/music/music-station-knob.webp"
             alt=""
             draggable="false"
             style={{
@@ -643,8 +643,8 @@ function HumanOneMusicView({
             `}
             src={
               activePlayback
-                ? "/images/human-one/music/music-pause-button.png"
-                : "/images/human-one/music/music-play-button.png"
+                ? "/images/human-one/music/music-pause-button.webp"
+                : "/images/human-one/music/music-play-button.webp"
             }
             alt=""
             draggable="false"
@@ -670,11 +670,11 @@ function HumanOneMusicView({
           <picture>
             <source
               media="(max-width: 767px) and (orientation: portrait)"
-              srcSet="/images/human-one/music/mobile/music-recommendations-mobile.png"
+              srcSet="/images/human-one/music/mobile/music-recommendations-mobile.webp"
             />
 
             <img
-              src="/images/human-one/music/music-recommendations-shelf.png"
+              src="/images/human-one/music/music-recommendations-shelf.webp"
               alt=""
               draggable="false"
             />
@@ -700,11 +700,11 @@ function HumanOneMusicView({
           <picture>
             <source
               media="(max-width: 767px) and (orientation: portrait)"
-              srcSet="/images/human-one/music/mobile/music-analyses-mobile.png"
+              srcSet="/images/human-one/music/mobile/music-analyses-mobile.webp"
             />
 
             <img
-              src="/images/human-one/music/music-analyses-desk.png"
+              src="/images/human-one/music/music-analyses-desk.webp"
               alt=""
               draggable="false"
             />

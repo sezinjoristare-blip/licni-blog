@@ -459,20 +459,6 @@ function Home() {
   }, [soundEnabled]);
 
 
-  /* =====================================
-     TRANSITION PRELOAD U PRAZNOM HODU
-     ===================================== */
-
-  useEffect(() => {
-    prepareSkateWorldTransition();
-    prepareObalaTransition();
-    preparePosterTransition();
-    prepareAboutPosterTransition();
-    prepareSekiRoomExitTransition();
-    prepareGameConsoleTransition();
-  }, []);
-
-
   useEffect(() => {
     return () => {
       if (
@@ -1363,11 +1349,115 @@ function Home() {
 
 
   /* =====================================
+     TRANSITION PRELOAD — SAMO NA NAMERU
+
+     Transition asseti i odgovarajući route
+     chunk pripremaju se tek na hover, touch
+     ili kao fallback neposredno pre klika.
+     ===================================== */
+
+  function prepareOnDesktopPointerEnter(
+    event,
+    prepare
+  ) {
+    if (
+      event.pointerType !== "mouse" ||
+      !deviceHasRealHover()
+    ) {
+      return;
+    }
+
+    prepare();
+  }
+
+
+  function prepareSkate() {
+    try {
+      prepareSkateWorldTransition();
+    } catch {
+      // Preload ne sme da utiče na rad sobe.
+    }
+
+    import(
+      "./HumanOneSkate"
+    ).catch(
+      () => {}
+    );
+  }
+
+
+  function prepareObala() {
+    try {
+      prepareObalaTransition();
+    } catch {
+      // Preload ne sme da utiče na rad sobe.
+    }
+
+    import(
+      "./HumanOneObala"
+    ).catch(
+      () => {}
+    );
+  }
+
+
+  function preparePosters() {
+    try {
+      preparePosterTransition();
+    } catch {
+      // Preload ne sme da utiče na rad sobe.
+    }
+
+    import(
+      "./HumanOnePosters"
+    ).catch(
+      () => {}
+    );
+  }
+
+
+  function prepareAbout() {
+    try {
+      prepareAboutPosterTransition();
+    } catch {
+      // Preload ne sme da utiče na rad sobe.
+    }
+
+    import(
+      "./HumanOneAbout"
+    ).catch(
+      () => {}
+    );
+  }
+
+
+  function prepareGame() {
+    try {
+      prepareGameConsoleTransition();
+    } catch {
+      // Preload ne sme da utiče na rad sobe.
+    }
+
+    import(
+      "./HumanOneGame"
+    ).catch(
+      () => {}
+    );
+  }
+
+
+  /* =====================================
      KLIKABILNI ELEMENTI
      ===================================== */
 
   function handleBack() {
     stopBoombox();
+
+    try {
+      prepareSekiRoomExitTransition();
+    } catch {
+      // Preload ne sme da spreči izlaz iz sobe.
+    }
 
     startSekiRoomExitTransition({
       sourceElement:
@@ -1385,6 +1475,8 @@ function Home() {
   function handleSkateboard(
     event
   ) {
+    prepareSkate();
+
     stopBoombox();
 
     startSkateWorldTransition({
@@ -1412,6 +1504,8 @@ function Home() {
   function handleGuitar(
     event
   ) {
+    prepareObala();
+
     stopBoombox();
 
     const sourceElement =
@@ -1435,6 +1529,8 @@ function Home() {
   function handlePosters(
     event
   ) {
+    preparePosters();
+
     stopBoombox();
 
     const sourceElement =
@@ -1459,6 +1555,8 @@ function Home() {
   function handleProfilePoster(
     event
   ) {
+    prepareAbout();
+
     stopBoombox();
 
     const sourceElement =
@@ -1501,6 +1599,8 @@ function Home() {
   function handleGame(
     event
   ) {
+    prepareGame();
+
     stopBoombox();
 
     const sourceElement =
@@ -1538,6 +1638,9 @@ function Home() {
     ) {
       return;
     }
+
+
+    prepareGame();
 
 
     event.preventDefault();
@@ -1673,6 +1776,20 @@ function Home() {
     }
 
 
+    if (objectName === "skateboard") {
+      prepareSkate();
+    } else if (objectName === "guitar") {
+      prepareObala();
+    } else if (objectName === "posters") {
+      preparePosters();
+    } else if (
+      objectName ===
+      "profile-poster"
+    ) {
+      prepareAbout();
+    }
+
+
     setTouchHoverObject(
       objectName
     );
@@ -1770,14 +1887,17 @@ function Home() {
         <picture className="human-one-room__background-picture">
           <source
             media="(max-width: 700px)"
-            srcSet="/images/human-one/room-bg-mobile.png"
+            srcSet="/images/human-one/room-bg-mobile.webp"
           />
 
           <img
             className="human-one-room__background"
-            src="/images/human-one/room-bg.png"
+            src="/images/human-one/room-bg.webp"
             alt=""
             draggable="false"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
           />
         </picture>
 
@@ -1798,7 +1918,7 @@ function Home() {
           aria-label={t("room.backToSelect")}
         >
           <img
-            src="/images/human-one/back-sign.png"
+            src="/images/human-one/back-sign.webp"
             alt=""
             draggable="false"
           />
@@ -1846,7 +1966,7 @@ function Home() {
         >
           <img
             className="human-one-room__clock-shell"
-            src="/images/human-one/digital-clock.png"
+            src="/images/human-one/digital-clock.webp"
             alt=""
             draggable="false"
           />
@@ -1882,6 +2002,13 @@ function Home() {
                 human-one-room__skateboard
               `
           }
+          onPointerEnter={
+            (event) =>
+              prepareOnDesktopPointerEnter(
+                event,
+                prepareSkate
+              )
+          }
           onPointerDown={
             (event) =>
               beginTouchHoverObject(
@@ -1902,7 +2029,7 @@ function Home() {
         >
           <img
             data-skate-transition-target="room-skateboard"
-            src="/images/human-one/skateboard.png"
+            src="/images/human-one/skateboard.webp"
             alt=""
             draggable="false"
           />
@@ -1957,7 +2084,7 @@ function Home() {
           aria-label={t("room.boombox")}
         >
           <img
-            src="/images/human-one/boombox.png"
+            src="/images/human-one/boombox.webp"
             alt=""
             draggable="false"
           />
@@ -2240,6 +2367,13 @@ function Home() {
                 human-one-room__guitar
               `
           }
+          onPointerEnter={
+            (event) =>
+              prepareOnDesktopPointerEnter(
+                event,
+                prepareObala
+              )
+          }
           onPointerDown={
             (event) =>
               beginTouchHoverObject(
@@ -2260,7 +2394,7 @@ function Home() {
         >
           <img
             data-obala-transition-target="room-guitar"
-            src="/images/human-one/guitar.png"
+            src="/images/human-one/guitar.webp"
             alt=""
             draggable="false"
           />
@@ -2286,6 +2420,13 @@ function Home() {
                 human-one-room__posters
               `
           }
+          onPointerEnter={
+            (event) =>
+              prepareOnDesktopPointerEnter(
+                event,
+                preparePosters
+              )
+          }
           onPointerDown={
             (event) =>
               beginTouchHoverObject(
@@ -2306,7 +2447,7 @@ function Home() {
         >
           <img
             data-poster-transition-target="room-posters"
-            src="/images/human-one/posters.png"
+            src="/images/human-one/posters.webp"
             alt=""
             draggable="false"
           />
@@ -2337,6 +2478,13 @@ function Home() {
                 human-one-room__profile-poster
               `
           }
+          onPointerEnter={
+            (event) =>
+              prepareOnDesktopPointerEnter(
+                event,
+                prepareAbout
+              )
+          }
           onPointerDown={
             (event) =>
               beginTouchHoverObject(
@@ -2359,7 +2507,7 @@ function Home() {
         >
           <img
             className="human-one-room__profile-poster-frame"
-            src="/images/human-one/profile-poster.png"
+            src="/images/human-one/profile-poster.webp"
             alt=""
             draggable="false"
           />
@@ -2412,7 +2560,7 @@ function Home() {
           aria-label={t("room.sendMessage")}
         >
           <img
-            src="/images/human-one/mailbox.png"
+            src="/images/human-one/mailbox.webp"
             alt=""
             draggable="false"
           />
@@ -2437,6 +2585,13 @@ function Home() {
                 human-one-room__game-console
               `
           }
+          onPointerEnter={
+            (event) =>
+              prepareOnDesktopPointerEnter(
+                event,
+                prepareGame
+              )
+          }
           onPointerDown={
             beginGameConsoleTouch
           }
@@ -2454,7 +2609,7 @@ function Home() {
         >
           <img
             className="human-one-room__game-console-shell"
-            src="/images/human-one/game-console-off.png"
+            src="/images/human-one/game-console-off.webp"
             alt=""
             draggable="false"
           />
@@ -2507,6 +2662,9 @@ function Home() {
               <button
                 type="button"
                 className="human-one-room__category-card"
+                onPointerDown={
+                  prepareSkate
+                }
                 onClick={
                   () =>
                     handleCategorySelection(
@@ -2521,7 +2679,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/skateboard.png"
+                  src="/images/human-one/skateboard.webp"
                   alt=""
                   draggable="false"
                 />
@@ -2545,7 +2703,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/boombox.png"
+                  src="/images/human-one/boombox.webp"
                   alt=""
                   draggable="false"
                 />
@@ -2555,6 +2713,9 @@ function Home() {
               <button
                 type="button"
                 className="human-one-room__category-card"
+                onPointerDown={
+                  prepareObala
+                }
                 onClick={
                   () =>
                     handleCategorySelection(
@@ -2569,7 +2730,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/guitar.png"
+                  src="/images/human-one/guitar.webp"
                   alt=""
                   draggable="false"
                 />
@@ -2579,6 +2740,9 @@ function Home() {
               <button
                 type="button"
                 className="human-one-room__category-card"
+                onPointerDown={
+                  preparePosters
+                }
                 onClick={
                   () =>
                     handleCategorySelection(
@@ -2593,7 +2757,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/posters.png"
+                  src="/images/human-one/posters.webp"
                   alt=""
                   draggable="false"
                 />
@@ -2606,6 +2770,9 @@ function Home() {
                   human-one-room__category-card
                   human-one-room__category-card--profile
                 "
+                onPointerDown={
+                  prepareAbout
+                }
                 onClick={
                   () =>
                     handleCategorySelection(
@@ -2622,7 +2789,7 @@ function Home() {
                 <span className="human-one-room__category-profile">
                   <img
                     className="human-one-room__category-profile-frame"
-                    src="/images/human-one/profile-poster.png"
+                    src="/images/human-one/profile-poster.webp"
                     alt=""
                     draggable="false"
                   />
@@ -2658,7 +2825,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/mailbox.png"
+                  src="/images/human-one/mailbox.webp"
                   alt=""
                   draggable="false"
                 />
@@ -2681,7 +2848,7 @@ function Home() {
 
                 <span className="human-one-room__category-clock">
                   <img
-                    src="/images/human-one/digital-clock.png"
+                    src="/images/human-one/digital-clock.webp"
                     alt=""
                     draggable="false"
                   />
@@ -2702,6 +2869,9 @@ function Home() {
               <button
                 type="button"
                 className="human-one-room__category-card"
+                onPointerDown={
+                  prepareGame
+                }
                 onClick={
                   () =>
                     handleCategorySelection(
@@ -2714,7 +2884,7 @@ function Home() {
                 </span>
 
                 <img
-                  src="/images/human-one/game-console-off.png"
+                  src="/images/human-one/game-console-off.webp"
                   alt=""
                   draggable="false"
                 />

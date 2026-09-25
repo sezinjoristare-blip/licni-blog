@@ -28,6 +28,50 @@ import {
 import "../styles/pages/CharacterSelect.css";
 
 
+let sekiRoomModulePromise =
+  null;
+
+
+function preloadSekiRoomRoute() {
+  if (!sekiRoomModulePromise) {
+    sekiRoomModulePromise =
+      import("./Home");
+  }
+
+  return sekiRoomModulePromise;
+}
+
+
+function preloadSekiRoomBackground() {
+  if (
+    typeof window === "undefined" ||
+    typeof Image === "undefined"
+  ) {
+    return;
+  }
+
+  const useMobileBackground =
+    typeof window.matchMedia ===
+      "function" &&
+    window
+      .matchMedia(
+        "(max-width: 700px)"
+      )
+      .matches;
+
+  const image =
+    new Image();
+
+  image.decoding =
+    "async";
+
+  image.src =
+    useMobileBackground
+      ? "/images/human-one/room-bg-mobile.webp"
+      : "/images/human-one/room-bg.webp";
+}
+
+
 const SERGEJ_OVERLAY_STYLE = {
   position:
     "fixed",
@@ -214,6 +258,74 @@ function CharacterSelect() {
 
   useEffect(() => {
     prepareSekiRoomEntryTransition();
+
+
+    let cancelled =
+      false;
+
+    let idleId =
+      null;
+
+    let timeoutId =
+      null;
+
+
+    function warmSekiRoom() {
+      if (cancelled) {
+        return;
+      }
+
+      preloadSekiRoomRoute()
+        .catch(
+          () => {}
+        );
+
+      preloadSekiRoomBackground();
+    }
+
+
+    if (
+      typeof window
+        .requestIdleCallback ===
+      "function"
+    ) {
+      idleId =
+        window.requestIdleCallback(
+          warmSekiRoom,
+          {
+            timeout: 1200,
+          }
+        );
+    } else {
+      timeoutId =
+        window.setTimeout(
+          warmSekiRoom,
+          300
+        );
+    }
+
+
+    return () => {
+      cancelled =
+        true;
+
+      if (timeoutId) {
+        window.clearTimeout(
+          timeoutId
+        );
+      }
+
+      if (
+        idleId !== null &&
+        typeof window
+          .cancelIdleCallback ===
+          "function"
+      ) {
+        window.cancelIdleCallback(
+          idleId
+        );
+      }
+    };
   }, []);
 
 
@@ -239,14 +351,28 @@ function CharacterSelect() {
     event.preventDefault();
 
 
+    const roomReady =
+      preloadSekiRoomRoute();
+
+    preloadSekiRoomBackground();
+
+
     startSekiRoomTransition({
       sourceElement:
         sekiPortraitRef.current,
 
       navigate: () => {
-        navigate(
-          "/autor/covek"
-        );
+        roomReady
+          .catch(
+            () => {}
+          )
+          .finally(
+            () => {
+              navigate(
+                "/autor/covek"
+              );
+            }
+          );
       },
     });
   }
@@ -330,6 +456,8 @@ function CharacterSelect() {
                     characterOneImage
                   }
                   alt=""
+                  decoding="async"
+                  fetchPriority="high"
                 />
               ) : (
                 <div className="character-select__empty">
@@ -380,6 +508,7 @@ function CharacterSelect() {
                     characterTwoImage
                   }
                   alt=""
+                  decoding="async"
                 />
               ) : (
                 <div className="character-select__empty">

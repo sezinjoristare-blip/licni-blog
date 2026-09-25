@@ -19,7 +19,7 @@ const ABOUT_SECTIONS = [
       "СУДБИНА",
 
     image:
-      "/images/human-one/about/fate.png",
+      "/images/human-one/about/fate.webp",
 
     className:
       "human-one-about__sticker--fate",
@@ -33,7 +33,7 @@ const ABOUT_SECTIONS = [
       "ЛИЧНИ ПРИНЦИПИ",
 
     image:
-      "/images/human-one/about/principles.png",
+      "/images/human-one/about/principles.webp",
 
     className:
       "human-one-about__sticker--principles",
@@ -47,7 +47,7 @@ const ABOUT_SECTIONS = [
       "ЖЕЉЕ",
 
     image:
-      "/images/human-one/about/desires.png",
+      "/images/human-one/about/desires.webp",
 
     className:
       "human-one-about__sticker--desires",
@@ -61,7 +61,7 @@ const ABOUT_SECTIONS = [
       "ПУТ",
 
     image:
-      "/images/human-one/about/path.png",
+      "/images/human-one/about/path.webp",
 
     className:
       "human-one-about__sticker--path",
@@ -75,7 +75,7 @@ const ABOUT_SECTIONS = [
       "ФИЛОЗОФИЈА",
 
     image:
-      "/images/human-one/about/philosophy.png",
+      "/images/human-one/about/philosophy.webp",
 
     className:
       "human-one-about__sticker--philosophy",
@@ -113,12 +113,12 @@ function HumanOneAbout() {
         <picture className="human-one-about__map-picture">
           <source
             media="(max-width: 700px)"
-            srcSet="/images/human-one/about/about-map-mobile.png"
+            srcSet="/images/human-one/about/about-map-mobile.webp"
           />
 
           <img
             className="human-one-about__map"
-            src="/images/human-one/about/about-map-desktop.png"
+            src="/images/human-one/about/about-map-desktop.webp"
             alt=""
             draggable="false"
           />
@@ -149,7 +149,7 @@ function HumanOneAbout() {
         >
           <img
             className="human-one-about__profile-poster-sticker"
-            src="/images/human-one/about/unwanted-sticker.png"
+            src="/images/human-one/about/unwanted-sticker.webp"
             alt=""
             draggable="false"
           />

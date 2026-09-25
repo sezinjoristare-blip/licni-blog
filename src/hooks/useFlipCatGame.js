@@ -1531,65 +1531,100 @@ export function useFlipCatGame({
   }, []);
 
 
-  function startTouchDrag(
-    event
+ function startTouchDrag(
+  event
+) {
+  if (
+    gamePhaseRef.current !==
+    "playing"
   ) {
-    if (
-      gamePhaseRef.current !==
-      "playing"
-    ) {
-      return;
-    }
+    return;
+  }
 
-    const playfield =
-      playfieldRef.current;
 
-    if (!playfield) {
-      return;
-    }
+  const playfield =
+    playfieldRef.current;
 
+
+  if (!playfield) {
+    return;
+  }
+
+
+  /*
+   * Prvi prst koji započne kretanje
+   * postaje vlasnik movement kontrole.
+   *
+   * Dok taj prst nije podignut,
+   * svaki drugi dodir arene potpuno
+   * ignorišemo.
+   *
+   * Tako drugi prst može da:
+   * - pogodi action dugme;
+   * - omaši action dugme;
+   * - dodirne bilo gde po areni;
+   *
+   * a da prvi prst i dalje normalno
+   * pomera mačku.
+   */
+  if (
+    touchDragRef.current &&
+    touchDragRef.current
+      .pointerId !==
+      event.pointerId
+  ) {
     event.preventDefault();
 
-    const rect =
-      playfield
-        .getBoundingClientRect();
-
-    touchDragRef.current = {
-      pointerId:
-        event.pointerId,
-
-      startPointerX:
-        event.clientX,
-
-      startPointerY:
-        event.clientY,
-
-      startCatX:
-        catPositionRef
-          .current
-          .x,
-
-      startCatY:
-        catPositionRef
-          .current
-          .y,
-
-      rect,
-    };
-
-    try {
-      playfield
-        .setPointerCapture(
-          event.pointerId
-        );
-    } catch {
-      // Nije kritično.
-    }
-
-    setIsDragging(
-      true
-    );
+    return;
   }
+
+
+  event.preventDefault();
+
+
+  const rect =
+    playfield
+      .getBoundingClientRect();
+
+
+  touchDragRef.current = {
+    pointerId:
+      event.pointerId,
+
+    startPointerX:
+      event.clientX,
+
+    startPointerY:
+      event.clientY,
+
+    startCatX:
+      catPositionRef
+        .current
+        .x,
+
+    startCatY:
+      catPositionRef
+        .current
+        .y,
+
+    rect,
+  };
+
+
+  try {
+    playfield
+      .setPointerCapture(
+        event.pointerId
+      );
+  } catch {
+    // Nije kritično.
+  }
+
+
+  setIsDragging(
+    true
+  );
+}
 
 
   function handlePointerDown(

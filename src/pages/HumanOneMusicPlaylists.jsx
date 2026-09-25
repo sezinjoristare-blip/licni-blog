@@ -13,6 +13,10 @@ import {
 } from "../lib/supabaseClient";
 
 import {
+  loadYouTubePlaylistInfo,
+} from "../lib/youtubePlaylistInfo";
+
+import {
   playUiBack,
   playUiSelect,
 } from "../audio/uiSounds";
@@ -24,7 +28,8 @@ function normalizeText(
   value
 ) {
   return String(
-    value ?? ""
+    value ??
+    ""
   )
     .trim()
     .toLocaleLowerCase(
@@ -38,6 +43,12 @@ function HumanOneMusicPlaylists() {
     playlists,
     setPlaylists,
   ] = useState([]);
+
+
+  const [
+    youtubeInfo,
+    setYoutubeInfo,
+  ] = useState({});
 
 
   const [
@@ -85,47 +96,53 @@ function HumanOneMusicPlaylists() {
         const {
           data,
           error,
-        } = await supabase
-          .from(
-            "music_playlists"
-          )
-          .select(`
-            id,
-            title,
-            slug,
-            description,
-            sort_order,
-            created_at,
-            music_playlist_items (
-              id
+        } =
+          await supabase
+            .from(
+              "music_playlists"
             )
-          `)
-          .eq(
-            "status",
-            "published"
-          )
-          .order(
-            "sort_order",
-            {
-              ascending:
-                true,
-            }
-          )
-          .order(
-            "created_at",
-            {
-              ascending:
-                false,
-            }
-          );
+            .select(`
+              id,
+              title,
+              slug,
+              description,
+              sort_order,
+              created_at,
+              youtube_playlist_id,
+              music_playlist_items (
+                id
+              )
+            `)
+            .eq(
+              "status",
+              "published"
+            )
+            .order(
+              "sort_order",
+              {
+                ascending:
+                  true,
+              }
+            )
+            .order(
+              "created_at",
+              {
+                ascending:
+                  false,
+              }
+            );
 
 
-        if (!active) {
+        if (
+          !active
+        ) {
           return;
         }
 
 
-        if (error) {
+        if (
+          error
+        ) {
           console.error(
             "Učitavanje plejlista:",
             error
@@ -143,13 +160,70 @@ function HumanOneMusicPlaylists() {
         }
 
 
+        const nextPlaylists =
+          data ??
+          [];
+
+
         setPlaylists(
-          data ?? []
+          nextPlaylists
         );
 
-        setLoading(
-          false
-        );
+
+        const externalIds =
+          nextPlaylists
+            .map(
+              (
+                playlist
+              ) =>
+                playlist
+                  .youtube_playlist_id
+            )
+            .filter(
+              Boolean
+            );
+
+
+        if (
+          externalIds.length
+        ) {
+          try {
+            const info =
+              await loadYouTubePlaylistInfo(
+                externalIds,
+                {
+                  includeItems:
+                    false,
+                }
+              );
+
+
+            if (
+              active
+            ) {
+              setYoutubeInfo(
+                info
+              );
+            }
+
+          } catch (
+            metadataError
+          ) {
+            console.error(
+              "YouTube playlist metadata:",
+              metadataError
+            );
+          }
+        }
+
+
+        if (
+          active
+        ) {
+          setLoading(
+            false
+          );
+        }
       }
 
 
@@ -199,10 +273,11 @@ function HumanOneMusicPlaylists() {
               sortBy ===
               "title"
             ) {
-              return first.title.localeCompare(
-                second.title,
-                "sr"
-              );
+              return first.title
+                .localeCompare(
+                  second.title,
+                  "sr"
+                );
             }
 
 
@@ -254,18 +329,14 @@ function HumanOneMusicPlaylists() {
         </Link>
 
 
-        <header className="music-recommendations__heading">
-          <p>
-            ПРЕПОРУКЕ / ПЛЕЈЛИСТЕ
-          </p>
-
+        <header className="music-recommendations__heading music-recommendations__heading--playlists">
           <h1>
-            БАЛК ПОЛИЦА
+            ПЛЕЈЛИСТЕ
           </h1>
 
           <span>
-            Отвори пластичну кутију
-            и види шта је унутра.
+            Изабери плејлисту по жељи,
+            фазону и мери.
           </span>
         </header>
 
@@ -352,7 +423,20 @@ function HumanOneMusicPlaylists() {
               (
                 playlist
               ) => {
-                const songCount =
+                const playlistId =
+                  playlist
+                    .youtube_playlist_id;
+
+
+                const externalInfo =
+                  playlistId
+                    ? youtubeInfo[
+                        playlistId
+                      ]
+                    : null;
+
+
+                const localCount =
                   Array.isArray(
                     playlist
                       .music_playlist_items
@@ -361,6 +445,14 @@ function HumanOneMusicPlaylists() {
                         .music_playlist_items
                         .length
                     : 0;
+
+
+                const songCount =
+                  playlistId
+                    ? externalInfo
+                        ?.itemCount ??
+                      null
+                    : localCount;
 
 
                 return (
@@ -376,32 +468,37 @@ function HumanOneMusicPlaylists() {
                       playUiSelect
                     }
                   >
-                    <div
-                      className="music-recommendations__playlist-bulk"
-                      aria-hidden="true"
-                    >
-                      <div className="music-recommendations__playlist-bulk-lid" />
+                    <div className="music-recommendations__playlist-visual-zone">
+                      <div
+                        className="music-recommendations__playlist-bulk"
+                        aria-hidden="true"
+                      >
+                        <div className="music-recommendations__playlist-bulk-lid" />
 
-                      <div className="music-recommendations__playlist-bulk-stack">
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                      </div>
+                        <div className="music-recommendations__playlist-bulk-stack">
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                        </div>
 
-                      <div className="music-recommendations__playlist-bulk-pin" />
+                        <div className="music-recommendations__playlist-bulk-pin" />
 
-                      <div className="music-recommendations__playlist-bulk-base">
-                        <b>
-                          {String(
-                            songCount
-                          ).padStart(
-                            2,
-                            "0"
-                          )}
-                        </b>
+                        <div className="music-recommendations__playlist-bulk-base">
+                          <b>
+                            {songCount ===
+                            null
+                              ? "—"
+                              : String(
+                                  songCount
+                                ).padStart(
+                                  2,
+                                  "0"
+                                )}
+                          </b>
+                        </div>
                       </div>
                     </div>
 
@@ -410,9 +507,16 @@ function HumanOneMusicPlaylists() {
                       <small>
                         ПЛЕЈЛИСТА
                         {" · "}
-                        {songCount}
+
+                        {songCount ===
+                        null
+                          ? "?"
+                          : songCount}
+
                         {" "}
-                        {songCount === 1
+
+                        {songCount ===
+                        1
                           ? "ПЕСМА"
                           : "ПЕСАМА"}
                       </small>
@@ -427,7 +531,7 @@ function HumanOneMusicPlaylists() {
                       </p>
 
                       <strong>
-                        ОТВОРИ БАЛК →
+                        ОТВОРИ ПЛЕЈЛИСТУ →
                       </strong>
                     </div>
                   </Link>

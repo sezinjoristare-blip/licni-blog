@@ -16,7 +16,7 @@ function SkateRideRig({
     >
       <img
         className="skate-ride-rig__base"
-        src="/images/human-one/skate/skateboard-ride-base.png"
+        src="/images/human-one/skate/skateboard-ride-base.webp"
         alt=""
         draggable="false"
       />
@@ -26,7 +26,7 @@ function SkateRideRig({
           skate-ride-rig__wheel
           skate-ride-rig__wheel--left
         "
-        src="/images/human-one/skate/skateboard-front-wheel-left.png"
+        src="/images/human-one/skate/skateboard-front-wheel-left.webp"
         alt=""
         draggable="false"
       />
@@ -36,7 +36,7 @@ function SkateRideRig({
           skate-ride-rig__wheel
           skate-ride-rig__wheel--right
         "
-        src="/images/human-one/skate/skateboard-front-wheel-right.png"
+        src="/images/human-one/skate/skateboard-front-wheel-right.webp"
         alt=""
         draggable="false"
       />

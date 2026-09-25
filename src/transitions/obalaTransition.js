@@ -52,22 +52,22 @@ const OBALA_SCENE_SELECTOR =
 
 const ASSETS = {
   guitar:
-    "/images/human-one/guitar.png",
+    "/images/human-one/guitar.webp",
 
   tikvan:
-    "/images/human-one/obala/obala-guestbook-guy.png",
+    "/images/human-one/obala/obala-guestbook-guy.webp",
 
   roomDesktop:
-    "/images/human-one/room-bg.png",
+    "/images/human-one/room-bg.webp",
 
   roomMobile:
-    "/images/human-one/room-bg-mobile.png",
+    "/images/human-one/room-bg-mobile.webp",
 
   obalaDesktop:
-    "/images/human-one/obala/obala-bg.png",
+    "/images/human-one/obala/obala-bg.webp",
 
   obalaMobile:
-    "/images/human-one/obala/obala-bg-mobile.png",
+    "/images/human-one/obala/obala-bg-mobile.webp",
 };
 
 

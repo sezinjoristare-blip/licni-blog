@@ -1,4 +1,8 @@
 import {
+  Suspense,
+} from "react";
+
+import {
   Outlet,
   useLocation,
 } from "react-router-dom";
@@ -9,6 +13,9 @@ import {
 
 import LanguageSwitcher
   from "../components/LanguageSwitcher/LanguageSwitcher";
+
+import NotificationControl
+  from "../components/notifications/NotificationControl";
 
 import {
   HumanOneMusicPlaybackProvider,
@@ -37,7 +44,11 @@ function PublicLayout() {
             }
           />
 
-          <Outlet />
+          <NotificationControl />
+
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </div>
       </HumanOneMusicPlaybackProvider>
     </LanguageProvider>

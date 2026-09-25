@@ -1,4 +1,9 @@
 import {
+  lazy,
+  Suspense,
+} from "react";
+
+import {
   Navigate,
   Route,
   Routes,
@@ -10,176 +15,251 @@ import AdminRoute
 import ContributorRoute
   from "./components/ContributorRoute";
 
-import AdminLayout
-  from "./layouts/AdminLayout";
-
 import PublicLayout
   from "./layouts/PublicLayout";
-
-import About
-  from "./pages/About";
-
-import ArticlePage
-  from "./pages/ArticlePage";
-
-import CategoryPage
-  from "./pages/CategoryPage";
 
 import CharacterSelect
   from "./pages/CharacterSelect";
 
-import Home
-  from "./pages/Home";
 
-import HumanOneAbout
-  from "./pages/HumanOneAbout";
+const Home = lazy(
+  () => import("./pages/Home")
+);
 
-import HumanOneAboutReader
-  from "./pages/HumanOneAboutReader";
+const AdminLayout = lazy(
+  () => import("./layouts/AdminLayout")
+);
 
-import HumanOneMusic
-  from "./pages/HumanOneMusic";
+const About = lazy(
+  () => import("./pages/About")
+);
 
-import HumanOneMusicAnalyses
-  from "./pages/HumanOneMusicAnalyses";
+const ArticlePage = lazy(
+  () => import("./pages/ArticlePage")
+);
 
-import HumanOneMusicPlaylist
-  from "./pages/HumanOneMusicPlaylist";
+const CategoryPage = lazy(
+  () => import("./pages/CategoryPage")
+);
 
-import HumanOneMusicPlaylists
-  from "./pages/HumanOneMusicPlaylists";
+const HumanOneAbout = lazy(
+  () => import("./pages/HumanOneAbout")
+);
 
-import HumanOneMusicSongs
-  from "./pages/HumanOneMusicSongs";
+const HumanOneAboutReader = lazy(
+  () => import("./pages/HumanOneAboutReader")
+);
 
-import HumanOneMusicGenre
-  from "./pages/HumanOneMusicGenre";
+const HumanOneMusic = lazy(
+  () => import("./pages/HumanOneMusic")
+);
 
-import HumanOneMusicGenres
-  from "./pages/HumanOneMusicGenres";
+const HumanOneMusicAnalyses = lazy(
+  () => import("./pages/HumanOneMusicAnalyses")
+);
 
-import HumanOneMusicReader
-  from "./pages/HumanOneMusicReader";
+const HumanOneMusicPlaylist = lazy(
+  () => import("./pages/HumanOneMusicPlaylist")
+);
 
-import HumanOneMessage
-  from "./pages/HumanOneMessage";
+const HumanOneMusicPlaylists = lazy(
+  () => import("./pages/HumanOneMusicPlaylists")
+);
 
-import HumanOneQuickWits
-  from "./pages/HumanOneQuickWits";
+const HumanOneMusicSongs = lazy(
+  () => import("./pages/HumanOneMusicSongs")
+);
 
-import HumanOneGame
-  from "./pages/HumanOneGame";
+const HumanOneMusicGenre = lazy(
+  () => import("./pages/HumanOneMusicGenre")
+);
 
-import HumanOneObala
-  from "./pages/HumanOneObala";
+const HumanOneMusicGenres = lazy(
+  () => import("./pages/HumanOneMusicGenres")
+);
 
-import HumanOneObalaNotebook
-  from "./pages/HumanOneObalaNotebook";
+const HumanOneMusicReader = lazy(
+  () => import("./pages/HumanOneMusicReader")
+);
 
-import HumanOneObalaBoard
-  from "./pages/HumanOneObalaBoard";
+const HumanOneMusicSubmitRecommendation = lazy(
+  () => import("./pages/HumanOneMusicSubmitRecommendation")
+);
 
-import HumanOneObalaGuestbook
-  from "./pages/HumanOneObalaGuestbook";
+const HumanOneMessage = lazy(
+  () => import("./pages/HumanOneMessage")
+);
 
-import ObalaArchiveReader
-  from "./pages/ObalaArchiveReader";
+const HumanOneQuickWits = lazy(
+  () => import("./pages/HumanOneQuickWits")
+);
 
-import HumanOnePosterCategory
-  from "./pages/HumanOnePosterCategory";
+const HumanOneGame = lazy(
+  () => import("./pages/HumanOneGame")
+);
 
-import HumanOnePosterEntry
-  from "./pages/HumanOnePosterEntry";
+const HumanOneObala = lazy(
+  () => import("./pages/HumanOneObala")
+);
 
-import HumanOnePosters
-  from "./pages/HumanOnePosters";
+const HumanOneObalaNotebook = lazy(
+  () => import("./pages/HumanOneObalaNotebook")
+);
 
-import HumanOneSkate
-  from "./pages/HumanOneSkate";
+const HumanOneObalaBoard = lazy(
+  () => import("./pages/HumanOneObalaBoard")
+);
 
-import HumanOneSkateEntry
-  from "./pages/HumanOneSkateEntry";
+const HumanOneObalaGuestbook = lazy(
+  () => import("./pages/HumanOneObalaGuestbook")
+);
 
-import HumanOneSkateSection
-  from "./pages/HumanOneSkateSection";
+const ObalaArchiveReader = lazy(
+  () => import("./pages/ObalaArchiveReader")
+);
 
-import HumanTwo
-  from "./pages/HumanTwo";
+const HumanOnePosterCategory = lazy(
+  () => import("./pages/HumanOnePosterCategory")
+);
 
-import Writing
-  from "./pages/Writing";
+const HumanOnePosterEntry = lazy(
+  () => import("./pages/HumanOnePosterEntry")
+);
 
-import ContributorLogin
-  from "./pages/contributor/ContributorLogin";
+const HumanOnePosters = lazy(
+  () => import("./pages/HumanOnePosters")
+);
 
-import ContributorRegister
-  from "./pages/contributor/ContributorRegister";
+const HumanOneSkate = lazy(
+  () => import("./pages/HumanOneSkate")
+);
 
-import ContributorSkatePanel
-  from "./pages/contributor/ContributorSkatePanel";
+const HumanOneSkateEntry = lazy(
+  () => import("./pages/HumanOneSkateEntry")
+);
 
-import AdminArticles
-  from "./pages/admin/AdminArticles";
+const HumanOneSkateSection = lazy(
+  () => import("./pages/HumanOneSkateSection")
+);
 
-import AdminCategories
-  from "./pages/admin/AdminCategories";
+const HumanTwo = lazy(
+  () => import("./pages/HumanTwo")
+);
 
-import AdminCharacterAbout
-  from "./pages/admin/AdminCharacterAbout";
+const Writing = lazy(
+  () => import("./pages/Writing")
+);
 
-import AdminCharacterArticles
-  from "./pages/admin/AdminCharacterArticles";
+const ContributorLogin = lazy(
+  () => import("./pages/contributor/ContributorLogin")
+);
 
-import AdminPosterCategories
-  from "./pages/admin/posters/AdminPosterCategories";
+const ContributorRegister = lazy(
+  () => import("./pages/contributor/ContributorRegister")
+);
 
-import AdminCharacterCabinet
-  from "./pages/admin/AdminCharacterCabinet";
+const ContributorSkatePanel = lazy(
+  () => import("./pages/contributor/ContributorSkatePanel")
+);
 
-import AdminCharacterMusic
-  from "./pages/admin/AdminCharacterMusic";
+const AdminArticles = lazy(
+  () => import("./pages/admin/AdminArticles")
+);
 
-import AdminMusicGenres
-  from "./pages/admin/music/AdminMusicGenres";
+const AdminCategories = lazy(
+  () => import("./pages/admin/AdminCategories")
+);
 
-import AdminMusicRecommendations
-  from "./pages/admin/music/AdminMusicRecommendations";
+const AdminCharacterAbout = lazy(
+  () => import("./pages/admin/AdminCharacterAbout")
+);
 
-import AdminMusicAnalyses
-  from "./pages/admin/music/AdminMusicAnalyses";
+const AdminCharacterArticles = lazy(
+  () => import("./pages/admin/AdminCharacterArticles")
+);
 
-import AdminCharacterSkate
-  from "./pages/admin/AdminCharacterSkate";
+const AdminPosterCategories = lazy(
+  () => import("./pages/admin/posters/AdminPosterCategories")
+);
 
-import AdminSkateSections
-  from "./pages/admin/skate/AdminSkateSections";
+const AdminCharacterCabinet = lazy(
+  () => import("./pages/admin/AdminCharacterCabinet")
+);
 
-import AdminSkateArchive
-  from "./pages/admin/skate/AdminSkateArchive";
+const AdminCharacterMusic = lazy(
+  () => import("./pages/admin/AdminCharacterMusic")
+);
 
-import AdminObalaNotebook
-  from "./pages/admin/AdminObalaNotebook";
+const AdminMusicGenres = lazy(
+  () => import("./pages/admin/music/AdminMusicGenres")
+);
 
-import AdminObalaBoard
-  from "./pages/admin/AdminObalaBoard";
+const AdminMusicRecommendations = lazy(
+  () => import("./pages/admin/music/AdminMusicRecommendations")
+);
 
-import AdminQuickWits
-  from "./pages/admin/AdminQuickWits";
+const AdminMusicAnalyses = lazy(
+  () => import("./pages/admin/music/AdminMusicAnalyses")
+);
 
-import AdminCharacters
-  from "./pages/admin/AdminCharacters";
+const AdminMusicListenerRecommendations = lazy(
+  () => import("./pages/admin/music/AdminMusicListenerRecommendations")
+);
 
-import AdminCharacterSection
-  from "./pages/admin/AdminCharacterSection";
+const AdminCharacterSkate = lazy(
+  () => import("./pages/admin/AdminCharacterSkate")
+);
 
-import AdminDashboard
-  from "./pages/admin/AdminDashboard";
+const AdminSkateSections = lazy(
+  () => import("./pages/admin/skate/AdminSkateSections")
+);
 
-import AdminLogin
-  from "./pages/admin/AdminLogin";
+const AdminSkateArchive = lazy(
+  () => import("./pages/admin/skate/AdminSkateArchive")
+);
 
-import AdminSiteSettings
-  from "./pages/admin/AdminSiteSettings";
+const AdminObalaNotebook = lazy(
+  () => import("./pages/admin/AdminObalaNotebook")
+);
+
+const AdminObalaBoard = lazy(
+  () => import("./pages/admin/AdminObalaBoard")
+);
+
+const AdminQuickWits = lazy(
+  () => import("./pages/admin/AdminQuickWits")
+);
+
+const AdminCharacters = lazy(
+  () => import("./pages/admin/AdminCharacters")
+);
+
+const AdminCharacterSection = lazy(
+  () => import("./pages/admin/AdminCharacterSection")
+);
+
+const AdminDashboard = lazy(
+  () => import("./pages/admin/AdminDashboard")
+);
+
+const AdminLogin = lazy(
+  () => import("./pages/admin/AdminLogin")
+);
+
+const AdminSiteSettings = lazy(
+  () => import("./pages/admin/AdminSiteSettings")
+);
+
+
+function LazyBoundary({
+  children,
+}) {
+  return (
+    <Suspense fallback={null}>
+      {children}
+    </Suspense>
+  );
+}
 
 
 function App() {
@@ -269,6 +349,13 @@ function App() {
           path="autor/covek/muzika/preporuke/plejliste/:playlistSlug"
           element={
             <HumanOneMusicPlaylist />
+          }
+        />
+
+        <Route
+          path="autor/covek/muzika/preporuke/posalji"
+          element={
+            <HumanOneMusicSubmitRecommendation />
           }
         />
 
@@ -498,14 +585,18 @@ function App() {
       <Route
         path="/saradnik/prijava"
         element={
-          <ContributorLogin />
+          <LazyBoundary>
+            <ContributorLogin />
+          </LazyBoundary>
         }
       />
 
       <Route
         path="/saradnik/registracija"
         element={
-          <ContributorRegister />
+          <LazyBoundary>
+            <ContributorRegister />
+          </LazyBoundary>
         }
       />
 
@@ -513,7 +604,9 @@ function App() {
         path="/saradnik"
         element={
           <ContributorRoute>
-            <ContributorSkatePanel />
+            <LazyBoundary>
+              <ContributorSkatePanel />
+            </LazyBoundary>
           </ContributorRoute>
         }
       />
@@ -526,7 +619,9 @@ function App() {
       <Route
         path="/admin/login"
         element={
-          <AdminLogin />
+          <LazyBoundary>
+            <AdminLogin />
+          </LazyBoundary>
         }
       />
 
@@ -539,7 +634,9 @@ function App() {
         path="/admin"
         element={
           <AdminRoute>
-            <AdminLayout />
+            <LazyBoundary>
+              <AdminLayout />
+            </LazyBoundary>
           </AdminRoute>
         }
       >
@@ -644,6 +741,13 @@ function App() {
             path="preporuke/:recommendationId"
             element={
               <AdminMusicRecommendations />
+            }
+          />
+
+          <Route
+            path="predlozi-slusalaca"
+            element={
+              <AdminMusicListenerRecommendations />
             }
           />
 

@@ -8,6 +8,7 @@ import {
 } from "../audio/uiSounds";
 
 import "../styles/HumanOneMusicRecommendations.css";
+import "../styles/HumanOneMusicSubmitRecommendation.css";
 
 
 function HumanOneMusicGenres() {
@@ -191,6 +192,61 @@ function HumanOneMusicGenres() {
 
               <strong>
                 ОТВОРИ ПОЛИЦУ →
+              </strong>
+            </div>
+          </Link>
+
+
+          <Link
+            to="/autor/covek/muzika/preporuke/posalji"
+            className="music-recommendations__entrance-card music-recommendations__entrance-card--submit"
+            onClick={
+              playUiSelect
+            }
+          >
+            <div
+              className="music-recommendations__entrance-visual"
+              aria-hidden="true"
+            >
+              <div className="music-recommendations__suggestion-note">
+                <span className="music-recommendations__suggestion-tape" />
+
+                <strong>
+                  ТВОЈА
+                  <br />
+                  ПРЕПОРУКА
+                </strong>
+
+                <i />
+                <i />
+                <i />
+
+                <b>
+                  →
+                </b>
+              </div>
+            </div>
+
+
+            <div className="music-recommendations__entrance-copy">
+              <small>
+                ПОЛИЦА 04
+              </small>
+
+              <h2>
+                ПОШАЉИ
+                <br />
+                ПРЕПОРУКУ
+              </h2>
+
+              <p>
+                Пошаљи ми песму,
+                плејлисту или радио
+                драму коју вреди чути.
+              </p>
+
+              <strong>
+                ОСТАВИ ПРЕПОРУКУ →
               </strong>
             </div>
           </Link>
