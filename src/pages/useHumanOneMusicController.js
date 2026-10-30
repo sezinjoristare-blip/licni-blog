@@ -2283,6 +2283,22 @@ export default function useHumanOneMusicController() {
   ) {
     stopRadioAnalyzer();
 
+      // Na iPhone/iPad uređajima ne pokrećemo
+  // drugi audio stream za analizator.
+  const isIOS =
+    typeof navigator !== "undefined" &&
+    (
+      /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+      (
+        navigator.platform === "MacIntel" &&
+        navigator.maxTouchPoints > 1
+      )
+    );
+
+  if (isIOS) {
+    return;
+  }
+
 
     if (
       typeof window ===
