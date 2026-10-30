@@ -209,6 +209,7 @@ async function deleteStoredMediaItem(
 
 
 function ContributorSkatePanel() {
+  const [panelView, setPanelView] = useState("list");
   const navigate =
     useNavigate();
 
@@ -550,6 +551,7 @@ function ContributorSkatePanel() {
   function handleEditEntry(
     entry
   ) {
+    setPanelView("editor");
     setEditingEntry(
       entry
     );
@@ -829,6 +831,7 @@ function ContributorSkatePanel() {
       resetEntryForm();
 
       await loadEntries();
+      if (editingEntry) setPanelView("list");
 
 
       if (
@@ -890,6 +893,7 @@ function ContributorSkatePanel() {
     if (!entry?.id) {
       return;
     }
+    setPanelView("media");
 
 
     setMediaEntry(
@@ -1608,7 +1612,58 @@ function ContributorSkatePanel() {
       </header>
 
 
+      
+      <nav
+        className="contributor-panel__toolbar"
+        aria-label="Uređivanje dogodovština"
+      >
+        <button
+          type="button"
+          className={
+            panelView === "list"
+              ? "is-active"
+              : ""
+          }
+          aria-pressed={panelView === "list"}
+          onClick={() => setPanelView("list")}
+        >
+          MOJI ZAPISI
+        </button>
+
+        <button
+          type="button"
+          className={
+            panelView === "editor" && !editingEntry
+              ? "is-active"
+              : ""
+          }
+          onClick={() => {
+            resetEntryForm();
+            setPanelView("editor");
+          }}
+        >
+          + NOVA DOGODOVŠTINA
+        </button>
+
+        {mediaEntry && (
+          <button
+            type="button"
+            className={
+              panelView === "media"
+                ? "is-active"
+                : ""
+            }
+            aria-pressed={panelView === "media"}
+            onClick={() => setPanelView("media")}
+          >
+            MEDIJI
+          </button>
+        )}
+      </nav>
+
       <section className="admin-skate__section contributor-panel__content">
+        {panelView === "editor" && (
+          <>
         <div className="admin-skate__section-heading">
           <div>
             <p className="eyebrow">
@@ -1872,9 +1927,10 @@ function ContributorSkatePanel() {
               <button
                 type="button"
                 className="secondary-button"
-                onClick={
-                  resetEntryForm
-                }
+                onClick={() => {
+                  resetEntryForm();
+                  setPanelView("list");
+                }}
               >
                 ОТКАЖИ ИЗМЕНУ
               </button>
@@ -1883,7 +1939,11 @@ function ContributorSkatePanel() {
         </form>
 
 
-        {mediaEntry && (
+        
+          </>
+        )}
+
+        {panelView === "media" && mediaEntry && (
           <section className="admin-skate__media-manager">
             <div className="admin-skate__media-heading">
               <div>
@@ -1911,6 +1971,7 @@ function ContributorSkatePanel() {
                   setMediaError(
                     ""
                   );
+                  setPanelView("list");
                 }}
               >
                 ЗАТВОРИ
@@ -2215,6 +2276,8 @@ function ContributorSkatePanel() {
         )}
 
 
+        {panelView === "list" && (
+          <>
         <div className="admin-skate__section-heading contributor-panel__list-heading">
           <div>
             <p className="eyebrow">
@@ -2315,6 +2378,9 @@ function ContributorSkatePanel() {
             )
           )}
         </div>
+      
+          </>
+        )}
       </section>
     </main>
   );
