@@ -1,3 +1,4 @@
+import { useMusicTranslation, musicLandingLabels } from "../i18n/musicTranslations";
 import {
   Link,
 } from "react-router-dom";
@@ -12,6 +13,10 @@ import "../styles/HumanOneMusicSubmitRecommendation.css";
 
 
 function HumanOneMusicGenres() {
+  const mt = useMusicTranslation();
+
+  const tr = (key) => mt(musicLandingLabels[key] ?? key);
+
   return (
     <main className="music-recommendations music-recommendations--landing">
       <div className="music-recommendations__shell">
@@ -22,21 +27,21 @@ function HumanOneMusicGenres() {
             playUiBack
           }
         >
-          ← МУЗИКА
+          {tr("backToMusic")}
         </Link>
 
 
         <header className="music-recommendations__heading">
           <p>
-            ПРЕПОРУКЕ / 01
+            {tr("sectionLabel")}
           </p>
 
           <h1>
-            ШТА ТРАЖИШ?
+            {tr("title")}
           </h1>
 
           <span>
-            Изабери полицу.
+            {tr("subtitle")}
           </span>
         </header>
 
@@ -68,21 +73,19 @@ function HumanOneMusicGenres() {
 
             <div className="music-recommendations__entrance-copy">
               <small>
-                ПОЛИЦА 01
+                {tr("shelf01")}
               </small>
 
               <h2>
-                ДИСКОВИ
+                {tr("recordsTitle")}
               </h2>
 
               <p>
-                Појединачне препоруке.
-                Претражуј по жанру,
-                извођачу и години.
+                {tr("recordsDescription")}
               </p>
 
               <strong>
-                ОТВОРИ ПОЛИЦУ →
+                {tr("openShelf")}
               </strong>
             </div>
           </Link>
@@ -119,21 +122,19 @@ function HumanOneMusicGenres() {
 
             <div className="music-recommendations__entrance-copy">
               <small>
-                ПОЛИЦА 02
+                {tr("shelf02")}
               </small>
 
               <h2>
-                ПЛЕЈЛИСТЕ
+                {tr("playlistsTitle")}
               </h2>
 
               <p>
-                Моји сетови песама,
-                сложени као пластични
-                балк дискова.
+                {tr("playlistsDescription")}
               </p>
 
               <strong>
-                ОТВОРИ ПОЛИЦУ →
+                {tr("openShelf")}
               </strong>
             </div>
           </Link>
@@ -177,21 +178,19 @@ function HumanOneMusicGenres() {
 
             <div className="music-recommendations__entrance-copy">
               <small>
-                ПОЛИЦА 03
+                {tr("shelf03")}
               </small>
 
               <h2>
-                РАДИО ДРАМЕ
+                {tr("radioDramasTitle")}
               </h2>
 
               <p>
-                Приче за слушање,
-                сложене као старе
-                аудио касете.
+                {tr("radioDramasDescription")}
               </p>
 
               <strong>
-                ОТВОРИ ПОЛИЦУ →
+                {tr("openShelf")}
               </strong>
             </div>
           </Link>
@@ -212,9 +211,9 @@ function HumanOneMusicGenres() {
                 <span className="music-recommendations__suggestion-tape" />
 
                 <strong>
-                  ТВОЈА
+                  {tr("noteLine1")}
                   <br />
-                  ПРЕПОРУКА
+                  {tr("noteLine2")}
                 </strong>
 
                 <i />
@@ -230,23 +229,21 @@ function HumanOneMusicGenres() {
 
             <div className="music-recommendations__entrance-copy">
               <small>
-                ПОЛИЦА 04
+                {tr("shelf04")}
               </small>
 
               <h2>
-                ПОШАЉИ
+                {tr("submitTitleLine1")}
                 <br />
-                ПРЕПОРУКУ
+                {tr("submitTitleLine2")}
               </h2>
 
               <p>
-                Пошаљи ми песму,
-                плејлисту или радио
-                драму коју вреди чути.
+                {tr("submitDescription")}
               </p>
 
               <strong>
-                ОСТАВИ ПРЕПОРУКУ →
+                {tr("submitAction")}
               </strong>
             </div>
           </Link>

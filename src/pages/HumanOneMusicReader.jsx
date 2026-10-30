@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useMemo,
@@ -55,6 +56,7 @@ function getRecommendationGenre(
 function HumanOneMusicReader({
   mode,
 }) {
+  const mt = useMusicTranslation();
   const {
     genreSlug,
     songSlug,
@@ -1380,29 +1382,28 @@ function HumanOneMusicReader({
         ←{" "}
 
         {isRadioDrama
-          ? "РАДИО ДРАМЕ"
+          ? mt("РАДИО ДРАМЕ")
           : cameFromPlaylist
-            ? "ПЛЕЈЛИСТА"
+            ? mt("ПЛЕЈЛИСТА")
             : isRecommendation
-              ? "ДИСКОВИ"
-              : "РАДОВИ"}
+              ? mt("ДИСКОВИ")
+              : mt("РАДОВИ")}
       </Link>
 
 
       {loading ? (
         <div className="human-one-music-reader__state">
-          Учитавање...
+          {mt("Учитавање...")}
         </div>
 
       ) : errorMessage ? (
         <div className="human-one-music-reader__state">
-          {errorMessage}
+          {mt(errorMessage)}
         </div>
 
       ) : !work ? (
         <div className="human-one-music-reader__state">
-          Овај текст још није
-          објављен.
+          {mt("Овај текст још није објављен.")}
         </div>
 
       ) : (
@@ -1434,8 +1435,8 @@ function HumanOneMusicReader({
               <div className="human-one-music-reader__header-copy">
                 <p>
                   {isRadioDrama
-                    ? "СЕКИ / РАДИО ДРАМЕ"
-                    : "СЕКИ / ЗВУЧНИК"}
+                    ? mt("СЕКИ / РАДИО ДРАМЕ")
+                    : mt("СЕКИ / ЗВУЧНИК")}
                 </p>
 
 
@@ -1471,7 +1472,7 @@ function HumanOneMusicReader({
                     playUiSelect
                   }
                   aria-label={
-                    `Пусти ${work.title} на звучнику`
+                    `${mt("Пусти")} ${work.title} ${mt("на звучнику")}`
                   }
                 >
                   <span
@@ -1483,14 +1484,14 @@ function HumanOneMusicReader({
 
 
                   <strong>
-                    ПУСТИ
+                    {mt("ПУСТИ")}
                     <br />
-                    НА РАДИЈУ
+                    {mt("НА РАДИЈУ")}
                   </strong>
 
 
                   <span className="human-one-music-reader__listen-youtube">
-                    ЗВУЧНИК →
+                    {mt("ЗВУЧНИК →")}
                   </span>
                 </Link>
               ) : null}
@@ -1515,20 +1516,20 @@ function HumanOneMusicReader({
             {isRadioDrama ? (
               <section>
                 <p className="human-one-music-reader__label">
-                  О РАДИО ДРАМИ
+                  {mt("О РАДИО ДРАМИ")}
                 </p>
 
 
                 <div className="human-one-music-reader__text">
                   {work.description ||
-                    "За ову радио драму још није додат опис."}
+                    mt("За ову радио драму још није додат опис.")}
                 </div>
               </section>
 
             ) : isRecommendation ? (
               <section>
                 <p className="human-one-music-reader__label">
-                  ЗАШТО МИ СЕ СВИЂА
+                  {mt("ЗАШТО МИ СЕ СВИЂА")}
                 </p>
 
 
@@ -1545,11 +1546,11 @@ function HumanOneMusicReader({
                   <section className="human-one-music-reader__comparison-section">
                     <div className="human-one-music-reader__comparison-heading">
                       <span>
-                        ОРИГИНАЛ
+                        {mt("ОРИГИНАЛ")}
                       </span>
 
                       <span>
-                        ПРЕВОД
+                        {mt("ПРЕВОД")}
                       </span>
                     </div>
 
@@ -1569,7 +1570,7 @@ function HumanOneMusicReader({
                           >
                             <div className="human-one-music-reader__comparison-cell">
                               <span className="human-one-music-reader__mobile-column-label">
-                                ОРИГИНАЛ
+                                {mt("ОРИГИНАЛ")}
                               </span>
 
                               <div className="human-one-music-reader__lyrics">
@@ -1581,7 +1582,7 @@ function HumanOneMusicReader({
 
                             <div className="human-one-music-reader__comparison-cell">
                               <span className="human-one-music-reader__mobile-column-label">
-                                ПРЕВОД
+                                {mt("ПРЕВОД")}
                               </span>
 
                               <div className="human-one-music-reader__lyrics">
@@ -1599,7 +1600,7 @@ function HumanOneMusicReader({
 
                 <section className="human-one-music-reader__analysis-section">
                   <p className="human-one-music-reader__label">
-                    АНАЛИЗА
+                    {mt("АНАЛИЗА")}
                   </p>
 
 

@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useMemo,
@@ -58,6 +59,7 @@ function getGenre(
 
 
 function HumanOneMusicPlaylist() {
+  const mt = useMusicTranslation();
   const {
     playlistSlug,
   } =
@@ -639,18 +641,18 @@ function HumanOneMusicPlaylist() {
             playUiBack
           }
         >
-          ← ПЛЕЈЛИСТЕ
+          {mt("← ПЛЕЈЛИСТЕ")}
         </Link>
 
 
         {loading ? (
           <div className="music-recommendations__state">
-            Учитавање плејлисте...
+            {mt("Учитавање плејлисте...")}
           </div>
 
         ) : errorMessage ? (
           <div className="music-recommendations__state">
-            {errorMessage}
+            {mt(errorMessage)}
           </div>
 
         ) : playlist ? (
@@ -700,7 +702,7 @@ function HumanOneMusicPlaylist() {
                     youtubeInfo
                       ?.itemCount
                   )
-                    ? ` · ${youtubeInfo.itemCount} ПЕСАМА`
+                    ? ` · ${youtubeInfo.itemCount} ${mt("ПЕСАМА")}`
                     : ""}
                 </p>
 
@@ -719,7 +721,7 @@ function HumanOneMusicPlaylist() {
               {isExternalYouTubePlaylist &&
               youtubeLoading ? (
                 <p className="music-recommendations__radio-play-note">
-                  ПРИПРЕМА ПЛЕЈЛИСТЕ...
+                  {mt("ПРИПРЕМА ПЛЕЈЛИСТЕ...")}
                 </p>
 
               ) : playbackState ? (
@@ -735,13 +737,12 @@ function HumanOneMusicPlaylist() {
                     playUiSelect
                   }
                 >
-                  ПУСТИ НА РАДИЈУ ▶
+                  {mt("ПУСТИ НА РАДИЈУ ▶")}
                 </Link>
 
               ) : (
                 <p className="music-recommendations__radio-play-note">
-                  Плејлиста нема доступне
-                  YouTube песме.
+                  {mt("Плејлиста нема доступне YouTube песме.")}
                 </p>
               )}
 
@@ -750,12 +751,12 @@ function HumanOneMusicPlaylist() {
                 <>
                   {youtubeLoading ? (
                     <div className="music-recommendations__state">
-                      Учитавање списка песама...
+                      {mt("Учитавање списка песама...")}
                     </div>
 
                   ) : youtubeError ? (
                     <div className="music-recommendations__state">
-                      {youtubeError}
+                      {mt(youtubeError)}
                     </div>
 
                   ) : displayExternalTracks.length ? (
@@ -786,7 +787,7 @@ function HumanOneMusicPlaylist() {
                                     currentPath,
 
                                   label:
-                                    "ЧИТАЈ",
+                                    mt("ЧИТАЈ"),
 
                                   state:
                                     location.state ??
@@ -849,7 +850,7 @@ function HumanOneMusicPlaylist() {
                       ) >
                       displayExternalTracks.length ? (
                         <p className="music-recommendations__radio-play-note">
-                          + још{" "}
+                          {mt("+ још")}{" "}
                           {
                             Number(
                               youtubeInfo
@@ -857,14 +858,14 @@ function HumanOneMusicPlaylist() {
                             ) -
                             displayExternalTracks.length
                           }{" "}
-                          песама у плејлисти
+                          {mt("песама у плејлисти")}
                         </p>
                       ) : null}
                     </div>
 
                   ) : (
                     <div className="music-recommendations__state">
-                      Нема доступних песама.
+                      {mt("Нема доступних песама.")}
                     </div>
                   )}
                 </>
@@ -912,13 +913,13 @@ function HumanOneMusicPlaylist() {
 
                             <p>
                               {track.artist ||
-                                "НЕПОЗНАТ ИЗВОЂАЧ"}
+                                mt("НЕПОЗНАТ ИЗВОЂАЧ")}
                             </p>
                           </div>
 
                           <small>
                             {genre?.name ||
-                              "БЕЗ ЖАНРА"}
+                              mt("БЕЗ ЖАНРА")}
 
                             {track.release_year
                               ? ` · ${track.release_year}`

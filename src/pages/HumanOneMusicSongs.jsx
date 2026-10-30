@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useMemo,
@@ -59,6 +60,7 @@ function normalizeText(
 
 
 function HumanOneMusicSongs() {
+  const mt = useMusicTranslation();
   const [
     searchParams,
     setSearchParams,
@@ -743,22 +745,21 @@ function HumanOneMusicSongs() {
             playUiBack
           }
         >
-          ← ПРЕПОРУКЕ
+          {mt("← ПРЕПОРУКЕ")}
         </Link>
 
 
         <header className="music-recommendations__heading">
           <p>
-            ПРЕПОРУКЕ / ДИСКОВИ
+            {mt("ПРЕПОРУКЕ / ДИСКОВИ")}
           </p>
 
           <h1>
-            ВИНИЛ ПОЛИЦА
+            {mt("ВИНИЛ ПОЛИЦА")}
           </h1>
 
           <span>
-            Претражи, филтрирај
-            и извуци плочу.
+            {mt("Претражи, филтрирај и извуци плочу.")}
           </span>
         </header>
 
@@ -766,7 +767,7 @@ function HumanOneMusicSongs() {
         <section className="music-recommendations__filters">
           <label className="music-recommendations__search">
             <span>
-              ПРЕТРАГА
+              {mt("ПРЕТРАГА")}
             </span>
 
             <input
@@ -783,14 +784,14 @@ function HumanOneMusicSongs() {
                       .value
                   )
               }
-              placeholder="Песма, извођач, жанр..."
+              placeholder={mt("Песма, извођач, жанр...")}
             />
           </label>
 
 
           <label>
             <span>
-              ЖАНР
+              {mt("ЖАНР")}
             </span>
 
             <select
@@ -808,7 +809,7 @@ function HumanOneMusicSongs() {
               }
             >
               <option value="">
-                СВИ ЖАНРОВИ
+                {mt("СВИ ЖАНРОВИ")}
               </option>
 
               {genres.map(
@@ -833,7 +834,7 @@ function HumanOneMusicSongs() {
 
           <label>
             <span>
-              ИЗВОЂАЧ
+              {mt("ИЗВОЂАЧ")}
             </span>
 
             <select
@@ -851,7 +852,7 @@ function HumanOneMusicSongs() {
               }
             >
               <option value="">
-                СВИ ИЗВОЂАЧИ
+                {mt("СВИ ИЗВОЂАЧИ")}
               </option>
 
               {artists.map(
@@ -876,7 +877,7 @@ function HumanOneMusicSongs() {
 
           <label>
             <span>
-              ГОДИНА
+              {mt("ГОДИНА")}
             </span>
 
             <select
@@ -894,7 +895,7 @@ function HumanOneMusicSongs() {
               }
             >
               <option value="">
-                СВЕ ГОДИНЕ
+                {mt("СВЕ ГОДИНЕ")}
               </option>
 
               {years.map(
@@ -919,7 +920,7 @@ function HumanOneMusicSongs() {
 
           <label>
             <span>
-              РЕДОСЛЕД
+              {mt("РЕДОСЛЕД")}
             </span>
 
             <select
@@ -937,27 +938,27 @@ function HumanOneMusicSongs() {
               }
             >
               <option value="manual">
-                МОЈ РЕДОСЛЕД
+                {mt("МОЈ РЕДОСЛЕД")}
               </option>
 
               <option value="title">
-                НАЗИВ
+                {mt("НАЗИВ")}
               </option>
 
               <option value="artist">
-                ИЗВОЂАЧ
+                {mt("ИЗВОЂАЧ")}
               </option>
 
               <option value="genre">
-                ЖАНР
+                {mt("ЖАНР")}
               </option>
 
               <option value="year-desc">
-                ГОДИНА ↓
+                {mt("ГОДИНА ↓")}
               </option>
 
               <option value="year-asc">
-                ГОДИНА ↑
+                {mt("ГОДИНА ↑")}
               </option>
             </select>
           </label>
@@ -970,14 +971,14 @@ function HumanOneMusicSongs() {
               resetFilters
             }
           >
-            РЕСЕТ
+            {mt("РЕСЕТ")}
           </button>
         </section>
 
 
         <div className="music-recommendations__counter">
           <span>
-            ПРОНАЂЕНО
+            {mt("ПРОНАЂЕНО")}
           </span>
 
           <strong>
@@ -994,18 +995,17 @@ function HumanOneMusicSongs() {
 
         {loading ? (
           <div className="music-recommendations__state">
-            Учитавање плоча...
+            {mt("Учитавање плоча...")}
           </div>
 
         ) : errorMessage ? (
           <div className="music-recommendations__state">
-            {errorMessage}
+            {mt(errorMessage)}
           </div>
 
         ) : !visibleRecommendations.length ? (
           <div className="music-recommendations__state">
-            Нема плоча које
-            одговарају овом филтеру.
+            {mt("Нема плоча које одговарају овом филтеру.")}
           </div>
 
         ) : (
@@ -1043,7 +1043,7 @@ function HumanOneMusicSongs() {
                         <span>
                           {recommendation
                             .release_year ||
-                            "СЕКИ"}
+                            mt("СЕКИ")}
                         </span>
                       </div>
 
@@ -1054,7 +1054,7 @@ function HumanOneMusicSongs() {
                     <div className="music-recommendations__vinyl-copy">
                       <small>
                         {genre?.name ||
-                          "БЕЗ ЖАНРА"}
+                          mt("БЕЗ ЖАНРА")}
 
                         {recommendation
                           .release_year
@@ -1070,11 +1070,11 @@ function HumanOneMusicSongs() {
                       <p>
                         {recommendation
                           .artist ||
-                          "НЕПОЗНАТ ИЗВОЂАЧ"}
+                          mt("НЕПОЗНАТ ИЗВОЂАЧ")}
                       </p>
 
                       <strong>
-                        ИЗВУЦИ ПЛОЧУ →
+                        {mt("ИЗВУЦИ ПЛОЧУ →")}
                       </strong>
                     </div>
                   </>

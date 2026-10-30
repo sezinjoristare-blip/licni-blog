@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useState,
@@ -51,6 +52,7 @@ function CassetteVisual() {
 
 
 function HumanOneMusicRadioDramas() {
+  const mt = useMusicTranslation();
   const [
     dramas,
     setDramas,
@@ -160,39 +162,38 @@ function HumanOneMusicRadioDramas() {
             playUiBack
           }
         >
-          ← ПРЕПОРУКЕ
+          {mt("← ПРЕПОРУКЕ")}
         </Link>
 
 
         <header className="music-recommendations__heading">
           <p>
-            ПРЕПОРУКЕ / РАДИО ДРАМЕ
+            {mt("ПРЕПОРУКЕ / РАДИО ДРАМЕ")}
           </p>
 
           <h1>
-            КАСЕТЕ
+            {mt("КАСЕТЕ")}
           </h1>
 
           <span>
-            Изабери касету.
+            {mt("Изабери касету.")}
           </span>
         </header>
 
 
         {loading ? (
           <div className="music-recommendations__state">
-            Учитавање касета...
+            {mt("Учитавање касета...")}
           </div>
 
         ) : errorMessage ? (
           <div className="music-recommendations__state">
-            {errorMessage}
+            {mt(errorMessage)}
           </div>
 
         ) : !dramas.length ? (
           <div className="music-recommendations__state">
-            Још нема објављених
-            радио драма.
+            {mt("Још нема објављених радио драма.")}
           </div>
 
         ) : (
@@ -223,7 +224,7 @@ function HumanOneMusicRadioDramas() {
 
                     <p>
                       {drama.author ||
-                        "НЕПОЗНАТ АУТОР"}
+                        mt("НЕПОЗНАТ АУТОР")}
                     </p>
                   </div>
                 </Link>

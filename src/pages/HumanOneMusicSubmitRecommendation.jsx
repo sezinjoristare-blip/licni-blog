@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useState,
@@ -221,6 +222,7 @@ async function getFunctionErrorMessage(
 
 
 function HumanOneMusicSubmitRecommendation() {
+  const mt = useMusicTranslation();
   const [
     form,
     setForm,
@@ -605,25 +607,23 @@ function HumanOneMusicSubmitRecommendation() {
             playUiBack
           }
         >
-          ← ПРЕПОРУКЕ
+          {mt("← ПРЕПОРУКЕ")}
         </Link>
 
 
         <header className="music-submit__heading">
           <p>
-            ПРЕПОРУКЕ / 04
+            {mt("ПРЕПОРУКЕ / 04")}
           </p>
 
           <h1>
-            ПОШАЉИ
+            {mt("ПОШАЉИ")}
             <br />
-            ПРЕПОРУКУ
+            {mt("ПРЕПОРУКУ")}
           </h1>
 
           <span>
-            Ако мислиш да нешто
-            вреди чути — остави га
-            на полици.
+            {mt("Ако мислиш да нешто вреди чути — остави га на полици.")}
           </span>
         </header>
 
@@ -634,19 +634,19 @@ function HumanOneMusicSubmitRecommendation() {
             aria-hidden="true"
           >
             <span>
-              НЕ МОРАШ
+              {mt("НЕ МОРАШ")}
               <br />
-              ДА ОСТАВИШ
+              {mt("ДА ОСТАВИШ")}
               <br />
-              МЕЈЛ.
+              {mt("МЕЈЛ.")}
             </span>
 
             <strong>
-              САМО РЕЦИ
+              {mt("САМО РЕЦИ")}
               <br />
-              ШТА ТИ СЕ
+              {mt("ШТА ТИ СЕ")}
               <br />
-              СВИЂА.
+              {mt("СВИЂА.")}
             </strong>
           </div>
 
@@ -659,7 +659,7 @@ function HumanOneMusicSubmitRecommendation() {
           >
             <label>
               <span>
-                ШТА ШАЉЕШ?
+                {mt("ШТА ШАЉЕШ?")}
               </span>
 
               <select
@@ -682,7 +682,7 @@ function HumanOneMusicSubmitRecommendation() {
                         option.value
                       }
                     >
-                      {option.label}
+                      {mt(option.label)}
                     </option>
                   )
                 )}
@@ -692,9 +692,7 @@ function HumanOneMusicSubmitRecommendation() {
 
             <label>
               <span>
-                {getTitleLabel(
-                  form.type
-                )}
+                {mt(getTitleLabel(form.type))}
               </span>
 
               <input
@@ -712,7 +710,7 @@ function HumanOneMusicSubmitRecommendation() {
                       event.target.value
                     )
                 }
-                placeholder="Шта препоручујеш?"
+                placeholder={mt("Шта препоручујеш?")}
                 required
               />
             </label>
@@ -720,9 +718,7 @@ function HumanOneMusicSubmitRecommendation() {
 
             <label>
               <span>
-                {getCreatorLabel(
-                  form.type
-                )}
+                {mt(getCreatorLabel(form.type))}
               </span>
 
               <input
@@ -740,7 +736,7 @@ function HumanOneMusicSubmitRecommendation() {
                       event.target.value
                     )
                 }
-                placeholder="Ко стоји иза тога?"
+                placeholder={mt("Ко стоји иза тога?")}
               />
             </label>
 
@@ -749,7 +745,7 @@ function HumanOneMusicSubmitRecommendation() {
             "music" ? (
               <label>
                 <span>
-                  ЖАНР
+                  {mt("ЖАНР")}
                 </span>
 
                 <select
@@ -772,8 +768,8 @@ function HumanOneMusicSubmitRecommendation() {
                 >
                   <option value="">
                     {genresLoading
-                      ? "УЧИТАВАЊЕ..."
-                      : "ИЗАБЕРИ ЖАНР"}
+                      ? mt("УЧИТАВАЊЕ...")
+                      : mt("ИЗАБЕРИ ЖАНР")}
                   </option>
 
                   {genres.map(
@@ -796,7 +792,7 @@ function HumanOneMusicSubmitRecommendation() {
 
                 {genresError ? (
                   <small>
-                    {genresError}
+                    {mt(genresError)}
                   </small>
                 ) : null}
               </label>
@@ -805,9 +801,7 @@ function HumanOneMusicSubmitRecommendation() {
 
             <label>
               <span>
-                {getUrlLabel(
-                  form.type
-                )}
+                {mt(getUrlLabel(form.type))}
               </span>
 
               <input
@@ -830,16 +824,14 @@ function HumanOneMusicSubmitRecommendation() {
               />
 
               <small>
-                {getUrlHelp(
-                  form.type
-                )}
+                {mt(getUrlHelp(form.type))}
               </small>
             </label>
 
 
             <label>
               <span>
-                ИМЕ ИЛИ НАДИМАК
+                {mt("ИМЕ ИЛИ НАДИМАК")}
               </span>
 
               <input
@@ -857,7 +849,7 @@ function HumanOneMusicSubmitRecommendation() {
                       event.target.value
                     )
                 }
-                placeholder="Како да те потпишем?"
+                placeholder={mt("Како да те потпишем?")}
                 required
               />
             </label>
@@ -865,7 +857,7 @@ function HumanOneMusicSubmitRecommendation() {
 
             <label className="music-submit__reason">
               <span>
-                ЗАШТО ТИ СЕ ОВО СВИЂА?
+                {mt("ЗАШТО ТИ СЕ ОВО СВИЂА?")}
               </span>
 
               <textarea
@@ -883,7 +875,7 @@ function HumanOneMusicSubmitRecommendation() {
                       event.target.value
                     )
                 }
-                placeholder="Напиши свој утисак..."
+                placeholder={mt("Напиши свој утисак...")}
                 required
               />
 
@@ -931,7 +923,7 @@ function HumanOneMusicSubmitRecommendation() {
                 }
                 role="status"
               >
-                {status.message}
+                {mt(status.message)}
               </p>
             ) : null}
 
@@ -949,8 +941,8 @@ function HumanOneMusicSubmitRecommendation() {
               }
             >
               {sending
-                ? "ШАЉЕМ..."
-                : "ПОШАЉИ ПРЕПОРУКУ →"}
+                ? mt("ШАЉЕМ...")
+                : mt("ПОШАЉИ ПРЕПОРУКУ →")}
             </button>
           </form>
         </section>

@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useState,
@@ -20,6 +21,7 @@ import "../styles/HumanOneMusicAnalyses.css";
 
 
 function HumanOneMusicAnalyses() {
+  const mt = useMusicTranslation();
   const [
     works,
     setWorks,
@@ -157,7 +159,7 @@ function HumanOneMusicAnalyses() {
             playUiBack
           }
         >
-          ← МУЗИКА
+          {mt("← МУЗИКА")}
         </Link>
 
 
@@ -167,16 +169,15 @@ function HumanOneMusicAnalyses() {
 
         <header className="music-analyses__heading">
           <p>
-            ПРЕВОДИ / АНАЛИЗЕ
+            {mt("ПРЕВОДИ / АНАЛИЗЕ")}
           </p>
 
           <h1>
-            СВЕСКЕ
+            {mt("СВЕСКЕ")}
           </h1>
 
           <span>
-            Белешке, преводи и
-            рашчлањивање песама.
+            {mt("Белешке, преводи и рашчлањивање песама.")}
           </span>
         </header>
 
@@ -187,25 +188,24 @@ function HumanOneMusicAnalyses() {
 
         {loading ? (
           <div className="music-analyses__state">
-            Учитавање свезака...
+            {mt("Учитавање свезака...")}
           </div>
 
         ) : errorMessage ? (
           <div className="music-analyses__state">
-            {errorMessage}
+            {mt(errorMessage)}
           </div>
 
         ) : !works.length ? (
           <div className="music-analyses__state">
-            Још нема објављених
-            анализа.
+            {mt("Још нема објављених анализа.")}
           </div>
 
         ) : (
           <>
             <div className="music-analyses__counter">
               <span>
-                НА ПОЛИЦИ
+                {mt("НА ПОЛИЦИ")}
               </span>
 
               <strong>
@@ -285,7 +285,7 @@ function HumanOneMusicAnalyses() {
                           work.title
                         } — ${
                           work.artist ||
-                          "непознат извођач"
+                          mt("непознат извођач")
                         }`
                       }
                     >
@@ -324,7 +324,7 @@ function HumanOneMusicAnalyses() {
 
                         <div className="music-analyses__top-line">
                           <span>
-                            СЕКИЈЕВЕ БЕЛЕШКЕ
+                            {mt("СЕКИЈЕВЕ БЕЛЕШКЕ")}
                           </span>
 
                           <strong>
@@ -366,8 +366,8 @@ function HumanOneMusicAnalyses() {
 
                         <div className="music-analyses__type">
                           {hasTranslation
-                            ? "ПРЕВОД + АНАЛИЗА"
-                            : "АНАЛИЗА"}
+                            ? mt("ПРЕВОД + АНАЛИЗА")
+                            : mt("АНАЛИЗА")}
                         </div>
 
 
@@ -380,7 +380,7 @@ function HumanOneMusicAnalyses() {
 
                           <p>
                             {work.artist ||
-                              "НЕПОЗНАТ ИЗВОЂАЧ"}
+                              mt("НЕПОЗНАТ ИЗВОЂАЧ")}
                           </p>
                         </div>
 
@@ -389,7 +389,7 @@ function HumanOneMusicAnalyses() {
 
                         <div className="music-analyses__footer">
                           <span>
-                            ОТВОРИ СВЕСКУ
+                            {mt("ОТВОРИ СВЕСКУ")}
                           </span>
 
                           <strong>

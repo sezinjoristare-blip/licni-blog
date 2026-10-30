@@ -1,3 +1,4 @@
+import { useMusicTranslation } from "../i18n/musicTranslations";
 import {
   useEffect,
   useMemo,
@@ -39,6 +40,7 @@ function normalizeText(
 
 
 function HumanOneMusicPlaylists() {
+  const mt = useMusicTranslation();
   const [
     playlists,
     setPlaylists,
@@ -325,18 +327,17 @@ function HumanOneMusicPlaylists() {
             playUiBack
           }
         >
-          ← ПРЕПОРУКЕ
+          {mt("← ПРЕПОРУКЕ")}
         </Link>
 
 
         <header className="music-recommendations__heading music-recommendations__heading--playlists">
           <h1>
-            ПЛЕЈЛИСТЕ
+            {mt("ПЛЕЈЛИСТЕ")}
           </h1>
 
           <span>
-            Изабери плејлисту по жељи,
-            фазону и мери.
+            {mt("Изабери плејлисту по жељи, фазону и мери.")}
           </span>
         </header>
 
@@ -344,7 +345,7 @@ function HumanOneMusicPlaylists() {
         <section className="music-recommendations__filters music-recommendations__filters--playlists">
           <label className="music-recommendations__search">
             <span>
-              ПРЕТРАГА
+              {mt("ПРЕТРАГА")}
             </span>
 
             <input
@@ -361,14 +362,14 @@ function HumanOneMusicPlaylists() {
                       .value
                   )
               }
-              placeholder="Назив плејлисте..."
+              placeholder={mt("Назив плејлисте...")}
             />
           </label>
 
 
           <label>
             <span>
-              РЕДОСЛЕД
+              {mt("РЕДОСЛЕД")}
             </span>
 
             <select
@@ -386,15 +387,15 @@ function HumanOneMusicPlaylists() {
               }
             >
               <option value="manual">
-                МОЈ РЕДОСЛЕД
+                {mt("МОЈ РЕДОСЛЕД")}
               </option>
 
               <option value="title">
-                НАЗИВ
+                {mt("НАЗИВ")}
               </option>
 
               <option value="newest">
-                НАЈНОВИЈЕ
+                {mt("НАЈНОВИЈЕ")}
               </option>
             </select>
           </label>
@@ -403,18 +404,17 @@ function HumanOneMusicPlaylists() {
 
         {loading ? (
           <div className="music-recommendations__state">
-            Учитавање...
+            {mt("Учитавање...")}
           </div>
 
         ) : errorMessage ? (
           <div className="music-recommendations__state">
-            {errorMessage}
+            {mt(errorMessage)}
           </div>
 
         ) : !visiblePlaylists.length ? (
           <div className="music-recommendations__state">
-            Још нема објављених
-            плејлиста.
+            {mt("Још нема објављених плејлиста.")}
           </div>
 
         ) : (
@@ -517,8 +517,8 @@ function HumanOneMusicPlaylists() {
 
                         {songCount ===
                         1
-                          ? "ПЕСМА"
-                          : "ПЕСАМА"}
+                          ? mt("ПЕСМА")
+                          : mt("ПЕСАМА")}
                       </small>
 
                       <h2>
@@ -527,11 +527,11 @@ function HumanOneMusicPlaylists() {
 
                       <p>
                         {playlist.description ||
-                          "Без описа."}
+                          mt("Без описа.")}
                       </p>
 
                       <strong>
-                        ОТВОРИ ПЛЕЈЛИСТУ →
+                        {mt("ОТВОРИ ПЛЕЈЛИСТУ →")}
                       </strong>
                     </div>
                   </Link>
