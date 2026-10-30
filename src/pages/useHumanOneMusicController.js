@@ -135,8 +135,8 @@ export default function useHumanOneMusicController() {
     useRef(0);
 
 
-  const volumeRef =
-    useRef(70);
+ const volumeRef =
+  useRef(60);
 
 
   const volumeDragRef =
@@ -300,39 +300,37 @@ export default function useHumanOneMusicController() {
     );
 
 
-  const [
-    volume,
-    setVolume,
-  ] =
-    useState(
-      () => {
-        if (
-          typeof window ===
-          "undefined"
-        ) {
-          return 70;
-        }
+ const [
+  volume,
+  setVolume,
+] =
+  useState(() => {
+    if (
+      typeof window ===
+      "undefined"
+    ) {
+      return 60;
+    }
 
+    const stored =
+      window.localStorage.getItem(
+        "human-one-music-volume"
+      );
 
-        const saved =
-          Number(
-            window.localStorage.getItem(
-              "human-one-music-volume"
-            )
-          );
+    if (
+      stored === null ||
+      stored === ""
+    ) {
+      return 60;
+    }
 
+    const saved =
+      Number(stored);
 
-        return Number.isFinite(
-          saved
-        )
-          ? clamp(
-              saved,
-              0,
-              100
-            )
-          : 70;
-      }
-    );
+    return Number.isFinite(saved)
+      ? clamp(saved, 0, 100)
+      : 60;
+  });
 
 
   const currentTrack =
